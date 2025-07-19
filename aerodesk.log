@@ -705,3 +705,68 @@
 [2025-07-19 10:48:43] DEBUG: Database connection established successfully
 [2025-07-19 10:48:43] INFO: Retrieved 0 gate assignments from database
 [2025-07-19 10:48:45] INFO: User staff1 accessed: aviation_stack
+[2025-07-19 10:49:41] INFO: AeroDesk Pro starting up...
+[2025-07-19 10:49:42] INFO: Login screen displayed successfully
+[2025-07-19 10:49:50] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 10:49:51] INFO: User staff1 accessed: aviation_stack
+[2025-07-19 10:50:04] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 10:50:04] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 10:50:05] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 10:50:05] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 10:50:05] INFO: Tracked flight: AA101
+[2025-07-19 10:50:13] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA10
+[2025-07-19 10:50:13] INFO: Aviation Stack API: Retrieved flight data for AA10
+[2025-07-19 10:50:13] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA10
+[2025-07-19 10:50:13] INFO: Aviation Stack API: Retrieved flight data for AA10
+[2025-07-19 10:50:13] INFO: Tracked flight: AA10
+[2025-07-19 10:50:18] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 10:50:18] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 10:50:18] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 10:50:18] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 10:50:18] INFO: Tracked flight: AA101
+[2025-07-19 10:50:21] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 10:50:21] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 10:50:21] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 10:50:21] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 10:50:21] INFO: Retrieved airport statistics: JFK
+[2025-07-19 10:50:33] INFO: User staff1 accessed: flight_status
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 4 flights from database
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:33] INFO: Loaded 4 flights for status display
+[2025-07-19 10:50:33] INFO: Weather data updated
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 4 flights from database
+[2025-07-19 10:50:33] DEBUG: Database connection established successfully
+[2025-07-19 10:50:33] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:34] DEBUG: Database connection established successfully
+[2025-07-19 10:50:34] INFO: Retrieved flight by number: SW404
+[2025-07-19 10:50:34] DEBUG: Database connection established successfully
+[2025-07-19 10:50:34] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:37] DEBUG: Database connection established successfully
+[2025-07-19 10:50:37] INFO: Retrieved flight by number: DL303
+[2025-07-19 10:50:37] DEBUG: Database connection established successfully
+[2025-07-19 10:50:37] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:42] DEBUG: Database connection established successfully
+[2025-07-19 10:50:42] INFO: Retrieved flight by number: AA101
+[2025-07-19 10:50:42] DEBUG: Database connection established successfully
+[2025-07-19 10:50:42] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:50:47] INFO: User staff1 accessed: check_in
+[2025-07-19 10:50:47] DEBUG: Database connection established successfully
+[2025-07-19 10:50:47] INFO: Retrieved 4 bookings from database
+[2025-07-19 10:50:47] DEBUG: Database connection established successfully
+[2025-07-19 10:50:47] INFO: Retrieved flight: AA101
+[2025-07-19 10:50:47] DEBUG: Database connection established successfully
+[2025-07-19 10:50:47] INFO: Retrieved flight: AA101
+[2025-07-19 10:50:47] DEBUG: Database connection established successfully
+[2025-07-19 10:50:47] INFO: Retrieved flight: UA202
+[2025-07-19 10:50:47] DEBUG: Database connection established successfully
+[2025-07-19 10:50:47] INFO: Retrieved flight: DL303
+[2025-07-19 10:50:47] INFO: Displayed 4 bookings
