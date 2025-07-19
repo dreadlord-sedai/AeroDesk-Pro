@@ -336,6 +336,210 @@ public class BookingDAO {
     }
     
     /**
+     * Searches bookings by passenger name (case-insensitive partial match)
+     * @param passengerName The passenger name to search for
+     * @return List of matching bookings
+     * @throws DatabaseException if database operation fails
+     */
+    public List<Booking> searchBookingsByPassengerName(String passengerName) throws DatabaseException {
+        List<Booking> bookings = new ArrayList<>();
+        String sql = "SELECT * FROM bookings WHERE LOWER(passenger_name) LIKE LOWER(?) ORDER BY passenger_name";
+        
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, "%" + passengerName + "%");
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Booking booking = mapResultSetToBooking(rs);
+                    bookings.add(booking);
+                }
+            }
+            
+            FileLogger.getInstance().logInfo("Found " + bookings.size() + " bookings for passenger name: " + passengerName);
+            return bookings;
+            
+        } catch (SQLException e) {
+            FileLogger.getInstance().logError("Failed to search bookings by passenger name: " + e.getMessage());
+            throw new DatabaseException("Failed to search bookings by passenger name", e);
+        }
+    }
+    
+    /**
+     * Searches bookings by passport number (case-insensitive partial match)
+     * @param passportNumber The passport number to search for
+     * @return List of matching bookings
+     * @throws DatabaseException if database operation fails
+     */
+    public List<Booking> searchBookingsByPassportNumber(String passportNumber) throws DatabaseException {
+        List<Booking> bookings = new ArrayList<>();
+        String sql = "SELECT * FROM bookings WHERE LOWER(passport_number) LIKE LOWER(?) ORDER BY passenger_name";
+        
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, "%" + passportNumber + "%");
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Booking booking = mapResultSetToBooking(rs);
+                    bookings.add(booking);
+                }
+            }
+            
+            FileLogger.getInstance().logInfo("Found " + bookings.size() + " bookings for passport number: " + passportNumber);
+            return bookings;
+            
+        } catch (SQLException e) {
+            FileLogger.getInstance().logError("Failed to search bookings by passport number: " + e.getMessage());
+            throw new DatabaseException("Failed to search bookings by passport number", e);
+        }
+    }
+    
+    /**
+     * Searches bookings by flight number (joins with flights table)
+     * @param flightNumber The flight number to search for
+     * @return List of matching bookings
+     * @throws DatabaseException if database operation fails
+     */
+    public List<Booking> searchBookingsByFlightNumber(String flightNumber) throws DatabaseException {
+        List<Booking> bookings = new ArrayList<>();
+        String sql = "SELECT b.* FROM bookings b " +
+                    "JOIN flights f ON b.flight_id = f.id " +
+                    "WHERE f.flight_number = ? " +
+                    "ORDER BY b.passenger_name";
+        
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, flightNumber);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Booking booking = mapResultSetToBooking(rs);
+                    bookings.add(booking);
+                }
+            }
+            
+            FileLogger.getInstance().logInfo("Found " + bookings.size() + " bookings for flight number: " + flightNumber);
+            return bookings;
+            
+        } catch (SQLException e) {
+            FileLogger.getInstance().logError("Failed to search bookings by flight number: " + e.getMessage());
+            throw new DatabaseException("Failed to search bookings by flight number", e);
+        }
+    }
+    
+    /**
+     * Filters bookings by check-in status
+     * @param checkedIn true for checked-in passengers, false for not checked-in
+     * @return List of filtered bookings
+     * @throws DatabaseException if database operation fails
+     */
+    public List<Booking> getBookingsByCheckInStatus(boolean checkedIn) throws DatabaseException {
+        List<Booking> bookings = new ArrayList<>();
+        String status = checkedIn ? "CHECKED_IN" : "NOT_CHECKED_IN";
+        String sql = "SELECT * FROM bookings WHERE check_in_status = ? ORDER BY passenger_name";
+        
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, status);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Booking booking = mapResultSetToBooking(rs);
+                    bookings.add(booking);
+                }
+            }
+            
+            FileLogger.getInstance().logInfo("Found " + bookings.size() + " " + (checkedIn ? "checked-in" : "not checked-in") + " bookings");
+            return bookings;
+            
+        } catch (SQLException e) {
+            FileLogger.getInstance().logError("Failed to filter bookings by check-in status: " + e.getMessage());
+            throw new DatabaseException("Failed to filter bookings by check-in status", e);
+        }
+    }
+    
+    /**
+     * Advanced search with multiple criteria
+     * @param searchTerm The search term
+     * @param searchType The type of search (passenger_name, flight_number, etc.)
+     * @param statusFilter The status filter (all, checked_in, not_checked_in)
+     * @return List of matching bookings
+     * @throws DatabaseException if database operation fails
+     */
+    public List<Booking> advancedSearch(String searchTerm, String searchType, String statusFilter) throws DatabaseException {
+        List<Booking> bookings = new ArrayList<>();
+        StringBuilder sql = new StringBuilder();
+        List<Object> parameters = new ArrayList<>();
+        
+        sql.append("SELECT b.* FROM bookings b ");
+        
+        // Add flight join if searching by flight number
+        if ("Flight Number".equals(searchType)) {
+            sql.append("JOIN flights f ON b.flight_id = f.id ");
+        }
+        
+        sql.append("WHERE 1=1 ");
+        
+        // Add search criteria
+        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
+            switch (searchType) {
+                case "Passenger Name":
+                    sql.append("AND LOWER(b.passenger_name) LIKE LOWER(?) ");
+                    parameters.add("%" + searchTerm.trim() + "%");
+                    break;
+                case "Flight Number":
+                    sql.append("AND f.flight_number = ? ");
+                    parameters.add(searchTerm.trim());
+                    break;
+                case "Passport Number":
+                    sql.append("AND LOWER(b.passport_number) LIKE LOWER(?) ");
+                    parameters.add("%" + searchTerm.trim() + "%");
+                    break;
+                case "Booking Reference":
+                    sql.append("AND b.booking_reference = ? ");
+                    parameters.add(searchTerm.trim());
+                    break;
+            }
+        }
+        
+        // Add status filter
+        if (!"All Status".equals(statusFilter)) {
+            String status = "Not Checked In".equals(statusFilter) ? "NOT_CHECKED_IN" : "CHECKED_IN";
+            sql.append("AND b.check_in_status = ? ");
+            parameters.add(status);
+        }
+        
+        sql.append("ORDER BY b.passenger_name");
+        
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+            
+            for (int i = 0; i < parameters.size(); i++) {
+                stmt.setObject(i + 1, parameters.get(i));
+            }
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Booking booking = mapResultSetToBooking(rs);
+                    bookings.add(booking);
+                }
+            }
+            
+            FileLogger.getInstance().logInfo("Advanced search found " + bookings.size() + " bookings");
+            return bookings;
+            
+        } catch (SQLException e) {
+            FileLogger.getInstance().logError("Failed to perform advanced search: " + e.getMessage());
+            throw new DatabaseException("Failed to perform advanced search", e);
+        }
+    }
+    
+    /**
      * Maps a ResultSet row to a Booking object
      * @param rs The ResultSet containing booking data
      * @return Booking object
