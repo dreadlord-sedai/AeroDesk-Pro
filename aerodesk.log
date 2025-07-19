@@ -174,3 +174,149 @@
 [2025-07-19 10:02:36] INFO: Loaded 0 gate assignments
 [2025-07-19 10:02:50] INFO: User staff1 accessed: reports
 [2025-07-19 10:02:51] INFO: User staff1 accessed: flight_status
+[2025-07-19 10:06:40] INFO: AeroDesk Pro starting up...
+[2025-07-19 10:06:40] INFO: Login screen displayed successfully
+[2025-07-19 10:06:50] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 10:06:51] INFO: User staff1 accessed: baggage
+[2025-07-19 10:06:51] DEBUG: Database connection established successfully
+[2025-07-19 10:06:51] INFO: Retrieved 4 bookings from database
+[2025-07-19 10:06:51] INFO: Loaded 0 checked-in passengers
+[2025-07-19 10:06:51] DEBUG: Database connection established successfully
+[2025-07-19 10:06:51] INFO: Retrieved 4 baggage items from database
+[2025-07-19 10:06:51] DEBUG: Database connection established successfully
+[2025-07-19 10:06:51] INFO: Retrieved booking: BK001
+[2025-07-19 10:06:51] DEBUG: Database connection established successfully
+[2025-07-19 10:06:51] INFO: Retrieved booking: BK002
+[2025-07-19 10:06:51] DEBUG: Database connection established successfully
+[2025-07-19 10:06:51] INFO: Retrieved booking: BK003
+[2025-07-19 10:06:51] DEBUG: Database connection established successfully
+[2025-07-19 10:06:51] INFO: Retrieved booking: BK004
+[2025-07-19 10:06:51] INFO: Loaded 4 baggage items
+[2025-07-19 10:06:54] INFO: User staff1 accessed: gate_management
+[2025-07-19 10:06:54] DEBUG: Database connection established successfully
+[2025-07-19 10:06:54] INFO: Retrieved 8 gates from database
+[2025-07-19 10:06:54] INFO: Loaded 8 gates
+[2025-07-19 10:06:54] DEBUG: Database connection established successfully
+[2025-07-19 10:06:54] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:06:54] INFO: Loaded 0 gate assignments
+[2025-07-19 10:06:55] INFO: User staff1 accessed: flight_status
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 4 flights from database
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:06:55] INFO: Loaded 4 flights for status display
+[2025-07-19 10:06:55] INFO: Weather data updated
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 4 flights from database
+[2025-07-19 10:06:55] DEBUG: Database connection established successfully
+[2025-07-19 10:06:55] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:02] DEBUG: Database connection established successfully
+[2025-07-19 10:07:02] INFO: Retrieved flight by number: AA101
+[2025-07-19 10:07:02] DEBUG: Database connection established successfully
+[2025-07-19 10:07:02] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:07] DEBUG: Database connection established successfully
+[2025-07-19 10:07:07] INFO: Retrieved flight by number: UA202
+[2025-07-19 10:07:07] DEBUG: Database connection established successfully
+[2025-07-19 10:07:07] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:09] DEBUG: Database connection established successfully
+[2025-07-19 10:07:09] INFO: Retrieved flight by number: SW404
+[2025-07-19 10:07:09] DEBUG: Database connection established successfully
+[2025-07-19 10:07:09] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 4 flights from database
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:15] INFO: Loaded 4 flights for status display
+[2025-07-19 10:07:15] INFO: Weather data updated
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 4 flights from database
+[2025-07-19 10:07:15] DEBUG: Database connection established successfully
+[2025-07-19 10:07:15] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:15] INFO: Flight status data refreshed manually
+[2025-07-19 10:07:16] INFO: Live flight status updates started
+[2025-07-19 10:07:21] DEBUG: Database connection established successfully
+[2025-07-19 10:07:21] INFO: Retrieved flight by number: SW404
+[2025-07-19 10:07:21] DEBUG: Database connection established successfully
+[2025-07-19 10:07:21] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:26] DEBUG: Database connection established successfully
+[2025-07-19 10:07:26] INFO: Retrieved flight by number: UA202
+[2025-07-19 10:07:26] DEBUG: Database connection established successfully
+[2025-07-19 10:07:26] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 4 flights from database
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:41] INFO: Loaded 4 flights for status display
+[2025-07-19 10:07:41] INFO: Weather data updated
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 4 flights from database
+[2025-07-19 10:07:41] DEBUG: Database connection established successfully
+[2025-07-19 10:07:41] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:41] INFO: Flight status data refreshed manually
+[2025-07-19 10:07:45] DEBUG: Database connection established successfully
+[2025-07-19 10:07:45] INFO: Retrieved flight by number: SW404
+[2025-07-19 10:07:45] DEBUG: Database connection established successfully
+[2025-07-19 10:07:45] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 4 flights from database
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:46] INFO: Loaded 4 flights for status display
+[2025-07-19 10:07:46] INFO: Weather data updated
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 4 flights from database
+[2025-07-19 10:07:46] DEBUG: Database connection established successfully
+[2025-07-19 10:07:46] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:07:50] DEBUG: Database connection established successfully
+[2025-07-19 10:07:50] INFO: Retrieved flight by number: SW404
+[2025-07-19 10:07:50] DEBUG: Database connection established successfully
+[2025-07-19 10:07:50] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:08:02] INFO: User staff1 accessed: reports
+[2025-07-19 10:08:03] INFO: User staff1 accessed: gate_management
+[2025-07-19 10:08:03] DEBUG: Database connection established successfully
+[2025-07-19 10:08:03] INFO: Retrieved 8 gates from database
+[2025-07-19 10:08:03] INFO: Loaded 8 gates
+[2025-07-19 10:08:03] DEBUG: Database connection established successfully
+[2025-07-19 10:08:03] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:08:03] INFO: Loaded 0 gate assignments
+[2025-07-19 10:08:05] INFO: User staff1 accessed: flight_status
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 4 flights from database
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:08:05] INFO: Loaded 4 flights for status display
+[2025-07-19 10:08:05] INFO: Weather data updated
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 4 flights from database
+[2025-07-19 10:08:05] DEBUG: Database connection established successfully
+[2025-07-19 10:08:05] INFO: Retrieved 0 gate assignments from database

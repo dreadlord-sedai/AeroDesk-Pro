@@ -190,10 +190,9 @@ public class MainMenuFrame extends JFrame {
     }
     
     private void openReports() {
-        JOptionPane.showMessageDialog(this, 
-            "Reports & Logs module will be implemented next.", 
-            "Coming Soon", 
-            JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> {
+            new ReportsFrame().setVisible(true);
+        });
     }
     
     private void handleLogout() {
