@@ -12,7 +12,7 @@ A comprehensive Java SE application for managing airport operations including fl
 - **Real-Time Flight Status**: Live flight status updates with weather integration
 - **Reporting & Logging**: Comprehensive reporting and system logging
 
-### ✅ **NEW: Aviation Stack API Integration** 🛫
+### ✅ **Aviation Stack API Integration** 🛫
 - **Real-time Flight Tracking**: Live position, altitude, speed, and direction data
 - **Airport Information**: Complete airport details, statistics, and contact information
 - **Airline Information**: Airline profiles, fleet data, and company details
@@ -58,7 +58,11 @@ A comprehensive Java SE application for managing airport operations including fl
    ```sql
    mysql -u root -p < db/schema.sql
    ```
-3. Update database credentials in `config.properties`
+3. Populate the database with sample data:
+   ```sql
+   mysql -u root -p < db/populate_database.sql
+   ```
+4. Update database credentials in `config.properties`
 
 ### 2. Dependencies Setup
 
@@ -126,7 +130,7 @@ AeroDesk-Pro/
 │       ├── ui/                       # User interface components
 │       │   ├── LoginFrame.java
 │       │   ├── MainMenuFrame.java
-│       │   ├── AviationStackFrame.java  # NEW: Aviation Stack UI
+│       │   ├── AviationStackFrame.java  # Aviation Stack UI
 │       │   └── ... (other UI frames)
 │       ├── model/                    # Data models
 │       │   ├── Flight.java
@@ -139,22 +143,23 @@ AeroDesk-Pro/
 │       ├── service/                  # Business logic services
 │       │   ├── FlightService.java
 │       │   ├── BaggageService.java
-│       │   ├── AviationStackService.java      # NEW: Aviation Stack service
-│       │   └── FlightDataIntegrationService.java  # NEW: Data sync service
+│       │   ├── AviationStackService.java      # Aviation Stack service
+│       │   └── FlightDataIntegrationService.java  # Data sync service
 │       ├── util/                     # Utility classes
 │       │   ├── ConfigManager.java
 │       │   ├── FileLogger.java
 │       │   ├── DatabaseConnection.java
-│       │   └── ApiIntegrator.java    # NEW: API integration
+│       │   └── ApiIntegrator.java    # API integration
 │       └── exception/                # Custom exceptions
 │           ├── DatabaseException.java
 │           └── GateConflictException.java
 ├── db/
-│   └── schema.sql                    # Database schema
+│   ├── schema.sql                    # Database schema
+│   └── populate_database.sql         # Sample data population
 ├── lib/                              # External dependencies
 ├── config.properties                 # Application configuration
 ├── build.xml                         # Ant build script
-├── AVIATION_STACK_INTEGRATION_GUIDE.md  # NEW: Integration guide
+├── AVIATION_STACK_INTEGRATION_GUIDE.md  # Integration guide
 └── README.md                         # This file
 ```
 
@@ -284,19 +289,23 @@ This project is developed for educational purposes as part of a hackathon projec
 - [x] **Aviation Stack API Integration** - Real-time flight data and tracking
 - [x] **System Logging** - Comprehensive logging and monitoring
 
-### 🚧 In Progress
+### 🚧 Current Focus: Making Application Fully Functional
+- [ ] **API Integration Optimization** - Improve Aviation Stack API reliability and performance
+- [ ] **Database Performance** - Optimize queries and implement connection pooling
+- [ ] **Error Handling** - Enhance error handling and user feedback
+- [ ] **UI/UX Improvements** - Add icons, tooltips, and better user experience
+- [ ] **Testing & Validation** - Comprehensive testing of all modules
+- [ ] **Documentation** - Complete user and developer documentation
+
+### 🔮 Future Enhancements
 - [ ] **Advanced Analytics** - Machine learning integration
 - [ ] **Mobile Companion App** - Cross-platform mobile application
 - [ ] **Performance Optimizations** - Caching and connection pooling
-
-### 🔮 Future Enhancements
 - [ ] **Real-time Map Integration** - Visual flight tracking
 - [ ] **Flight Alert System** - Automated notifications
-- [ ] **Advanced Weather Integration** - Detailed weather impact analysis
-- [ ] **Third-party Integrations** - Additional aviation APIs
 
 ---
 
-**Developed with ❤️ for the AeroDesk Pro Hackathon**
+**Developed with ❤️ for the AeroDesk Pro SAD Hackathon**
 
-**Aviation Stack Integration Status: ✅ FULLY FUNCTIONAL** 🛫✈️ 
+**Current Status: ✅ CORE FUNCTIONALITY COMPLETE | 🚧 FOCUSING ON FULL INTEGRATION** 🛫✈️ 
