@@ -30,7 +30,6 @@ import javax.swing.Timer;
 public class CheckInFrame extends JFrame {
     // Search and filter components
     private JTextField searchField;
-    private JComboBox<String> searchTypeComboBox;
     private JComboBox<String> statusFilterComboBox;
     private JButton searchButton;
     private JButton clearSearchButton;
@@ -78,7 +77,6 @@ public class CheckInFrame extends JFrame {
     private void initializeComponents() {
         // Search components
         searchField = new JTextField(25);
-        searchTypeComboBox = new JComboBox<>(new String[]{"Booking Reference", "Flight Number", "Passenger Name", "Passport Number"});
         statusFilterComboBox = new JComboBox<>(new String[]{"All Status", "Not Checked In", "Checked In"});
         searchButton = new JButton("Search");
         clearSearchButton = new JButton("Clear");
@@ -116,8 +114,7 @@ public class CheckInFrame extends JFrame {
         styleEnhancedButton(refreshButton, "Refresh", ThemeManager.SECONDARY_BLUE, ThemeManager.WHITE);
         
         // Enhanced field styling
-        styleEnhancedTextField(searchField, "Enter search term...");
-        styleEnhancedComboBox(searchTypeComboBox);
+        styleEnhancedTextField(searchField, "Enter passenger name or booking reference...");
         styleEnhancedComboBox(statusFilterComboBox);
         
         // Status label styling
@@ -288,13 +285,7 @@ public class CheckInFrame extends JFrame {
         searchFieldPanel.add(searchLabel, BorderLayout.NORTH);
         searchFieldPanel.add(searchField, BorderLayout.CENTER);
         
-        // Search type dropdown
-        JPanel typePanel = new JPanel(new BorderLayout(5, 0));
-        typePanel.setOpaque(false);
-        JLabel typeLabel = new JLabel("Type:");
-        typeLabel.setFont(new Font("Segoe UI", Font.BOLD, 12));
-        typePanel.add(typeLabel, BorderLayout.NORTH);
-        typePanel.add(searchTypeComboBox, BorderLayout.CENTER);
+        // Search type dropdown - removed for simplicity
         
         // Status filter dropdown
         JPanel statusPanel = new JPanel(new BorderLayout(5, 0));
@@ -312,7 +303,6 @@ public class CheckInFrame extends JFrame {
         buttonsPanel.add(refreshButton);
         
         controlsPanel.add(searchFieldPanel);
-        controlsPanel.add(typePanel);
         controlsPanel.add(statusPanel);
         controlsPanel.add(buttonsPanel);
         
@@ -326,7 +316,7 @@ public class CheckInFrame extends JFrame {
         searchPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 10));
         
         searchPanel.add(ThemeManager.createBodyLabel("Search by:"));
-        searchPanel.add(searchTypeComboBox);
+        // searchTypeComboBox removed for simplicity
         searchPanel.add(ThemeManager.createBodyLabel("Filter by Status:"));
         searchPanel.add(statusFilterComboBox);
         searchPanel.add(ThemeManager.createBodyLabel("Search term:"));
@@ -506,13 +496,7 @@ public class CheckInFrame extends JFrame {
             searchBookings();
         });
         
-        // ComboBox change listeners for immediate search
-        searchTypeComboBox.addActionListener(e -> {
-            if (!searchField.getText().trim().isEmpty()) {
-                searchTimer.restart();
-            }
-        });
-        
+        // Status filter change listener
         statusFilterComboBox.addActionListener(e -> {
             searchTimer.restart();
         });
@@ -520,47 +504,33 @@ public class CheckInFrame extends JFrame {
     
     private void searchBookings() {
         String searchTerm = searchField.getText().trim();
-        String searchType = (String) searchTypeComboBox.getSelectedItem();
         String statusFilter = (String) statusFilterComboBox.getSelectedItem();
         
-        if (searchTerm.isEmpty() && statusFilter.equals("All Status")) {
-            loadBookings();
-            return;
-        }
-        
         try {
-            List<Booking> bookings = new ArrayList<>();
+            List<Booking> bookings;
             
-            switch (searchType) {
-                case "Booking Reference":
-                    if (BOOKING_REF_PATTERN.matcher(searchTerm).matches()) {
-                        Booking booking = bookingDAO.getBookingByReference(searchTerm);
-                        if (booking != null) {
-                            bookings.add(booking);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Invalid Booking Reference format. Example: AA123456", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-                        return;
+            // Simple search - just search by passenger name or booking reference
+            if (!searchTerm.isEmpty()) {
+                bookings = bookingDAO.searchBookings(searchTerm);
+            } else {
+                bookings = bookingDAO.getAllBookings();
+            }
+            
+            // Apply status filter if needed
+            if (!statusFilter.equals("All Status")) {
+                boolean checkedIn = "Checked In".equals(statusFilter);
+                List<Booking> filteredBookings = new ArrayList<>();
+                for (Booking booking : bookings) {
+                    if (booking.isCheckedIn() == checkedIn) {
+                        filteredBookings.add(booking);
                     }
-                    break;
-                case "Flight Number":
-                    if (FLIGHT_NUMBER_PATTERN.matcher(searchTerm).matches()) {
-                        bookings = bookingDAO.getAllBookings(); // This case needs actual flight number lookup
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Invalid Flight Number format. Example: AA123 or A1234", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-                        return;
-                    }
-                    break;
-                case "Passenger Name":
-                    bookings = bookingDAO.getAllBookings(); // This case needs actual passenger name lookup
-                    break;
-                case "Passport Number":
-                    bookings = bookingDAO.getAllBookings(); // This case needs actual passport number lookup
-                    break;
+                }
+                bookings = filteredBookings;
             }
             
             updateTable(bookings);
-            FileLogger.getInstance().logInfo("Searched bookings: " + searchType + " = " + searchTerm + " (Status: " + statusFilter + ")");
+            statusLabel.setText("Found " + bookings.size() + " bookings");
+            
         } catch (DatabaseException ex) {
             FileLogger.getInstance().logError("Error searching bookings: " + ex.getMessage());
             JOptionPane.showMessageDialog(this, "Error searching bookings: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -569,7 +539,6 @@ public class CheckInFrame extends JFrame {
     
     private void clearSearch() {
         searchField.setText("");
-        searchTypeComboBox.setSelectedIndex(0);
         statusFilterComboBox.setSelectedIndex(0);
         loadBookings();
     }
@@ -596,7 +565,7 @@ public class CheckInFrame extends JFrame {
                 booking.getSeatNo(),
                 booking.isCheckedIn() ? "Checked In" : "Not Checked In",
                 booking.getCheckInTime() != null ? booking.getCheckInTime().format(dateFormatter) : "Not checked in",
-                "N/A"
+                booking.getPassportNo() != null ? booking.getPassportNo() : "N/A"
             };
             tableModel.addRow(row);
         }
@@ -713,7 +682,7 @@ public class CheckInFrame extends JFrame {
                     booking.getSeatNo(),
                     booking.isCheckedIn() ? "Checked In" : "Not Checked In",
                     booking.getCheckInTime() != null ? booking.getCheckInTime().format(dateFormatter) : "Not checked in",
-                    "N/A"
+                    booking.getPassportNo() != null ? booking.getPassportNo() : "N/A"
                 );
             }
             
