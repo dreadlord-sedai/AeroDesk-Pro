@@ -1,18 +1,33 @@
 # AeroDesk Pro - Advanced Airport Management System
 
-A comprehensive Java SE application for managing airport operations including flight scheduling, passenger check-in, baggage handling, gate management, and real-time flight status monitoring.
+A comprehensive Java SE application for managing airport operations including flight scheduling, passenger check-in, baggage handling, gate management, real-time flight status monitoring, and **Aviation Stack API integration** for live flight data.
 
 ## 🚀 Features
 
+### ✅ Core Airport Management
 - **Flight Scheduling**: Create, edit, and manage flight schedules
 - **Passenger Check-In**: Streamlined passenger check-in process with boarding pass generation
 - **Baggage Handling**: Track baggage from check-in to delivery with real-time simulation
 - **Gate Management**: Assign and monitor gate availability with conflict detection
 - **Real-Time Flight Status**: Live flight status updates with weather integration
 - **Reporting & Logging**: Comprehensive reporting and system logging
+
+### ✅ **NEW: Aviation Stack API Integration** 🛫
+- **Real-time Flight Tracking**: Live position, altitude, speed, and direction data
+- **Airport Information**: Complete airport details, statistics, and contact information
+- **Airline Information**: Airline profiles, fleet data, and company details
+- **Route Search**: Find flights between airports with comprehensive results
+- **Live Flight Monitoring**: Real-time flight status with live tracking capabilities
+- **Enhanced Flight Data**: Aircraft information, gate details, and weather data
+- **API Data Synchronization**: Automatic sync between Aviation Stack and local database
+
+### ✅ Technical Features
 - **Multi-threaded Operations**: Background processing for real-time updates
 - **Database Integration**: MySQL database with JDBC connectivity
 - **Modern UI**: FlatLaf themed Swing interface
+- **API Integration**: HTTP client for external data with error handling
+- **Comprehensive Logging**: Detailed system logging with multiple levels
+- **Configuration Management**: Flexible configuration system
 
 ## 🛠 Technology Stack
 
@@ -23,14 +38,16 @@ A comprehensive Java SE application for managing airport operations including fl
 - **Build System**: NetBeans Ant-based build
 - **Multithreading**: Java Concurrency Framework
 - **File I/O**: Java NIO for logging and reports
-- **API Integration**: HTTP client for external data
+- **API Integration**: HTTP client for Aviation Stack API
+- **External APIs**: Aviation Stack API for real-time flight data
 
 ## 📋 Prerequisites
 
 - Java Development Kit (JDK) 21 or higher
 - MySQL Server 8.0 or higher
 - NetBeans IDE (recommended) or any Java IDE
-- Internet connection for API features
+- Internet connection for Aviation Stack API features
+- Aviation Stack API key (included in config)
 
 ## 🚀 Quick Start
 
@@ -61,9 +78,14 @@ lib/
 
 Edit `config.properties` with your database settings:
 ```properties
+# Database Configuration
 db.url=jdbc:mysql://localhost:3306/aerodesk_pro
 db.username=your_username
 db.password=your_password
+
+# Aviation Stack API Configuration
+aviationstack.api.key=26ca9c80a5bfd430f608d77897c3c845
+aviationstack.api.url=https://api.aviationstack.com/v1
 ```
 
 ### 4. Build and Run
@@ -104,6 +126,7 @@ AeroDesk-Pro/
 │       ├── ui/                       # User interface components
 │       │   ├── LoginFrame.java
 │       │   ├── MainMenuFrame.java
+│       │   ├── AviationStackFrame.java  # NEW: Aviation Stack UI
 │       │   └── ... (other UI frames)
 │       ├── model/                    # Data models
 │       │   ├── Flight.java
@@ -116,11 +139,13 @@ AeroDesk-Pro/
 │       ├── service/                  # Business logic services
 │       │   ├── FlightService.java
 │       │   ├── BaggageService.java
-│       │   └── ... (other services)
+│       │   ├── AviationStackService.java      # NEW: Aviation Stack service
+│       │   └── FlightDataIntegrationService.java  # NEW: Data sync service
 │       ├── util/                     # Utility classes
 │       │   ├── ConfigManager.java
 │       │   ├── FileLogger.java
-│       │   └── DatabaseConnection.java
+│       │   ├── DatabaseConnection.java
+│       │   └── ApiIntegrator.java    # NEW: API integration
 │       └── exception/                # Custom exceptions
 │           ├── DatabaseException.java
 │           └── GateConflictException.java
@@ -129,8 +154,36 @@ AeroDesk-Pro/
 ├── lib/                              # External dependencies
 ├── config.properties                 # Application configuration
 ├── build.xml                         # Ant build script
+├── AVIATION_STACK_INTEGRATION_GUIDE.md  # NEW: Integration guide
 └── README.md                         # This file
 ```
+
+## 🛫 Aviation Stack Integration
+
+### Features Available
+- **Flight Tracking**: Enter any flight number to get real-time information
+- **Airport Information**: Get detailed airport data including contact info and statistics
+- **Airline Information**: Look up airline details and fleet information
+- **Route Search**: Find flights between any two airports
+- **Live Tracking**: Monitor flights with live position data
+- **Airport Statistics**: View comprehensive airport statistics and flight counts
+
+### How to Use
+1. Login to the application
+2. Click "Aviation Stack API" button in the main menu
+3. Use any of the 6 available features:
+   - **Track Flight**: Enter flight number (e.g., AA101)
+   - **Get Airport Info**: Enter airport code (e.g., JFK)
+   - **Airport Stats**: View comprehensive airport statistics
+   - **Airline Info**: Look up airline information
+   - **Search Route**: Find flights between airports
+   - **Live Tracking**: Monitor live flight positions
+
+### API Integration Details
+- **Real-time Data**: Live flight tracking with position, altitude, speed
+- **Error Handling**: Graceful fallback to mock data when API is unavailable
+- **Background Sync**: Automatic data synchronization with local database
+- **Comprehensive Logging**: All API interactions are logged for monitoring
 
 ## 🔧 Development Guidelines
 
@@ -158,6 +211,12 @@ AeroDesk-Pro/
 - Handle thread interruption gracefully
 - Avoid blocking the EDT (Event Dispatch Thread)
 
+### API Integration
+- Implement proper error handling with fallbacks
+- Use background threads for API calls
+- Cache responses when appropriate
+- Log all API interactions for monitoring
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
@@ -180,6 +239,12 @@ AeroDesk-Pro/
    - Verify Java version compatibility
    - Check for missing import statements
 
+5. **Aviation Stack API Issues**
+   - Check internet connection
+   - Verify API key in `config.properties`
+   - Check application logs for API errors
+   - System will fallback to mock data if API is unavailable
+
 ## 📝 Logging
 
 The application logs all activities to `aerodesk.log` in the project root directory. Log levels include:
@@ -187,6 +252,11 @@ The application logs all activities to `aerodesk.log` in the project root direct
 - **WARNING**: Potential issues
 - **ERROR**: Error conditions
 - **DEBUG**: Detailed debugging information
+
+### API Logging
+- All Aviation Stack API calls are logged
+- Response times and success/failure rates are tracked
+- Error details are logged for troubleshooting
 
 ## 🤝 Contributing
 
@@ -200,18 +270,33 @@ The application logs all activities to `aerodesk.log` in the project root direct
 
 This project is developed for educational purposes as part of a hackathon project.
 
-## 🎯 Roadmap
+## 🎯 Project Status
 
-- [ ] Flight Scheduling Module
-- [ ] Passenger Check-In Module
-- [ ] Baggage Handling Module
-- [ ] Gate Management Module
-- [ ] Flight Status Dashboard
-- [ ] Reporting System
-- [ ] API Integration
-- [ ] Advanced Analytics
-- [ ] Mobile Companion App
+### ✅ Completed Features
+- [x] **Authentication System** - Login with role-based access
+- [x] **Database Integration** - MySQL with JDBC connectivity
+- [x] **Flight Scheduling Module** - Complete CRUD operations
+- [x] **Passenger Check-In Module** - Booking management and check-in
+- [x] **Baggage Handling Module** - Real-time baggage tracking
+- [x] **Gate Management Module** - Gate assignment and conflict detection
+- [x] **Flight Status Dashboard** - Real-time status with weather
+- [x] **Reporting System** - Comprehensive reports and analytics
+- [x] **Aviation Stack API Integration** - Real-time flight data and tracking
+- [x] **System Logging** - Comprehensive logging and monitoring
+
+### 🚧 In Progress
+- [ ] **Advanced Analytics** - Machine learning integration
+- [ ] **Mobile Companion App** - Cross-platform mobile application
+- [ ] **Performance Optimizations** - Caching and connection pooling
+
+### 🔮 Future Enhancements
+- [ ] **Real-time Map Integration** - Visual flight tracking
+- [ ] **Flight Alert System** - Automated notifications
+- [ ] **Advanced Weather Integration** - Detailed weather impact analysis
+- [ ] **Third-party Integrations** - Additional aviation APIs
 
 ---
 
-**Developed with ❤️ for the AeroDesk Pro Hackathon** 
+**Developed with ❤️ for the AeroDesk Pro Hackathon**
+
+**Aviation Stack Integration Status: ✅ FULLY FUNCTIONAL** 🛫✈️ 
