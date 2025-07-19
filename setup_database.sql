@@ -65,6 +65,17 @@ CREATE TABLE IF NOT EXISTS gate_assignments (
     FOREIGN KEY (flight_id) REFERENCES flights(id)
 );
 
+-- Users table for authentication
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('ADMIN', 'STAFF') NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Insert sample data
 INSERT IGNORE INTO flights (flight_number, origin, destination, departure_time, arrival_time, aircraft_type) VALUES
 ('AA101', 'JFK', 'LAX', '2024-01-15 10:00:00', '2024-01-15 13:30:00', 'Boeing 737'),
@@ -77,6 +88,12 @@ INSERT IGNORE INTO gates (gate_number, terminal, status) VALUES
 ('A2', 'A', 'AVAILABLE'),
 ('B1', 'B', 'AVAILABLE'),
 ('B2', 'B', 'AVAILABLE');
+
+-- Insert sample users for authentication
+INSERT IGNORE INTO users (username, password_hash, role, full_name) VALUES
+('admin', 'admin123', 'ADMIN', 'System Administrator'),
+('staff1', 'staff123', 'STAFF', 'John Smith'),
+('staff2', 'staff123', 'STAFF', 'Jane Doe');
 
 -- Show setup completion message
 SELECT 'AeroDesk Pro database setup completed successfully!' AS status; 

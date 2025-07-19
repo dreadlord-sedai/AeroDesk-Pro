@@ -3,6 +3,9 @@ package aerodesk.ui;
 import aerodesk.util.ConfigManager;
 import aerodesk.util.FileLogger;
 import aerodesk.util.ThemeManager;
+import aerodesk.dao.UserDAO;
+import aerodesk.model.User;
+import aerodesk.exception.DatabaseException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,8 +20,10 @@ public class LoginFrame extends JFrame {
     private JComboBox<String> roleComboBox;
     private JButton loginButton;
     private JButton exitButton;
+    private UserDAO userDAO;
     
     public LoginFrame() {
+        this.userDAO = new UserDAO();
         initializeComponents();
         setupLayout();
         setupEventHandlers();
@@ -158,15 +163,17 @@ public class LoginFrame extends JFrame {
     }
     
     private boolean authenticateUser(String username, String password, String role) {
-        // Simple hardcoded authentication for demo
-        if ("admin".equals(username) && "admin123".equals(password) && "ADMIN".equals(role)) {
-            return true;
+        try {
+            User user = userDAO.authenticateUser(username, password, role);
+            return user != null;
+        } catch (DatabaseException e) {
+            FileLogger.getInstance().logError("Database authentication error: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, 
+                "Database connection error. Please check your configuration.", 
+                "Authentication Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        if (("staff1".equals(username) || "staff2".equals(username)) && 
-            "staff123".equals(password) && "STAFF".equals(role)) {
-            return true;
-        }
-        return false;
     }
     
     private void openMainMenu(String username, String role) {

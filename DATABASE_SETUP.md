@@ -181,6 +181,7 @@ SHOW TABLES;
 ```sql
 SELECT * FROM flights LIMIT 5;
 SELECT * FROM gates LIMIT 5;
+SELECT * FROM users LIMIT 5;
 ```
 
 **Test application user permissions:**
@@ -189,6 +190,9 @@ SELECT * FROM gates LIMIT 5;
 SELECT * FROM flights;
 INSERT INTO flights (flight_number, origin, destination, departure_time, arrival_time) 
 VALUES ('TEST001', 'JFK', 'LAX', '2024-01-16 10:00:00', '2024-01-16 13:30:00');
+
+-- Test user authentication:
+SELECT * FROM users WHERE username = 'admin' AND role = 'ADMIN';
 ```
 
 ---
