@@ -50,3 +50,6 @@
 [2025-07-19 11:53:46] INFO: Retrieved 4 baggage items from database
 [2025-07-19 11:53:46] DEBUG: Database connection established successfully
 [2025-07-19 11:53:46] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 11:54:57] INFO: AeroDesk Pro starting up...
+[2025-07-19 11:54:57] INFO: Login screen displayed successfully
+[2025-07-19 11:55:06] INFO: User staff1 logged in successfully as STAFF
