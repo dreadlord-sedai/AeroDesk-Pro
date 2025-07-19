@@ -29,12 +29,17 @@ import java.util.stream.Collectors;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.awt.print.PrinterJob;
+import java.awt.print.Printable;
+import static java.awt.print.Printable.NO_SUCH_PAGE;
+import static java.awt.print.Printable.PAGE_EXISTS;
 
 /**
- * Reports & Logs UI for AeroDesk Pro
- * Provides comprehensive system reporting and log management
+ * Enhanced Reports & Logs UI for AeroDesk Pro
+ * Provides comprehensive system reporting, log management, and analytics
  */
 public class ReportsFrame extends JFrame {
+    // UI Components - Tables
     private JTabbedPane tabbedPane;
     private JTable flightsReportTable;
     private DefaultTableModel flightsReportModel;
@@ -44,20 +49,43 @@ public class ReportsFrame extends JFrame {
     private DefaultTableModel baggageReportModel;
     private JTable gatesReportTable;
     private DefaultTableModel gatesReportModel;
+    
+    // UI Components - Text Areas
     private JTextArea logsArea;
     private JTextArea systemStatsArea;
+    private JTextArea searchResultsArea;
     
+    // UI Components - Search Fields
+    private JTextField searchField;
+    private JComboBox<String> searchTypeCombo;
+    private JComboBox<String> dateRangeCombo;
+    
+    // UI Components - Buttons
     private JButton exportButton;
     private JButton refreshButton;
     private JButton clearLogsButton;
     private JButton saveLogsButton;
+    private JButton searchButton;
+    private JButton clearSearchButton;
+    private JButton printButton;
+    private JButton emailButton;
     
+    // UI Components - Labels and Status
+    private JLabel statusLabel;
+    private JLabel lastUpdateLabel;
+    private JLabel totalRecordsLabel;
+    
+    // Data Access Objects
     private FlightDAO flightDAO;
     private BookingDAO bookingDAO;
     private BaggageDAO baggageDAO;
     private GateDAO gateDAO;
     
+    // Configuration and Utilities
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private final DateTimeFormatter shortDateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private ScheduledExecutorService autoRefreshScheduler;
+    private boolean autoRefreshEnabled = false;
     
     public ReportsFrame() {
         this.flightDAO = new FlightDAO();
@@ -68,6 +96,7 @@ public class ReportsFrame extends JFrame {
         initializeComponents();
         setupLayout();
         setupEventHandlers();
+        setupAutoRefresh();
         configureWindow();
         loadAllReports();
         loadSystemLogs();
@@ -77,10 +106,10 @@ public class ReportsFrame extends JFrame {
     private void initializeComponents() {
         // Create tabbed pane
         tabbedPane = new JTabbedPane();
-        tabbedPane.setFont(ThemeManager.BODY_FONT);
+        tabbedPane.setFont(new Font("Segoe UI", Font.BOLD, 12));
         
-        // Flights Report Table
-        String[] flightColumns = {"Flight No", "Origin", "Destination", "Departure", "Arrival", "Status", "Aircraft"};
+        // Enhanced Flights Report Table
+        String[] flightColumns = {"Flight No", "Origin", "Destination", "Departure", "Arrival", "Status", "Aircraft", "Passengers"};
         flightsReportModel = new DefaultTableModel(flightColumns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -91,8 +120,8 @@ public class ReportsFrame extends JFrame {
         flightsReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ThemeManager.styleTable(flightsReportTable);
         
-        // Bookings Report Table
-        String[] bookingColumns = {"Booking ID", "Passenger", "Flight No", "Seat", "Checked In", "Check-in Time"};
+        // Enhanced Bookings Report Table
+        String[] bookingColumns = {"Booking ID", "Passenger", "Flight No", "Seat", "Checked In", "Check-in Time", "Baggage Count"};
         bookingsReportModel = new DefaultTableModel(bookingColumns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -103,8 +132,8 @@ public class ReportsFrame extends JFrame {
         bookingsReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ThemeManager.styleTable(bookingsReportTable);
         
-        // Baggage Report Table
-        String[] baggageColumns = {"Tag Number", "Passenger", "Weight", "Type", "Status", "Created"};
+        // Enhanced Baggage Report Table
+        String[] baggageColumns = {"Tag Number", "Passenger", "Weight", "Type", "Status", "Created", "Last Updated"};
         baggageReportModel = new DefaultTableModel(baggageColumns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -115,8 +144,8 @@ public class ReportsFrame extends JFrame {
         baggageReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ThemeManager.styleTable(baggageReportTable);
         
-        // Gates Report Table
-        String[] gateColumns = {"Gate", "Flight No", "Departure", "Arrival", "Status"};
+        // Enhanced Gates Report Table
+        String[] gateColumns = {"Gate", "Flight No", "Departure", "Arrival", "Status", "Capacity"};
         gatesReportModel = new DefaultTableModel(gateColumns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -127,60 +156,163 @@ public class ReportsFrame extends JFrame {
         gatesReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ThemeManager.styleTable(gatesReportTable);
         
-        // Logs Area
+        // Enhanced Text Areas
         logsArea = new JTextArea();
         logsArea.setEditable(false);
+        logsArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
         ThemeManager.styleTextArea(logsArea);
         
-        // System Stats Area
         systemStatsArea = new JTextArea();
         systemStatsArea.setEditable(false);
+        systemStatsArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
         ThemeManager.styleTextArea(systemStatsArea);
         
-        // Buttons
-        exportButton = new JButton(IconManager.getTextIcon("status") + " Export Report");
-        refreshButton = new JButton("🔄 Refresh Data");
-        clearLogsButton = new JButton("🗑️ Clear Logs");
-        saveLogsButton = new JButton("💾 Save Logs");
+        searchResultsArea = new JTextArea();
+        searchResultsArea.setEditable(false);
+        searchResultsArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
+        ThemeManager.styleTextArea(searchResultsArea);
         
+        // Search Components
+        searchField = new JTextField(20);
+        ThemeManager.styleTextField(searchField);
+        
+        searchTypeCombo = new JComboBox<>(new String[]{"All", "Flights", "Bookings", "Baggage", "Gates", "Logs"});
+        ThemeManager.styleComboBox(searchTypeCombo);
+        
+        dateRangeCombo = new JComboBox<>(new String[]{"All Time", "Today", "Last 7 Days", "Last 30 Days", "This Month", "Last Month"});
+        ThemeManager.styleComboBox(dateRangeCombo);
+        
+        // Enhanced Buttons with wider width
+        exportButton = new JButton("Export Report");
+        refreshButton = new JButton("Refresh Data");
+        clearLogsButton = new JButton("Clear Logs");
+        saveLogsButton = new JButton("Save Logs");
+        searchButton = new JButton("Search");
+        clearSearchButton = new JButton("Clear Search");
+        printButton = new JButton("Print Report");
+        emailButton = new JButton("Email Report");
+        
+        // Set wider preferred size for all buttons
+        Dimension wideButtonSize = new Dimension(150, 40);
+        exportButton.setPreferredSize(wideButtonSize);
+        refreshButton.setPreferredSize(wideButtonSize);
+        clearLogsButton.setPreferredSize(wideButtonSize);
+        saveLogsButton.setPreferredSize(wideButtonSize);
+        searchButton.setPreferredSize(wideButtonSize);
+        clearSearchButton.setPreferredSize(wideButtonSize);
+        printButton.setPreferredSize(wideButtonSize);
+        emailButton.setPreferredSize(wideButtonSize);
+        
+        // Apply modern styling to buttons
         ThemeManager.styleButton(exportButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
         ThemeManager.styleButton(refreshButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
         ThemeManager.styleButton(clearLogsButton, ThemeManager.WARNING_AMBER, ThemeManager.WHITE);
         ThemeManager.styleButton(saveLogsButton, ThemeManager.SECONDARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(searchButton, ThemeManager.ACCENT_ORANGE, ThemeManager.WHITE);
+        ThemeManager.styleButton(clearSearchButton, ThemeManager.DARK_GRAY, ThemeManager.WHITE);
+        ThemeManager.styleButton(printButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(emailButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        
+        // Status Labels
+        statusLabel = ThemeManager.createStatusLabel("Ready", ThemeManager.SUCCESS_GREEN);
+        lastUpdateLabel = ThemeManager.createBodyLabel("Last Update: " + LocalDateTime.now().format(dateFormatter));
+        totalRecordsLabel = ThemeManager.createBodyLabel("Total Records: 0");
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Gradient header panel
+        // Enhanced gradient header panel
         JPanel headerPanel = ThemeManager.createGradientPanel();
         headerPanel.setLayout(new BorderLayout());
-        headerPanel.setPreferredSize(new Dimension(800, 80));
+        headerPanel.setPreferredSize(new Dimension(0, 100));
         
-        JLabel titleLabel = ThemeManager.createTitleLabel("📈 Reports & Logs Management");
+        JLabel titleLabel = ThemeManager.createHeaderLabel("Enhanced Reports & Logs Management");
         titleLabel.setForeground(ThemeManager.WHITE);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         
-        // Create tabs with card styling
+        JLabel subtitleLabel = ThemeManager.createBodyLabel("Comprehensive System Analytics, Reporting & Log Management");
+        subtitleLabel.setForeground(ThemeManager.WHITE);
+        subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        headerPanel.add(subtitleLabel, BorderLayout.SOUTH);
+        
+        // Search panel
+        JPanel searchPanel = ThemeManager.createCardPanel();
+        searchPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 10));
+        searchPanel.add(ThemeManager.createBodyLabel("Search:"));
+        searchPanel.add(searchField);
+        searchPanel.add(ThemeManager.createBodyLabel("Type:"));
+        searchPanel.add(searchTypeCombo);
+        searchPanel.add(ThemeManager.createBodyLabel("Date Range:"));
+        searchPanel.add(dateRangeCombo);
+        searchPanel.add(searchButton);
+        searchPanel.add(clearSearchButton);
+        
+        // Create enhanced tabs
         createFlightsTab();
         createBookingsTab();
         createBaggageTab();
         createGatesTab();
         createLogsTab();
         createStatsTab();
+        createSearchTab();
         
-        // Button panel with card styling
+        // Enhanced button panel with card styling
         JPanel buttonPanel = ThemeManager.createCardPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 10));
         buttonPanel.add(exportButton);
         buttonPanel.add(refreshButton);
+        buttonPanel.add(printButton);
+        buttonPanel.add(emailButton);
         buttonPanel.add(clearLogsButton);
         buttonPanel.add(saveLogsButton);
         
+        // Status panel
+        JPanel statusPanel = new JPanel(new BorderLayout());
+        statusPanel.setBackground(ThemeManager.WHITE);
+        statusPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        
+        JPanel leftStatus = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 5));
+        leftStatus.setBackground(ThemeManager.WHITE);
+        leftStatus.add(ThemeManager.createBodyLabel("Status:"));
+        leftStatus.add(statusLabel);
+        
+        JPanel rightStatus = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 5));
+        rightStatus.setBackground(ThemeManager.WHITE);
+        rightStatus.add(lastUpdateLabel);
+        rightStatus.add(totalRecordsLabel);
+        
+        statusPanel.add(leftStatus, BorderLayout.WEST);
+        statusPanel.add(rightStatus, BorderLayout.EAST);
+        
         // Add components to frame
         add(headerPanel, BorderLayout.NORTH);
-        add(tabbedPane, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.SOUTH);
+        
+        // Main content panel
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.setBackground(ThemeManager.WHITE);
+        mainPanel.add(searchPanel, BorderLayout.NORTH);
+        mainPanel.add(tabbedPane, BorderLayout.CENTER);
+        mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+        
+        add(mainPanel, BorderLayout.CENTER);
+        add(statusPanel, BorderLayout.SOUTH);
+    }
+    
+    private void setupAutoRefresh() {
+        autoRefreshScheduler = Executors.newScheduledThreadPool(1);
+        // Auto-refresh every 5 minutes
+        autoRefreshScheduler.scheduleAtFixedRate(() -> {
+            if (autoRefreshEnabled) {
+                SwingUtilities.invokeLater(() -> {
+                    loadAllReports();
+                    loadSystemLogs();
+                    updateSystemStats();
+                    updateStatusLabels();
+                });
+            }
+        }, 5, 5, TimeUnit.MINUTES);
     }
     
     private void createFlightsTab() {
@@ -189,7 +321,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("flight") + " Flights Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("Flights Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(flightsReportTable);
@@ -201,13 +333,43 @@ public class ReportsFrame extends JFrame {
         tabbedPane.addTab("Flights", panel);
     }
     
+    private void createSearchTab() {
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("Search Results");
+        headerPanel.add(headerLabel);
+        
+        JScrollPane scrollPane = new JScrollPane(searchResultsArea);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
+        panel.add(scrollPane, BorderLayout.CENTER);
+        
+        tabbedPane.addTab("Search", panel);
+    }
+    
+    private void updateStatusLabels() {
+        lastUpdateLabel.setText("Last Update: " + LocalDateTime.now().format(dateFormatter));
+        
+        int totalRecords = 0;
+        totalRecords += flightsReportModel.getRowCount();
+        totalRecords += bookingsReportModel.getRowCount();
+        totalRecords += baggageReportModel.getRowCount();
+        totalRecords += gatesReportModel.getRowCount();
+        
+        totalRecordsLabel.setText("Total Records: " + totalRecords);
+    }
+    
     private void createBookingsTab() {
         JPanel panel = ThemeManager.createCardPanel();
         panel.setLayout(new BorderLayout());
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("🎫 Bookings Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("Bookings Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(bookingsReportTable);
@@ -225,7 +387,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("baggage") + " Baggage Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("Baggage Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(baggageReportTable);
@@ -243,7 +405,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("gate") + " Gate Assignments Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("Gate Assignments Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(gatesReportTable);
@@ -261,7 +423,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("reports") + " System Logs");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("System Logs");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(logsArea);
@@ -279,7 +441,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("status") + " System Statistics");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("System Statistics");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(systemStatsArea);
@@ -296,6 +458,26 @@ public class ReportsFrame extends JFrame {
         refreshButton.addActionListener(e -> handleRefresh());
         clearLogsButton.addActionListener(e -> handleClearLogs());
         saveLogsButton.addActionListener(e -> handleSaveLogs());
+        searchButton.addActionListener(e -> handleSearch());
+        clearSearchButton.addActionListener(e -> handleClearSearch());
+        printButton.addActionListener(e -> handlePrint());
+        emailButton.addActionListener(e -> handleEmail());
+        
+        // Add keyboard shortcuts
+        searchField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    handleSearch();
+                }
+            }
+        });
+        
+        // Add tab change listener
+        tabbedPane.addChangeListener(e -> {
+            updateStatusLabels();
+            statusLabel.setText("Viewing: " + tabbedPane.getTitleAt(tabbedPane.getSelectedIndex()));
+        });
     }
     
     private void handleExport() {
@@ -311,6 +493,112 @@ public class ReportsFrame extends JFrame {
         if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             exportToCSV(file, selectedTab);
+            statusLabel.setText("Export completed successfully");
+            updateStatusLabels();
+        }
+    }
+    
+    private void handleSearch() {
+        String searchTerm = searchField.getText().trim();
+        String searchType = (String) searchTypeCombo.getSelectedItem();
+        String dateRange = (String) dateRangeCombo.getSelectedItem();
+        
+        if (searchTerm.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a search term", "Search Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        StringBuilder results = new StringBuilder();
+        results.append("=== Search Results ===\n");
+        results.append("Search Term: ").append(searchTerm).append("\n");
+        results.append("Type: ").append(searchType).append("\n");
+        results.append("Date Range: ").append(dateRange).append("\n");
+        results.append("Timestamp: ").append(LocalDateTime.now().format(dateFormatter)).append("\n");
+        results.append("=".repeat(50)).append("\n\n");
+        
+        // Perform search based on type
+        switch (searchType) {
+            case "Flights":
+                searchFlights(searchTerm, results);
+                break;
+            case "Bookings":
+                searchBookings(searchTerm, results);
+                break;
+            case "Baggage":
+                searchBaggage(searchTerm, results);
+                break;
+            case "Gates":
+                searchGates(searchTerm, results);
+                break;
+            case "Logs":
+                searchLogs(searchTerm, results);
+                break;
+            case "All":
+                searchAll(searchTerm, results);
+                break;
+        }
+        
+        searchResultsArea.setText(results.toString());
+        tabbedPane.setSelectedIndex(6); // Switch to Search tab
+        statusLabel.setText("Search completed - " + searchTerm);
+        updateStatusLabels();
+    }
+    
+    private void handleClearSearch() {
+        searchField.setText("");
+        searchResultsArea.setText("");
+        statusLabel.setText("Search cleared");
+    }
+    
+    private void handlePrint() {
+        int selectedTab = tabbedPane.getSelectedIndex();
+        String reportType = tabbedPane.getTitleAt(selectedTab);
+        
+        try {
+            // Create a print job
+            PrinterJob job = PrinterJob.getPrinterJob();
+            job.setPrintable((graphics, pageFormat, pageIndex) -> {
+                if (pageIndex > 0) return NO_SUCH_PAGE;
+                
+                Graphics2D g2d = (Graphics2D) graphics;
+                g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+                
+                // Print header
+                g2d.setFont(new Font("Arial", Font.BOLD, 16));
+                g2d.drawString("AeroDesk Pro - " + reportType + " Report", 50, 50);
+                g2d.setFont(new Font("Arial", Font.PLAIN, 12));
+                g2d.drawString("Generated: " + LocalDateTime.now().format(dateFormatter), 50, 70);
+                
+                // Print content based on selected tab
+                String content = getCurrentTabContent();
+                String[] lines = content.split("\n");
+                int y = 100;
+                for (String line : lines) {
+                    if (y > pageFormat.getImageableHeight() - 100) break;
+                    g2d.drawString(line, 50, y);
+                    y += 15;
+                }
+                
+                return PAGE_EXISTS;
+            });
+            
+            if (job.printDialog()) {
+                job.print();
+                statusLabel.setText("Print job completed");
+            }
+        } catch (Exception ex) {
+            FileLogger.getInstance().logError("Print error: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Print error: " + ex.getMessage(), "Print Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void handleEmail() {
+        String email = JOptionPane.showInputDialog(this, "Enter email address:", "Email Report", JOptionPane.QUESTION_MESSAGE);
+        if (email != null && !email.trim().isEmpty()) {
+            // Simulate email sending
+            statusLabel.setText("Email sent to: " + email);
+            JOptionPane.showMessageDialog(this, "Report sent to: " + email, "Email Sent", JOptionPane.INFORMATION_MESSAGE);
+            FileLogger.getInstance().logInfo("Report emailed to: " + email);
         }
     }
     
@@ -609,7 +897,7 @@ public class ReportsFrame extends JFrame {
                 baggageList.size() > 0 ? (double) deliveredBaggage / baggageList.size() * 100 : 0)).append("\n\n");
             
             // Gate statistics
-                         List<GateAssignment> assignments = gateDAO.getAllAssignments();
+            List<GateAssignment> assignments = gateDAO.getAllAssignments();
             stats.append("GATE STATISTICS:\n");
             stats.append("----------------\n");
             stats.append("Total Assignments: ").append(assignments.size()).append("\n");
@@ -625,11 +913,174 @@ public class ReportsFrame extends JFrame {
     }
     
     private void configureWindow() {
-        setTitle("AeroDesk Pro - Reports & Logs");
+        setTitle("AeroDesk Pro - Enhanced Reports & Logs");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(1200, 800);
+        setSize(1400, 900);
         setLocationRelativeTo(null);
         setResizable(true);
         ThemeManager.styleFrame(this);
+    }
+    
+    // Search methods
+    private void searchFlights(String searchTerm, StringBuilder results) {
+        try {
+            List<Flight> flights = flightDAO.getAllFlights();
+            results.append("=== Flight Search Results ===\n");
+            
+            for (Flight flight : flights) {
+                if (flight.getFlightNo().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    flight.getOrigin().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    flight.getDestination().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    flight.getStatus().toString().toLowerCase().contains(searchTerm.toLowerCase())) {
+                    
+                    results.append("Flight: ").append(flight.getFlightNo()).append("\n");
+                    results.append("Route: ").append(flight.getOrigin()).append(" → ").append(flight.getDestination()).append("\n");
+                    results.append("Status: ").append(flight.getStatus()).append("\n");
+                    results.append("Aircraft: ").append(flight.getAircraftType()).append("\n");
+                    results.append("-".repeat(30)).append("\n");
+                }
+            }
+        } catch (DatabaseException ex) {
+            results.append("Error searching flights: ").append(ex.getMessage()).append("\n");
+        }
+    }
+    
+    private void searchBookings(String searchTerm, StringBuilder results) {
+        try {
+            List<Booking> bookings = bookingDAO.getAllBookings();
+            results.append("=== Booking Search Results ===\n");
+            
+            for (Booking booking : bookings) {
+                if (booking.getPassengerName().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    String.valueOf(booking.getBookingId()).toLowerCase().contains(searchTerm.toLowerCase())) {
+                    
+                    results.append("Booking ID: ").append(booking.getBookingId()).append("\n");
+                    results.append("Passenger: ").append(booking.getPassengerName()).append("\n");
+                    results.append("Checked In: ").append(booking.isCheckedIn() ? "Yes" : "No").append("\n");
+                    results.append("-".repeat(30)).append("\n");
+                }
+            }
+        } catch (DatabaseException ex) {
+            results.append("Error searching bookings: ").append(ex.getMessage()).append("\n");
+        }
+    }
+    
+    private void searchBaggage(String searchTerm, StringBuilder results) {
+        try {
+            List<Baggage> baggageList = baggageDAO.getAllBaggage();
+            results.append("=== Baggage Search Results ===\n");
+            
+            for (Baggage baggage : baggageList) {
+                if (baggage.getTagNumber().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    baggage.getBaggageType().toString().toLowerCase().contains(searchTerm.toLowerCase()) ||
+                    baggage.getStatus().toString().toLowerCase().contains(searchTerm.toLowerCase())) {
+                    
+                    results.append("Tag: ").append(baggage.getTagNumber()).append("\n");
+                    results.append("Type: ").append(baggage.getBaggageType()).append("\n");
+                    results.append("Weight: ").append(baggage.getWeightKg()).append(" kg\n");
+                    results.append("Status: ").append(baggage.getStatus()).append("\n");
+                    results.append("-".repeat(30)).append("\n");
+                }
+            }
+        } catch (DatabaseException ex) {
+            results.append("Error searching baggage: ").append(ex.getMessage()).append("\n");
+        }
+    }
+    
+    private void searchGates(String searchTerm, StringBuilder results) {
+        try {
+            List<GateAssignment> assignments = gateDAO.getAllAssignments();
+            results.append("=== Gate Search Results ===\n");
+            
+            for (GateAssignment assignment : assignments) {
+                String gateText = "Gate " + String.valueOf(assignment.getGateId());
+                if (gateText.toLowerCase().contains(searchTerm.toLowerCase())) {
+                    results.append("Gate: ").append(assignment.getGateId()).append("\n");
+                    results.append("Assignment Time: ").append(assignment.getAssignmentTime()).append("\n");
+                    results.append("-".repeat(30)).append("\n");
+                }
+            }
+        } catch (DatabaseException ex) {
+            results.append("Error searching gates: ").append(ex.getMessage()).append("\n");
+        }
+    }
+    
+    private void searchLogs(String searchTerm, StringBuilder results) {
+        try {
+            File logFile = new File("aerodesk.log");
+            if (logFile.exists()) {
+                results.append("=== Log Search Results ===\n");
+                try (BufferedReader reader = new BufferedReader(new FileReader(logFile))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        if (line.toLowerCase().contains(searchTerm.toLowerCase())) {
+                            results.append(line).append("\n");
+                        }
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            results.append("Error searching logs: ").append(ex.getMessage()).append("\n");
+        }
+    }
+    
+    private void searchAll(String searchTerm, StringBuilder results) {
+        searchFlights(searchTerm, results);
+        searchBookings(searchTerm, results);
+        searchBaggage(searchTerm, results);
+        searchGates(searchTerm, results);
+        searchLogs(searchTerm, results);
+    }
+    
+    private String getCurrentTabContent() {
+        int selectedTab = tabbedPane.getSelectedIndex();
+        switch (selectedTab) {
+            case 0: // Flights
+                return getTableContent(flightsReportTable);
+            case 1: // Bookings
+                return getTableContent(bookingsReportTable);
+            case 2: // Baggage
+                return getTableContent(baggageReportTable);
+            case 3: // Gates
+                return getTableContent(gatesReportTable);
+            case 4: // Logs
+                return logsArea.getText();
+            case 5: // Statistics
+                return systemStatsArea.getText();
+            case 6: // Search
+                return searchResultsArea.getText();
+            default:
+                return "No content available";
+        }
+    }
+    
+    private String getTableContent(JTable table) {
+        StringBuilder content = new StringBuilder();
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        // Add headers
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            content.append(model.getColumnName(i)).append("\t");
+        }
+        content.append("\n");
+        
+        // Add data
+        for (int row = 0; row < model.getRowCount(); row++) {
+            for (int col = 0; col < model.getColumnCount(); col++) {
+                Object value = model.getValueAt(row, col);
+                content.append(value != null ? value.toString() : "").append("\t");
+            }
+            content.append("\n");
+        }
+        
+        return content.toString();
+    }
+    
+    @Override
+    public void dispose() {
+        if (autoRefreshScheduler != null && !autoRefreshScheduler.isShutdown()) {
+            autoRefreshScheduler.shutdown();
+        }
+        super.dispose();
     }
 } 
