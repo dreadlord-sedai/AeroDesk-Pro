@@ -5248,3 +5248,323 @@
 [2025-07-19 16:32:05] INFO: Flight Scheduling: Search cleared
 [2025-07-19 16:32:06] INFO: Flight Scheduling: Search cleared
 [2025-07-19 16:32:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 17:00:52] INFO: AeroDesk Pro starting up...
+[2025-07-19 17:00:52] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 17:00:52] INFO: Splash screen launched successfully
+[2025-07-19 17:01:03] INFO: Launching main application directly to main menu
+[2025-07-19 17:01:29] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:01:29] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:01:30] INFO: Flight tracked: AA101
+[2025-07-19 17:01:43] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:01:43] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:01:43] INFO: Airport info retrieved: JFK
+[2025-07-19 17:01:43] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:01:43] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:01:43] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 17:01:43] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 17:01:43] INFO: Airport stats retrieved
+[2025-07-19 17:01:45] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:01:45] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:01:45] INFO: Airport info retrieved: JFK
+[2025-07-19 17:01:45] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:01:45] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:01:45] INFO: Airport info retrieved: JFK
+[2025-07-19 17:01:47] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 17:01:47] INFO: Route search completed
+[2025-07-19 17:01:48] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 17:01:48] INFO: Route search completed
+[2025-07-19 17:01:52] INFO: API request successful: https://api.aviationstack.com/v1/airlines?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=AA
+[2025-07-19 17:01:52] INFO: Aviation Stack API: Retrieved airline data for AA
+[2025-07-19 17:01:52] INFO: Airline info retrieved
+[2025-07-19 17:01:54] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 17:01:54] INFO: Route search completed
+[2025-07-19 17:02:23] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:02:23] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:02:23] INFO: Flight tracked: AA101
+[2025-07-19 17:02:23] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 17:02:23] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 17:02:23] INFO: Live tracking started: AA101
+[2025-07-19 17:02:25] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:02:25] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:02:25] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 17:02:25] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 17:02:25] INFO: Airport stats retrieved
+[2025-07-19 17:02:25] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:02:25] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:02:25] INFO: Airport info retrieved: JFK
+[2025-07-19 17:02:26] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 17:02:26] INFO: Route search completed
+[2025-07-19 17:02:29] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:02:29] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:02:29] INFO: Airport info retrieved: JFK
+[2025-07-19 17:02:30] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:02:30] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:02:30] INFO: Airport info retrieved: JFK
+[2025-07-19 17:02:30] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:02:30] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:02:30] INFO: Airport info retrieved: JFK
+[2025-07-19 17:02:38] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 17:02:38] INFO: Route search completed
+[2025-07-19 17:02:50] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:02:50] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:02:50] INFO: Flight tracked: AA101
+[2025-07-19 17:02:51] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 17:02:51] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 17:02:51] INFO: Live tracking started: AA101
+[2025-07-19 17:07:13] INFO: AeroDesk Pro starting up...
+[2025-07-19 17:07:14] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 17:07:14] INFO: Splash screen launched successfully
+[2025-07-19 17:07:25] INFO: Launching main application directly to main menu
+[2025-07-19 17:07:30] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:07:30] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:07:30] INFO: Flight tracked: AA101
+[2025-07-19 17:07:31] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:07:31] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:07:31] INFO: Flight tracked: AA101
+[2025-07-19 17:07:35] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 17:07:35] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 17:07:35] INFO: Live tracking started: AA101
+[2025-07-19 17:07:42] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA10
+[2025-07-19 17:07:42] INFO: Aviation Stack API: Retrieved flight data for AA10
+[2025-07-19 17:07:42] INFO: Flight tracked: AA10
+[2025-07-19 17:07:45] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA10&live=1
+[2025-07-19 17:07:45] INFO: Aviation Stack API: Retrieved live tracking for AA10
+[2025-07-19 17:07:45] INFO: Live tracking started: AA10
+[2025-07-19 17:07:46] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 17:07:46] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 17:07:48] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:07:48] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:07:48] INFO: Airport info retrieved: JFK
+[2025-07-19 17:07:49] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:07:49] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:07:49] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 17:07:49] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 17:07:49] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:07:49] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:07:49] INFO: Airport stats retrieved: JFK
+[2025-07-19 17:07:49] INFO: Airport info retrieved: JFK
+[2025-07-19 17:07:49] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:07:49] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:07:49] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 17:07:49] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 17:07:49] INFO: Airport stats retrieved: JFK
+[2025-07-19 17:07:56] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 17:07:56] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 17:07:56] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA10&live=1
+[2025-07-19 17:07:56] INFO: Aviation Stack API: Retrieved live tracking for AA10
+[2025-07-19 17:08:06] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA10&live=1
+[2025-07-19 17:08:06] INFO: Aviation Stack API: Retrieved live tracking for AA10
+[2025-07-19 17:08:07] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 17:08:07] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 17:15:16] INFO: AeroDesk Pro starting up...
+[2025-07-19 17:15:16] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 17:15:16] INFO: Splash screen launched successfully
+[2025-07-19 17:15:27] INFO: Launching main application directly to main menu
+[2025-07-19 17:15:33] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:33] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:33] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:34] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:34] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:34] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:34] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:34] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:34] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:34] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:34] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:34] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:34] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:34] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:34] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:34] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:34] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:34] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:35] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 17:15:35] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 17:15:35] INFO: Airport info retrieved: JFK
+[2025-07-19 17:15:48] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:48] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:48] INFO: Airport info retrieved: LAX
+[2025-07-19 17:15:49] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:49] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:49] INFO: Airport info retrieved: LAX
+[2025-07-19 17:15:49] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:49] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:49] INFO: Airport info retrieved: LAX
+[2025-07-19 17:15:50] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:50] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:50] INFO: Airport info retrieved: LAX
+[2025-07-19 17:15:51] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:51] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:51] INFO: Retrieved departure flights for LAX: 5 flights
+[2025-07-19 17:15:51] INFO: Retrieved arrival flights for LAX: 5 flights
+[2025-07-19 17:15:51] INFO: Airport stats retrieved: LAX
+[2025-07-19 17:15:51] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:51] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:51] INFO: Retrieved departure flights for LAX: 5 flights
+[2025-07-19 17:15:51] INFO: Retrieved arrival flights for LAX: 5 flights
+[2025-07-19 17:15:51] INFO: Airport stats retrieved: LAX
+[2025-07-19 17:15:51] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=LAX
+[2025-07-19 17:15:51] INFO: Aviation Stack API: Retrieved airport data for LAX
+[2025-07-19 17:15:51] INFO: Retrieved departure flights for LAX: 5 flights
+[2025-07-19 17:15:51] INFO: Retrieved arrival flights for LAX: 5 flights
+[2025-07-19 17:15:52] INFO: Airport stats retrieved: LAX
+[2025-07-19 17:15:52] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 17:15:52] INFO: Route search completed: JFK to LAX
+[2025-07-19 17:15:58] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:15:58] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:15:58] INFO: Flight tracked: AA101
+[2025-07-19 17:15:59] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 17:15:59] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 17:15:59] INFO: Flight tracked: AA101
+[2025-07-19 17:16:01] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=h
+[2025-07-19 17:16:01] INFO: Aviation Stack API: Retrieved flight data for h
+[2025-07-19 17:16:01] INFO: Flight tracked: h
+[2025-07-19 17:16:03] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=h&live=1
+[2025-07-19 17:16:03] INFO: Aviation Stack API: Retrieved live tracking for h
+[2025-07-19 17:16:03] INFO: Live tracking started: h
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 15 flights from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 25 bookings from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL101
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL101
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL101
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL101
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA202
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA202
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA202
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA202
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA202
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA303
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA303
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA303
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA303
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA303
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: BA601
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: BA601
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: BA601
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: BA601
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: BA601
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AF702
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AF702
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AF702
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AF702
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AF702
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL101
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 25 baggage items from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK001
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK002
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK003
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK004
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK005
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK006
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK007
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK008
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK009
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK010
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK011
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK012
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK013
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK014
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK015
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK016
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK017
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK018
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK019
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK020
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK021
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK022
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK023
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK024
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved booking: BK025
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL101
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA202
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA303
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: SW404
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL505
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: BA601
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AF702
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: LH803
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: JL904
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: EK1005
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL1106
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: AA1207
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: UA1308
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: SW1409
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved flight: DL1510
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 15 flights from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 25 bookings from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 25 baggage items from database
+[2025-07-19 17:16:07] DEBUG: Database connection established successfully
+[2025-07-19 17:16:07] INFO: Retrieved 15 gate assignments from database

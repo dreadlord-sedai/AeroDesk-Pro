@@ -122,7 +122,7 @@ public class AviationStackFrame extends JFrame {
         apiKeyField.setText("your_aviationstack_api_key_here");
         ThemeManager.styleTextField(apiKeyField);
         
-        // Buttons
+        // Buttons with wider width
         trackFlightButton = new JButton("Track Flight");
         getAirportInfoButton = new JButton("Get Airport Info");
         searchRouteButton = new JButton("Search Route");
@@ -133,6 +133,19 @@ public class AviationStackFrame extends JFrame {
         exportButton = new JButton("Export");
         clearButton = new JButton("Clear");
         apiKeyButton = new JButton("Update API Key");
+        
+        // Set wider preferred size for all buttons
+        Dimension wideButtonSize = new Dimension(150, 40);
+        trackFlightButton.setPreferredSize(wideButtonSize);
+        getAirportInfoButton.setPreferredSize(wideButtonSize);
+        searchRouteButton.setPreferredSize(wideButtonSize);
+        liveTrackingButton.setPreferredSize(wideButtonSize);
+        airlineInfoButton.setPreferredSize(wideButtonSize);
+        airportStatsButton.setPreferredSize(wideButtonSize);
+        refreshButton.setPreferredSize(wideButtonSize);
+        exportButton.setPreferredSize(wideButtonSize);
+        clearButton.setPreferredSize(wideButtonSize);
+        apiKeyButton.setPreferredSize(wideButtonSize);
         
         // Apply modern styling to buttons
         ThemeManager.styleButton(trackFlightButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
@@ -501,6 +514,10 @@ public class AviationStackFrame extends JFrame {
         formatted.append("API Call #: ").append(apiCallCount.get()).append("\n");
         formatted.append("=".repeat(40)).append("\n\n");
         formatted.append(result);
+        
+        // Debug output
+        System.out.println("DEBUG: Flight tracking result for " + flightNumber + " - Length: " + result.length());
+        
         return formatted.toString();
     }
     
@@ -553,28 +570,32 @@ public class AviationStackFrame extends JFrame {
         formatted.append("Timezone: ").append(airport.getTimezone()).append("\n");
         formatted.append("Coordinates: ").append(airport.getLatitude()).append(", ").append(airport.getLongitude()).append("\n");
         formatted.append("Website: ").append(airport.getWebsite() != null ? airport.getWebsite() : "N/A").append("\n");
+        formatted.append("Phone: ").append(airport.getPhone() != null ? airport.getPhone() : "N/A").append("\n");
+        formatted.append("GMT Offset: ").append(airport.getGmt() != null ? "GMT" + airport.getGmt() : "N/A").append("\n");
+        
+        // Debug output
+        System.out.println("DEBUG: Airport info for " + airportCode + ": " + airport.getName());
+        
         return formatted.toString();
     }
     
     private void searchRoute() {
-        updateStatus("Searching routes...", ThemeManager.WARNING_AMBER);
+        String origin = originField.getText().trim();
+        String destination = destinationField.getText().trim();
+        
+        if (origin.isEmpty() || destination.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter both origin and destination", "Input Required", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        updateStatus("Searching routes from " + origin + " to " + destination + "...", ThemeManager.WARNING_AMBER);
         
         SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
             @Override
             protected String doInBackground() throws Exception {
-                List<AviationStackService.FlightInfo> flights = aviationService.searchFlightsByRoute("JFK", "LAX", null);
-                StringBuilder result = new StringBuilder("=== Flight Search Results ===\n");
-                result.append("Route: JFK → LAX\n");
-                result.append("Found ").append(flights.size()).append(" flights:\n\n");
-                
-                for (AviationStackService.FlightInfo flight : flights) {
-                    result.append("Flight: ").append(flight.getFlightNumber()).append("\n");
-                    result.append("Airline: ").append(flight.getAirline()).append("\n");
-                    result.append("Status: ").append(flight.getStatus()).append("\n");
-                    result.append("Gate: ").append(flight.getGate()).append("\n");
-                    result.append("---\n");
-                }
-                return result.toString();
+                incrementApiCallCount();
+                List<AviationStackService.FlightInfo> flights = aviationService.searchFlightsByRoute(origin, destination, null);
+                return formatRouteSearchResult(flights, origin, destination);
             }
             
             @Override
@@ -583,7 +604,7 @@ public class AviationStackFrame extends JFrame {
                     String result = get();
                     resultArea.setText(result);
                     updateStatus("Route search completed", ThemeManager.SUCCESS_GREEN);
-                    FileLogger.getInstance().logInfo("Route search completed");
+                    FileLogger.getInstance().logInfo("Route search completed: " + origin + " to " + destination);
                 } catch (Exception ex) {
                     resultArea.setText("Error searching routes: " + ex.getMessage());
                     updateStatus("Route search failed", ThemeManager.ERROR_RED);
@@ -592,6 +613,34 @@ public class AviationStackFrame extends JFrame {
             }
         };
         worker.execute();
+    }
+    
+    private String formatRouteSearchResult(List<AviationStackService.FlightInfo> flights, String origin, String destination) {
+        StringBuilder formatted = new StringBuilder();
+        formatted.append("=== Route Search Results ===\n");
+        formatted.append("Route: ").append(origin).append(" → ").append(destination).append("\n");
+        formatted.append("Timestamp: ").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
+        formatted.append("API Call #: ").append(apiCallCount.get()).append("\n");
+        formatted.append("Found ").append(flights.size()).append(" flights\n");
+        formatted.append("=".repeat(40)).append("\n\n");
+        
+        if (flights.isEmpty()) {
+            formatted.append("No flights found for this route.\n");
+        } else {
+            for (int i = 0; i < flights.size(); i++) {
+                AviationStackService.FlightInfo flight = flights.get(i);
+                formatted.append("Flight ").append(i + 1).append(":\n");
+                formatted.append("  Flight Number: ").append(flight.getFlightNumber()).append("\n");
+                formatted.append("  Airline: ").append(flight.getAirline()).append("\n");
+                formatted.append("  Status: ").append(flight.getStatus()).append("\n");
+                formatted.append("  Gate: ").append(flight.getGate() != null ? flight.getGate() : "N/A").append("\n");
+                formatted.append("  Aircraft: ").append(flight.getAircraftType() != null ? flight.getAircraftType() : "N/A").append("\n");
+                formatted.append("  Live Tracking: ").append(flight.isLive() ? "Available" : "Not Available").append("\n");
+                formatted.append("  ").append("-".repeat(30)).append("\n");
+            }
+        }
+        
+        return formatted.toString();
     }
     
     private void startLiveTracking() {
@@ -606,19 +655,9 @@ public class AviationStackFrame extends JFrame {
         SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
             @Override
             protected String doInBackground() throws Exception {
+                incrementApiCallCount();
                 AviationStackService.FlightInfo flight = aviationService.getLiveFlightTracking(flightNumber);
-                StringBuilder result = new StringBuilder("=== Live Flight Tracking ===\n");
-                result.append("Flight: ").append(flight.getFlightNumber()).append("\n");
-                result.append("Airline: ").append(flight.getAirline()).append("\n");
-                result.append("Status: ").append(flight.getStatus()).append("\n");
-                result.append("Live Tracking: ").append(flight.isLive() ? "Available" : "Not Available").append("\n");
-                
-                if (flight.isLive()) {
-                    result.append("Current Location: ").append(flight.getLatitude()).append(", ").append(flight.getLongitude()).append("\n");
-                    result.append("Altitude: ").append(flight.getAltitude()).append(" ft\n");
-                    result.append("Speed: ").append(flight.getSpeed()).append(" km/h\n");
-                }
-                return result.toString();
+                return formatLiveTrackingResult(flight, flightNumber);
             }
             
             @Override
@@ -628,6 +667,9 @@ public class AviationStackFrame extends JFrame {
                     resultArea.setText(result);
                     updateStatus("Live tracking active", ThemeManager.SUCCESS_GREEN);
                     FileLogger.getInstance().logInfo("Live tracking started: " + flightNumber);
+                    
+                    // Start continuous tracking updates
+                    startContinuousTracking(flightNumber);
                 } catch (Exception ex) {
                     resultArea.setText("Error starting live tracking: " + ex.getMessage());
                     updateStatus("Live tracking failed", ThemeManager.ERROR_RED);
@@ -638,22 +680,87 @@ public class AviationStackFrame extends JFrame {
         worker.execute();
     }
     
+    private String formatLiveTrackingResult(AviationStackService.FlightInfo flight, String flightNumber) {
+        StringBuilder formatted = new StringBuilder();
+        formatted.append("=== Live Flight Tracking ===\n");
+        formatted.append("Flight Number: ").append(flightNumber).append("\n");
+        formatted.append("Timestamp: ").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
+        formatted.append("API Call #: ").append(apiCallCount.get()).append("\n");
+        formatted.append("=".repeat(40)).append("\n\n");
+        formatted.append("Flight: ").append(flight.getFlightNumber()).append("\n");
+        formatted.append("Airline: ").append(flight.getAirline()).append("\n");
+        formatted.append("Status: ").append(flight.getStatus()).append("\n");
+        formatted.append("Live Tracking: ").append(flight.isLive() ? "Available" : "Not Available").append("\n");
+        
+        if (flight.isLive()) {
+            formatted.append("\n=== Live Position Data ===\n");
+            formatted.append("Current Location: ").append(flight.getLatitude()).append(", ").append(flight.getLongitude()).append("\n");
+            formatted.append("Altitude: ").append(flight.getAltitude()).append(" ft\n");
+            formatted.append("Speed: ").append(flight.getSpeed()).append(" km/h\n");
+            formatted.append("Direction: ").append(flight.getDirection()).append("°\n");
+            formatted.append("Aircraft Type: ").append(flight.getAircraftType() != null ? flight.getAircraftType() : "N/A").append("\n");
+            formatted.append("Registration: ").append(flight.getAircraftRegistration() != null ? flight.getAircraftRegistration() : "N/A").append("\n");
+        }
+        
+        formatted.append("\n=== Route Information ===\n");
+        formatted.append("Departure: ").append(flight.getDepartureAirport() != null ? flight.getDepartureAirport() : "N/A").append("\n");
+        formatted.append("Arrival: ").append(flight.getArrivalAirport() != null ? flight.getArrivalAirport() : "N/A").append("\n");
+        formatted.append("Gate: ").append(flight.getGate() != null ? flight.getGate() : "N/A").append("\n");
+        formatted.append("Terminal: ").append(flight.getTerminal() != null ? flight.getTerminal() : "N/A").append("\n");
+        
+        return formatted.toString();
+    }
+    
+    private void startContinuousTracking(String flightNumber) {
+        // Stop any existing tracking
+        if (liveUpdatesActive) {
+            liveUpdatesActive = false;
+        }
+        
+        liveUpdatesActive = true;
+        scheduler.scheduleAtFixedRate(() -> {
+            if (liveUpdatesActive) {
+                SwingUtilities.invokeLater(() -> {
+                    updateLiveTrackingData(flightNumber);
+                });
+            }
+        }, 10, 10, TimeUnit.SECONDS);
+    }
+    
+    private void updateLiveTrackingData(String flightNumber) {
+        SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
+            @Override
+            protected String doInBackground() throws Exception {
+                incrementApiCallCount();
+                AviationStackService.FlightInfo flight = aviationService.getLiveFlightTracking(flightNumber);
+                return formatLiveTrackingResult(flight, flightNumber);
+            }
+            
+            @Override
+            protected void done() {
+                try {
+                    String result = get();
+                    resultArea.setText(result);
+                    updateStatus("Live tracking updated - " + LocalDateTime.now().format(timeFormatter), ThemeManager.SUCCESS_GREEN);
+                } catch (Exception ex) {
+                    updateStatus("Live tracking update failed", ThemeManager.ERROR_RED);
+                }
+            }
+        };
+        worker.execute();
+    }
+    
     private void getAirlineInfo() {
-        updateStatus("Getting airline information...", ThemeManager.WARNING_AMBER);
+        final String airlineCode = airlineCodeField.getText().trim().isEmpty() ? "AA" : airlineCodeField.getText().trim();
+        
+        updateStatus("Getting airline information for " + airlineCode + "...", ThemeManager.WARNING_AMBER);
         
         SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
             @Override
             protected String doInBackground() throws Exception {
-                AviationStackService.AirlineInfo airline = aviationService.getAirlineInfo("AA");
-                return "=== Airline Information ===\n" +
-                       "Name: " + airline.getName() + "\n" +
-                       "IATA Code: " + airline.getIataCode() + "\n" +
-                       "ICAO Code: " + airline.getIcaoCode() + "\n" +
-                       "Country: " + airline.getCountry() + "\n" +
-                       "Website: " + (airline.getWebsite() != null ? airline.getWebsite() : "N/A") + "\n" +
-                       "Phone: " + (airline.getPhone() != null ? airline.getPhone() : "N/A") + "\n" +
-                       "Fleet Size: " + (airline.getFleetSize() != null ? airline.getFleetSize() : "N/A") + "\n" +
-                       "Founded: " + (airline.getFounded() != null ? airline.getFounded() : "N/A") + "\n";
+                incrementApiCallCount();
+                AviationStackService.AirlineInfo airline = aviationService.getAirlineInfo(airlineCode);
+                return formatAirlineResult(airline, airlineCode);
             }
             
             @Override
@@ -662,7 +769,7 @@ public class AviationStackFrame extends JFrame {
                     String result = get();
                     resultArea.setText(result);
                     updateStatus("Airline info retrieved", ThemeManager.SUCCESS_GREEN);
-                    FileLogger.getInstance().logInfo("Airline info retrieved");
+                    FileLogger.getInstance().logInfo("Airline info retrieved: " + airlineCode);
                 } catch (Exception ex) {
                     resultArea.setText("Error getting airline info: " + ex.getMessage());
                     updateStatus("Airline info failed", ThemeManager.ERROR_RED);
@@ -673,13 +780,34 @@ public class AviationStackFrame extends JFrame {
         worker.execute();
     }
     
+    private String formatAirlineResult(AviationStackService.AirlineInfo airline, String airlineCode) {
+        StringBuilder formatted = new StringBuilder();
+        formatted.append("=== Airline Information ===\n");
+        formatted.append("Airline Code: ").append(airlineCode).append("\n");
+        formatted.append("Timestamp: ").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
+        formatted.append("API Call #: ").append(apiCallCount.get()).append("\n");
+        formatted.append("=".repeat(40)).append("\n\n");
+        formatted.append("Name: ").append(airline.getName()).append("\n");
+        formatted.append("IATA Code: ").append(airline.getIataCode()).append("\n");
+        formatted.append("ICAO Code: ").append(airline.getIcaoCode()).append("\n");
+        formatted.append("Country: ").append(airline.getCountry()).append("\n");
+        formatted.append("Website: ").append(airline.getWebsite() != null ? airline.getWebsite() : "N/A").append("\n");
+        formatted.append("Phone: ").append(airline.getPhone() != null ? airline.getPhone() : "N/A").append("\n");
+        formatted.append("Fleet Size: ").append(airline.getFleetSize() != null ? airline.getFleetSize() : "N/A").append("\n");
+        formatted.append("Founded: ").append(airline.getFounded() != null ? airline.getFounded() : "N/A").append("\n");
+        return formatted.toString();
+    }
+    
     private void getAirportStats() {
-        updateStatus("Getting airport statistics...", ThemeManager.WARNING_AMBER);
+        final String airportCode = airportCodeField.getText().trim().isEmpty() ? "JFK" : airportCodeField.getText().trim();
+        
+        updateStatus("Getting airport statistics for " + airportCode + "...", ThemeManager.WARNING_AMBER);
         
         SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
             @Override
             protected String doInBackground() throws Exception {
-                return aviationService.getAirportStatistics("JFK");
+                incrementApiCallCount();
+                return formatAirportStatsResult(aviationService.getAirportStatistics(airportCode), airportCode);
             }
             
             @Override
@@ -688,7 +816,7 @@ public class AviationStackFrame extends JFrame {
                     String result = get();
                     resultArea.setText(result);
                     updateStatus("Airport stats retrieved", ThemeManager.SUCCESS_GREEN);
-                    FileLogger.getInstance().logInfo("Airport stats retrieved");
+                    FileLogger.getInstance().logInfo("Airport stats retrieved: " + airportCode);
                 } catch (Exception ex) {
                     resultArea.setText("Error getting airport stats: " + ex.getMessage());
                     updateStatus("Airport stats failed", ThemeManager.ERROR_RED);
@@ -697,6 +825,17 @@ public class AviationStackFrame extends JFrame {
             }
         };
         worker.execute();
+    }
+    
+    private String formatAirportStatsResult(String stats, String airportCode) {
+        StringBuilder formatted = new StringBuilder();
+        formatted.append("=== Airport Statistics ===\n");
+        formatted.append("Airport Code: ").append(airportCode).append("\n");
+        formatted.append("Timestamp: ").append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
+        formatted.append("API Call #: ").append(apiCallCount.get()).append("\n");
+        formatted.append("=".repeat(40)).append("\n\n");
+        formatted.append(stats);
+        return formatted.toString();
     }
     
     private void updateStatus(String message, Color color) {
@@ -710,8 +849,16 @@ public class AviationStackFrame extends JFrame {
             SwingUtilities.invokeLater(() -> {
                 // Update flight table with mock data
                 updateFlightTable();
+                // Update API statistics
+                updateApiStats();
+                // Update status labels
+                lastUpdateLabel.setText("Last Update: " + LocalDateTime.now().format(timeFormatter));
+                apiCallCountLabel.setText("API Calls: " + apiCallCount.get());
             });
         }, 0, 30, TimeUnit.SECONDS);
+        
+        // Initial API stats update
+        updateApiStats();
     }
     
     private void updateFlightTable() {

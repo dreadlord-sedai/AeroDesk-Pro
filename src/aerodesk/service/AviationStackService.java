@@ -653,57 +653,257 @@ public class AviationStackService {
     private FlightInfo createMockFlightInfo(String flightNumber) {
         FlightInfo flight = new FlightInfo();
         flight.setFlightNumber(flightNumber);
-        flight.setAirline("American Airlines");
-        flight.setAirlineCode("AA");
-        flight.setDepartureAirport("JFK");
-        flight.setArrivalAirport("LAX");
-        flight.setStatus("scheduled");
-        flight.setGate("A1");
-        flight.setTerminal("1");
+        
+        // Extract airline code from flight number (first 2 characters)
+        String airlineCode = flightNumber.length() >= 2 ? flightNumber.substring(0, 2) : "AA";
+        
+        // Set airline info based on the code
+        switch (airlineCode.toUpperCase()) {
+            case "AA":
+                flight.setAirline("American Airlines");
+                flight.setAirlineCode("AA");
+                break;
+            case "DL":
+                flight.setAirline("Delta Air Lines");
+                flight.setAirlineCode("DL");
+                break;
+            case "UA":
+                flight.setAirline("United Airlines");
+                flight.setAirlineCode("UA");
+                break;
+            case "BA":
+                flight.setAirline("British Airways");
+                flight.setAirlineCode("BA");
+                break;
+            case "AF":
+                flight.setAirline("Air France");
+                flight.setAirlineCode("AF");
+                break;
+            case "LH":
+                flight.setAirline("Lufthansa");
+                flight.setAirlineCode("LH");
+                break;
+            default:
+                flight.setAirline("Generic Airlines");
+                flight.setAirlineCode(airlineCode);
+                break;
+        }
+        
+        // Set route based on flight number
+        if (flightNumber.contains("101") || flightNumber.contains("1")) {
+            flight.setDepartureAirport("JFK");
+            flight.setArrivalAirport("LAX");
+        } else if (flightNumber.contains("202") || flightNumber.contains("2")) {
+            flight.setDepartureAirport("LAX");
+            flight.setArrivalAirport("JFK");
+        } else if (flightNumber.contains("303") || flightNumber.contains("3")) {
+            flight.setDepartureAirport("LHR");
+            flight.setArrivalAirport("JFK");
+        } else if (flightNumber.contains("404") || flightNumber.contains("4")) {
+            flight.setDepartureAirport("CDG");
+            flight.setArrivalAirport("LAX");
+        } else {
+            flight.setDepartureAirport("JFK");
+            flight.setArrivalAirport("LAX");
+        }
+        
+        // Set status based on flight number
+        String status = "scheduled";
+        if (flightNumber.contains("1")) status = "scheduled";
+        else if (flightNumber.contains("2")) status = "boarding";
+        else if (flightNumber.contains("3")) status = "in-flight";
+        else if (flightNumber.contains("4")) status = "delayed";
+        else if (flightNumber.contains("5")) status = "landed";
+        
+        flight.setStatus(status);
+        flight.setGate("A" + (flightNumber.hashCode() % 20 + 1));
+        flight.setTerminal(String.valueOf((flightNumber.hashCode() % 5) + 1));
         flight.setAircraftType("Boeing 737-800");
-        flight.setAircraftRegistration("N12345");
-        flight.setScheduledDeparture(LocalDateTime.now().plusHours(2));
-        flight.setScheduledArrival(LocalDateTime.now().plusHours(5));
-        flight.setLatitude(40.6413);
-        flight.setLongitude(-73.7781);
-        flight.setAltitude(35000);
-        flight.setSpeed(850);
-        flight.setDirection(270);
-        flight.setLive(false);
-        flight.setDelay("On time");
-        flight.setWeather("Clear skies, 22°C");
+        flight.setAircraftRegistration("N" + Math.abs(flightNumber.hashCode() % 99999));
+        
+        // Set times
+        LocalDateTime now = LocalDateTime.now();
+        flight.setScheduledDeparture(now.plusHours(2));
+        flight.setScheduledArrival(now.plusHours(5));
+        
+        // Set live tracking data
+        flight.setLatitude(40.6413 + (flightNumber.hashCode() % 100) * 0.01);
+        flight.setLongitude(-73.7781 + (flightNumber.hashCode() % 100) * 0.01);
+        flight.setAltitude(30000 + (flightNumber.hashCode() % 10000));
+        flight.setSpeed(800 + (flightNumber.hashCode() % 200));
+        flight.setDirection(flightNumber.hashCode() % 360);
+        flight.setLive(true);
+        
+        // Set delay and weather
+        if (status.equals("delayed")) {
+            flight.setDelay("Delayed by " + (flightNumber.hashCode() % 60 + 15) + " minutes");
+        } else {
+            flight.setDelay("On time");
+        }
+        
+        flight.setWeather("Clear skies, " + (20 + flightNumber.hashCode() % 20) + "°C");
         
         return flight;
     }
     
     private AirportInfo createMockAirportInfo(String airportCode) {
         AirportInfo airport = new AirportInfo();
-        airport.setName("John F. Kennedy International Airport");
+        
+        // Create dynamic airport info based on the airport code
+        switch (airportCode.toUpperCase()) {
+            case "JFK":
+                airport.setName("John F. Kennedy International Airport");
+                airport.setLatitude(40.6413);
+                airport.setLongitude(-73.7781);
+                airport.setTimezone("America/New_York");
+                airport.setCountry("United States");
+                airport.setCountryCode("US");
+                airport.setCity("New York");
+                airport.setWebsite("https://www.jfkairport.com");
+                airport.setPhone("+1 718-244-4444");
+                airport.setGmt("-5");
+                break;
+            case "LAX":
+                airport.setName("Los Angeles International Airport");
+                airport.setLatitude(33.9416);
+                airport.setLongitude(-118.4085);
+                airport.setTimezone("America/Los_Angeles");
+                airport.setCountry("United States");
+                airport.setCountryCode("US");
+                airport.setCity("Los Angeles");
+                airport.setWebsite("https://www.flylax.com");
+                airport.setPhone("+1 855-463-5252");
+                airport.setGmt("-8");
+                break;
+            case "LHR":
+                airport.setName("London Heathrow Airport");
+                airport.setLatitude(51.4700);
+                airport.setLongitude(-0.4543);
+                airport.setTimezone("Europe/London");
+                airport.setCountry("United Kingdom");
+                airport.setCountryCode("GB");
+                airport.setCity("London");
+                airport.setWebsite("https://www.heathrow.com");
+                airport.setPhone("+44 844 335 1801");
+                airport.setGmt("+0");
+                break;
+            case "CDG":
+                airport.setName("Charles de Gaulle Airport");
+                airport.setLatitude(49.0097);
+                airport.setLongitude(2.5479);
+                airport.setTimezone("Europe/Paris");
+                airport.setCountry("France");
+                airport.setCountryCode("FR");
+                airport.setCity("Paris");
+                airport.setWebsite("https://www.parisaeroport.fr");
+                airport.setPhone("+33 1 70 36 39 50");
+                airport.setGmt("+1");
+                break;
+            case "NRT":
+                airport.setName("Narita International Airport");
+                airport.setLatitude(35.7720);
+                airport.setLongitude(140.3929);
+                airport.setTimezone("Asia/Tokyo");
+                airport.setCountry("Japan");
+                airport.setCountryCode("JP");
+                airport.setCity("Tokyo");
+                airport.setWebsite("https://www.narita-airport.jp");
+                airport.setPhone("+81 476-34-8000");
+                airport.setGmt("+9");
+                break;
+            default:
+                // Generic airport info for unknown codes
+                airport.setName(airportCode + " International Airport");
+                airport.setLatitude(0.0);
+                airport.setLongitude(0.0);
+                airport.setTimezone("UTC");
+                airport.setCountry("Unknown");
+                airport.setCountryCode("XX");
+                airport.setCity("Unknown");
+                airport.setWebsite("N/A");
+                airport.setPhone("N/A");
+                airport.setGmt("+0");
+                break;
+        }
+        
         airport.setIataCode(airportCode);
         airport.setIcaoCode(airportCode);
-        airport.setLatitude(40.6413);
-        airport.setLongitude(-73.7781);
-        airport.setTimezone("America/New_York");
-        airport.setCountry("United States");
-        airport.setCountryCode("US");
-        airport.setCity("New York");
-        airport.setWebsite("https://www.jfkairport.com");
-        airport.setPhone("+1 718-244-4444");
-        airport.setGmt("-5");
         
         return airport;
     }
     
     private AirlineInfo createMockAirlineInfo(String airlineCode) {
         AirlineInfo airline = new AirlineInfo();
-        airline.setName("American Airlines");
+        
+        // Create dynamic airline info based on the airline code
+        switch (airlineCode.toUpperCase()) {
+            case "AA":
+                airline.setName("American Airlines");
+                airline.setIcaoCode("AAL");
+                airline.setCountry("United States");
+                airline.setWebsite("https://www.aa.com");
+                airline.setPhone("+1 800-433-7300");
+                airline.setFleetSize("956 aircraft");
+                airline.setFounded("1926");
+                break;
+            case "DL":
+                airline.setName("Delta Air Lines");
+                airline.setIcaoCode("DAL");
+                airline.setCountry("United States");
+                airline.setWebsite("https://www.delta.com");
+                airline.setPhone("+1 800-221-1212");
+                airline.setFleetSize("1,280 aircraft");
+                airline.setFounded("1924");
+                break;
+            case "UA":
+                airline.setName("United Airlines");
+                airline.setIcaoCode("UAL");
+                airline.setCountry("United States");
+                airline.setWebsite("https://www.united.com");
+                airline.setPhone("+1 800-864-8331");
+                airline.setFleetSize("1,300+ aircraft");
+                airline.setFounded("1926");
+                break;
+            case "BA":
+                airline.setName("British Airways");
+                airline.setIcaoCode("BAW");
+                airline.setCountry("United Kingdom");
+                airline.setWebsite("https://www.britishairways.com");
+                airline.setPhone("+44 20 8738 5000");
+                airline.setFleetSize("280 aircraft");
+                airline.setFounded("1974");
+                break;
+            case "AF":
+                airline.setName("Air France");
+                airline.setIcaoCode("AFR");
+                airline.setCountry("France");
+                airline.setWebsite("https://www.airfrance.com");
+                airline.setPhone("+33 1 41 56 78 00");
+                airline.setFleetSize("220 aircraft");
+                airline.setFounded("1933");
+                break;
+            case "LH":
+                airline.setName("Lufthansa");
+                airline.setIcaoCode("DLH");
+                airline.setCountry("Germany");
+                airline.setWebsite("https://www.lufthansa.com");
+                airline.setPhone("+49 69 86 799 799");
+                airline.setFleetSize("280 aircraft");
+                airline.setFounded("1953");
+                break;
+            default:
+                // Generic airline info for unknown codes
+                airline.setName(airlineCode + " Airlines");
+                airline.setIcaoCode(airlineCode);
+                airline.setCountry("Unknown");
+                airline.setWebsite("N/A");
+                airline.setPhone("N/A");
+                airline.setFleetSize("N/A");
+                airline.setFounded("N/A");
+                break;
+        }
+        
         airline.setIataCode(airlineCode);
-        airline.setIcaoCode("AAL");
-        airline.setCountry("United States");
-        airline.setWebsite("https://www.aa.com");
-        airline.setPhone("+1 800-433-7300");
-        airline.setFleetSize("956 aircraft");
-        airline.setFounded("1926");
         
         return airline;
     }

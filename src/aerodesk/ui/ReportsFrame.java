@@ -2,7 +2,7 @@ package aerodesk.ui;
 
 import aerodesk.util.ThemeManager;
 import aerodesk.util.FileLogger;
-import aerodesk.util.IconManager;
+import aerodesk.util.ConfigManager;
 import aerodesk.dao.FlightDAO;
 import aerodesk.dao.BookingDAO;
 import aerodesk.dao.BaggageDAO;
@@ -15,14 +15,20 @@ import aerodesk.exception.DatabaseException;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Reports & Logs UI for AeroDesk Pro
