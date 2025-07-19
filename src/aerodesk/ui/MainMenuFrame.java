@@ -172,10 +172,9 @@ public class MainMenuFrame extends JFrame {
     }
     
     private void openBaggageHandling() {
-        JOptionPane.showMessageDialog(this, 
-            "Baggage Handling module will be implemented next.", 
-            "Coming Soon", 
-            JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> {
+            new BaggageFrame().setVisible(true);
+        });
     }
     
     private void openGateManagement() {

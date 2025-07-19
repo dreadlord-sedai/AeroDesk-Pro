@@ -37,7 +37,7 @@ public class ConfigManager {
     private void setDefaultProperties() {
         properties.setProperty("db.url", "jdbc:mysql://localhost:3306/aerodesk_pro");
         properties.setProperty("db.username", "root");
-        properties.setProperty("db.password", "");
+        properties.setProperty("db.password", "mysql2006");
         properties.setProperty("app.title", "AeroDesk Pro");
         properties.setProperty("log.file", "aerodesk.log");
     }

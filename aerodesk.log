@@ -4,3 +4,55 @@
 [2025-07-19 09:18:39] INFO: Login screen displayed successfully
 [2025-07-19 09:32:37] INFO: AeroDesk Pro starting up...
 [2025-07-19 09:32:38] INFO: Login screen displayed successfully
+[2025-07-19 09:41:51] INFO: AeroDesk Pro starting up...
+[2025-07-19 09:41:51] INFO: Login screen displayed successfully
+[2025-07-19 09:42:03] INFO: User admin logged in successfully as ADMIN
+[2025-07-19 09:42:05] INFO: User admin accessed: flight_scheduling
+[2025-07-19 09:42:05] ERROR: Failed to establish database connection: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-07-19 09:42:05] ERROR: Failed to retrieve flights: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-07-19 09:42:05] ERROR: Failed to load flights: Failed to retrieve flights
+[2025-07-19 09:42:41] INFO: AeroDesk Pro starting up...
+[2025-07-19 09:42:42] INFO: Login screen displayed successfully
+[2025-07-19 09:42:54] INFO: User admin logged in successfully as ADMIN
+[2025-07-19 09:42:55] INFO: User admin accessed: flight_scheduling
+[2025-07-19 09:42:55] ERROR: Failed to establish database connection: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-07-19 09:42:55] ERROR: Failed to retrieve flights: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-07-19 09:42:55] ERROR: Failed to load flights: Failed to retrieve flights
+[2025-07-19 09:43:01] INFO: User admin accessed: check_in
+[2025-07-19 09:43:01] ERROR: Failed to establish database connection: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-07-19 09:43:01] ERROR: Failed to retrieve bookings: Access denied for user 'root'@'localhost' (using password: NO)
+[2025-07-19 09:43:01] ERROR: Failed to load bookings: Failed to retrieve bookings
+[2025-07-19 09:43:03] INFO: User admin accessed: gate_management
+[2025-07-19 09:43:06] INFO: User admin accessed: baggage
+[2025-07-19 09:43:08] INFO: User admin accessed: flight_status
+[2025-07-19 09:43:09] INFO: User admin accessed: reports
+[2025-07-19 09:44:53] INFO: AeroDesk Pro starting up...
+[2025-07-19 09:44:53] INFO: Login screen displayed successfully
+[2025-07-19 09:45:02] INFO: User admin logged in successfully as ADMIN
+[2025-07-19 09:45:03] INFO: User admin accessed: flight_scheduling
+[2025-07-19 09:45:03] DEBUG: Database connection established successfully
+[2025-07-19 09:45:03] INFO: Retrieved 4 flights from database
+[2025-07-19 09:45:03] INFO: Loaded 4 flights
+[2025-07-19 09:45:09] INFO: User admin accessed: check_in
+[2025-07-19 09:45:09] DEBUG: Database connection established successfully
+[2025-07-19 09:45:09] INFO: Retrieved 4 bookings from database
+[2025-07-19 09:45:09] DEBUG: Database connection established successfully
+[2025-07-19 09:45:09] INFO: Retrieved flight: AA101
+[2025-07-19 09:45:09] DEBUG: Database connection established successfully
+[2025-07-19 09:45:09] INFO: Retrieved flight: AA101
+[2025-07-19 09:45:09] DEBUG: Database connection established successfully
+[2025-07-19 09:45:09] INFO: Retrieved flight: UA202
+[2025-07-19 09:45:09] DEBUG: Database connection established successfully
+[2025-07-19 09:45:09] INFO: Retrieved flight: DL303
+[2025-07-19 09:45:09] INFO: Displayed 4 bookings
+[2025-07-19 09:45:18] INFO: User admin accessed: baggage
+[2025-07-19 09:45:19] INFO: User admin accessed: gate_management
+[2025-07-19 09:45:20] INFO: User admin accessed: flight_scheduling
+[2025-07-19 09:45:20] DEBUG: Database connection established successfully
+[2025-07-19 09:45:20] INFO: Retrieved 4 flights from database
+[2025-07-19 09:45:20] INFO: Loaded 4 flights
+[2025-07-19 09:45:46] DEBUG: Database connection established successfully
+[2025-07-19 09:45:46] INFO: Retrieved 4 flights from database
+[2025-07-19 09:45:46] INFO: Loaded 4 flights
+[2025-07-19 09:45:52] INFO: User admin accessed: logout
+[2025-07-19 09:45:53] INFO: User admin logged out
