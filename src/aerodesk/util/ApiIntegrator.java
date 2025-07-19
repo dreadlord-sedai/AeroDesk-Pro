@@ -7,13 +7,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * API integration utility for AeroDesk Pro
- * Handles HTTP API calls for external data (weather, flight status)
+ * Handles HTTP API calls for external data (weather, flight status, Aviation Stack)
  */
 public class ApiIntegrator {
-    private static final int TIMEOUT = 10000; // 10 seconds
+    private static final int TIMEOUT = 15000; // 15 seconds for Aviation Stack
+    private static final String USER_AGENT = "AeroDesk-Pro/1.0";
     
     /**
      * Fetches weather data for a given city
@@ -38,17 +43,96 @@ public class ApiIntegrator {
     }
     
     /**
-     * Fetches flight status data
+     * Fetches real-time flight data from Aviation Stack
+     * @param flightNumber The flight number (e.g., "AA101")
+     * @return Flight data as JSON string
+     * @throws IOException if the API call fails
+     */
+    public static String getFlightData(String flightNumber) throws IOException {
+        ConfigManager config = ConfigManager.getInstance();
+        String apiKey = config.getProperty("aviationstack.api.key");
+        String baseUrl = config.getProperty("aviationstack.api.url");
+        
+        if (apiKey == null || apiKey.isEmpty() || "your_aviationstack_api_key_here".equals(apiKey)) {
+            // Return mock data if no API key is configured
+            return getMockFlightData(flightNumber);
+        }
+        
+        String urlString = String.format("%s/flights?access_key=%s&flight_iata=%s", baseUrl, apiKey, flightNumber);
+        
+        try {
+            String response = makeHttpRequest(urlString);
+            FileLogger.getInstance().logInfo("Aviation Stack API: Retrieved flight data for " + flightNumber);
+            return response;
+        } catch (IOException e) {
+            FileLogger.getInstance().logError("Aviation Stack API error for flight " + flightNumber + ": " + e.getMessage());
+            // Fallback to mock data
+            return getMockFlightData(flightNumber);
+        }
+    }
+    
+    /**
+     * Fetches airport information from Aviation Stack
+     * @param airportCode The airport IATA code (e.g., "JFK", "LAX")
+     * @return Airport data as JSON string
+     * @throws IOException if the API call fails
+     */
+    public static String getAirportData(String airportCode) throws IOException {
+        ConfigManager config = ConfigManager.getInstance();
+        String apiKey = config.getProperty("aviationstack.api.key");
+        String baseUrl = config.getProperty("aviationstack.api.url");
+        
+        if (apiKey == null || apiKey.isEmpty() || "your_aviationstack_api_key_here".equals(apiKey)) {
+            return getMockAirportData(airportCode);
+        }
+        
+        String urlString = String.format("%s/airports?access_key=%s&iata_code=%s", baseUrl, apiKey, airportCode);
+        
+        try {
+            String response = makeHttpRequest(urlString);
+            FileLogger.getInstance().logInfo("Aviation Stack API: Retrieved airport data for " + airportCode);
+            return response;
+        } catch (IOException e) {
+            FileLogger.getInstance().logError("Aviation Stack API error for airport " + airportCode + ": " + e.getMessage());
+            return getMockAirportData(airportCode);
+        }
+    }
+    
+    /**
+     * Fetches live flight tracking data
+     * @param flightNumber The flight number
+     * @return Live flight tracking data as JSON string
+     * @throws IOException if the API call fails
+     */
+    public static String getLiveFlightTracking(String flightNumber) throws IOException {
+        ConfigManager config = ConfigManager.getInstance();
+        String apiKey = config.getProperty("aviationstack.api.key");
+        String baseUrl = config.getProperty("aviationstack.api.url");
+        
+        if (apiKey == null || apiKey.isEmpty() || "your_aviationstack_api_key_here".equals(apiKey)) {
+            return getMockLiveTrackingData(flightNumber);
+        }
+        
+        String urlString = String.format("%s/flights?access_key=%s&flight_iata=%s&live=1", baseUrl, apiKey, flightNumber);
+        
+        try {
+            String response = makeHttpRequest(urlString);
+            FileLogger.getInstance().logInfo("Aviation Stack API: Retrieved live tracking for " + flightNumber);
+            return response;
+        } catch (IOException e) {
+            FileLogger.getInstance().logError("Aviation Stack API error for live tracking " + flightNumber + ": " + e.getMessage());
+            return getMockLiveTrackingData(flightNumber);
+        }
+    }
+    
+    /**
+     * Fetches flight status data (legacy method for backward compatibility)
      * @param flightNumber The flight number
      * @return Flight status data as JSON string
      * @throws IOException if the API call fails
      */
     public static String getFlightStatus(String flightNumber) throws IOException {
-        ConfigManager config = ConfigManager.getInstance();
-        String baseUrl = config.getProperty("flight.api.url");
-        
-        // For demo purposes, return mock data
-        return getMockFlightStatus(flightNumber);
+        return getFlightData(flightNumber);
     }
     
     /**
@@ -65,7 +149,8 @@ public class ApiIntegrator {
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(TIMEOUT);
             connection.setReadTimeout(TIMEOUT);
-            connection.setRequestProperty("User-Agent", "AeroDesk-Pro/1.0");
+            connection.setRequestProperty("User-Agent", USER_AGENT);
+            connection.setRequestProperty("Accept", "application/json");
             
             int responseCode = connection.getResponseCode();
             
@@ -84,7 +169,7 @@ public class ApiIntegrator {
                 FileLogger.getInstance().logInfo("API request successful: " + urlString);
                 return response.toString();
             } else {
-                FileLogger.getInstance().logError("API request failed with code: " + responseCode);
+                FileLogger.getInstance().logError("API request failed with code: " + responseCode + " for URL: " + urlString);
                 throw new IOException("HTTP request failed with code: " + responseCode);
             }
         } finally {
@@ -106,27 +191,126 @@ public class ApiIntegrator {
                 "humidity": 65,
                 "wind_speed": 12.3,
                 "timestamp": "%s"
-            }""", city, java.time.LocalDateTime.now());
+            }""", city, LocalDateTime.now());
     }
     
     /**
-     * Returns mock flight status data for demonstration purposes
+     * Returns mock flight data for demonstration purposes
      * @param flightNumber The flight number
-     * @return Mock flight status data as JSON string
+     * @return Mock flight data as JSON string
      */
-    private static String getMockFlightStatus(String flightNumber) {
-        String[] statuses = {"ON_TIME", "DELAYED", "DEPARTED", "CANCELLED"};
+    private static String getMockFlightData(String flightNumber) {
+        String[] statuses = {"scheduled", "active", "landed", "cancelled"};
         String randomStatus = statuses[(int) (Math.random() * statuses.length)];
         
         return String.format("""
             {
-                "flight_number": "%s",
-                "status": "%s",
-                "departure_time": "2024-01-15T10:30:00",
-                "arrival_time": "2024-01-15T13:15:00",
-                "gate": "A1",
-                "last_updated": "%s"
-            }""", flightNumber, randomStatus, java.time.LocalDateTime.now());
+                "success": true,
+                "data": [{
+                    "flight": {
+                        "number": "%s",
+                        "iata": "%s",
+                        "icao": "%s"
+                    },
+                    "departure": {
+                        "airport": "John F. Kennedy International Airport",
+                        "iata": "JFK",
+                        "scheduled": "2024-01-15T10:30:00+00:00",
+                        "estimated": "2024-01-15T10:35:00+00:00",
+                        "actual": null,
+                        "gate": "A1",
+                        "terminal": "1"
+                    },
+                    "arrival": {
+                        "airport": "Los Angeles International Airport",
+                        "iata": "LAX",
+                        "scheduled": "2024-01-15T13:15:00+00:00",
+                        "estimated": "2024-01-15T13:20:00+00:00",
+                        "actual": null,
+                        "gate": "B5",
+                        "terminal": "2"
+                    },
+                    "airline": {
+                        "name": "American Airlines",
+                        "iata": "AA",
+                        "icao": "AAL"
+                    },
+                    "flight_status": "%s",
+                    "live": {
+                        "updated": "%s",
+                        "latitude": 40.6413,
+                        "longitude": -73.7781,
+                        "altitude": 35000,
+                        "direction": 270,
+                        "speed_horizontal": 850,
+                        "speed_vertical": 0,
+                        "is_ground": false
+                    }
+                }]
+            }""", flightNumber, flightNumber, flightNumber, randomStatus, LocalDateTime.now());
+    }
+    
+    /**
+     * Returns mock airport data for demonstration purposes
+     * @param airportCode The airport code
+     * @return Mock airport data as JSON string
+     */
+    private static String getMockAirportData(String airportCode) {
+        Map<String, String> airports = new HashMap<>();
+        airports.put("JFK", "John F. Kennedy International Airport");
+        airports.put("LAX", "Los Angeles International Airport");
+        airports.put("ORD", "O'Hare International Airport");
+        airports.put("ATL", "Hartsfield-Jackson Atlanta International Airport");
+        airports.put("DFW", "Dallas/Fort Worth International Airport");
+        
+        String airportName = airports.getOrDefault(airportCode, "Unknown Airport");
+        
+        return String.format("""
+            {
+                "success": true,
+                "data": [{
+                    "airport_name": "%s",
+                    "iata_code": "%s",
+                    "icao_code": "%s",
+                    "latitude": "40.6413",
+                    "longitude": "-73.7781",
+                    "geoname_id": "5128581",
+                    "timezone": "America/New_York",
+                    "gmt": "-5",
+                    "phone_number": "+1 718-244-4444",
+                    "country_name": "United States",
+                    "country_code": "US",
+                    "website": "https://www.jfkairport.com"
+                }]
+            }""", airportName, airportCode, airportCode);
+    }
+    
+    /**
+     * Returns mock live tracking data for demonstration purposes
+     * @param flightNumber The flight number
+     * @return Mock live tracking data as JSON string
+     */
+    private static String getMockLiveTrackingData(String flightNumber) {
+        return String.format("""
+            {
+                "success": true,
+                "data": [{
+                    "flight": {
+                        "number": "%s",
+                        "iata": "%s"
+                    },
+                    "live": {
+                        "updated": "%s",
+                        "latitude": 40.6413,
+                        "longitude": -73.7781,
+                        "altitude": 35000,
+                        "direction": 270,
+                        "speed_horizontal": 850,
+                        "speed_vertical": 0,
+                        "is_ground": false
+                    }
+                }]
+            }""", flightNumber, flightNumber, LocalDateTime.now());
     }
     
     /**
@@ -136,6 +320,20 @@ public class ApiIntegrator {
      */
     public String getWeatherData() throws IOException {
         return getWeatherData("New York"); // Default city
+    }
+    
+    /**
+     * Checks if the Aviation Stack API is available
+     * @return true if API is available, false otherwise
+     */
+    public boolean isAviationStackAvailable() {
+        try {
+            ConfigManager config = ConfigManager.getInstance();
+            String apiKey = config.getProperty("aviationstack.api.key");
+            return apiKey != null && !apiKey.isEmpty() && !"your_aviationstack_api_key_here".equals(apiKey);
+        } catch (Exception e) {
+            return false;
+        }
     }
     
     /**

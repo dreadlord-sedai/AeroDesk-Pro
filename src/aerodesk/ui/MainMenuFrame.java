@@ -44,7 +44,7 @@ public class MainMenuFrame extends JFrame {
         welcomePanel.add(welcomeLabel);
         
         // Main menu panel with buttons
-        JPanel menuPanel = new JPanel(new GridLayout(3, 2, 20, 20));
+        JPanel menuPanel = new JPanel(new GridLayout(4, 2, 20, 20));
         menuPanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));
         
         // Create menu buttons
@@ -53,6 +53,7 @@ public class MainMenuFrame extends JFrame {
         JButton baggageBtn = createMenuButton("Baggage Handling", "👜");
         JButton gateManagementBtn = createMenuButton("Gate Management", "🚪");
         JButton flightStatusBtn = createMenuButton("Flight Status", "📊");
+        JButton aviationStackBtn = createMenuButton("Aviation Stack API", "🌐");
         JButton reportsBtn = createMenuButton("Reports & Logs", "📋");
         
         menuPanel.add(flightSchedulingBtn);
@@ -60,6 +61,7 @@ public class MainMenuFrame extends JFrame {
         menuPanel.add(baggageBtn);
         menuPanel.add(gateManagementBtn);
         menuPanel.add(flightStatusBtn);
+        menuPanel.add(aviationStackBtn);
         menuPanel.add(reportsBtn);
         
         // Bottom panel with logout
@@ -80,6 +82,7 @@ public class MainMenuFrame extends JFrame {
         baggageBtn.setActionCommand("baggage");
         gateManagementBtn.setActionCommand("gate_management");
         flightStatusBtn.setActionCommand("flight_status");
+        aviationStackBtn.setActionCommand("aviation_stack");
         reportsBtn.setActionCommand("reports");
         logoutBtn.setActionCommand("logout");
     }
@@ -150,6 +153,9 @@ public class MainMenuFrame extends JFrame {
             case "flight_status":
                 openFlightStatus();
                 break;
+            case "aviation_stack":
+                openAviationStack();
+                break;
             case "reports":
                 openReports();
                 break;
@@ -192,6 +198,12 @@ public class MainMenuFrame extends JFrame {
     private void openReports() {
         SwingUtilities.invokeLater(() -> {
             new ReportsFrame().setVisible(true);
+        });
+    }
+    
+    private void openAviationStack() {
+        SwingUtilities.invokeLater(() -> {
+            new AviationStackFrame().setVisible(true);
         });
     }
     
