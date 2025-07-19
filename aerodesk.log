@@ -2368,3 +2368,137 @@
 [2025-07-19 14:28:44] DEBUG: Database connection established successfully
 [2025-07-19 14:28:44] INFO: User authenticated successfully: staff1
 [2025-07-19 14:28:44] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 14:38:18] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:38:19] INFO: Login screen displayed successfully
+[2025-07-19 14:38:28] DEBUG: Database connection established successfully
+[2025-07-19 14:38:28] INFO: User authenticated successfully: staff1
+[2025-07-19 14:38:28] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 14:38:30] DEBUG: Database connection established successfully
+[2025-07-19 14:38:31] INFO: Retrieved 15 flights from database
+[2025-07-19 14:38:31] INFO: Loaded 15 flights
+[2025-07-19 14:43:48] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:43:48] INFO: Login screen displayed successfully
+[2025-07-19 14:43:57] DEBUG: Database connection established successfully
+[2025-07-19 14:43:57] INFO: User authenticated successfully: staff1
+[2025-07-19 14:43:57] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 14:43:58] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 14:43:58] DEBUG: Database connection established successfully
+[2025-07-19 14:43:58] INFO: Retrieved 15 flights from database
+[2025-07-19 14:43:58] INFO: Loaded 15 flights
+[2025-07-19 14:43:58] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 14:44:06] DEBUG: Database connection established successfully
+[2025-07-19 14:44:06] INFO: Retrieved 15 flights from database
+[2025-07-19 14:44:07] DEBUG: Database connection established successfully
+[2025-07-19 14:44:07] INFO: Retrieved 15 flights from database
+[2025-07-19 14:44:07] DEBUG: Database connection established successfully
+[2025-07-19 14:44:07] INFO: Retrieved 15 flights from database
+[2025-07-19 14:44:07] DEBUG: Database connection established successfully
+[2025-07-19 14:44:07] INFO: Retrieved 15 flights from database
+[2025-07-19 14:44:08] DEBUG: Database connection established successfully
+[2025-07-19 14:44:08] INFO: Retrieved 15 flights from database
+[2025-07-19 14:44:10] DEBUG: Database connection established successfully
+[2025-07-19 14:44:10] INFO: Retrieved 25 bookings from database
+[2025-07-19 14:44:10] INFO: Loaded 25 bookings
+[2025-07-19 14:44:13] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 14:44:13] DEBUG: Database connection established successfully
+[2025-07-19 14:44:13] INFO: Retrieved 15 flights from database
+[2025-07-19 14:44:13] INFO: Loaded 15 flights
+[2025-07-19 14:44:13] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 14:47:21] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:47:21] INFO: Login screen displayed successfully
+[2025-07-19 14:47:30] DEBUG: Database connection established successfully
+[2025-07-19 14:47:30] INFO: User authenticated successfully: staff1
+[2025-07-19 14:47:30] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 14:47:32] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 14:47:32] DEBUG: Database connection established successfully
+[2025-07-19 14:47:32] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:32] INFO: Loaded 15 flights
+[2025-07-19 14:47:32] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 14:47:39] DEBUG: Database connection established successfully
+[2025-07-19 14:47:39] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:39] INFO: Flight Scheduling: Selected: LH803 (JFK ? FRA)
+[2025-07-19 14:47:39] DEBUG: Database connection established successfully
+[2025-07-19 14:47:39] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:39] INFO: Flight Scheduling: Selected: EK1005 (JFK ? DXB)
+[2025-07-19 14:47:40] DEBUG: Database connection established successfully
+[2025-07-19 14:47:40] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:40] INFO: Flight Scheduling: Selected: AA1207 (JFK ? DFW)
+[2025-07-19 14:47:54] DEBUG: Database connection established successfully
+[2025-07-19 14:47:54] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:54] INFO: Flight Scheduling: Selected: JL904 (JFK ? NRT)
+[2025-07-19 14:47:55] DEBUG: Database connection established successfully
+[2025-07-19 14:47:55] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:55] INFO: Flight Scheduling: Selected: DL505 (JFK ? ATL)
+[2025-07-19 14:47:55] DEBUG: Database connection established successfully
+[2025-07-19 14:47:55] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:55] INFO: Flight Scheduling: Selected: AF702 (JFK ? CDG)
+[2025-07-19 14:47:55] DEBUG: Database connection established successfully
+[2025-07-19 14:47:55] INFO: Retrieved 15 flights from database
+[2025-07-19 14:47:55] INFO: Flight Scheduling: Selected: JL904 (JFK ? NRT)
+[2025-07-19 14:48:02] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 14:48:02] DEBUG: Database connection established successfully
+[2025-07-19 14:48:02] INFO: Retrieved 15 flights from database
+[2025-07-19 14:48:02] INFO: Loaded 15 flights
+[2025-07-19 14:48:02] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 14:50:18] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:50:18] INFO: Login screen displayed successfully
+[2025-07-19 14:50:30] DEBUG: Database connection established successfully
+[2025-07-19 14:50:30] INFO: User authenticated successfully: staff1
+[2025-07-19 14:50:30] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 14:50:31] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 14:50:31] DEBUG: Database connection established successfully
+[2025-07-19 14:50:31] INFO: Retrieved 15 flights from database
+[2025-07-19 14:50:31] INFO: Loaded 15 flights
+[2025-07-19 14:50:31] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 14:50:33] DEBUG: Database connection established successfully
+[2025-07-19 14:50:33] INFO: Retrieved 15 flights from database
+[2025-07-19 14:50:33] INFO: Flight Scheduling: Selected: SW404 (JFK ? DEN)
+[2025-07-19 14:50:45] DEBUG: Database connection established successfully
+[2025-07-19 14:50:45] INFO: Retrieved 15 flights from database
+[2025-07-19 14:50:45] INFO: Flight Scheduling: Selected: DL1106 (JFK ? MIA)
+[2025-07-19 14:50:46] DEBUG: Database connection established successfully
+[2025-07-19 14:50:46] INFO: Retrieved 15 flights from database
+[2025-07-19 14:50:46] INFO: Flight Scheduling: Selected: DL505 (JFK ? ATL)
+[2025-07-19 14:50:46] DEBUG: Database connection established successfully
+[2025-07-19 14:50:46] INFO: Retrieved 15 flights from database
+[2025-07-19 14:50:46] INFO: Flight Scheduling: Selected: SW404 (JFK ? DEN)
+[2025-07-19 14:50:46] DEBUG: Database connection established successfully
+[2025-07-19 14:50:46] INFO: Retrieved 15 flights from database
+[2025-07-19 14:50:46] INFO: Flight Scheduling: Selected: LH803 (JFK ? FRA)
+[2025-07-19 14:54:31] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:54:32] INFO: Login screen displayed successfully
+[2025-07-19 14:54:40] DEBUG: Database connection established successfully
+[2025-07-19 14:54:40] INFO: User authenticated successfully: staff1
+[2025-07-19 14:54:40] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 14:54:41] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 14:54:41] DEBUG: Database connection established successfully
+[2025-07-19 14:54:41] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:41] INFO: Loaded 15 flights
+[2025-07-19 14:54:41] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 14:54:44] DEBUG: Database connection established successfully
+[2025-07-19 14:54:44] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:44] INFO: Flight Scheduling: Selected: DL505 (JFK ? ATL)
+[2025-07-19 14:54:44] DEBUG: Database connection established successfully
+[2025-07-19 14:54:44] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:44] INFO: Flight Scheduling: Selected: BA601 (JFK ? LHR)
+[2025-07-19 14:54:45] DEBUG: Database connection established successfully
+[2025-07-19 14:54:45] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:45] INFO: Flight Scheduling: Selected: LH803 (JFK ? FRA)
+[2025-07-19 14:54:45] DEBUG: Database connection established successfully
+[2025-07-19 14:54:45] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:45] INFO: Flight Scheduling: Selected: EK1005 (JFK ? DXB)
+[2025-07-19 14:54:46] DEBUG: Database connection established successfully
+[2025-07-19 14:54:46] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:46] INFO: Flight Scheduling: Selected: BA601 (JFK ? LHR)
+[2025-07-19 14:54:46] DEBUG: Database connection established successfully
+[2025-07-19 14:54:46] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:46] INFO: Flight Scheduling: Selected: UA303 (JFK ? SFO)
+[2025-07-19 14:54:47] DEBUG: Database connection established successfully
+[2025-07-19 14:54:47] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:47] INFO: Flight Scheduling: Selected: DL101 (JFK ? LAX)
+[2025-07-19 14:54:59] DEBUG: Database connection established successfully
+[2025-07-19 14:54:59] INFO: Retrieved 15 flights from database
+[2025-07-19 14:54:59] INFO: Flight Scheduling: Selected: AF702 (JFK ? CDG)
+[2025-07-19 14:55:23] DEBUG: Database connection established successfully
+[2025-07-19 14:55:23] INFO: Retrieved 25 bookings from database
+[2025-07-19 14:55:23] INFO: Loaded 25 bookings
