@@ -173,6 +173,32 @@ openweathermap.api.key=your_key
 - Async processing
 - Database indexing
 
+### Multithreading in APIs
+- **SwingWorker**: UI-safe API calls
+- **ScheduledExecutorService**: Background tasks
+- **CompletableFuture**: Async operations
+- **ConcurrentHashMap**: Thread-safe caching
+
+#### Thread Pool Configuration
+```java
+// AviationStack API: 3 threads
+scheduler = Executors.newScheduledThreadPool(3);
+
+// Flight Data Sync: 2 threads
+scheduler = Executors.newScheduledThreadPool(2);
+
+// Dashboard Metrics: 1 thread
+scheduler = Executors.newScheduledThreadPool(1);
+```
+
+#### Update Intervals
+- Live Flight Tracking: 10 seconds
+- Flight Data Sync: 5 minutes
+- Flight Status: 2 minutes
+- Dashboard Metrics: 30 seconds
+- Map Updates: 60 seconds
+- Baggage Status: 10 seconds
+
 ## 🚀 Deployment
 
 ### Requirements

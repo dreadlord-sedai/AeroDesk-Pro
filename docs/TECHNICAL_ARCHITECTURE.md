@@ -606,6 +606,163 @@ public class BackgroundTaskManager {
 }
 ```
 
+### 4. API Multithreading Architecture
+
+#### Thread Pool Configuration
+```java
+// Component-specific thread pools for optimal resource management
+public class ThreadPoolManager {
+    
+    // AviationStack API operations - 3 threads for concurrent API calls
+    private final ScheduledExecutorService aviationScheduler = 
+        Executors.newScheduledThreadPool(3);
+    
+    // Flight data synchronization - 2 threads for data sync operations
+    private final ScheduledExecutorService flightSyncScheduler = 
+        Executors.newScheduledThreadPool(2);
+    
+    // Dashboard metrics - 1 thread for KPI collection
+    private final ScheduledExecutorService metricsScheduler = 
+        Executors.newScheduledThreadPool(1);
+    
+    // Map updates - 1 thread for map data refresh
+    private final ScheduledExecutorService mapScheduler = 
+        Executors.newScheduledThreadPool(1);
+    
+    // Baggage simulation - 1 thread for status updates
+    private final ScheduledExecutorService baggageScheduler = 
+        Executors.newScheduledThreadPool(1);
+}
+```
+
+#### API Call Patterns
+```java
+// SwingWorker pattern for UI-safe API calls
+public class APICallWorker extends SwingWorker<String, Void> {
+    
+    private final String apiEndpoint;
+    private final Map<String, String> parameters;
+    
+    public APICallWorker(String apiEndpoint, Map<String, String> parameters) {
+        this.apiEndpoint = apiEndpoint;
+        this.parameters = parameters;
+    }
+    
+    @Override
+    protected String doInBackground() throws Exception {
+        // API call executed in background thread
+        return ApiIntegrator.makeHttpRequest(buildUrl(apiEndpoint, parameters));
+    }
+    
+    @Override
+    protected void done() {
+        // UI update executed on EDT
+        SwingUtilities.invokeLater(() -> {
+            try {
+                String result = get();
+                updateUI(result);
+            } catch (Exception ex) {
+                handleError(ex);
+            }
+        });
+    }
+}
+
+// CompletableFuture pattern for async operations
+public class AsyncAPIService {
+    
+    public CompletableFuture<Weather> getWeatherDataAsync(double lat, double lon, String airportCode) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                return fetchWeatherFromAPI(lat, lon, airportCode);
+            } catch (Exception e) {
+                return createMockWeatherData(airportCode);
+            }
+        });
+    }
+    
+    public CompletableFuture<List<FlightInfo>> getFlightsAsync(String airportCode) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                return fetchFlightsFromAPI(airportCode);
+            } catch (Exception e) {
+                return createMockFlightData(airportCode);
+            }
+        });
+    }
+}
+```
+
+#### Real-time Data Synchronization
+```java
+// Scheduled background tasks for real-time updates
+public class RealTimeDataSync {
+    
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);
+    
+    public void startLiveTracking(String flightNumber) {
+        // Live flight tracking every 10 seconds
+        scheduler.scheduleAtFixedRate(() -> {
+            SwingUtilities.invokeLater(() -> {
+                updateFlightPosition(flightNumber);
+            });
+        }, 0, 10, TimeUnit.SECONDS);
+    }
+    
+    public void startDataSync() {
+        // Flight data sync every 5 minutes
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                syncFlightData();
+            } catch (Exception e) {
+                FileLogger.getInstance().logError("Data sync error: " + e.getMessage());
+            }
+        }, 0, 5, TimeUnit.MINUTES);
+        
+        // Status updates every 2 minutes
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                updateFlightStatus();
+            } catch (Exception e) {
+                FileLogger.getInstance().logError("Status update error: " + e.getMessage());
+            }
+        }, 1, 2, TimeUnit.MINUTES);
+    }
+}
+```
+
+#### Thread-Safe Caching
+```java
+// Concurrent caching for API responses
+public class APICacheManager {
+    
+    private final Map<String, Object> cache = new ConcurrentHashMap<>();
+    private final Map<String, LocalDateTime> timestamps = new ConcurrentHashMap<>();
+    private final AtomicInteger hitCount = new AtomicInteger(0);
+    private final AtomicInteger missCount = new AtomicInteger(0);
+    
+    public <T> T getCachedData(String key, Supplier<T> dataLoader, Duration expiry) {
+        LocalDateTime timestamp = timestamps.get(key);
+        
+        if (timestamp != null && !isExpired(timestamp, expiry)) {
+            hitCount.incrementAndGet();
+            return (T) cache.get(key);
+        }
+        
+        missCount.incrementAndGet();
+        T data = dataLoader.get();
+        cache.put(key, data);
+        timestamps.put(key, LocalDateTime.now());
+        
+        return data;
+    }
+    
+    private boolean isExpired(LocalDateTime timestamp, Duration expiry) {
+        return LocalDateTime.now().minus(expiry).isAfter(timestamp);
+    }
+}
+```
+
 ---
 
 ## Deployment Architecture

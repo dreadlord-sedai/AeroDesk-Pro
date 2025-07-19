@@ -88,6 +88,33 @@ The application will automatically create required tables on first run:
    - Sign up at [openweathermap.org](https://openweathermap.org)
    - Add API key to config.properties
 
+### Multithreading Configuration
+The application uses extensive multithreading for API operations:
+
+#### Thread Pool Settings
+```properties
+# Thread Configuration (in config.properties)
+aviationstack.threads=3
+flight.sync.threads=2
+dashboard.threads=1
+map.update.threads=1
+baggage.threads=1
+```
+
+#### Background Task Intervals
+- **Live Flight Tracking**: 10 seconds
+- **Flight Data Sync**: 5 minutes
+- **Flight Status Updates**: 2 minutes
+- **Dashboard Metrics**: 30 seconds
+- **Map Updates**: 60 seconds
+- **Baggage Status**: 10 seconds
+
+#### Performance Considerations
+- **Memory Usage**: Each thread pool consumes memory
+- **CPU Usage**: Background tasks use CPU resources
+- **Network**: API calls consume bandwidth
+- **Database**: Concurrent database operations
+
 ## 🎯 Quick Navigation
 
 ### Main Menu Features

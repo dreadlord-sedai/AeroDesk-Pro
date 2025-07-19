@@ -560,6 +560,300 @@ Map<String, Weather> weatherCache
 Map<String, LocalDateTime> cacheTimestamps
 ```
 
+### 3. Multithreading in API Operations
+
+#### Overview
+AeroDesk Pro extensively uses multithreading to ensure responsive API operations while maintaining a smooth user experience. All API calls are executed in background threads to prevent UI blocking.
+
+#### Key Multithreading Patterns
+
+##### 1. SwingWorker Pattern
+**Purpose**: Execute API calls in background threads without blocking the UI
+**Implementation**:
+```java
+SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
+    @Override
+    protected String doInBackground() throws Exception {
+        // API call executed in background thread
+        return aviationService.getFlightStatusSummary(flightNumber);
+    }
+    
+    @Override
+    protected void done() {
+        // UI update executed on Event Dispatch Thread (EDT)
+        try {
+            String result = get();
+            resultArea.setText(result);
+        } catch (Exception ex) {
+            // Handle errors
+        }
+    }
+};
+worker.execute();
+```
+
+**Benefits**:
+- Prevents UI freezing during API operations
+- Automatic thread management
+- Built-in error handling
+- Thread-safe UI updates
+
+##### 2. ScheduledExecutorService Pattern
+**Purpose**: Periodic background tasks for real-time data updates
+**Implementation**:
+```java
+// AviationStack API - Live tracking updates every 10 seconds
+private ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(3);
+
+scheduler.scheduleAtFixedRate(() -> {
+    if (liveUpdatesActive) {
+        SwingUtilities.invokeLater(() -> {
+            updateLiveTrackingData(flightNumber);
+        });
+    }
+}, 10, 10, TimeUnit.SECONDS);
+
+// Flight data synchronization every 5 minutes
+scheduler.scheduleAtFixedRate(() -> {
+    try {
+        syncFlightData();
+    } catch (Exception e) {
+        FileLogger.getInstance().logError("Error in flight data sync: " + e.getMessage());
+    }
+}, 0, 5, TimeUnit.MINUTES);
+```
+
+**Benefits**:
+- Automatic scheduling of periodic tasks
+- Configurable thread pool sizes
+- Graceful shutdown handling
+- Exception isolation
+
+##### 3. CompletableFuture Pattern
+**Purpose**: Asynchronous API operations with non-blocking execution
+**Implementation**:
+```java
+// Weather API - Asynchronous weather data fetching
+public CompletableFuture<Weather> getWeatherData(double latitude, double longitude, String airportCode) {
+    return CompletableFuture.supplyAsync(() -> {
+        try {
+            // Check cache first
+            if (isCacheValid(airportCode)) {
+                return weatherCache.get(airportCode);
+            }
+            
+            // Fetch from API
+            String url = String.format("%s?lat=%.4f&lon=%.4f&appid=%s&units=metric", 
+                baseUrl, latitude, longitude, apiKey);
+            
+            HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Accept", "application/json")
+                .GET()
+                .build();
+            
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            // Process response and return Weather object
+        } catch (Exception e) {
+            return createMockWeatherData(airportCode);
+        }
+    });
+}
+```
+
+**Benefits**:
+- Non-blocking API operations
+- Built-in error handling
+- Easy composition of async operations
+- Automatic thread pool management
+
+##### 4. Concurrent Collections
+**Purpose**: Thread-safe data structures for shared data access
+**Implementation**:
+```java
+// Thread-safe caching for weather data
+private final Map<String, Weather> weatherCache = new ConcurrentHashMap<>();
+private final Map<String, LocalDateTime> cacheTimestamps = new ConcurrentHashMap<>();
+
+// Thread-safe API call counting
+private AtomicInteger apiCallCount = new AtomicInteger(0);
+```
+
+**Benefits**:
+- Safe concurrent access without explicit synchronization
+- High performance for read-heavy workloads
+- Built-in thread safety
+- No manual locking required
+
+#### Thread Pool Configuration
+
+##### Thread Pool Sizes by Component
+```java
+// AviationStackFrame: 3 threads for API operations
+scheduler = Executors.newScheduledThreadPool(3);
+
+// FlightDataIntegrationService: 2 threads for data sync
+scheduler = Executors.newScheduledThreadPool(2);
+
+// DashboardMetrics: 1 thread for metrics collection
+scheduler = Executors.newScheduledThreadPool(1);
+
+// MapPanel: 1 thread for map updates
+updateScheduler = Executors.newScheduledThreadPool(1);
+
+// BaggageSimulator: 1 thread for status updates
+executor = Executors.newScheduledThreadPool(1);
+```
+
+##### Update Intervals
+- **Live Flight Tracking**: Every 10 seconds
+- **Flight Data Sync**: Every 5 minutes
+- **Flight Status Updates**: Every 2 minutes
+- **Dashboard Metrics**: Every 30 seconds
+- **Map Updates**: Every 60 seconds
+- **Baggage Status**: Every 10 seconds
+- **Weather Cache**: 10 minutes expiration
+
+#### Thread Safety Measures
+
+##### 1. UI Thread Safety
+```java
+// All UI updates use SwingUtilities.invokeLater()
+SwingUtilities.invokeLater(() -> {
+    resultArea.setText(result);
+    updateStatus("Operation completed", ThemeManager.SUCCESS_GREEN);
+});
+
+// Status updates synchronized with UI thread
+private void updateStatus(String message, Color color) {
+    SwingUtilities.invokeLater(() -> {
+        statusLabel.setText(message);
+        statusLabel.setForeground(color);
+    });
+}
+```
+
+##### 2. Data Thread Safety
+```java
+// Atomic operations for counters
+private AtomicInteger apiCallCount = new AtomicInteger(0);
+
+public void incrementApiCallCount() {
+    apiCallCount.incrementAndGet();
+    lastApiCall = LocalDateTime.now();
+}
+
+// Thread-safe data access
+private final Map<String, Weather> weatherCache = new ConcurrentHashMap<>();
+private final Map<String, KPI> kpiData = new ConcurrentHashMap<>();
+```
+
+##### 3. Resource Management
+```java
+// Proper shutdown of ScheduledExecutorService
+public void shutdown() {
+    if (scheduler != null && !scheduler.isShutdown()) {
+        scheduler.shutdown();
+        try {
+            if (!scheduler.awaitTermination(60, TimeUnit.SECONDS)) {
+                scheduler.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            scheduler.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+```
+
+#### Performance Benefits
+
+##### 1. Responsive User Interface
+- **Non-blocking Operations**: API calls execute in background threads
+- **Real-time Updates**: UI remains responsive during data operations
+- **Smooth User Experience**: No freezing or hanging during API calls
+
+##### 2. Concurrent Processing
+- **Parallel API Calls**: Multiple API operations can run simultaneously
+- **Background Synchronization**: Data sync happens without user intervention
+- **Efficient Resource Usage**: Thread pooling prevents excessive thread creation
+
+##### 3. Scalability
+- **Configurable Thread Pools**: Adjust thread counts based on system resources
+- **Graceful Degradation**: System continues operating even if some APIs fail
+- **Load Distribution**: Work is distributed across multiple threads
+
+#### Error Handling in Multithreaded Operations
+
+##### 1. Exception Isolation
+```java
+scheduler.scheduleAtFixedRate(() -> {
+    try {
+        syncFlightData();
+    } catch (Exception e) {
+        // Log error but don't stop the scheduler
+        FileLogger.getInstance().logError("Error in flight data sync: " + e.getMessage());
+    }
+}, 0, 5, TimeUnit.MINUTES);
+```
+
+##### 2. Fallback Mechanisms
+```java
+// Weather API with fallback to mock data
+try {
+    Weather weather = fetchFromAPI(lat, lon, airportCode);
+    return weather;
+} catch (Exception e) {
+    FileLogger.getInstance().logError("Weather API error: " + e.getMessage());
+    return createMockWeatherData(airportCode);
+}
+```
+
+##### 3. UI Error Handling
+```java
+@Override
+protected void done() {
+    try {
+        String result = get();
+        resultArea.setText(result);
+        updateStatus("Operation completed", ThemeManager.SUCCESS_GREEN);
+    } catch (Exception ex) {
+        resultArea.setText("Error: " + ex.getMessage());
+        updateStatus("Operation failed", ThemeManager.ERROR_RED);
+        FileLogger.getInstance().logError("API operation failed: " + ex.getMessage());
+    }
+}
+```
+
+#### Monitoring and Debugging
+
+##### 1. Thread Monitoring
+```java
+// API call counting and monitoring
+private AtomicInteger apiCallCount = new AtomicInteger(0);
+private LocalDateTime lastApiCall = LocalDateTime.now();
+
+public void incrementApiCallCount() {
+    apiCallCount.incrementAndGet();
+    lastApiCall = LocalDateTime.now();
+}
+```
+
+##### 2. Performance Logging
+```java
+// Log API performance metrics
+FileLogger.getInstance().logInfo("API call completed in " + duration + "ms");
+FileLogger.getInstance().logInfo("Total API calls: " + apiCallCount.get());
+```
+
+##### 3. Thread Pool Status
+```java
+// Monitor thread pool health
+if (scheduler.isShutdown()) {
+    FileLogger.getInstance().logWarning("Scheduler is shutdown");
+}
+```
+
 ---
 
 ## User Interface Design
