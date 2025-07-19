@@ -468,7 +468,7 @@ public class GateManagementFrame extends JFrame {
         Gate gate = new Gate();
         gate.setGateId(Integer.parseInt(gatesTableModel.getValueAt(row, 0).toString()));
         gate.setGateName(gatesTableModel.getValueAt(row, 1).toString());
-        gate.setActive(Boolean.parseBoolean(gatesTableModel.getValueAt(row, 2).toString()));
+        gate.setStatus(Gate.GateStatus.valueOf(gatesTableModel.getValueAt(row, 2).toString()));
         return gate;
     }
     
@@ -487,7 +487,7 @@ public class GateManagementFrame extends JFrame {
                 Object[] row = {
                     gate.getGateId(),
                     gate.getGateName(),
-                    gate.isActive(),
+                    gate.getStatus().name(),
                     gate.getCreatedAt() != null ? gate.getCreatedAt().format(dateFormatter) : "N/A"
                 };
                 gatesTableModel.addRow(row);
@@ -521,8 +521,8 @@ public class GateManagementFrame extends JFrame {
                         assignment.getAssignmentId(),
                         gateInfo,
                         flightInfo,
-                        assignment.getAssignedFrom() != null ? assignment.getAssignedFrom().format(dateFormatter) : "N/A",
-                        assignment.getAssignedTo() != null ? assignment.getAssignedTo().format(dateFormatter) : "N/A"
+                        assignment.getAssignmentTime() != null ? assignment.getAssignmentTime().format(dateFormatter) : "N/A",
+                        assignment.getDepartureTime() != null ? assignment.getDepartureTime().format(dateFormatter) : "N/A"
                     };
                     assignmentsTableModel.addRow(row);
                 } catch (DatabaseException ex) {

@@ -507,8 +507,8 @@ public class ReportsFrame extends JFrame {
                     Object[] row = {
                         "Gate " + assignment.getGateId(),
                         flightNo,
-                        assignment.getAssignedFrom() != null ? assignment.getAssignedFrom().format(dateFormatter) : "N/A",
-                        assignment.getAssignedTo() != null ? assignment.getAssignedTo().format(dateFormatter) : "N/A",
+                        assignment.getAssignmentTime() != null ? assignment.getAssignmentTime().format(dateFormatter) : "N/A",
+                        assignment.getDepartureTime() != null ? assignment.getDepartureTime().format(dateFormatter) : "N/A",
                         "Active"
                     };
                     gatesReportModel.addRow(row);
@@ -604,7 +604,7 @@ public class ReportsFrame extends JFrame {
             stats.append("----------------\n");
             stats.append("Total Assignments: ").append(assignments.size()).append("\n");
             stats.append("Active Gates: ").append(assignments.stream()
-                .filter(a -> a.getAssignedTo() != null && a.getAssignedTo().isAfter(now)).count()).append("\n\n");
+                .filter(a -> a.getDepartureTime() != null && a.getDepartureTime().isAfter(now)).count()).append("\n\n");
             
         } catch (DatabaseException ex) {
             stats.append("ERROR: ").append(ex.getMessage()).append("\n");

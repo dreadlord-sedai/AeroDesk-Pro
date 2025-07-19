@@ -84,3 +84,110 @@
 [2025-07-19 12:20:44] DEBUG: Database connection established successfully
 [2025-07-19 12:20:44] INFO: User authenticated successfully: staff1
 [2025-07-19 12:20:44] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 12:21:45] INFO: AeroDesk Pro starting up...
+[2025-07-19 12:21:46] INFO: Login screen displayed successfully
+[2025-07-19 12:22:00] DEBUG: Database connection established successfully
+[2025-07-19 12:22:00] INFO: User authenticated successfully: staff1
+[2025-07-19 12:22:00] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 12:22:01] DEBUG: Database connection established successfully
+[2025-07-19 12:22:01] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:22:01] ERROR: Error loading flights: Failed to retrieve flights
+[2025-07-19 12:22:06] DEBUG: Database connection established successfully
+[2025-07-19 12:22:06] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:22:06] INFO: Loaded 0 bookings
+[2025-07-19 12:22:07] DEBUG: Database connection established successfully
+[2025-07-19 12:22:07] ERROR: Failed to retrieve gates: Unknown column 'gate_name' in 'order clause'
+[2025-07-19 12:22:07] ERROR: Failed to load gates: Failed to retrieve gates
+[2025-07-19 12:22:09] DEBUG: Database connection established successfully
+[2025-07-19 12:22:09] ERROR: Failed to retrieve gate assignments: Unknown column 'assignment_id' in 'order clause'
+[2025-07-19 12:22:09] ERROR: Failed to load assignments: Failed to retrieve gate assignments
+[2025-07-19 12:22:11] DEBUG: Database connection established successfully
+[2025-07-19 12:22:11] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:22:11] INFO: Loaded 0 checked-in passengers
+[2025-07-19 12:22:11] DEBUG: Database connection established successfully
+[2025-07-19 12:22:11] INFO: Retrieved 0 baggage items from database
+[2025-07-19 12:22:11] INFO: Loaded 0 baggage items
+[2025-07-19 12:22:14] DEBUG: Database connection established successfully
+[2025-07-19 12:22:14] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:22:14] ERROR: Failed to load flight data: Failed to retrieve flights
+[2025-07-19 12:22:15] DEBUG: Database connection established successfully
+[2025-07-19 12:22:15] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:22:19] DEBUG: Database connection established successfully
+[2025-07-19 12:22:19] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:22:19] ERROR: Failed to load flights report: Failed to retrieve flights
+[2025-07-19 12:22:19] DEBUG: Database connection established successfully
+[2025-07-19 12:22:19] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:22:19] DEBUG: Database connection established successfully
+[2025-07-19 12:22:19] INFO: Retrieved 0 baggage items from database
+[2025-07-19 12:22:19] DEBUG: Database connection established successfully
+[2025-07-19 12:22:19] ERROR: Failed to retrieve gate assignments: Unknown column 'assignment_id' in 'order clause'
+[2025-07-19 12:22:19] ERROR: Failed to load gates report: Failed to retrieve gate assignments
+[2025-07-19 12:22:19] DEBUG: Database connection established successfully
+[2025-07-19 12:22:19] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:22:19] ERROR: Failed to generate system stats: Failed to retrieve flights
+[2025-07-19 12:29:33] INFO: AeroDesk Pro starting up...
+[2025-07-19 12:29:33] INFO: Login screen displayed successfully
+[2025-07-19 12:29:44] DEBUG: Database connection established successfully
+[2025-07-19 12:29:44] INFO: User authenticated successfully: staff1
+[2025-07-19 12:29:44] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 12:29:46] DEBUG: Database connection established successfully
+[2025-07-19 12:29:46] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:29:46] ERROR: Error loading flights: Failed to retrieve flights
+[2025-07-19 12:29:50] DEBUG: Database connection established successfully
+[2025-07-19 12:29:50] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:29:50] INFO: Loaded 0 bookings
+[2025-07-19 12:29:52] DEBUG: Database connection established successfully
+[2025-07-19 12:29:52] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:29:52] INFO: Loaded 0 checked-in passengers
+[2025-07-19 12:29:52] DEBUG: Database connection established successfully
+[2025-07-19 12:29:52] INFO: Retrieved 0 baggage items from database
+[2025-07-19 12:29:52] INFO: Loaded 0 baggage items
+[2025-07-19 12:29:54] DEBUG: Database connection established successfully
+[2025-07-19 12:29:54] ERROR: Failed to retrieve gates: Unknown column 'gate_name' in 'order clause'
+[2025-07-19 12:29:54] ERROR: Failed to load gates: Failed to retrieve gates
+[2025-07-19 12:29:55] DEBUG: Database connection established successfully
+[2025-07-19 12:29:55] ERROR: Failed to retrieve gate assignments: Unknown column 'assignment_id' in 'order clause'
+[2025-07-19 12:29:55] ERROR: Failed to load assignments: Failed to retrieve gate assignments
+[2025-07-19 12:29:57] DEBUG: Database connection established successfully
+[2025-07-19 12:29:57] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:29:57] ERROR: Failed to load flight data: Failed to retrieve flights
+[2025-07-19 12:29:58] DEBUG: Database connection established successfully
+[2025-07-19 12:29:58] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:30:03] DEBUG: Database connection established successfully
+[2025-07-19 12:30:03] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:30:03] ERROR: Failed to load flights report: Failed to retrieve flights
+[2025-07-19 12:30:03] DEBUG: Database connection established successfully
+[2025-07-19 12:30:03] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:30:03] DEBUG: Database connection established successfully
+[2025-07-19 12:30:03] INFO: Retrieved 0 baggage items from database
+[2025-07-19 12:30:03] DEBUG: Database connection established successfully
+[2025-07-19 12:30:03] ERROR: Failed to retrieve gate assignments: Unknown column 'assignment_id' in 'order clause'
+[2025-07-19 12:30:03] ERROR: Failed to load gates report: Failed to retrieve gate assignments
+[2025-07-19 12:30:03] DEBUG: Database connection established successfully
+[2025-07-19 12:30:03] ERROR: Failed to retrieve flights: Unknown column 'depart_time' in 'order clause'
+[2025-07-19 12:30:03] ERROR: Failed to generate system stats: Failed to retrieve flights
+[2025-07-19 12:36:15] INFO: AeroDesk Pro starting up...
+[2025-07-19 12:36:15] INFO: Login screen displayed successfully
+[2025-07-19 12:36:25] DEBUG: Database connection established successfully
+[2025-07-19 12:36:25] INFO: User authenticated successfully: staff1
+[2025-07-19 12:36:25] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 12:36:26] DEBUG: Database connection established successfully
+[2025-07-19 12:36:26] INFO: Retrieved 4 flights from database
+[2025-07-19 12:36:26] INFO: Loaded 4 flights
+[2025-07-19 12:36:29] DEBUG: Database connection established successfully
+[2025-07-19 12:36:29] INFO: Retrieved 4 flights from database
+[2025-07-19 12:36:30] DEBUG: Database connection established successfully
+[2025-07-19 12:36:30] INFO: Retrieved 4 flights from database
+[2025-07-19 12:36:32] DEBUG: Database connection established successfully
+[2025-07-19 12:36:32] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:36:32] INFO: Loaded 0 bookings
+[2025-07-19 12:36:39] DEBUG: Database connection established successfully
+[2025-07-19 12:36:39] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:36:39] INFO: Loaded 0 checked-in passengers
+[2025-07-19 12:36:39] DEBUG: Database connection established successfully
+[2025-07-19 12:36:39] INFO: Retrieved 0 baggage items from database
+[2025-07-19 12:36:39] INFO: Loaded 0 baggage items
+[2025-07-19 12:36:43] DEBUG: Database connection established successfully
+[2025-07-19 12:36:43] INFO: Retrieved 0 bookings from database
+[2025-07-19 12:36:43] INFO: Loaded 0 bookings
+[2025-07-19 12:36:51] INFO: User staff1 logged out

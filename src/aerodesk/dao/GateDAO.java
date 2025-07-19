@@ -25,7 +25,7 @@ public class GateDAO {
      */
     public List<Gate> getAllGates() throws DatabaseException {
         List<Gate> gates = new ArrayList<>();
-        String sql = "SELECT * FROM gates ORDER BY gate_name";
+        String sql = "SELECT * FROM gates ORDER BY gate_number";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -52,7 +52,7 @@ public class GateDAO {
      */
     public List<Gate> getActiveGates() throws DatabaseException {
         List<Gate> gates = new ArrayList<>();
-        String sql = "SELECT * FROM gates WHERE is_active = TRUE ORDER BY gate_name";
+        String sql = "SELECT * FROM gates WHERE status = 'AVAILABLE' ORDER BY gate_number";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -79,7 +79,7 @@ public class GateDAO {
      * @throws DatabaseException if database operation fails
      */
     public Gate getGateById(int gateId) throws DatabaseException {
-        String sql = "SELECT * FROM gates WHERE gate_id = ?";
+        String sql = "SELECT * FROM gates WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -109,7 +109,7 @@ public class GateDAO {
      * @throws DatabaseException if database operation fails
      */
     public Gate getGateByName(String gateName) throws DatabaseException {
-        String sql = "SELECT * FROM gates WHERE gate_name = ?";
+        String sql = "SELECT * FROM gates WHERE gate_number = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -139,13 +139,14 @@ public class GateDAO {
      * @throws DatabaseException if database operation fails
      */
     public Gate createGate(Gate gate) throws DatabaseException {
-        String sql = "INSERT INTO gates (gate_name, is_active) VALUES (?, ?)";
+        String sql = "INSERT INTO gates (gate_number, terminal, status) VALUES (?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setString(1, gate.getGateName());
-            stmt.setBoolean(2, gate.isActive());
+            stmt.setString(2, gate.getTerminal());
+            stmt.setString(3, gate.getStatus().name());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -176,14 +177,15 @@ public class GateDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean updateGate(Gate gate) throws DatabaseException {
-        String sql = "UPDATE gates SET gate_name = ?, is_active = ? WHERE gate_id = ?";
+        String sql = "UPDATE gates SET gate_number = ?, terminal = ?, status = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setString(1, gate.getGateName());
-            stmt.setBoolean(2, gate.isActive());
-            stmt.setInt(3, gate.getGateId());
+            stmt.setString(2, gate.getTerminal());
+            stmt.setString(3, gate.getStatus().name());
+            stmt.setInt(4, gate.getGateId());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -208,7 +210,7 @@ public class GateDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean deleteGate(int gateId) throws DatabaseException {
-        String sql = "DELETE FROM gates WHERE gate_id = ?";
+        String sql = "DELETE FROM gates WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -238,22 +240,22 @@ public class GateDAO {
      * @return true if update was successful
      * @throws DatabaseException if database operation fails
      */
-    public boolean setGateActive(int gateId, boolean active) throws DatabaseException {
-        String sql = "UPDATE gates SET is_active = ? WHERE gate_id = ?";
+    public boolean setGateStatus(int gateId, Gate.GateStatus status) throws DatabaseException {
+        String sql = "UPDATE gates SET status = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
-            stmt.setBoolean(1, active);
+            stmt.setString(1, status.name());
             stmt.setInt(2, gateId);
             
             int affectedRows = stmt.executeUpdate();
             
             if (affectedRows > 0) {
-                FileLogger.getInstance().logInfo("Set gate " + gateId + " active status to: " + active);
+                FileLogger.getInstance().logInfo("Set gate " + gateId + " status to: " + status);
                 return true;
             } else {
-                FileLogger.getInstance().logWarning("No gate found to update active status with ID: " + gateId);
+                FileLogger.getInstance().logWarning("No gate found to update status with ID: " + gateId);
                 return false;
             }
             
@@ -271,9 +273,10 @@ public class GateDAO {
      */
     private Gate mapResultSetToGate(ResultSet rs) throws SQLException {
         Gate gate = new Gate();
-        gate.setGateId(rs.getInt("gate_id"));
-        gate.setGateName(rs.getString("gate_name"));
-        gate.setActive(rs.getBoolean("is_active"));
+        gate.setGateId(rs.getInt("id"));
+        gate.setGateName(rs.getString("gate_number"));
+        gate.setTerminal(rs.getString("terminal"));
+        gate.setStatus(Gate.GateStatus.valueOf(rs.getString("status")));
         
         Timestamp createdAt = rs.getTimestamp("created_at");
         if (createdAt != null) {
@@ -286,7 +289,7 @@ public class GateDAO {
     // Gate Assignment methods
     public List<GateAssignment> getAllAssignments() throws DatabaseException {
         List<GateAssignment> assignments = new ArrayList<>();
-        String sql = "SELECT * FROM gate_assignments ORDER BY assignment_id";
+        String sql = "SELECT * FROM gate_assignments ORDER BY id";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -312,15 +315,15 @@ public class GateDAO {
             throw new GateConflictException("Gate conflict detected for the specified time period");
         }
         
-        String sql = "INSERT INTO gate_assignments (gate_id, flight_id, assigned_from, assigned_to) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO gate_assignments (gate_id, flight_id, assignment_time, departure_time) VALUES (?, ?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setInt(1, assignment.getGateId());
             stmt.setInt(2, assignment.getFlightId());
-            stmt.setTimestamp(3, assignment.getAssignedFrom() != null ? Timestamp.valueOf(assignment.getAssignedFrom()) : null);
-            stmt.setTimestamp(4, assignment.getAssignedTo() != null ? Timestamp.valueOf(assignment.getAssignedTo()) : null);
+            stmt.setTimestamp(3, assignment.getAssignmentTime() != null ? Timestamp.valueOf(assignment.getAssignmentTime()) : null);
+            stmt.setTimestamp(4, assignment.getDepartureTime() != null ? Timestamp.valueOf(assignment.getDepartureTime()) : null);
             
             int affectedRows = stmt.executeUpdate();
             
@@ -345,7 +348,7 @@ public class GateDAO {
     }
     
     public boolean removeAssignment(int assignmentId) throws DatabaseException {
-        String sql = "DELETE FROM gate_assignments WHERE assignment_id = ?";
+        String sql = "DELETE FROM gate_assignments WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -370,19 +373,19 @@ public class GateDAO {
     
     private boolean hasConflict(GateAssignment newAssignment) throws DatabaseException {
         String sql = "SELECT COUNT(*) FROM gate_assignments WHERE gate_id = ? AND " +
-                    "((assigned_from BETWEEN ? AND ?) OR (assigned_to BETWEEN ? AND ?) OR " +
-                    "(? BETWEEN assigned_from AND assigned_to) OR (? BETWEEN assigned_from AND assigned_to))";
+                    "((assignment_time BETWEEN ? AND ?) OR (departure_time BETWEEN ? AND ?) OR " +
+                    "(? BETWEEN assignment_time AND departure_time) OR (? BETWEEN assignment_time AND departure_time))";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setInt(1, newAssignment.getGateId());
-            stmt.setTimestamp(2, newAssignment.getAssignedFrom() != null ? Timestamp.valueOf(newAssignment.getAssignedFrom()) : null);
-            stmt.setTimestamp(3, newAssignment.getAssignedTo() != null ? Timestamp.valueOf(newAssignment.getAssignedTo()) : null);
-            stmt.setTimestamp(4, newAssignment.getAssignedFrom() != null ? Timestamp.valueOf(newAssignment.getAssignedFrom()) : null);
-            stmt.setTimestamp(5, newAssignment.getAssignedTo() != null ? Timestamp.valueOf(newAssignment.getAssignedTo()) : null);
-            stmt.setTimestamp(6, newAssignment.getAssignedFrom() != null ? Timestamp.valueOf(newAssignment.getAssignedFrom()) : null);
-            stmt.setTimestamp(7, newAssignment.getAssignedTo() != null ? Timestamp.valueOf(newAssignment.getAssignedTo()) : null);
+            stmt.setTimestamp(2, newAssignment.getAssignmentTime() != null ? Timestamp.valueOf(newAssignment.getAssignmentTime()) : null);
+            stmt.setTimestamp(3, newAssignment.getDepartureTime() != null ? Timestamp.valueOf(newAssignment.getDepartureTime()) : null);
+            stmt.setTimestamp(4, newAssignment.getAssignmentTime() != null ? Timestamp.valueOf(newAssignment.getAssignmentTime()) : null);
+            stmt.setTimestamp(5, newAssignment.getDepartureTime() != null ? Timestamp.valueOf(newAssignment.getDepartureTime()) : null);
+            stmt.setTimestamp(6, newAssignment.getAssignmentTime() != null ? Timestamp.valueOf(newAssignment.getAssignmentTime()) : null);
+            stmt.setTimestamp(7, newAssignment.getDepartureTime() != null ? Timestamp.valueOf(newAssignment.getDepartureTime()) : null);
             
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -400,18 +403,18 @@ public class GateDAO {
     
     private GateAssignment mapResultSetToAssignment(ResultSet rs) throws SQLException {
         GateAssignment assignment = new GateAssignment();
-        assignment.setAssignmentId(rs.getInt("assignment_id"));
+        assignment.setAssignmentId(rs.getInt("id"));
         assignment.setGateId(rs.getInt("gate_id"));
         assignment.setFlightId(rs.getInt("flight_id"));
         
-        Timestamp assignedFrom = rs.getTimestamp("assigned_from");
-        if (assignedFrom != null) {
-            assignment.setAssignedFrom(assignedFrom.toLocalDateTime());
+        Timestamp assignmentTime = rs.getTimestamp("assignment_time");
+        if (assignmentTime != null) {
+            assignment.setAssignmentTime(assignmentTime.toLocalDateTime());
         }
         
-        Timestamp assignedTo = rs.getTimestamp("assigned_to");
-        if (assignedTo != null) {
-            assignment.setAssignedTo(assignedTo.toLocalDateTime());
+        Timestamp departureTime = rs.getTimestamp("departure_time");
+        if (departureTime != null) {
+            assignment.setDepartureTime(departureTime.toLocalDateTime());
         }
         
         Timestamp createdAt = rs.getTimestamp("created_at");

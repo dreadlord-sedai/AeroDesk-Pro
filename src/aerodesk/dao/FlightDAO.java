@@ -23,7 +23,7 @@ public class FlightDAO {
      */
     public List<Flight> getAllFlights() throws DatabaseException {
         List<Flight> flights = new ArrayList<>();
-        String sql = "SELECT * FROM flights ORDER BY depart_time";
+        String sql = "SELECT * FROM flights ORDER BY departure_time";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class FlightDAO {
      * @throws DatabaseException if database operation fails
      */
     public Flight getFlightById(int flightId) throws DatabaseException {
-        String sql = "SELECT * FROM flights WHERE flight_id = ?";
+        String sql = "SELECT * FROM flights WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -80,7 +80,7 @@ public class FlightDAO {
      * @throws DatabaseException if database operation fails
      */
     public Flight createFlight(Flight flight) throws DatabaseException {
-        String sql = "INSERT INTO flights (flight_no, origin, destination, depart_time, arrive_time, aircraft_type, status) " +
+        String sql = "INSERT INTO flights (flight_number, origin, destination, departure_time, arrival_time, aircraft_type, status) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
@@ -123,9 +123,9 @@ public class FlightDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean updateFlight(Flight flight) throws DatabaseException {
-        String sql = "UPDATE flights SET flight_no = ?, origin = ?, destination = ?, " +
-                    "depart_time = ?, arrive_time = ?, aircraft_type = ?, status = ? " +
-                    "WHERE flight_id = ?";
+        String sql = "UPDATE flights SET flight_number = ?, origin = ?, destination = ?, " +
+                    "departure_time = ?, arrival_time = ?, aircraft_type = ?, status = ? " +
+                    "WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -162,7 +162,7 @@ public class FlightDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean deleteFlight(int flightId) throws DatabaseException {
-        String sql = "DELETE FROM flights WHERE flight_id = ?";
+        String sql = "DELETE FROM flights WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -192,7 +192,7 @@ public class FlightDAO {
      * @throws DatabaseException if database operation fails
      */
     public Flight getFlightByNumber(String flightNo) throws DatabaseException {
-        String sql = "SELECT * FROM flights WHERE flight_no = ?";
+        String sql = "SELECT * FROM flights WHERE flight_number = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -223,23 +223,18 @@ public class FlightDAO {
      */
     private Flight mapResultSetToFlight(ResultSet rs) throws SQLException {
         Flight flight = new Flight();
-        flight.setFlightId(rs.getInt("flight_id"));
-        flight.setFlightNo(rs.getString("flight_no"));
+        flight.setFlightId(rs.getInt("id"));
+        flight.setFlightNo(rs.getString("flight_number"));
         flight.setOrigin(rs.getString("origin"));
         flight.setDestination(rs.getString("destination"));
-        flight.setDepartTime(rs.getTimestamp("depart_time").toLocalDateTime());
-        flight.setArriveTime(rs.getTimestamp("arrive_time").toLocalDateTime());
+        flight.setDepartTime(rs.getTimestamp("departure_time").toLocalDateTime());
+        flight.setArriveTime(rs.getTimestamp("arrival_time").toLocalDateTime());
         flight.setAircraftType(rs.getString("aircraft_type"));
         flight.setStatus(Flight.FlightStatus.valueOf(rs.getString("status")));
         
         Timestamp createdAt = rs.getTimestamp("created_at");
         if (createdAt != null) {
             flight.setCreatedAt(createdAt.toLocalDateTime());
-        }
-        
-        Timestamp updatedAt = rs.getTimestamp("updated_at");
-        if (updatedAt != null) {
-            flight.setUpdatedAt(updatedAt.toLocalDateTime());
         }
         
         return flight;

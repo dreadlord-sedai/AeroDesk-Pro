@@ -7,9 +7,14 @@ import java.time.LocalDateTime;
  * Represents gate information
  */
 public class Gate {
+    
+    public enum GateStatus {
+        AVAILABLE, OCCUPIED, MAINTENANCE
+    }
     private int gateId;
     private String gateName;
-    private boolean isActive;
+    private String terminal;
+    private GateStatus status;
     private LocalDateTime createdAt;
     
     // Default constructor
@@ -18,7 +23,7 @@ public class Gate {
     // Constructor with parameters
     public Gate(String gateName) {
         this.gateName = gateName;
-        this.isActive = true;
+        this.status = GateStatus.AVAILABLE;
     }
     
     // Getters and Setters
@@ -38,12 +43,20 @@ public class Gate {
         this.gateName = gateName;
     }
     
-    public boolean isActive() {
-        return isActive;
+    public String getTerminal() {
+        return terminal;
     }
     
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setTerminal(String terminal) {
+        this.terminal = terminal;
+    }
+    
+    public GateStatus getStatus() {
+        return status;
+    }
+    
+    public void setStatus(GateStatus status) {
+        this.status = status;
     }
     
     public LocalDateTime getCreatedAt() {
@@ -56,7 +69,7 @@ public class Gate {
     
     @Override
     public String toString() {
-        return String.format("Gate{gateName='%s', active=%s}", gateName, isActive);
+        return String.format("Gate{gateName='%s', terminal='%s', status=%s}", gateName, terminal, status);
     }
     
     @Override

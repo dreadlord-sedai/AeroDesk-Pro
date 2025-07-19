@@ -10,19 +10,19 @@ public class GateAssignment {
     private int assignmentId;
     private int flightId;
     private int gateId;
-    private LocalDateTime assignedFrom;
-    private LocalDateTime assignedTo;
+    private LocalDateTime assignmentTime;
+    private LocalDateTime departureTime;
     private LocalDateTime createdAt;
     
     // Default constructor
     public GateAssignment() {}
     
     // Constructor with parameters
-    public GateAssignment(int flightId, int gateId, LocalDateTime assignedFrom, LocalDateTime assignedTo) {
+    public GateAssignment(int flightId, int gateId, LocalDateTime assignmentTime, LocalDateTime departureTime) {
         this.flightId = flightId;
         this.gateId = gateId;
-        this.assignedFrom = assignedFrom;
-        this.assignedTo = assignedTo;
+        this.assignmentTime = assignmentTime;
+        this.departureTime = departureTime;
     }
     
     // Getters and Setters
@@ -50,20 +50,20 @@ public class GateAssignment {
         this.gateId = gateId;
     }
     
-    public LocalDateTime getAssignedFrom() {
-        return assignedFrom;
+    public LocalDateTime getAssignmentTime() {
+        return assignmentTime;
     }
     
-    public void setAssignedFrom(LocalDateTime assignedFrom) {
-        this.assignedFrom = assignedFrom;
+    public void setAssignmentTime(LocalDateTime assignmentTime) {
+        this.assignmentTime = assignmentTime;
     }
     
-    public LocalDateTime getAssignedTo() {
-        return assignedTo;
+    public LocalDateTime getDepartureTime() {
+        return departureTime;
     }
     
-    public void setAssignedTo(LocalDateTime assignedTo) {
-        this.assignedTo = assignedTo;
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
     }
     
     public LocalDateTime getCreatedAt() {
@@ -85,8 +85,8 @@ public class GateAssignment {
         }
         
         // Check for time overlap
-        return !(this.assignedTo.isBefore(other.assignedFrom) || 
-                this.assignedFrom.isAfter(other.assignedTo));
+        return !(this.departureTime.isBefore(other.assignmentTime) || 
+                this.assignmentTime.isAfter(other.departureTime));
     }
     
     /**
@@ -95,7 +95,7 @@ public class GateAssignment {
      */
     public boolean isCurrentlyActive() {
         LocalDateTime now = LocalDateTime.now();
-        return !now.isBefore(assignedFrom) && !now.isAfter(assignedTo);
+        return !now.isBefore(assignmentTime) && !now.isAfter(departureTime);
     }
     
     /**
@@ -103,13 +103,13 @@ public class GateAssignment {
      * @return Duration in minutes
      */
     public long getDurationMinutes() {
-        return java.time.Duration.between(assignedFrom, assignedTo).toMinutes();
+        return java.time.Duration.between(assignmentTime, departureTime).toMinutes();
     }
     
     @Override
     public String toString() {
-        return String.format("GateAssignment{flightId=%d, gateId=%d, from=%s, to=%s}", 
-                           flightId, gateId, assignedFrom, assignedTo);
+        return String.format("GateAssignment{flightId=%d, gateId=%d, assignmentTime=%s, departureTime=%s}", 
+                           flightId, gateId, assignmentTime, departureTime);
     }
     
     @Override
