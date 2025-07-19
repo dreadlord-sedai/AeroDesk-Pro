@@ -8,6 +8,7 @@ import aerodesk.dao.FlightDAO;
 import aerodesk.exception.DatabaseException;
 import aerodesk.exception.GateConflictException;
 import aerodesk.util.FileLogger;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -58,6 +59,7 @@ public class GateManagementFrame extends JFrame {
         };
         gatesTable = new JTable(gatesTableModel);
         gatesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(gatesTable);
         
         // Assignments table
         String[] assignmentColumns = {"Assignment ID", "Gate", "Flight No", "Assigned From", "Assigned To"};
@@ -69,30 +71,39 @@ public class GateManagementFrame extends JFrame {
         };
         assignmentsTable = new JTable(assignmentsTableModel);
         assignmentsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(assignmentsTable);
         
         // Buttons
-        addGateButton = new JButton("Add Gate");
-        assignFlightButton = new JButton("Assign Flight");
-        removeAssignmentButton = new JButton("Remove Assignment");
-        refreshButton = new JButton("Refresh");
+        addGateButton = new JButton("➕ Add Gate");
+        assignFlightButton = new JButton("✈️ Assign Flight");
+        removeAssignmentButton = new JButton("❌ Remove Assignment");
+        refreshButton = new JButton("🔄 Refresh");
+        
+        ThemeManager.styleButton(addGateButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        ThemeManager.styleButton(assignFlightButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(removeAssignmentButton, ThemeManager.ERROR_RED, ThemeManager.WHITE);
+        ThemeManager.styleButton(refreshButton, ThemeManager.SECONDARY_BLUE, ThemeManager.WHITE);
         
         // Status label
-        statusLabel = new JLabel("Ready");
-        statusLabel.setForeground(Color.GREEN);
+        statusLabel = ThemeManager.createStatusLabel("Ready", ThemeManager.SUCCESS_GREEN);
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Title panel
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Gate Management System");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setForeground(new Color(41, 128, 185));
-        titlePanel.add(titleLabel);
+        // Gradient header panel
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setPreferredSize(new Dimension(800, 80));
+        
+        JLabel titleLabel = ThemeManager.createTitleLabel("🚪 Gate Management System");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
         
         // Main content panel
-        JPanel contentPanel = new JPanel(new GridLayout(1, 2, 10, 0));
+        JPanel contentPanel = new JPanel(new GridLayout(1, 2, 15, 0));
+        contentPanel.setBackground(ThemeManager.WHITE);
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         
         // Left panel - Gates
         JPanel gatesPanel = createGatesPanel();
@@ -107,39 +118,57 @@ public class GateManagementFrame extends JFrame {
         JPanel buttonPanel = createButtonPanel();
         
         // Status panel
-        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        statusPanel.add(new JLabel("Status: "));
+        JPanel statusPanel = ThemeManager.createCardPanel();
+        statusPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        statusPanel.add(ThemeManager.createBodyLabel("Status: "));
         statusPanel.add(statusLabel);
         
         // Add panels to frame
-        add(titlePanel, BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         add(statusPanel, BorderLayout.SOUTH);
     }
     
     private JPanel createGatesPanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Available Gates"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("🚪 Available Gates");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(gatesTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         return panel;
     }
     
     private JPanel createAssignmentsPanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Gate Assignments"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("✈️ Gate Assignments");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(assignmentsTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         return panel;
     }
     
     private JPanel createButtonPanel() {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 10));
         panel.add(addGateButton);
         panel.add(assignFlightButton);
         panel.add(removeAssignmentButton);
@@ -175,24 +204,31 @@ public class GateManagementFrame extends JFrame {
     private void showAddGateDialog() {
         JDialog dialog = new JDialog(this, "Add New Gate", true);
         dialog.setLayout(new BorderLayout());
+        dialog.getContentPane().setBackground(ThemeManager.WHITE);
         
         // Form panel
         JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBackground(ThemeManager.WHITE);
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.anchor = GridBagConstraints.WEST;
         
         // Gate name field
         gbc.gridx = 0; gbc.gridy = 0;
-        formPanel.add(new JLabel("Gate Name:"), gbc);
-        JTextField gateNameField = new JTextField(10);
+        formPanel.add(ThemeManager.createBodyLabel("Gate Name:"), gbc);
+        JTextField gateNameField = new JTextField(15);
+        ThemeManager.styleTextField(gateNameField);
         gbc.gridx = 1;
         formPanel.add(gateNameField, gbc);
         
         // Buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton addButton = new JButton("Add");
-        JButton cancelButton = new JButton("Cancel");
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        buttonPanel.setBackground(ThemeManager.WHITE);
+        JButton addButton = new JButton("➕ Add");
+        JButton cancelButton = new JButton("❌ Cancel");
+        
+        ThemeManager.styleButton(addButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        ThemeManager.styleButton(cancelButton, ThemeManager.ERROR_RED, ThemeManager.WHITE);
         
         addButton.addActionListener(e -> {
             try {
@@ -235,7 +271,7 @@ public class GateManagementFrame extends JFrame {
         dialog.add(formPanel, BorderLayout.CENTER);
         dialog.add(buttonPanel, BorderLayout.SOUTH);
         
-        dialog.setSize(300, 150);
+        dialog.setSize(350, 180);
         dialog.setLocationRelativeTo(this);
         dialog.setResizable(false);
         dialog.setVisible(true);
@@ -256,23 +292,26 @@ public class GateManagementFrame extends JFrame {
     private void showAssignFlightDialog() {
         JDialog dialog = new JDialog(this, "Assign Flight to Gate", true);
         dialog.setLayout(new BorderLayout());
+        dialog.getContentPane().setBackground(ThemeManager.WHITE);
         
         // Form panel
         JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBackground(ThemeManager.WHITE);
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.anchor = GridBagConstraints.WEST;
         
         // Gate info
         gbc.gridx = 0; gbc.gridy = 0;
-        formPanel.add(new JLabel("Gate:"), gbc);
+        formPanel.add(ThemeManager.createBodyLabel("Gate:"), gbc);
         gbc.gridx = 1;
-        formPanel.add(new JLabel(selectedGate.getGateName()), gbc);
+        formPanel.add(ThemeManager.createSubheaderLabel(selectedGate.getGateName()), gbc);
         
         // Flight selection
         gbc.gridx = 0; gbc.gridy = 1;
-        formPanel.add(new JLabel("Flight:"), gbc);
+        formPanel.add(ThemeManager.createBodyLabel("Flight:"), gbc);
         JComboBox<Flight> flightComboBox = new JComboBox<>();
+        ThemeManager.styleComboBox(flightComboBox);
         gbc.gridx = 1;
         formPanel.add(flightComboBox, gbc);
         
@@ -287,9 +326,13 @@ public class GateManagementFrame extends JFrame {
         }
         
         // Buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton assignButton = new JButton("Assign");
-        JButton cancelButton = new JButton("Cancel");
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        buttonPanel.setBackground(ThemeManager.WHITE);
+        JButton assignButton = new JButton("✈️ Assign");
+        JButton cancelButton = new JButton("❌ Cancel");
+        
+        ThemeManager.styleButton(assignButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(cancelButton, ThemeManager.ERROR_RED, ThemeManager.WHITE);
         
         assignButton.addActionListener(e -> {
             Flight selectedFlight = (Flight) flightComboBox.getSelectedItem();
@@ -344,7 +387,7 @@ public class GateManagementFrame extends JFrame {
         dialog.add(formPanel, BorderLayout.CENTER);
         dialog.add(buttonPanel, BorderLayout.SOUTH);
         
-        dialog.setSize(400, 200);
+        dialog.setSize(450, 220);
         dialog.setLocationRelativeTo(this);
         dialog.setResizable(false);
         dialog.setVisible(true);
@@ -504,6 +547,7 @@ public class GateManagementFrame extends JFrame {
         setSize(1200, 700);
         setLocationRelativeTo(null);
         setResizable(true);
+        ThemeManager.styleFrame(this);
         
         // Set initial button states
         assignFlightButton.setEnabled(false);

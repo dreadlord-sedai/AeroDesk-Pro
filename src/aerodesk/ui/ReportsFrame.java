@@ -10,6 +10,7 @@ import aerodesk.dao.BaggageDAO;
 import aerodesk.dao.GateDAO;
 import aerodesk.exception.DatabaseException;
 import aerodesk.util.FileLogger;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -66,6 +67,7 @@ public class ReportsFrame extends JFrame {
     private void initializeComponents() {
         // Create tabbed pane
         tabbedPane = new JTabbedPane();
+        tabbedPane.setFont(ThemeManager.BODY_FONT);
         
         // Flights Report Table
         String[] flightColumns = {"Flight No", "Origin", "Destination", "Departure", "Arrival", "Status", "Aircraft"};
@@ -77,6 +79,7 @@ public class ReportsFrame extends JFrame {
         };
         flightsReportTable = new JTable(flightsReportModel);
         flightsReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(flightsReportTable);
         
         // Bookings Report Table
         String[] bookingColumns = {"Booking ID", "Passenger", "Flight No", "Seat", "Checked In", "Check-in Time"};
@@ -88,6 +91,7 @@ public class ReportsFrame extends JFrame {
         };
         bookingsReportTable = new JTable(bookingsReportModel);
         bookingsReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(bookingsReportTable);
         
         // Baggage Report Table
         String[] baggageColumns = {"Tag Number", "Passenger", "Weight", "Type", "Status", "Created"};
@@ -99,6 +103,7 @@ public class ReportsFrame extends JFrame {
         };
         baggageReportTable = new JTable(baggageReportModel);
         baggageReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(baggageReportTable);
         
         // Gates Report Table
         String[] gateColumns = {"Gate", "Flight No", "Departure", "Arrival", "Status"};
@@ -110,37 +115,43 @@ public class ReportsFrame extends JFrame {
         };
         gatesReportTable = new JTable(gatesReportModel);
         gatesReportTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(gatesReportTable);
         
         // Logs Area
         logsArea = new JTextArea();
         logsArea.setEditable(false);
-        logsArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
-        logsArea.setBackground(new Color(248, 248, 248));
+        ThemeManager.styleTextArea(logsArea);
         
         // System Stats Area
         systemStatsArea = new JTextArea();
         systemStatsArea.setEditable(false);
-        systemStatsArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        systemStatsArea.setBackground(new Color(255, 250, 240));
+        ThemeManager.styleTextArea(systemStatsArea);
         
         // Buttons
-        exportButton = new JButton("Export Report");
-        refreshButton = new JButton("Refresh Data");
-        clearLogsButton = new JButton("Clear Logs");
-        saveLogsButton = new JButton("Save Logs");
+        exportButton = new JButton("📊 Export Report");
+        refreshButton = new JButton("🔄 Refresh Data");
+        clearLogsButton = new JButton("🗑️ Clear Logs");
+        saveLogsButton = new JButton("💾 Save Logs");
+        
+        ThemeManager.styleButton(exportButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        ThemeManager.styleButton(refreshButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(clearLogsButton, ThemeManager.WARNING_AMBER, ThemeManager.WHITE);
+        ThemeManager.styleButton(saveLogsButton, ThemeManager.SECONDARY_BLUE, ThemeManager.WHITE);
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Title panel
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Reports & Logs Management");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setForeground(new Color(41, 128, 185));
-        titlePanel.add(titleLabel);
+        // Gradient header panel
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setPreferredSize(new Dimension(800, 80));
         
-        // Create tabs
+        JLabel titleLabel = ThemeManager.createTitleLabel("📈 Reports & Logs Management");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
+        
+        // Create tabs with card styling
         createFlightsTab();
         createBookingsTab();
         createBaggageTab();
@@ -148,76 +159,123 @@ public class ReportsFrame extends JFrame {
         createLogsTab();
         createStatsTab();
         
-        // Button panel
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        // Button panel with card styling
+        JPanel buttonPanel = ThemeManager.createCardPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 10));
         buttonPanel.add(exportButton);
         buttonPanel.add(refreshButton);
         buttonPanel.add(clearLogsButton);
         buttonPanel.add(saveLogsButton);
         
         // Add components to frame
-        add(titlePanel, BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
         add(tabbedPane, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
     private void createFlightsTab() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Flights Report"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("✈️ Flights Report");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(flightsReportTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         tabbedPane.addTab("Flights", panel);
     }
     
     private void createBookingsTab() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Bookings Report"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("🎫 Bookings Report");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(bookingsReportTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         tabbedPane.addTab("Bookings", panel);
     }
     
     private void createBaggageTab() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Baggage Report"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("👜 Baggage Report");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(baggageReportTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         tabbedPane.addTab("Baggage", panel);
     }
     
     private void createGatesTab() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Gate Assignments Report"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("🚪 Gate Assignments Report");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(gatesReportTable);
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         tabbedPane.addTab("Gates", panel);
     }
     
     private void createLogsTab() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("System Logs"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("📋 System Logs");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(logsArea);
-        scrollPane.setPreferredSize(new Dimension(800, 400));
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         tabbedPane.addTab("Logs", panel);
     }
     
     private void createStatsTab() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("System Statistics"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        headerPanel.setBackground(ThemeManager.WHITE);
+        JLabel headerLabel = ThemeManager.createSubheaderLabel("📊 System Statistics");
+        headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(systemStatsArea);
-        scrollPane.setPreferredSize(new Dimension(800, 400));
+        scrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        panel.add(headerPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         
         tabbedPane.addTab("Statistics", panel);
@@ -562,5 +620,6 @@ public class ReportsFrame extends JFrame {
         setSize(1200, 800);
         setLocationRelativeTo(null);
         setResizable(true);
+        ThemeManager.styleFrame(this);
     }
 } 

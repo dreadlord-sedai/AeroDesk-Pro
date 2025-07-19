@@ -7,6 +7,7 @@ import aerodesk.dao.GateDAO;
 import aerodesk.exception.DatabaseException;
 import aerodesk.util.FileLogger;
 import aerodesk.util.ApiIntegrator;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -65,67 +66,100 @@ public class FlightStatusFrame extends JFrame {
         };
         flightsTable = new JTable(flightsTableModel);
         flightsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(flightsTable);
         
         // Weather area
         weatherArea = new JTextArea();
         weatherArea.setEditable(false);
-        weatherArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        weatherArea.setBackground(new Color(240, 248, 255));
-        weatherArea.setBorder(BorderFactory.createTitledBorder("Weather Information"));
+        ThemeManager.styleTextArea(weatherArea);
         
         // System status area
         systemStatusArea = new JTextArea();
         systemStatusArea.setEditable(false);
-        systemStatusArea.setFont(new Font("Monospaced", Font.PLAIN, 11));
-        systemStatusArea.setBackground(new Color(255, 250, 240));
-        systemStatusArea.setBorder(BorderFactory.createTitledBorder("System Status"));
+        ThemeManager.styleTextArea(systemStatusArea);
         
         // Buttons
-        refreshButton = new JButton("Refresh Data");
-        startLiveUpdatesButton = new JButton("Start Live Updates");
-        stopLiveUpdatesButton = new JButton("Stop Live Updates");
+        refreshButton = new JButton("🔄 Refresh Data");
+        startLiveUpdatesButton = new JButton("▶️ Start Live Updates");
+        stopLiveUpdatesButton = new JButton("⏹️ Stop Live Updates");
         stopLiveUpdatesButton.setEnabled(false);
         
+        ThemeManager.styleButton(refreshButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(startLiveUpdatesButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        ThemeManager.styleButton(stopLiveUpdatesButton, ThemeManager.WARNING_AMBER, ThemeManager.WHITE);
+        
         // Labels
-        lastUpdateLabel = new JLabel("Last Update: Never");
-        lastUpdateLabel.setForeground(Color.GRAY);
-        weatherLabel = new JLabel("Weather: Loading...");
-        weatherLabel.setForeground(Color.BLUE);
+        lastUpdateLabel = ThemeManager.createStatusLabel("Last Update: Never", ThemeManager.DARK_GRAY);
+        weatherLabel = ThemeManager.createStatusLabel("Weather: Loading...", ThemeManager.PRIMARY_BLUE);
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Title panel
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Flight Status Dashboard");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setForeground(new Color(41, 128, 185));
-        titlePanel.add(titleLabel);
+        // Gradient header panel
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setLayout(new BorderLayout());
+        headerPanel.setPreferredSize(new Dimension(800, 80));
+        
+        JLabel titleLabel = ThemeManager.createTitleLabel("✈️ Flight Status Dashboard");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
         
         // Main content panel
         JPanel contentPanel = new JPanel(new BorderLayout());
+        contentPanel.setBackground(ThemeManager.WHITE);
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         
         // Center panel - Flights table
-        JPanel flightsPanel = new JPanel(new BorderLayout());
-        flightsPanel.setBorder(BorderFactory.createTitledBorder("Flight Status"));
+        JPanel flightsPanel = ThemeManager.createCardPanel();
+        flightsPanel.setLayout(new BorderLayout());
+        
+        JPanel flightsHeaderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        flightsHeaderPanel.setBackground(ThemeManager.WHITE);
+        JLabel flightsHeaderLabel = ThemeManager.createSubheaderLabel("✈️ Flight Status");
+        flightsHeaderPanel.add(flightsHeaderLabel);
+        
         JScrollPane flightsScrollPane = new JScrollPane(flightsTable);
+        flightsScrollPane.setBorder(BorderFactory.createEmptyBorder());
+        
+        flightsPanel.add(flightsHeaderPanel, BorderLayout.NORTH);
         flightsPanel.add(flightsScrollPane, BorderLayout.CENTER);
         
         // Right panel - Weather and Status
-        JPanel rightPanel = new JPanel(new GridLayout(2, 1, 5, 5));
+        JPanel rightPanel = new JPanel(new GridLayout(2, 1, 15, 15));
+        rightPanel.setBackground(ThemeManager.WHITE);
         
         // Weather panel
-        JPanel weatherPanel = new JPanel(new BorderLayout());
+        JPanel weatherPanel = ThemeManager.createCardPanel();
+        weatherPanel.setLayout(new BorderLayout());
+        
+        JPanel weatherHeaderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        weatherHeaderPanel.setBackground(ThemeManager.WHITE);
+        JLabel weatherHeaderLabel = ThemeManager.createSubheaderLabel("🌤️ Weather Information");
+        weatherHeaderPanel.add(weatherHeaderLabel);
+        
         JScrollPane weatherScrollPane = new JScrollPane(weatherArea);
+        weatherScrollPane.setBorder(BorderFactory.createEmptyBorder());
         weatherScrollPane.setPreferredSize(new Dimension(300, 200));
+        
+        weatherPanel.add(weatherHeaderPanel, BorderLayout.NORTH);
         weatherPanel.add(weatherScrollPane, BorderLayout.CENTER);
         weatherPanel.add(weatherLabel, BorderLayout.SOUTH);
         
         // System status panel
-        JPanel statusPanel = new JPanel(new BorderLayout());
+        JPanel statusPanel = ThemeManager.createCardPanel();
+        statusPanel.setLayout(new BorderLayout());
+        
+        JPanel statusHeaderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        statusHeaderPanel.setBackground(ThemeManager.WHITE);
+        JLabel statusHeaderLabel = ThemeManager.createSubheaderLabel("📊 System Status");
+        statusHeaderPanel.add(statusHeaderLabel);
+        
         JScrollPane statusScrollPane = new JScrollPane(systemStatusArea);
+        statusScrollPane.setBorder(BorderFactory.createEmptyBorder());
         statusScrollPane.setPreferredSize(new Dimension(300, 150));
+        
+        statusPanel.add(statusHeaderPanel, BorderLayout.NORTH);
         statusPanel.add(statusScrollPane, BorderLayout.CENTER);
         
         rightPanel.add(weatherPanel);
@@ -135,14 +169,15 @@ public class FlightStatusFrame extends JFrame {
         contentPanel.add(rightPanel, BorderLayout.EAST);
         
         // Button panel
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
+        JPanel buttonPanel = ThemeManager.createCardPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 10));
         buttonPanel.add(refreshButton);
         buttonPanel.add(startLiveUpdatesButton);
         buttonPanel.add(stopLiveUpdatesButton);
         buttonPanel.add(lastUpdateLabel);
         
         // Add panels to frame
-        add(titlePanel, BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
     }
@@ -330,17 +365,20 @@ public class FlightStatusFrame extends JFrame {
     
     private void loadWeatherData() {
         try {
-            // Get weather data from API integrator
-            String weatherData = apiIntegrator.getWeatherData();
-            weatherArea.setText(weatherData);
-            weatherLabel.setText("Weather: Updated at " + LocalDateTime.now().format(dateFormatter));
-            
-            FileLogger.getInstance().logInfo("Weather data updated");
-            
+            String weatherInfo = apiIntegrator.getWeatherData();
+            weatherArea.setText(weatherInfo);
+            weatherLabel.setText("Weather: Updated");
+            weatherLabel.setForeground(ThemeManager.SUCCESS_GREEN);
         } catch (Exception ex) {
-            weatherArea.setText("Weather data unavailable\n\nError: " + ex.getMessage());
-            weatherLabel.setText("Weather: Error loading data");
-            FileLogger.getInstance().logError("Failed to load weather data: " + ex.getMessage());
+            weatherArea.setText("Weather information unavailable\n\nMock Weather Data:\n" +
+                              "Temperature: 22°C\n" +
+                              "Conditions: Partly Cloudy\n" +
+                              "Wind: 15 km/h NW\n" +
+                              "Visibility: 10 km\n" +
+                              "Humidity: 65%");
+            weatherLabel.setText("Weather: Using Mock Data");
+            weatherLabel.setForeground(ThemeManager.WARNING_AMBER);
+            FileLogger.getInstance().logError("Error loading weather data: " + ex.getMessage());
         }
     }
     
@@ -383,6 +421,7 @@ public class FlightStatusFrame extends JFrame {
         setSize(1400, 800);
         setLocationRelativeTo(null);
         setResizable(true);
+        ThemeManager.styleFrame(this);
         
         // Set initial button states
         stopLiveUpdatesButton.setEnabled(false);

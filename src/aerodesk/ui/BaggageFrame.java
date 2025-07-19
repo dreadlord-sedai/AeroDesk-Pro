@@ -9,6 +9,7 @@ import aerodesk.dao.FlightDAO;
 import aerodesk.exception.DatabaseException;
 import aerodesk.util.FileLogger;
 import aerodesk.service.BaggageSimulator;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -51,7 +52,7 @@ public class BaggageFrame extends JFrame {
     
     private void initializeComponents() {
         // Passengers table
-        String[] passengerColumns = {"ID", "Passenger", "Flight No", "Seat", "Checked In", "Check-in Time"};
+        String[] passengerColumns = {"Booking ID", "Passenger", "Flight", "Seat", "Checked In"};
         passengersTableModel = new DefaultTableModel(passengerColumns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -60,9 +61,10 @@ public class BaggageFrame extends JFrame {
         };
         passengersTable = new JTable(passengersTableModel);
         passengersTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(passengersTable);
         
         // Baggage table
-        String[] baggageColumns = {"ID", "Tag Number", "Passenger", "Weight (kg)", "Type", "Status", "Created"};
+        String[] baggageColumns = {"Tag Number", "Passenger", "Weight", "Type", "Status", "Created"};
         baggageTableModel = new DefaultTableModel(baggageColumns, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -71,31 +73,40 @@ public class BaggageFrame extends JFrame {
         };
         baggageTable = new JTable(baggageTableModel);
         baggageTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ThemeManager.styleTable(baggageTable);
         
         // Buttons
-        addBaggageButton = new JButton("Add Baggage");
-        refreshButton = new JButton("Refresh");
-        startSimulationButton = new JButton("Start Simulation");
-        stopSimulationButton = new JButton("Stop Simulation");
-        stopSimulationButton.setEnabled(false);
+        addBaggageButton = new JButton("👜 Add Baggage");
+        refreshButton = new JButton("🔄 Refresh");
+        startSimulationButton = new JButton("▶️ Start Simulation");
+        stopSimulationButton = new JButton("⏹️ Stop Simulation");
+        
+        // Apply modern styling
+        ThemeManager.styleButton(addBaggageButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        ThemeManager.styleButton(refreshButton, ThemeManager.SECONDARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(startSimulationButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(stopSimulationButton, ThemeManager.ERROR_RED, ThemeManager.WHITE);
         
         // Status label
-        statusLabel = new JLabel("Ready");
-        statusLabel.setForeground(Color.GREEN);
+        statusLabel = ThemeManager.createStatusLabel("Ready", ThemeManager.SUCCESS_GREEN);
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Title panel
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Baggage Handling Management");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setForeground(new Color(41, 128, 185));
-        titlePanel.add(titleLabel);
+        // Header panel with gradient
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setPreferredSize(new Dimension(0, 80));
+        headerPanel.setLayout(new BorderLayout());
+        
+        JLabel titleLabel = ThemeManager.createHeaderLabel("👜 Baggage Handling Management");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
         
         // Main content panel
         JPanel contentPanel = new JPanel(new GridLayout(1, 2, 10, 0));
+        contentPanel.setBackground(ThemeManager.WHITE);
         
         // Left panel - Passengers
         JPanel passengersPanel = createPassengersPanel();
@@ -110,20 +121,25 @@ public class BaggageFrame extends JFrame {
         JPanel buttonPanel = createButtonPanel();
         
         // Status panel
-        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        statusPanel.add(new JLabel("Status: "));
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        statusPanel.setBackground(ThemeManager.WHITE);
+        statusPanel.add(ThemeManager.createBodyLabel("Status:"));
         statusPanel.add(statusLabel);
         
         // Add panels to frame
-        add(titlePanel, BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         add(statusPanel, BorderLayout.SOUTH);
     }
     
     private JPanel createPassengersPanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Checked-In Passengers"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JLabel panelTitle = ThemeManager.createSubheaderLabel("Checked-In Passengers");
+        panelTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(panelTitle, BorderLayout.NORTH);
         
         JScrollPane scrollPane = new JScrollPane(passengersTable);
         panel.add(scrollPane, BorderLayout.CENTER);
@@ -132,8 +148,12 @@ public class BaggageFrame extends JFrame {
     }
     
     private JPanel createBaggagePanel() {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder("Baggage Tracking"));
+        JPanel panel = ThemeManager.createCardPanel();
+        panel.setLayout(new BorderLayout());
+        
+        JLabel panelTitle = ThemeManager.createSubheaderLabel("Baggage Tracking");
+        panelTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(panelTitle, BorderLayout.NORTH);
         
         JScrollPane scrollPane = new JScrollPane(baggageTable);
         panel.add(scrollPane, BorderLayout.CENTER);
@@ -142,255 +162,165 @@ public class BaggageFrame extends JFrame {
     }
     
     private JPanel createButtonPanel() {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
-        panel.add(addBaggageButton);
-        panel.add(refreshButton);
-        panel.add(startSimulationButton);
-        panel.add(stopSimulationButton);
-        return panel;
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
+        buttonPanel.setBackground(ThemeManager.WHITE);
+        buttonPanel.add(addBaggageButton);
+        buttonPanel.add(refreshButton);
+        buttonPanel.add(startSimulationButton);
+        buttonPanel.add(stopSimulationButton);
+        
+        return buttonPanel;
     }
     
     private void setupEventHandlers() {
-        // Button event handlers
-        addBaggageButton.addActionListener(e -> handleAddBaggage());
-        refreshButton.addActionListener(e -> handleRefresh());
-        startSimulationButton.addActionListener(e -> handleStartSimulation());
-        stopSimulationButton.addActionListener(e -> handleStopSimulation());
+        addBaggageButton.addActionListener(e -> addBaggage());
+        refreshButton.addActionListener(e -> refreshData());
+        startSimulationButton.addActionListener(e -> startSimulation());
+        stopSimulationButton.addActionListener(e -> stopSimulation());
         
-        // Table selection handlers
+        // Table selection listeners
         passengersTable.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
-                handlePassengerSelection();
-            }
-        });
-        
-        baggageTable.getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                handleBaggageSelection();
+                int selectedRow = passengersTable.getSelectedRow();
+                if (selectedRow >= 0) {
+                    selectedBooking = getBookingFromTableRow(selectedRow);
+                    addBaggageButton.setEnabled(true);
+                } else {
+                    selectedBooking = null;
+                    addBaggageButton.setEnabled(false);
+                }
             }
         });
     }
     
-    private void handleAddBaggage() {
+    private void addBaggage() {
         if (selectedBooking == null) {
-            JOptionPane.showMessageDialog(this, 
-                "Please select a passenger to add baggage for", 
-                "No Selection", 
-                JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a passenger to add baggage", "No Selection", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        showAddBaggageDialog();
-    }
-    
-    private void showAddBaggageDialog() {
-        JDialog dialog = new JDialog(this, "Add Baggage", true);
-        dialog.setLayout(new BorderLayout());
+        // Show baggage input dialog
+        JPanel inputPanel = new JPanel(new GridLayout(4, 2, 5, 5));
+        inputPanel.setBackground(ThemeManager.WHITE);
         
-        // Form panel
-        JPanel formPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.anchor = GridBagConstraints.WEST;
+        JTextField weightField = new JTextField();
+        JComboBox<String> typeComboBox = new JComboBox<>(new String[]{"Checked", "Carry-on", "Special"});
         
-        // Weight field
-        gbc.gridx = 0; gbc.gridy = 0;
-        formPanel.add(new JLabel("Weight (kg):"), gbc);
-        JTextField weightField = new JTextField(10);
-        gbc.gridx = 1;
-        formPanel.add(weightField, gbc);
+        ThemeManager.styleTextField(weightField);
+        ThemeManager.styleComboBox(typeComboBox);
         
-        // Baggage type
-        gbc.gridx = 0; gbc.gridy = 1;
-        formPanel.add(new JLabel("Type:"), gbc);
-        JComboBox<Baggage.BaggageType> typeComboBox = new JComboBox<>(Baggage.BaggageType.values());
-        gbc.gridx = 1;
-        formPanel.add(typeComboBox, gbc);
+        inputPanel.add(ThemeManager.createBodyLabel("Weight (kg):"));
+        inputPanel.add(weightField);
+        inputPanel.add(ThemeManager.createBodyLabel("Type:"));
+        inputPanel.add(typeComboBox);
         
-        // Buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JButton addButton = new JButton("Add");
-        JButton cancelButton = new JButton("Cancel");
+        int result = JOptionPane.showConfirmDialog(this, inputPanel, "Add Baggage", JOptionPane.OK_CANCEL_OPTION);
         
-        addButton.addActionListener(e -> {
+        if (result == JOptionPane.OK_OPTION) {
             try {
                 double weight = Double.parseDouble(weightField.getText().trim());
-                if (weight <= 0 || weight > 100) {
-                    JOptionPane.showMessageDialog(dialog, 
-                        "Weight must be between 0 and 100 kg", 
-                        "Invalid Weight", 
-                        JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+                String type = (String) typeComboBox.getSelectedItem();
                 
-                Baggage.BaggageType type = (Baggage.BaggageType) typeComboBox.getSelectedItem();
-                String tagNumber = baggageDAO.generateTagNumber();
+                Baggage baggage = new Baggage();
+                baggage.setBookingId(selectedBooking.getBookingId());
+                baggage.setWeightKg(weight);
+                baggage.setBaggageType(Baggage.BaggageType.CHECKED);
+                baggage.setStatus(Baggage.BaggageStatus.LOADED);
                 
-                Baggage baggage = new Baggage(selectedBooking.getBookingId(), weight, type, tagNumber);
-                Baggage createdBaggage = baggageDAO.createBaggage(baggage);
+                baggageDAO.createBaggage(baggage);
                 
-                FileLogger.getInstance().logInfo("Added baggage: " + createdBaggage.getTagNumber());
-                JOptionPane.showMessageDialog(dialog, 
-                    "Baggage added successfully! Tag: " + createdBaggage.getTagNumber(), 
-                    "Success", 
-                    JOptionPane.INFORMATION_MESSAGE);
+                FileLogger.getInstance().logInfo("Added baggage for passenger: " + selectedBooking.getPassengerName());
+                JOptionPane.showMessageDialog(this, "Baggage added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 
-                dialog.dispose();
                 loadAllBaggage();
-                
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(dialog, 
-                    "Please enter a valid weight", 
-                    "Invalid Input", 
-                    JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Please enter a valid weight", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             } catch (DatabaseException ex) {
-                FileLogger.getInstance().logError("Failed to add baggage: " + ex.getMessage());
-                JOptionPane.showMessageDialog(dialog, 
-                    "Failed to add baggage: " + ex.getMessage(), 
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
+                FileLogger.getInstance().logError("Error adding baggage: " + ex.getMessage());
+                JOptionPane.showMessageDialog(this, "Error adding baggage: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        });
-        
-        cancelButton.addActionListener(e -> dialog.dispose());
-        
-        buttonPanel.add(addButton);
-        buttonPanel.add(cancelButton);
-        
-        dialog.add(formPanel, BorderLayout.CENTER);
-        dialog.add(buttonPanel, BorderLayout.SOUTH);
-        
-        dialog.setSize(300, 200);
-        dialog.setLocationRelativeTo(this);
-        dialog.setResizable(false);
-        dialog.setVisible(true);
+        }
     }
     
-    private void handleRefresh() {
+    private void refreshData() {
         loadCheckedInPassengers();
         loadAllBaggage();
-        statusLabel.setText("Data refreshed at " + LocalDateTime.now().format(dateFormatter));
+        statusLabel.setText("Data refreshed");
+        statusLabel.setForeground(ThemeManager.SUCCESS_GREEN);
     }
     
-    private void handleStartSimulation() {
+    private void startSimulation() {
+        BaggageSimulator.getInstance().startSimulation();
         startSimulationButton.setEnabled(false);
         stopSimulationButton.setEnabled(true);
-        statusLabel.setText("Simulation running...");
-        statusLabel.setForeground(Color.ORANGE);
-        
-        // Start baggage simulation thread
-        BaggageSimulator.getInstance().startSimulation();
-        
+        statusLabel.setText("Simulation running");
+        statusLabel.setForeground(ThemeManager.WARNING_AMBER);
         FileLogger.getInstance().logInfo("Baggage simulation started");
     }
     
-    private void handleStopSimulation() {
+    private void stopSimulation() {
+        BaggageSimulator.getInstance().stopSimulation();
         startSimulationButton.setEnabled(true);
         stopSimulationButton.setEnabled(false);
         statusLabel.setText("Simulation stopped");
-        statusLabel.setForeground(Color.GREEN);
-        
-        // Stop baggage simulation thread
-        BaggageSimulator.getInstance().stopSimulation();
-        
+        statusLabel.setForeground(ThemeManager.SUCCESS_GREEN);
         FileLogger.getInstance().logInfo("Baggage simulation stopped");
-    }
-    
-    private void handlePassengerSelection() {
-        int selectedRow = passengersTable.getSelectedRow();
-        if (selectedRow >= 0) {
-            selectedBooking = getBookingFromTableRow(selectedRow);
-            addBaggageButton.setEnabled(true);
-        } else {
-            selectedBooking = null;
-            addBaggageButton.setEnabled(false);
-        }
-    }
-    
-    private void handleBaggageSelection() {
-        int selectedRow = baggageTable.getSelectedRow();
-        if (selectedRow >= 0) {
-            // Handle baggage selection if needed
-        }
-    }
-    
-    private Booking getBookingFromTableRow(int row) {
-        Booking booking = new Booking();
-        booking.setBookingId(Integer.parseInt(passengersTableModel.getValueAt(row, 0).toString()));
-        booking.setPassengerName(passengersTableModel.getValueAt(row, 1).toString());
-        return booking;
     }
     
     private void loadCheckedInPassengers() {
         try {
-            List<Booking> allBookings = bookingDAO.getAllBookings();
-            passengersTableModel.setRowCount(0);
+            List<Booking> checkedInBookings = bookingDAO.getAllBookings().stream()
+                .filter(Booking::isCheckedIn)
+                .toList();
             
-            for (Booking booking : allBookings) {
-                if (booking.isCheckedIn()) {
-                    try {
-                        Flight flight = flightDAO.getFlightById(booking.getFlightId());
-                        String flightNo = flight != null ? flight.getFlightNo() : "N/A";
-                        
-                        Object[] row = {
-                            booking.getBookingId(),
-                            booking.getPassengerName(),
-                            flightNo,
-                            booking.getSeatNo() != null ? booking.getSeatNo() : "Not Assigned",
-                            "Yes",
-                            booking.getCheckInTime() != null ? booking.getCheckInTime().format(dateFormatter) : "N/A"
-                        };
-                        passengersTableModel.addRow(row);
-                    } catch (DatabaseException ex) {
-                        FileLogger.getInstance().logError("Error loading flight for booking: " + ex.getMessage());
-                    }
-                }
+            passengersTableModel.setRowCount(0);
+            for (Booking booking : checkedInBookings) {
+                Object[] row = {
+                    booking.getBookingId(),
+                    booking.getPassengerName(),
+                    "Flight " + booking.getFlightId(),
+                    booking.getSeatNo(),
+                    "Yes"
+                };
+                passengersTableModel.addRow(row);
             }
             
-            FileLogger.getInstance().logInfo("Loaded " + passengersTableModel.getRowCount() + " checked-in passengers");
-            
+            FileLogger.getInstance().logInfo("Loaded " + checkedInBookings.size() + " checked-in passengers");
         } catch (DatabaseException ex) {
-            FileLogger.getInstance().logError("Failed to load passengers: " + ex.getMessage());
-            JOptionPane.showMessageDialog(this, 
-                "Failed to load passengers: " + ex.getMessage(), 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+            FileLogger.getInstance().logError("Error loading checked-in passengers: " + ex.getMessage());
         }
     }
     
     private void loadAllBaggage() {
         try {
             List<Baggage> allBaggage = baggageDAO.getAllBaggage();
-            baggageTableModel.setRowCount(0);
             
+            baggageTableModel.setRowCount(0);
             for (Baggage baggage : allBaggage) {
-                try {
-                    Booking booking = bookingDAO.getBookingById(baggage.getBookingId());
-                    String passengerName = booking != null ? booking.getPassengerName() : "Unknown";
-                    
-                    Object[] row = {
-                        baggage.getBaggageId(),
-                        baggage.getTagNumber(),
-                        passengerName,
-                        String.format("%.1f", baggage.getWeightKg()),
-                        baggage.getBaggageType(),
-                        baggage.getStatus(),
-                        baggage.getCreatedAt() != null ? baggage.getCreatedAt().format(dateFormatter) : "N/A"
-                    };
-                    baggageTableModel.addRow(row);
-                } catch (DatabaseException ex) {
-                    FileLogger.getInstance().logError("Error loading booking for baggage: " + ex.getMessage());
-                }
+                Object[] row = {
+                    baggage.getTagNumber(),
+                    "Passenger " + baggage.getBookingId(), // Would need to get actual passenger name
+                    baggage.getWeightKg() + " kg",
+                    baggage.getBaggageType().toString(),
+                    baggage.getStatus().toString(),
+                    baggage.getCreatedAt() != null ? baggage.getCreatedAt().format(dateFormatter) : "N/A"
+                };
+                baggageTableModel.addRow(row);
             }
             
-            FileLogger.getInstance().logInfo("Loaded " + baggageTableModel.getRowCount() + " baggage items");
-            
+            FileLogger.getInstance().logInfo("Loaded " + allBaggage.size() + " baggage items");
         } catch (DatabaseException ex) {
-            FileLogger.getInstance().logError("Failed to load baggage: " + ex.getMessage());
-            JOptionPane.showMessageDialog(this, 
-                "Failed to load baggage: " + ex.getMessage(), 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+            FileLogger.getInstance().logError("Error loading baggage: " + ex.getMessage());
+        }
+    }
+    
+    private Booking getBookingFromTableRow(int row) {
+        int bookingId = (Integer) passengersTableModel.getValueAt(row, 0);
+        try {
+            return bookingDAO.getBookingById(bookingId);
+        } catch (DatabaseException ex) {
+            FileLogger.getInstance().logError("Error getting booking details: " + ex.getMessage());
+            return null;
         }
     }
     
@@ -400,8 +330,6 @@ public class BaggageFrame extends JFrame {
         setSize(1200, 700);
         setLocationRelativeTo(null);
         setResizable(true);
-        
-        // Set initial button states
-        addBaggageButton.setEnabled(false);
+        ThemeManager.styleFrame(this);
     }
 } 
