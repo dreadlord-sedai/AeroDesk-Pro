@@ -363,6 +363,7 @@ public class BaggageDAO {
         baggage.setBookingId(rs.getInt("booking_id"));
         baggage.setWeightKg(rs.getDouble("weight"));
         baggage.setTagNumber(rs.getString("baggage_tag"));
+        baggage.setBaggageType(Baggage.BaggageType.valueOf(rs.getString("baggage_type")));
         baggage.setStatus(Baggage.BaggageStatus.valueOf(rs.getString("status")));
         
         Timestamp createdAt = rs.getTimestamp("created_at");

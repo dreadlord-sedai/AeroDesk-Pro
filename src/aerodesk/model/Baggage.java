@@ -21,7 +21,7 @@ public class Baggage {
     }
     
     public enum BaggageStatus {
-        LOADED, IN_TRANSIT, DELIVERED
+        CHECKED_IN, LOADED, DELIVERED, LOST
     }
     
     // Default constructor

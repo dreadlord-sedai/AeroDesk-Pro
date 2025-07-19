@@ -113,17 +113,20 @@ public class BaggageSimulator {
      */
     private Baggage.BaggageStatus getNextStatus(Baggage.BaggageStatus currentStatus) {
         switch (currentStatus) {
+            case CHECKED_IN:
+                // 80% chance to move to LOADED, 20% chance to stay CHECKED_IN
+                return Math.random() < 0.8 ? Baggage.BaggageStatus.LOADED : Baggage.BaggageStatus.CHECKED_IN;
             case LOADED:
-                // 70% chance to move to IN_TRANSIT, 30% chance to stay LOADED
-                return Math.random() < 0.7 ? Baggage.BaggageStatus.IN_TRANSIT : Baggage.BaggageStatus.LOADED;
-            case IN_TRANSIT:
-                // 60% chance to move to DELIVERED, 40% chance to stay IN_TRANSIT
-                return Math.random() < 0.6 ? Baggage.BaggageStatus.DELIVERED : Baggage.BaggageStatus.IN_TRANSIT;
+                // 70% chance to move to DELIVERED, 30% chance to stay LOADED
+                return Math.random() < 0.7 ? Baggage.BaggageStatus.DELIVERED : Baggage.BaggageStatus.LOADED;
             case DELIVERED:
                 // Once delivered, stay delivered
                 return Baggage.BaggageStatus.DELIVERED;
+            case LOST:
+                // Once lost, stay lost
+                return Baggage.BaggageStatus.LOST;
             default:
-                return Baggage.BaggageStatus.LOADED;
+                return Baggage.BaggageStatus.CHECKED_IN;
         }
     }
     
