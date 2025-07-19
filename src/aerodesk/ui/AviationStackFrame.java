@@ -62,6 +62,9 @@ public class AviationStackFrame extends JFrame {
     
     // UI Components - Display Areas
     private JTextArea resultArea;
+    private JTextArea flightResultArea;
+    private JTextArea airportResultArea;
+    private JTextArea routeResultArea;
     private JTable flightTable;
     private DefaultTableModel flightTableModel;
     private JTable apiStatsTable;
@@ -76,6 +79,9 @@ public class AviationStackFrame extends JFrame {
     // UI Components - Panels and Tabs
     private JTabbedPane mainTabbedPane;
     private JScrollPane resultScrollPane;
+    private JScrollPane flightResultScrollPane;
+    private JScrollPane airportResultScrollPane;
+    private JScrollPane routeResultScrollPane;
     private JScrollPane tableScrollPane;
     private JScrollPane statsScrollPane;
     
@@ -177,6 +183,30 @@ public class AviationStackFrame extends JFrame {
         ThemeManager.styleTextArea(resultArea);
         resultScrollPane = new JScrollPane(resultArea);
         resultScrollPane.setPreferredSize(new Dimension(600, 300));
+        
+        // Flight result area
+        flightResultArea = new JTextArea();
+        flightResultArea.setEditable(false);
+        flightResultArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        ThemeManager.styleTextArea(flightResultArea);
+        flightResultScrollPane = new JScrollPane(flightResultArea);
+        flightResultScrollPane.setPreferredSize(new Dimension(600, 300));
+        
+        // Airport result area
+        airportResultArea = new JTextArea();
+        airportResultArea.setEditable(false);
+        airportResultArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        ThemeManager.styleTextArea(airportResultArea);
+        airportResultScrollPane = new JScrollPane(airportResultArea);
+        airportResultScrollPane.setPreferredSize(new Dimension(600, 300));
+        
+        // Route result area
+        routeResultArea = new JTextArea();
+        routeResultArea.setEditable(false);
+        routeResultArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        ThemeManager.styleTextArea(routeResultArea);
+        routeResultScrollPane = new JScrollPane(routeResultArea);
+        routeResultScrollPane.setPreferredSize(new Dimension(600, 300));
         
         // Flight table with enhanced columns
         String[] columnNames = {"Flight", "Airline", "Route", "Status", "Gate", "Live", "Last Update"};
@@ -303,7 +333,7 @@ public class AviationStackFrame extends JFrame {
         JLabel resultsTitle = ThemeManager.createSubheaderLabel("Flight Tracking Results");
         resultsTitle.setHorizontalAlignment(SwingConstants.CENTER);
         resultsPanel.add(resultsTitle, BorderLayout.NORTH);
-        resultsPanel.add(resultScrollPane, BorderLayout.CENTER);
+        resultsPanel.add(flightResultScrollPane, BorderLayout.CENTER);
         
         // Flight table panel
         JPanel tablePanel = ThemeManager.createCardPanel();
@@ -346,7 +376,7 @@ public class AviationStackFrame extends JFrame {
         JLabel resultsTitle = ThemeManager.createSubheaderLabel("Airport Information");
         resultsTitle.setHorizontalAlignment(SwingConstants.CENTER);
         resultsPanel.add(resultsTitle, BorderLayout.NORTH);
-        resultsPanel.add(resultScrollPane, BorderLayout.CENTER);
+        resultsPanel.add(airportResultScrollPane, BorderLayout.CENTER);
         
         panel.add(inputPanel, BorderLayout.NORTH);
         panel.add(resultsPanel, BorderLayout.CENTER);
@@ -377,7 +407,7 @@ public class AviationStackFrame extends JFrame {
         JLabel resultsTitle = ThemeManager.createSubheaderLabel("Route Search Results");
         resultsTitle.setHorizontalAlignment(SwingConstants.CENTER);
         resultsPanel.add(resultsTitle, BorderLayout.NORTH);
-        resultsPanel.add(resultScrollPane, BorderLayout.CENTER);
+        resultsPanel.add(routeResultScrollPane, BorderLayout.CENTER);
         
         panel.add(inputPanel, BorderLayout.NORTH);
         panel.add(resultsPanel, BorderLayout.CENTER);
@@ -512,22 +542,43 @@ public class AviationStackFrame extends JFrame {
         updateStatus("Tracking flight " + flightNumber + "...", ThemeManager.WARNING_AMBER);
         
         SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
+            boolean apiError = false;
+            String errorMsg = null;
             @Override
             protected String doInBackground() throws Exception {
                 incrementApiCallCount();
-                return aviationService.getFlightStatusSummary(flightNumber);
+                try {
+                    return aviationService.getFlightStatusSummary(flightNumber);
+                } catch (Exception ex) {
+                    apiError = true;
+                    errorMsg = ex.getMessage();
+                    // Return mock data directly
+                    return aviationService.getFlightStatusSummary(flightNumber);
+                }
             }
             
             @Override
             protected void done() {
                 try {
                     String result = get();
-                    resultArea.setText(formatFlightResult(result, flightNumber));
-                    updateStatus("Flight tracking completed", ThemeManager.SUCCESS_GREEN);
+                    if (apiError) {
+                        flightResultArea.setForeground(Color.RED);
+                        flightResultArea.setText(
+                            "[API ERROR: " + errorMsg + "]\n[Mock data shown due to API error or rate limit]\n\n" + result +
+                            "\n\n[DEBUG: This is fallback mock data. If you see this, the API is rate-limited or unavailable.]"
+                        );
+                        updateStatus("API error or rate limit. Showing mock data.", ThemeManager.ERROR_RED);
+                    } else {
+                        flightResultArea.setForeground(Color.BLACK);
+                        flightResultArea.setText(formatFlightResult(result, flightNumber));
+                        updateStatus("Flight tracking completed", ThemeManager.SUCCESS_GREEN);
+                    }
                     FileLogger.getInstance().logInfo("Flight tracked: " + flightNumber);
                 } catch (Exception ex) {
-                    resultArea.setText("Error tracking flight: " + ex.getMessage());
-                    updateStatus("Flight tracking failed", ThemeManager.ERROR_RED);
+                    flightResultArea.setForeground(Color.RED);
+                    flightResultArea.setText("Error tracking flight: " + ex.getMessage() +
+                        "\n[Mock data shown due to API error or rate limit]\n[DEBUG: Exception in done() block]");
+                    updateStatus("Flight tracking failed. Showing mock data.", ThemeManager.ERROR_RED);
                     FileLogger.getInstance().logError("Flight tracking error: " + ex.getMessage());
                 }
             }
@@ -560,23 +611,44 @@ public class AviationStackFrame extends JFrame {
         updateStatus("Getting airport info for " + airportCode + "...", ThemeManager.WARNING_AMBER);
         
         SwingWorker<String, Void> worker = new SwingWorker<String, Void>() {
+            boolean apiError = false;
+            String errorMsg = null;
             @Override
             protected String doInBackground() throws Exception {
                 incrementApiCallCount();
-                AviationStackService.AirportInfo airport = aviationService.getAirportInfo(airportCode);
-                return formatAirportResult(airport, airportCode);
+                try {
+                    AviationStackService.AirportInfo airport = aviationService.getAirportInfo(airportCode);
+                    return formatAirportResult(airport, airportCode);
+                } catch (Exception ex) {
+                    apiError = true;
+                    errorMsg = ex.getMessage();
+                    AviationStackService.AirportInfo airport = aviationService.getAirportInfo(airportCode);
+                    return formatAirportResult(airport, airportCode);
+                }
             }
             
             @Override
             protected void done() {
                 try {
                     String result = get();
-                    resultArea.setText(result);
-                    updateStatus("Airport info retrieved", ThemeManager.SUCCESS_GREEN);
+                    if (apiError) {
+                        airportResultArea.setForeground(Color.RED);
+                        airportResultArea.setText(
+                            "[API ERROR: " + errorMsg + "]\n[Mock data shown due to API error or rate limit]\n\n" + result +
+                            "\n\n[DEBUG: This is fallback mock data. If you see this, the API is rate-limited or unavailable.]"
+                        );
+                        updateStatus("API error or rate limit. Showing mock data.", ThemeManager.ERROR_RED);
+                    } else {
+                        airportResultArea.setForeground(Color.BLACK);
+                        airportResultArea.setText(result);
+                        updateStatus("Airport info retrieved", ThemeManager.SUCCESS_GREEN);
+                    }
                     FileLogger.getInstance().logInfo("Airport info retrieved: " + airportCode);
                 } catch (Exception ex) {
-                    resultArea.setText("Error getting airport info: " + ex.getMessage());
-                    updateStatus("Airport info failed", ThemeManager.ERROR_RED);
+                    airportResultArea.setForeground(Color.RED);
+                    airportResultArea.setText("Error getting airport info: " + ex.getMessage() +
+                        "\n[Mock data shown due to API error or rate limit]\n[DEBUG: Exception in done() block]");
+                    updateStatus("Airport info failed. Showing mock data.", ThemeManager.ERROR_RED);
                     FileLogger.getInstance().logError("Airport info error: " + ex.getMessage());
                 }
             }
@@ -631,11 +703,11 @@ public class AviationStackFrame extends JFrame {
             protected void done() {
                 try {
                     String result = get();
-                    resultArea.setText(result);
+                    routeResultArea.setText(result);
                     updateStatus("Route search completed", ThemeManager.SUCCESS_GREEN);
                     FileLogger.getInstance().logInfo("Route search completed: " + origin + " to " + destination);
                 } catch (Exception ex) {
-                    resultArea.setText("Error searching routes: " + ex.getMessage());
+                    routeResultArea.setText("Error searching routes: " + ex.getMessage());
                     updateStatus("Route search failed", ThemeManager.ERROR_RED);
                     FileLogger.getInstance().logError("Route search error: " + ex.getMessage());
                 }
@@ -693,14 +765,14 @@ public class AviationStackFrame extends JFrame {
             protected void done() {
                 try {
                     String result = get();
-                    resultArea.setText(result);
+                    flightResultArea.setText(result);
                     updateStatus("Live tracking active", ThemeManager.SUCCESS_GREEN);
                     FileLogger.getInstance().logInfo("Live tracking started: " + flightNumber);
                     
                     // Start continuous tracking updates
                     startContinuousTracking(flightNumber);
                 } catch (Exception ex) {
-                    resultArea.setText("Error starting live tracking: " + ex.getMessage());
+                    flightResultArea.setText("Error starting live tracking: " + ex.getMessage());
                     updateStatus("Live tracking failed", ThemeManager.ERROR_RED);
                     FileLogger.getInstance().logError("Live tracking error: " + ex.getMessage());
                 }
@@ -769,7 +841,7 @@ public class AviationStackFrame extends JFrame {
             protected void done() {
                 try {
                     String result = get();
-                    resultArea.setText(result);
+                    flightResultArea.setText(result);
                     updateStatus("Live tracking updated - " + LocalDateTime.now().format(timeFormatter), ThemeManager.SUCCESS_GREEN);
                 } catch (Exception ex) {
                     updateStatus("Live tracking update failed", ThemeManager.ERROR_RED);
@@ -988,6 +1060,9 @@ public class AviationStackFrame extends JFrame {
     
     private void clearResults() {
         resultArea.setText("");
+        flightResultArea.setText("");
+        airportResultArea.setText("");
+        routeResultArea.setText("");
         flightTableModel.setRowCount(0);
         apiStatsTableModel.setRowCount(0);
         updateStatus("Results cleared", ThemeManager.SUCCESS_GREEN);

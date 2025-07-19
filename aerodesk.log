@@ -8631,3 +8631,146 @@
 [2025-07-19 22:15:18] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 429
 [2025-07-19 22:15:18] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
 [2025-07-19 22:15:18] ERROR: Aviation Stack API error for live tracking AA101: HTTP request failed with code: 429
+[2025-07-19 22:16:23] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:16:23] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:16:23] INFO: Splash screen launched successfully
+[2025-07-19 22:16:26] INFO: Launching login screen after splash screen
+[2025-07-19 22:16:39] DEBUG: Database connection established successfully
+[2025-07-19 22:16:39] INFO: User authenticated successfully: staff1
+[2025-07-19 22:16:39] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:16:39] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:16:41] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:16:41] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:16:42] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:16:42] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:16:44] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:16:44] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:16:44] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:16:44] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 429
+[2025-07-19 22:16:44] INFO: Airport info retrieved: JFK
+[2025-07-19 22:16:45] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:16:45] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:16:45] ERROR: Aviation Stack API error for flight UA303: HTTP request failed with code: 429
+[2025-07-19 22:19:15] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:19:15] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:19:15] INFO: Splash screen launched successfully
+[2025-07-19 22:19:18] INFO: Launching login screen after splash screen
+[2025-07-19 22:19:32] DEBUG: Database connection established successfully
+[2025-07-19 22:19:32] INFO: User authenticated successfully: staff1
+[2025-07-19 22:19:32] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:19:32] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:19:34] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:19:34] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:19:35] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:19:36] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:19:36] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:19:36] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:19:36] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:19:36] INFO: Flight tracked: AA101
+[2025-07-19 22:19:37] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:19:37] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 429
+[2025-07-19 22:19:37] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:19:37] ERROR: Aviation Stack API error for flight UA303: HTTP request failed with code: 429
+[2025-07-19 22:19:38] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=SW404
+[2025-07-19 22:19:38] ERROR: Aviation Stack API error for flight SW404: HTTP request failed with code: 429
+[2025-07-19 22:19:39] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=BA505
+[2025-07-19 22:19:39] ERROR: Aviation Stack API error for flight BA505: HTTP request failed with code: 429
+[2025-07-19 22:19:42] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:19:44] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:19:45] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:19:45] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:19:45] INFO: Flight tracked: AA101
+[2025-07-19 22:19:52] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:19:52] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:19:52] INFO: Airport info retrieved: JFK
+[2025-07-19 22:19:53] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:19:53] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:19:53] INFO: Airport info retrieved: JFK
+[2025-07-19 22:19:59] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:19:59] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:19:59] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:19:59] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 22:19:59] INFO: Airport stats retrieved: JFK
+[2025-07-19 22:20:00] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:20:00] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:20:00] INFO: Airport info retrieved: JFK
+[2025-07-19 22:20:01] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:20:02] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:20:02] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:20:02] INFO: Flight tracked: AA101
+[2025-07-19 22:20:04] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:23:08] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:23:08] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:23:08] INFO: Splash screen launched successfully
+[2025-07-19 22:23:11] INFO: Launching login screen after splash screen
+[2025-07-19 22:23:32] DEBUG: Database connection established successfully
+[2025-07-19 22:23:32] INFO: User authenticated successfully: staff1
+[2025-07-19 22:23:32] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:23:32] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:23:34] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:23:34] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:23:35] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:23:35] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:23:35] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:23:36] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:23:36] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:23:36] INFO: Flight tracked: AA101
+[2025-07-19 22:23:36] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:23:36] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 429
+[2025-07-19 22:23:36] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:23:37] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:23:37] ERROR: Aviation Stack API error for flight UA303: HTTP request failed with code: 429
+[2025-07-19 22:23:37] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:23:37] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:23:37] INFO: Flight tracked: AA101
+[2025-07-19 22:23:38] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=SW404
+[2025-07-19 22:23:38] ERROR: Aviation Stack API error for flight SW404: HTTP request failed with code: 429
+[2025-07-19 22:23:39] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=BA505
+[2025-07-19 22:23:39] ERROR: Aviation Stack API error for flight BA505: HTTP request failed with code: 429
+[2025-07-19 22:23:42] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:23:42] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:23:42] INFO: Airport info retrieved: JFK
+[2025-07-19 22:23:43] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:23:43] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:23:43] INFO: Airport info retrieved: JFK
+[2025-07-19 22:23:44] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:23:44] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:23:44] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:23:44] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 22:23:44] INFO: Airport stats retrieved: JFK
+[2025-07-19 22:23:51] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:29:25] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:29:25] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:29:25] INFO: Splash screen launched successfully
+[2025-07-19 22:29:28] INFO: Launching login screen after splash screen
+[2025-07-19 22:29:39] DEBUG: Database connection established successfully
+[2025-07-19 22:29:39] INFO: User authenticated successfully: staff1
+[2025-07-19 22:29:39] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:29:40] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:29:41] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:29:41] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:29:42] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:29:42] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:29:42] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:29:43] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:29:43] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:29:43] INFO: Flight tracked: AA101
+[2025-07-19 22:29:43] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:29:43] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 429
+[2025-07-19 22:29:44] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:29:44] ERROR: Aviation Stack API error for flight UA303: HTTP request failed with code: 429
+[2025-07-19 22:29:45] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=SW404
+[2025-07-19 22:29:45] ERROR: Aviation Stack API error for flight SW404: HTTP request failed with code: 429
+[2025-07-19 22:29:46] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=BA505
+[2025-07-19 22:29:46] ERROR: Aviation Stack API error for flight BA505: HTTP request failed with code: 429
+[2025-07-19 22:29:52] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:29:53] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:29:53] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:29:53] INFO: Flight tracked: AA101
+[2025-07-19 22:29:54] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:29:54] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:29:54] INFO: Airport info retrieved: JFK
+[2025-07-19 22:29:57] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:29:57] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 22:29:57] INFO: Route search completed: JFK to LAX
+[2025-07-19 22:30:01] INFO: Real-time Aviation Stack updates stopped
