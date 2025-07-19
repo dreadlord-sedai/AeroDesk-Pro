@@ -2,6 +2,7 @@ package aerodesk;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import aerodesk.ui.LoginFrame;
+import aerodesk.ui.SplashScreen;
 import aerodesk.util.ConfigManager;
 import aerodesk.util.FileLogger;
 import javax.swing.*;
@@ -25,13 +26,14 @@ public class Main {
         // Start logging
         FileLogger.getInstance().logInfo("AeroDesk Pro starting up...");
         
-        // Launch login screen
+        // Launch splash screen
         SwingUtilities.invokeLater(() -> {
             try {
-                new LoginFrame().setVisible(true);
-                FileLogger.getInstance().logInfo("Login screen displayed successfully");
+                SplashScreen splashScreen = new SplashScreen();
+                splashScreen.showSplash();
+                FileLogger.getInstance().logInfo("Splash screen launched successfully");
             } catch (Exception e) {
-                FileLogger.getInstance().logError("Failed to display login screen: " + e.getMessage());
+                FileLogger.getInstance().logError("Failed to display splash screen: " + e.getMessage());
                 JOptionPane.showMessageDialog(null, 
                     "Failed to start application: " + e.getMessage(),
                     "Startup Error", 
