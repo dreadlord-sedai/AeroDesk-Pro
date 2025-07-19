@@ -2,6 +2,7 @@ package aerodesk.ui;
 
 import aerodesk.util.ThemeManager;
 import aerodesk.util.FileLogger;
+import aerodesk.ui.MainMenuFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -113,36 +114,7 @@ public class SplashScreen extends JWindow {
         topPanel.setOpaque(false);
         topPanel.setBorder(BorderFactory.createEmptyBorder(40, 40, 20, 40));
         
-        // Logo/Icon panel (placeholder for aviation icon)
-        JPanel logoPanel = new JPanel();
-        logoPanel.setOpaque(false);
-        logoPanel.setPreferredSize(new Dimension(80, 80));
-        logoPanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createLineBorder(ThemeManager.WHITE, 2),
-            BorderFactory.createEmptyBorder(10, 10, 10, 10)
-        ));
-        
-        // Create a simple aviation icon
-        JLabel iconLabel = new JLabel("✈") {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g.create();
-                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                
-                // Draw a simple plane icon
-                g2d.setColor(ThemeManager.WHITE);
-                g2d.setFont(new Font("Segoe UI", Font.BOLD, 40));
-                FontMetrics fm = g2d.getFontMetrics();
-                int x = (getWidth() - fm.stringWidth("✈")) / 2;
-                int y = (getHeight() + fm.getAscent()) / 2;
-                g2d.drawString("✈", x, y);
-                
-                g2d.dispose();
-            }
-        };
-        iconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        logoPanel.add(iconLabel);
+        // Logo removed for cleaner design
         
         // Title panel
         JPanel titlePanel = new JPanel(new BorderLayout(10, 5));
@@ -161,10 +133,9 @@ public class SplashScreen extends JWindow {
         titlePanel.add(titleLabel, BorderLayout.CENTER);
         titlePanel.add(subtitleLabel, BorderLayout.SOUTH);
         
-        // Combine logo and title
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
+        // Use only title (removed logo)
+        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         headerPanel.setOpaque(false);
-        headerPanel.add(logoPanel);
         headerPanel.add(titlePanel);
         
         topPanel.add(headerPanel, BorderLayout.CENTER);
@@ -249,11 +220,14 @@ public class SplashScreen extends JWindow {
     }
     
     private void launchMainApplication() {
-        // Launch the main application
+        // Launch the main application directly to main menu (bypassing login)
         SwingUtilities.invokeLater(() -> {
             try {
-                FileLogger.getInstance().logInfo("Launching main application");
-                new LoginFrame().setVisible(true);
+                FileLogger.getInstance().logInfo("Launching main application directly to main menu");
+                // Create a mock user for development/testing
+                String mockUser = "admin";
+                String mockRole = "Administrator";
+                new MainMenuFrame(mockUser, mockRole).setVisible(true);
             } catch (Exception e) {
                 FileLogger.getInstance().logError("Failed to launch main application: " + e.getMessage());
                 JOptionPane.showMessageDialog(null, 
