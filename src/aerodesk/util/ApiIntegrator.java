@@ -126,6 +126,33 @@ public class ApiIntegrator {
     }
     
     /**
+     * Fetches airline information from Aviation Stack
+     * @param airlineCode The airline IATA code
+     * @return Airline data as JSON string
+     * @throws IOException if the API call fails
+     */
+    public static String getAirlineData(String airlineCode) throws IOException {
+        ConfigManager config = ConfigManager.getInstance();
+        String apiKey = config.getProperty("aviationstack.api.key");
+        String baseUrl = config.getProperty("aviationstack.api.url");
+        
+        if (apiKey == null || apiKey.isEmpty() || "your_aviationstack_api_key_here".equals(apiKey)) {
+            return getMockAirlineData(airlineCode);
+        }
+        
+        String urlString = String.format("%s/airlines?access_key=%s&iata_code=%s", baseUrl, apiKey, airlineCode);
+        
+        try {
+            String response = makeHttpRequest(urlString);
+            FileLogger.getInstance().logInfo("Aviation Stack API: Retrieved airline data for " + airlineCode);
+            return response;
+        } catch (IOException e) {
+            FileLogger.getInstance().logError("Aviation Stack API error for airline " + airlineCode + ": " + e.getMessage());
+            return getMockAirlineData(airlineCode);
+        }
+    }
+    
+    /**
      * Fetches flight status data (legacy method for backward compatibility)
      * @param flightNumber The flight number
      * @return Flight status data as JSON string
@@ -311,6 +338,29 @@ public class ApiIntegrator {
                     }
                 }]
             }""", flightNumber, flightNumber, LocalDateTime.now());
+    }
+    
+    /**
+     * Returns mock airline data for demonstration purposes
+     * @param airlineCode The airline code
+     * @return Mock airline data as JSON string
+     */
+    private static String getMockAirlineData(String airlineCode) {
+        return String.format("""
+            {
+                "success": true,
+                "data": [{
+                    "airline_name": "American Airlines",
+                    "iata_code": "%s",
+                    "icao_code": "AAL",
+                    "country_name": "United States",
+                    "country_code": "US",
+                    "website": "https://www.aa.com",
+                    "phone_number": "+1 800-433-7300",
+                    "fleet_size": "956 aircraft",
+                    "founded": "1926"
+                }]
+            }""", airlineCode);
     }
     
     /**

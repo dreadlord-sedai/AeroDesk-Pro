@@ -32,6 +32,8 @@ public class AviationStackFrame extends JFrame {
     private JButton getAirportInfoButton;
     private JButton searchRouteButton;
     private JButton liveTrackingButton;
+    private JButton airlineInfoButton;
+    private JButton airportStatsButton;
     private ScheduledExecutorService scheduler;
     
     public AviationStackFrame() {
@@ -63,6 +65,8 @@ public class AviationStackFrame extends JFrame {
         getAirportInfoButton = new JButton("Get Airport Info");
         searchRouteButton = new JButton("Search Route");
         liveTrackingButton = new JButton("Live Tracking");
+        airlineInfoButton = new JButton("Airline Info");
+        airportStatsButton = new JButton("Airport Stats");
         
         // Result area
         resultArea = new JTextArea();
@@ -106,6 +110,8 @@ public class AviationStackFrame extends JFrame {
         inputPanel.add(new JLabel("Airport Code:"));
         inputPanel.add(airportCodeField);
         inputPanel.add(getAirportInfoButton);
+        inputPanel.add(airportStatsButton);
+        inputPanel.add(airlineInfoButton);
         inputPanel.add(searchRouteButton);
         
         add(inputPanel, BorderLayout.NORTH);
@@ -153,6 +159,20 @@ public class AviationStackFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 startLiveTracking();
+            }
+        });
+        
+        airlineInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getAirlineInfo();
+            }
+        });
+        
+        airportStatsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getAirportStatistics();
             }
         });
         
@@ -265,7 +285,7 @@ public class AviationStackFrame extends JFrame {
             @Override
             protected Void doInBackground() throws Exception {
                 try {
-                    List<FlightInfo> flights = aviationService.searchFlightsByRoute(departure, arrival);
+                    List<FlightInfo> flights = aviationService.searchFlightsByRoute(departure, arrival, null);
                     
                     SwingUtilities.invokeLater(() -> {
                         StringBuilder info = new StringBuilder();
@@ -338,6 +358,88 @@ public class AviationStackFrame extends JFrame {
                         resultArea.setText("Error starting live tracking: " + ex.getMessage());
                         setStatus("Error starting live tracking");
                         FileLogger.getInstance().logError("Error starting live tracking for " + flightNumber + ": " + ex.getMessage());
+                    });
+                }
+                return null;
+            }
+        };
+        worker.execute();
+    }
+    
+    private void getAirlineInfo() {
+        String airlineCode = JOptionPane.showInputDialog(this, "Enter airline IATA code:", "AA");
+        if (airlineCode == null || airlineCode.trim().isEmpty()) return;
+        
+        setStatus("Getting airline information for " + airlineCode + "...");
+        
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    AviationStackService.AirlineInfo airline = aviationService.getAirlineInfo(airlineCode);
+                    
+                    SwingUtilities.invokeLater(() -> {
+                        StringBuilder info = new StringBuilder();
+                        info.append("=== Airline Information ===\n");
+                        info.append("Name: ").append(airline.getName()).append("\n");
+                        info.append("IATA Code: ").append(airline.getIataCode()).append("\n");
+                        info.append("ICAO Code: ").append(airline.getIcaoCode()).append("\n");
+                        info.append("Country: ").append(airline.getCountry()).append("\n");
+                        if (airline.getWebsite() != null) {
+                            info.append("Website: ").append(airline.getWebsite()).append("\n");
+                        }
+                        if (airline.getPhone() != null) {
+                            info.append("Phone: ").append(airline.getPhone()).append("\n");
+                        }
+                        if (airline.getFleetSize() != null) {
+                            info.append("Fleet Size: ").append(airline.getFleetSize()).append("\n");
+                        }
+                        if (airline.getFounded() != null) {
+                            info.append("Founded: ").append(airline.getFounded()).append("\n");
+                        }
+                        
+                        resultArea.setText(info.toString());
+                        setStatus("Airline information retrieved for " + airlineCode);
+                        FileLogger.getInstance().logInfo("Retrieved airline info: " + airlineCode);
+                    });
+                } catch (Exception ex) {
+                    SwingUtilities.invokeLater(() -> {
+                        resultArea.setText("Error getting airline information: " + ex.getMessage());
+                        setStatus("Error getting airline information");
+                        FileLogger.getInstance().logError("Error getting airline info for " + airlineCode + ": " + ex.getMessage());
+                    });
+                }
+                return null;
+            }
+        };
+        worker.execute();
+    }
+    
+    private void getAirportStatistics() {
+        String airportCode = airportCodeField.getText().trim().toUpperCase();
+        if (airportCode.isEmpty()) {
+            showMessage("Please enter an airport code", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        setStatus("Getting airport statistics for " + airportCode + "...");
+        
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    String stats = aviationService.getAirportStatistics(airportCode);
+                    
+                    SwingUtilities.invokeLater(() -> {
+                        resultArea.setText(stats);
+                        setStatus("Airport statistics retrieved for " + airportCode);
+                        FileLogger.getInstance().logInfo("Retrieved airport statistics: " + airportCode);
+                    });
+                } catch (Exception ex) {
+                    SwingUtilities.invokeLater(() -> {
+                        resultArea.setText("Error getting airport statistics: " + ex.getMessage());
+                        setStatus("Error getting airport statistics");
+                        FileLogger.getInstance().logError("Error getting airport statistics for " + airportCode + ": " + ex.getMessage());
                     });
                 }
                 return null;
