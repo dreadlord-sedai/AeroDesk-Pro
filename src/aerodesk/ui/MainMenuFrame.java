@@ -160,17 +160,15 @@ public class MainMenuFrame extends JFrame {
     }
     
     private void openFlightScheduling() {
-        JOptionPane.showMessageDialog(this, 
-            "Flight Scheduling module will be implemented next.", 
-            "Coming Soon", 
-            JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> {
+            new FlightSchedulingFrame().setVisible(true);
+        });
     }
     
     private void openCheckIn() {
-        JOptionPane.showMessageDialog(this, 
-            "Passenger Check-In module will be implemented next.", 
-            "Coming Soon", 
-            JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> {
+            new CheckInFrame().setVisible(true);
+        });
     }
     
     private void openBaggageHandling() {
