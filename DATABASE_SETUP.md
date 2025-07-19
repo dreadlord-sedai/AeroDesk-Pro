@@ -122,8 +122,9 @@ java -cp "lib/*;src" aerodesk.Main
 
 ### Issue 4: "Public Key Retrieval is not allowed"
 **Solution:**
-- Add `allowPublicKeyRetrieval=true` to JDBC URL
+- Add `allowPublicKeyRetrieval=true` to JDBC URL in config.properties
 - Or use: `ALTER USER 'aerodesk_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'aerodesk_password';`
+- **Quick Fix**: Update config.properties with the correct JDBC URL parameters
 
 ### Issue 5: "The server time zone value is unrecognized"
 **Solution:**

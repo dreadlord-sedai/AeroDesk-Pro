@@ -71,3 +71,16 @@
 [2025-07-19 12:18:25] ERROR: Authentication error: Public Key Retrieval is not allowed
 [2025-07-19 12:18:25] ERROR: Database authentication error: Authentication failed
 [2025-07-19 12:18:27] WARNING: Failed login attempt for user: staff1
+[2025-07-19 12:19:48] DEBUG: Database connection established successfully
+[2025-07-19 12:19:48] INFO: Database connection test successful
+[2025-07-19 12:19:48] DEBUG: Database connection established successfully
+[2025-07-19 12:19:48] INFO: User authenticated successfully: admin
+[2025-07-19 12:19:48] DEBUG: Database connection established successfully
+[2025-07-19 12:19:48] INFO: User authenticated successfully: staff1
+[2025-07-19 12:19:48] DEBUG: Database connection established successfully
+[2025-07-19 12:19:48] INFO: Retrieved 3 active users from database
+[2025-07-19 12:20:31] INFO: AeroDesk Pro starting up...
+[2025-07-19 12:20:31] INFO: Login screen displayed successfully
+[2025-07-19 12:20:44] DEBUG: Database connection established successfully
+[2025-07-19 12:20:44] INFO: User authenticated successfully: staff1
+[2025-07-19 12:20:44] INFO: User staff1 logged in successfully as STAFF
