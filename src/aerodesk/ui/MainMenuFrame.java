@@ -2,7 +2,6 @@ package aerodesk.ui;
 
 import aerodesk.util.ThemeManager;
 import aerodesk.util.FileLogger;
-import aerodesk.util.IconManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,7 +36,7 @@ public class MainMenuFrame extends JFrame {
         headerPanel.setPreferredSize(new Dimension(0, 100));
         headerPanel.setLayout(new BorderLayout());
         
-        JLabel titleLabel = ThemeManager.createTitleLabel(IconManager.getTextIcon("flight") + " AeroDesk Pro");
+        JLabel titleLabel = ThemeManager.createTitleLabel("AeroDesk Pro");
         titleLabel.setForeground(ThemeManager.WHITE);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         
@@ -64,6 +63,7 @@ public class MainMenuFrame extends JFrame {
         JButton flightStatusBtn = createModernMenuButton("Flight Status", "status", ThemeManager.ACCENT_ORANGE);
         JButton aviationStackBtn = createModernMenuButton("Aviation Stack API", "api", ThemeManager.PRIMARY_BLUE);
         JButton reportsBtn = createModernMenuButton("Reports & Logs", "reports", ThemeManager.DARK_GRAY);
+        JButton dashboardBtn = createModernMenuButton("Live Dashboard", "dashboard", ThemeManager.SUCCESS_GREEN);
         
         menuPanel.add(flightSchedulingBtn);
         menuPanel.add(checkInBtn);
@@ -72,11 +72,13 @@ public class MainMenuFrame extends JFrame {
         menuPanel.add(flightStatusBtn);
         menuPanel.add(aviationStackBtn);
         menuPanel.add(reportsBtn);
+        menuPanel.add(dashboardBtn);
         
         // Bottom panel with logout
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         bottomPanel.setBackground(ThemeManager.WHITE);
-        JButton logoutBtn = new JButton(IconManager.getTextIcon("logout") + " Logout");
+        JButton logoutBtn = new JButton("Logout");
+        logoutBtn.setPreferredSize(new Dimension(150, 40));
         ThemeManager.styleButton(logoutBtn, ThemeManager.ERROR_RED, ThemeManager.WHITE);
         bottomPanel.add(logoutBtn);
         
@@ -94,13 +96,12 @@ public class MainMenuFrame extends JFrame {
         flightStatusBtn.setActionCommand("flight_status");
         aviationStackBtn.setActionCommand("aviation_stack");
         reportsBtn.setActionCommand("reports");
+        dashboardBtn.setActionCommand("dashboard");
         logoutBtn.setActionCommand("logout");
     }
     
     private JButton createModernMenuButton(String text, String iconType, Color color) {
-        // Use IconManager to get proper text-based icons
-        String iconText = IconManager.getTextIcon(iconType);
-        JButton button = new JButton("<html><center><font size='+2'>" + iconText + "</font><br>" + text + "</center></html>");
+        JButton button = new JButton("<html><center><font size='+2'>" + text + "</font></center></html>");
         button.setFont(ThemeManager.SUBHEADER_FONT);
         button.setPreferredSize(new Dimension(200, 100));
         button.setBackground(color);
@@ -177,6 +178,9 @@ public class MainMenuFrame extends JFrame {
             case "reports":
                 openReports();
                 break;
+            case "dashboard":
+                openDashboard();
+                break;
             case "logout":
                 handleLogout();
                 break;
@@ -222,6 +226,12 @@ public class MainMenuFrame extends JFrame {
     private void openAviationStack() {
         SwingUtilities.invokeLater(() -> {
             new AviationStackFrame().setVisible(true);
+        });
+    }
+
+    private void openDashboard() {
+        SwingUtilities.invokeLater(() -> {
+            new DashboardFrame().setVisible(true);
         });
     }
     
