@@ -2723,3 +2723,185 @@
 [2025-07-19 15:16:56] INFO: Retrieved 15 flights from database
 [2025-07-19 15:16:56] INFO: Loaded 15 flights
 [2025-07-19 15:16:56] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 15:18:03] INFO: AeroDesk Pro starting up...
+[2025-07-19 15:18:03] INFO: Login screen displayed successfully
+[2025-07-19 15:18:11] DEBUG: Database connection established successfully
+[2025-07-19 15:18:11] INFO: User authenticated successfully: staff1
+[2025-07-19 15:18:11] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 15:18:12] DEBUG: Database connection established successfully
+[2025-07-19 15:18:12] INFO: Retrieved 25 bookings from database
+[2025-07-19 15:18:12] INFO: Loaded 21 checked-in passengers
+[2025-07-19 15:18:12] DEBUG: Database connection established successfully
+[2025-07-19 15:18:12] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:18:12] INFO: Loaded 25 baggage items
+[2025-07-19 15:25:32] INFO: AeroDesk Pro starting up...
+[2025-07-19 15:25:32] INFO: Login screen displayed successfully
+[2025-07-19 15:25:42] DEBUG: Database connection established successfully
+[2025-07-19 15:25:42] INFO: User authenticated successfully: staff1
+[2025-07-19 15:25:42] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 15:25:47] DEBUG: Database connection established successfully
+[2025-07-19 15:25:47] INFO: Retrieved 25 bookings from database
+[2025-07-19 15:25:47] INFO: Loaded 21 checked-in passengers
+[2025-07-19 15:25:47] DEBUG: Database connection established successfully
+[2025-07-19 15:25:47] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:25:47] INFO: Loaded 25 baggage items
+[2025-07-19 15:25:54] DEBUG: Database connection established successfully
+[2025-07-19 15:25:54] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:25:56] DEBUG: Database connection established successfully
+[2025-07-19 15:25:56] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:25:58] DEBUG: Database connection established successfully
+[2025-07-19 15:25:58] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:00] DEBUG: Database connection established successfully
+[2025-07-19 15:26:00] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:02] DEBUG: Database connection established successfully
+[2025-07-19 15:26:02] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:03] DEBUG: Database connection established successfully
+[2025-07-19 15:26:03] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:06] DEBUG: Database connection established successfully
+[2025-07-19 15:26:06] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:11] DEBUG: Database connection established successfully
+[2025-07-19 15:26:11] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:12] DEBUG: Database connection established successfully
+[2025-07-19 15:26:12] INFO: Retrieved 25 bookings from database
+[2025-07-19 15:26:12] INFO: Loaded 21 checked-in passengers
+[2025-07-19 15:26:12] DEBUG: Database connection established successfully
+[2025-07-19 15:26:12] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:12] INFO: Loaded 25 baggage items
+[2025-07-19 15:26:14] DEBUG: Database connection established successfully
+[2025-07-19 15:26:14] INFO: Retrieved baggage by tag: BG003
+[2025-07-19 15:26:14] DEBUG: Database connection established successfully
+[2025-07-19 15:26:14] INFO: Retrieved baggage by tag: BG002
+[2025-07-19 15:26:15] DEBUG: Database connection established successfully
+[2025-07-19 15:26:15] INFO: Retrieved baggage by tag: BG005
+[2025-07-19 15:26:15] DEBUG: Database connection established successfully
+[2025-07-19 15:26:15] INFO: Retrieved baggage by tag: BG007
+[2025-07-19 15:26:15] DEBUG: Database connection established successfully
+[2025-07-19 15:26:15] INFO: Retrieved baggage by tag: BG009
+[2025-07-19 15:26:16] DEBUG: Database connection established successfully
+[2025-07-19 15:26:16] INFO: Retrieved booking: BK007
+[2025-07-19 15:26:16] DEBUG: Database connection established successfully
+[2025-07-19 15:26:16] INFO: Retrieved booking: BK009
+[2025-07-19 15:26:16] DEBUG: Database connection established successfully
+[2025-07-19 15:26:16] INFO: Retrieved booking: BK011
+[2025-07-19 15:26:17] DEBUG: Database connection established successfully
+[2025-07-19 15:26:17] INFO: Retrieved booking: BK012
+[2025-07-19 15:26:17] DEBUG: Database connection established successfully
+[2025-07-19 15:26:17] INFO: Retrieved booking: BK013
+[2025-07-19 15:26:17] DEBUG: Database connection established successfully
+[2025-07-19 15:26:17] INFO: Retrieved booking: BK016
+[2025-07-19 15:26:18] DEBUG: Database connection established successfully
+[2025-07-19 15:26:18] INFO: Retrieved booking: BK011
+[2025-07-19 15:26:18] DEBUG: Database connection established successfully
+[2025-07-19 15:26:18] INFO: Retrieved booking: BK007
+[2025-07-19 15:26:18] DEBUG: Database connection established successfully
+[2025-07-19 15:26:18] INFO: Retrieved booking: BK006
+[2025-07-19 15:26:20] INFO: Baggage simulation started
+[2025-07-19 15:26:23] INFO: Baggage simulation stopped
+[2025-07-19 15:26:24] DEBUG: Database connection established successfully
+[2025-07-19 15:26:24] INFO: Retrieved booking: BK014
+[2025-07-19 15:26:24] DEBUG: Database connection established successfully
+[2025-07-19 15:26:24] INFO: Retrieved booking: BK011
+[2025-07-19 15:26:43] DEBUG: Database connection established successfully
+[2025-07-19 15:26:43] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:49] DEBUG: Database connection established successfully
+[2025-07-19 15:26:49] INFO: Retrieved booking: BK007
+[2025-07-19 15:26:49] DEBUG: Database connection established successfully
+[2025-07-19 15:26:49] INFO: Retrieved booking: BK006
+[2025-07-19 15:26:50] DEBUG: Database connection established successfully
+[2025-07-19 15:26:50] INFO: Retrieved baggage by tag: BG006
+[2025-07-19 15:26:50] DEBUG: Database connection established successfully
+[2025-07-19 15:26:50] INFO: Retrieved baggage by tag: BG008
+[2025-07-19 15:26:50] DEBUG: Database connection established successfully
+[2025-07-19 15:26:50] INFO: Retrieved baggage by tag: BG010
+[2025-07-19 15:26:51] DEBUG: Database connection established successfully
+[2025-07-19 15:26:51] INFO: Retrieved baggage by tag: BG003
+[2025-07-19 15:26:51] DEBUG: Database connection established successfully
+[2025-07-19 15:26:51] INFO: Retrieved baggage by tag: BG002
+[2025-07-19 15:26:51] DEBUG: Database connection established successfully
+[2025-07-19 15:26:51] INFO: Retrieved baggage by tag: BG006
+[2025-07-19 15:26:52] DEBUG: Database connection established successfully
+[2025-07-19 15:26:52] INFO: Retrieved baggage by tag: BG008
+[2025-07-19 15:26:52] DEBUG: Database connection established successfully
+[2025-07-19 15:26:52] INFO: Retrieved baggage by tag: BG009
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved 12 gates from database
+[2025-07-19 15:26:55] INFO: Loaded 12 gates
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: A1
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: DL101
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: A2
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: AA202
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: B1
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: UA303
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: B2
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: SW404
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: A4
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: DL505
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: C1
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: BA601
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: C2
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: AF702
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: C3
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: LH803
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: C4
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: JL904
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: C1
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: EK1005
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: B3
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: DL1106
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: B4
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: AA1207
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: A1
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: UA1308
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: A2
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: SW1409
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved gate: A3
+[2025-07-19 15:26:55] DEBUG: Database connection established successfully
+[2025-07-19 15:26:55] INFO: Retrieved flight: DL1510
+[2025-07-19 15:26:55] INFO: Loaded 15 gate assignments
+[2025-07-19 15:26:57] DEBUG: Database connection established successfully
+[2025-07-19 15:26:57] INFO: Retrieved 25 bookings from database
+[2025-07-19 15:26:57] DEBUG: Database connection established successfully
+[2025-07-19 15:26:57] INFO: Retrieved 25 bookings from database
+[2025-07-19 15:26:57] INFO: Loaded 25 bookings
+[2025-07-19 15:26:59] DEBUG: Database connection established successfully
+[2025-07-19 15:26:59] INFO: Retrieved 25 bookings from database
+[2025-07-19 15:26:59] INFO: Loaded 21 checked-in passengers
+[2025-07-19 15:26:59] DEBUG: Database connection established successfully
+[2025-07-19 15:26:59] INFO: Retrieved 25 baggage items from database
+[2025-07-19 15:26:59] INFO: Loaded 25 baggage items
+[2025-07-19 15:27:01] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 15:27:01] DEBUG: Database connection established successfully
+[2025-07-19 15:27:01] INFO: Retrieved 15 flights from database
+[2025-07-19 15:27:01] INFO: Loaded 15 flights
+[2025-07-19 15:27:01] INFO: Flight Scheduling: Loaded 15 flights
