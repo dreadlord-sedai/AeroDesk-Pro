@@ -50,7 +50,7 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public Baggage getBaggageById(int baggageId) throws DatabaseException {
-        String sql = "SELECT * FROM baggage WHERE baggage_id = ?";
+        String sql = "SELECT * FROM baggage WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -80,7 +80,7 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public Baggage getBaggageByTagNumber(String tagNumber) throws DatabaseException {
-        String sql = "SELECT * FROM baggage WHERE tag_number = ?";
+        String sql = "SELECT * FROM baggage WHERE baggage_tag = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -141,17 +141,15 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public Baggage createBaggage(Baggage baggage) throws DatabaseException {
-        String sql = "INSERT INTO baggage (booking_id, weight_kg, baggage_type, tag_number, status) " +
-                    "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO baggage (booking_id, weight, status) " +
+                    "VALUES (?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setInt(1, baggage.getBookingId());
             stmt.setDouble(2, baggage.getWeightKg());
-            stmt.setString(3, baggage.getBaggageType().name());
-            stmt.setString(4, baggage.getTagNumber());
-            stmt.setString(5, baggage.getStatus().name());
+            stmt.setString(3, baggage.getStatus().name());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -182,18 +180,15 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean updateBaggage(Baggage baggage) throws DatabaseException {
-        String sql = "UPDATE baggage SET booking_id = ?, weight_kg = ?, baggage_type = ?, " +
-                    "tag_number = ?, status = ? WHERE baggage_id = ?";
+        String sql = "UPDATE baggage SET booking_id = ?, weight = ?, status = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setInt(1, baggage.getBookingId());
             stmt.setDouble(2, baggage.getWeightKg());
-            stmt.setString(3, baggage.getBaggageType().name());
-            stmt.setString(4, baggage.getTagNumber());
-            stmt.setString(5, baggage.getStatus().name());
-            stmt.setInt(6, baggage.getBaggageId());
+            stmt.setString(3, baggage.getStatus().name());
+            stmt.setInt(4, baggage.getBaggageId());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -218,7 +213,7 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean deleteBaggage(int baggageId) throws DatabaseException {
-        String sql = "DELETE FROM baggage WHERE baggage_id = ?";
+        String sql = "DELETE FROM baggage WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -249,7 +244,7 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean updateBaggageStatus(int baggageId, Baggage.BaggageStatus newStatus) throws DatabaseException {
-        String sql = "UPDATE baggage SET status = ? WHERE baggage_id = ?";
+        String sql = "UPDATE baggage SET status = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -364,21 +359,15 @@ public class BaggageDAO {
      */
     private Baggage mapResultSetToBaggage(ResultSet rs) throws SQLException {
         Baggage baggage = new Baggage();
-        baggage.setBaggageId(rs.getInt("baggage_id"));
+        baggage.setBaggageId(rs.getInt("id"));
         baggage.setBookingId(rs.getInt("booking_id"));
-        baggage.setWeightKg(rs.getDouble("weight_kg"));
-        baggage.setBaggageType(Baggage.BaggageType.valueOf(rs.getString("baggage_type")));
-        baggage.setTagNumber(rs.getString("tag_number"));
+        baggage.setWeightKg(rs.getDouble("weight"));
+        baggage.setTagNumber(rs.getString("baggage_tag"));
         baggage.setStatus(Baggage.BaggageStatus.valueOf(rs.getString("status")));
         
         Timestamp createdAt = rs.getTimestamp("created_at");
         if (createdAt != null) {
             baggage.setCreatedAt(createdAt.toLocalDateTime());
-        }
-        
-        Timestamp updatedAt = rs.getTimestamp("updated_at");
-        if (updatedAt != null) {
-            baggage.setUpdatedAt(updatedAt.toLocalDateTime());
         }
         
         return baggage;

@@ -50,7 +50,7 @@ public class BookingDAO {
      * @throws DatabaseException if database operation fails
      */
     public Booking getBookingById(int bookingId) throws DatabaseException {
-        String sql = "SELECT * FROM bookings WHERE booking_id = ?";
+        String sql = "SELECT * FROM bookings WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -141,17 +141,16 @@ public class BookingDAO {
      * @throws DatabaseException if database operation fails
      */
     public Booking createBooking(Booking booking) throws DatabaseException {
-        String sql = "INSERT INTO bookings (flight_id, passenger_name, passport_no, seat_no, booking_reference) " +
-                    "VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO bookings (flight_id, passenger_name, seat_number, booking_reference) " +
+                    "VALUES (?, ?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setInt(1, booking.getFlightId());
             stmt.setString(2, booking.getPassengerName());
-            stmt.setString(3, booking.getPassportNo());
-            stmt.setString(4, booking.getSeatNo());
-            stmt.setString(5, booking.getBookingReference());
+            stmt.setString(3, booking.getSeatNo());
+            stmt.setString(4, booking.getBookingReference());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -182,25 +181,18 @@ public class BookingDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean updateBooking(Booking booking) throws DatabaseException {
-        String sql = "UPDATE bookings SET flight_id = ?, passenger_name = ?, passport_no = ?, " +
-                    "seat_no = ?, checked_in = ?, check_in_time = ? WHERE booking_id = ?";
+        String sql = "UPDATE bookings SET flight_id = ?, passenger_name = ?, seat_number = ?, " +
+                    "check_in_status = ?, created_at = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
             stmt.setInt(1, booking.getFlightId());
             stmt.setString(2, booking.getPassengerName());
-            stmt.setString(3, booking.getPassportNo());
-            stmt.setString(4, booking.getSeatNo());
-            stmt.setBoolean(5, booking.isCheckedIn());
-            
-            if (booking.getCheckInTime() != null) {
-                stmt.setTimestamp(6, Timestamp.valueOf(booking.getCheckInTime()));
-            } else {
-                stmt.setNull(6, Types.TIMESTAMP);
-            }
-            
-            stmt.setInt(7, booking.getBookingId());
+            stmt.setString(3, booking.getSeatNo());
+            stmt.setString(4, booking.isCheckedIn() ? "CHECKED_IN" : "NOT_CHECKED_IN");
+            stmt.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now()));
+            stmt.setInt(6, booking.getBookingId());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -225,7 +217,7 @@ public class BookingDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean deleteBooking(int bookingId) throws DatabaseException {
-        String sql = "DELETE FROM bookings WHERE booking_id = ?";
+        String sql = "DELETE FROM bookings WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -256,7 +248,7 @@ public class BookingDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean checkInPassenger(int bookingId, String seatNo) throws DatabaseException {
-        String sql = "UPDATE bookings SET checked_in = TRUE, check_in_time = ?, seat_no = ? WHERE booking_id = ?";
+        String sql = "UPDATE bookings SET check_in_status = 'CHECKED_IN', created_at = ?, seat_number = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -289,7 +281,7 @@ public class BookingDAO {
      */
     public List<Booking> getCheckedInPassengers(int flightId) throws DatabaseException {
         List<Booking> bookings = new ArrayList<>();
-        String sql = "SELECT * FROM bookings WHERE flight_id = ? AND checked_in = TRUE ORDER BY check_in_time";
+        String sql = "SELECT * FROM bookings WHERE flight_id = ? AND check_in_status = 'CHECKED_IN' ORDER BY created_at";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -320,7 +312,7 @@ public class BookingDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean isSeatAvailable(int flightId, String seatNo) throws DatabaseException {
-        String sql = "SELECT COUNT(*) FROM bookings WHERE flight_id = ? AND seat_no = ?";
+        String sql = "SELECT COUNT(*) FROM bookings WHERE flight_id = ? AND seat_number = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -351,18 +343,12 @@ public class BookingDAO {
      */
     private Booking mapResultSetToBooking(ResultSet rs) throws SQLException {
         Booking booking = new Booking();
-        booking.setBookingId(rs.getInt("booking_id"));
+        booking.setBookingId(rs.getInt("id"));
         booking.setFlightId(rs.getInt("flight_id"));
         booking.setPassengerName(rs.getString("passenger_name"));
-        booking.setPassportNo(rs.getString("passport_no"));
-        booking.setSeatNo(rs.getString("seat_no"));
-        booking.setCheckedIn(rs.getBoolean("checked_in"));
+        booking.setSeatNo(rs.getString("seat_number"));
+        booking.setCheckedIn("CHECKED_IN".equals(rs.getString("check_in_status")));
         booking.setBookingReference(rs.getString("booking_reference"));
-        
-        Timestamp checkInTime = rs.getTimestamp("check_in_time");
-        if (checkInTime != null) {
-            booking.setCheckInTime(checkInTime.toLocalDateTime());
-        }
         
         Timestamp createdAt = rs.getTimestamp("created_at");
         if (createdAt != null) {
