@@ -8478,3 +8478,156 @@
 [2025-07-19 20:09:36] INFO: Flight Scheduling: Search cleared
 [2025-07-19 20:09:37] INFO: Flight Scheduling: Search cleared
 [2025-07-19 20:09:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 22:04:21] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:04:21] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:04:21] INFO: Splash screen launched successfully
+[2025-07-19 22:04:24] INFO: Launching login screen after splash screen
+[2025-07-19 22:04:36] DEBUG: Database connection established successfully
+[2025-07-19 22:04:36] INFO: User authenticated successfully: staff1
+[2025-07-19 22:04:36] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:04:37] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:04:59] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 22:04:59] DEBUG: Database connection established successfully
+[2025-07-19 22:04:59] INFO: Retrieved 15 flights from database
+[2025-07-19 22:04:59] INFO: Loaded 15 flights
+[2025-07-19 22:04:59] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 22:07:48] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:07:48] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:07:48] INFO: Splash screen launched successfully
+[2025-07-19 22:07:51] INFO: Launching login screen after splash screen
+[2025-07-19 22:08:04] DEBUG: Database connection established successfully
+[2025-07-19 22:08:04] INFO: User authenticated successfully: staff1
+[2025-07-19 22:08:04] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:08:04] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:08:10] DEBUG: Database connection established successfully
+[2025-07-19 22:08:10] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:08:10] DEBUG: Database connection established successfully
+[2025-07-19 22:08:10] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:08:10] INFO: Loaded 25 bookings
+[2025-07-19 22:08:15] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:08:15] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:08:15] INFO: Flight tracked: AA101
+[2025-07-19 22:14:21] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:14:22] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:14:22] INFO: Splash screen launched successfully
+[2025-07-19 22:14:25] INFO: Launching login screen after splash screen
+[2025-07-19 22:14:40] DEBUG: Database connection established successfully
+[2025-07-19 22:14:40] INFO: User authenticated successfully: staff1
+[2025-07-19 22:14:40] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:14:40] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:14:47] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:47] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:14:48] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:48] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:48] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:48] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:14:48] INFO: Aviation Stack API: Retrieved flight data for DL202
+[2025-07-19 22:14:49] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:14:49] INFO: Aviation Stack API: Retrieved flight data for UA303
+[2025-07-19 22:14:49] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:49] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:49] INFO: Flight tracked: AA101
+[2025-07-19 22:14:49] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:49] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:50] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=SW404
+[2025-07-19 22:14:50] INFO: Aviation Stack API: Retrieved flight data for SW404
+[2025-07-19 22:14:50] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 22:14:50] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 22:14:50] INFO: Live tracking started: AA101
+[2025-07-19 22:14:50] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:50] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:50] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:50] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:50] INFO: Flight tracked: AA101
+[2025-07-19 22:14:50] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=BA505
+[2025-07-19 22:14:50] INFO: Aviation Stack API: Retrieved flight data for BA505
+[2025-07-19 22:14:51] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:51] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:51] INFO: Flight tracked: AA101
+[2025-07-19 22:14:53] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:54] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:54] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:54] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:54] INFO: Flight tracked: AA101
+[2025-07-19 22:14:54] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:54] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:54] INFO: Flight tracked: AA101
+[2025-07-19 22:14:56] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:57] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:14:57] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 22:14:57] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 22:14:57] INFO: Live tracking started: AA101
+[2025-07-19 22:14:57] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:14:57] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 22:14:57] INFO: Flight tracked: AA101
+[2025-07-19 22:14:59] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:00] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:00] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:00] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 22:15:00] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 22:15:00] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:00] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:02] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:02] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 22:15:02] INFO: Airport info retrieved: JFK
+[2025-07-19 22:15:02] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:02] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 22:15:02] INFO: Airport info retrieved: JFK
+[2025-07-19 22:15:08] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:08] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 22:15:08] INFO: Airport info retrieved: JFK
+[2025-07-19 22:15:08] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:08] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:15:08] INFO: Airport info retrieved: JFK
+[2025-07-19 22:15:08] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 22:15:08] ERROR: Aviation Stack API error for live tracking AA101: HTTP request failed with code: 429
+[2025-07-19 22:15:09] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:09] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:15:09] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:15:09] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 22:15:09] INFO: Airport stats retrieved: JFK
+[2025-07-19 22:15:09] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:09] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:15:09] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:15:09] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 22:15:09] INFO: Airport stats retrieved: JFK
+[2025-07-19 22:15:09] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:09] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:15:09] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:15:09] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 22:15:09] INFO: Airport stats retrieved: JFK
+[2025-07-19 22:15:10] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 22:15:10] ERROR: Aviation Stack API error for airport JFK: HTTP request failed with code: 429
+[2025-07-19 22:15:10] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:15:10] INFO: Retrieved arrival flights for JFK: 5 flights
+[2025-07-19 22:15:10] INFO: Airport stats retrieved: JFK
+[2025-07-19 22:15:10] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:10] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 22:15:10] INFO: Route search completed: JFK to LAX
+[2025-07-19 22:15:10] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:10] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 22:15:10] INFO: Route search completed: JFK to LAX
+[2025-07-19 22:15:11] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 22:15:11] ERROR: Aviation Stack API error for live tracking AA101: HTTP request failed with code: 429
+[2025-07-19 22:15:11] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:11] INFO: Searched flights from JFK to LAX: 4 flights found
+[2025-07-19 22:15:11] INFO: Route search completed: JFK to LAX
+[2025-07-19 22:15:16] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:16] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:16] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:15:17] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:15:17] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:15:17] INFO: Flight tracked: AA101
+[2025-07-19 22:15:17] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:15:17] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:15:17] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:15:17] INFO: Flight tracked: AA101
+[2025-07-19 22:15:17] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:15:17] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:15:17] INFO: Flight tracked: AA101
+[2025-07-19 22:15:18] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:15:18] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 429
+[2025-07-19 22:15:18] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:15:18] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 429
+[2025-07-19 22:15:18] ERROR: API request failed with code: 429 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 22:15:18] ERROR: Aviation Stack API error for live tracking AA101: HTTP request failed with code: 429

@@ -3,6 +3,7 @@ package aerodesk.ui;
 import aerodesk.util.ThemeManager;
 import aerodesk.util.FileLogger;
 import aerodesk.ui.MainMenuFrame;
+import aerodesk.ui.LoginFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -165,11 +166,11 @@ public class SplashScreen extends JWindow {
     }
     
     private void setupTimers() {
-        // Progress timer - updates progress bar
-        progressTimer = new Timer(100, new ActionListener() {
+        // Progress timer - updates progress bar (reduced from 100ms to 50ms for faster loading)
+        progressTimer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                progressValue += 1;
+                progressValue += 2; // Increased increment from 1 to 2 for faster progress
                 progressBar.setValue(progressValue);
                 progressBar.setString(progressValue + "%");
                 
@@ -184,13 +185,13 @@ public class SplashScreen extends JWindow {
                     progressTimer.stop();
                     loadingTimer.stop();
                     dispose();
-                    launchMainApplication();
+                    launchLoginScreen();
                 }
             }
         });
         
-        // Loading animation timer - updates dots
-        loadingTimer = new Timer(500, new ActionListener() {
+        // Loading animation timer - updates dots (reduced from 500ms to 300ms)
+        loadingTimer = new Timer(300, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 loadingDots = (loadingDots + 1) % 4;
@@ -219,17 +220,14 @@ public class SplashScreen extends JWindow {
         FileLogger.getInstance().logInfo("Splash screen displayed - Starting AeroDesk Pro");
     }
     
-    private void launchMainApplication() {
-        // Launch the main application directly to main menu (bypassing login)
+    private void launchLoginScreen() {
+        // Launch the login screen after splash screen completes
         SwingUtilities.invokeLater(() -> {
             try {
-                FileLogger.getInstance().logInfo("Launching main application directly to main menu");
-                // Create a mock user for development/testing
-                String mockUser = "admin";
-                String mockRole = "Administrator";
-                new MainMenuFrame(mockUser, mockRole).setVisible(true);
+                FileLogger.getInstance().logInfo("Launching login screen after splash screen");
+                new LoginFrame().setVisible(true);
             } catch (Exception e) {
-                FileLogger.getInstance().logError("Failed to launch main application: " + e.getMessage());
+                FileLogger.getInstance().logError("Failed to launch login screen: " + e.getMessage());
                 JOptionPane.showMessageDialog(null, 
                     "Failed to start application: " + e.getMessage(),
                     "Startup Error", 

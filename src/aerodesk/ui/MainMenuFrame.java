@@ -132,15 +132,15 @@ public class MainMenuFrame extends JFrame {
         ));
         
         // Quick stat cards
-        statsPanel.add(createStatCard("Active Flights", "24", "🛫", ThemeManager.PRIMARY_BLUE));
-        statsPanel.add(createStatCard("Check-ins Today", "156", "👥", ThemeManager.SUCCESS_GREEN));
-        statsPanel.add(createStatCard("Gates Occupied", "8", "🚪", ThemeManager.WARNING_AMBER));
-        statsPanel.add(createStatCard("System Status", "Online", "✅", ThemeManager.SUCCESS_GREEN));
+        statsPanel.add(createStatCard("Active Flights", "24", ThemeManager.PRIMARY_BLUE));
+        statsPanel.add(createStatCard("Check-ins Today", "156", ThemeManager.SUCCESS_GREEN));
+        statsPanel.add(createStatCard("Gates Occupied", "8", ThemeManager.WARNING_AMBER));
+        statsPanel.add(createStatCard("System Status", "Online", ThemeManager.SUCCESS_GREEN));
         
         return statsPanel;
     }
     
-    private JPanel createStatCard(String title, String value, String icon, Color color) {
+    private JPanel createStatCard(String title, String value, Color color) {
         JPanel card = new JPanel(new BorderLayout(10, 10));
         card.setBackground(ThemeManager.WHITE);
         card.setBorder(BorderFactory.createCompoundBorder(
@@ -148,11 +148,7 @@ public class MainMenuFrame extends JFrame {
             new EmptyBorder(15, 15, 15, 15)
         ));
         
-        // Icon and title
-        JLabel iconLabel = new JLabel(icon);
-        iconLabel.setFont(new Font("Segoe UI", Font.PLAIN, 24));
-        iconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        
+        // Title
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 12));
         titleLabel.setForeground(ThemeManager.DARK_GRAY);
@@ -164,12 +160,7 @@ public class MainMenuFrame extends JFrame {
         valueLabel.setForeground(color);
         valueLabel.setHorizontalAlignment(SwingConstants.CENTER);
         
-        JPanel topPanel = new JPanel(new BorderLayout(5, 5));
-        topPanel.setOpaque(false);
-        topPanel.add(iconLabel, BorderLayout.NORTH);
-        topPanel.add(titleLabel, BorderLayout.CENTER);
-        
-        card.add(topPanel, BorderLayout.NORTH);
+        card.add(titleLabel, BorderLayout.NORTH);
         card.add(valueLabel, BorderLayout.CENTER);
         
         return card;
@@ -181,14 +172,14 @@ public class MainMenuFrame extends JFrame {
         menuPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         
         // Create enhanced menu buttons
-        menuPanel.add(createEnhancedMenuButton("Flight Scheduling", "Schedule and manage flight operations", "🛫", ThemeManager.PRIMARY_BLUE, "flight_scheduling"));
-        menuPanel.add(createEnhancedMenuButton("Passenger Check-In", "Process passenger check-ins", "👥", ThemeManager.SUCCESS_GREEN, "check_in"));
-        menuPanel.add(createEnhancedMenuButton("Baggage Handling", "Manage baggage operations", "🧳", ThemeManager.WARNING_AMBER, "baggage"));
-        menuPanel.add(createEnhancedMenuButton("Gate Management", "Monitor and assign gates", "🚪", ThemeManager.SECONDARY_BLUE, "gate_management"));
-        menuPanel.add(createEnhancedMenuButton("Flight Status", "Track flight status and updates", "📊", ThemeManager.ACCENT_ORANGE, "flight_status"));
-        menuPanel.add(createEnhancedMenuButton("Aviation Stack API", "Real-time flight data integration", "🌐", ThemeManager.PRIMARY_BLUE, "aviation_stack"));
-        menuPanel.add(createEnhancedMenuButton("Reports & Logs", "Generate reports and view logs", "📋", ThemeManager.DARK_GRAY, "reports"));
-        menuPanel.add(createEnhancedMenuButton("Live Dashboard", "Real-time operations monitoring", "📈", ThemeManager.SUCCESS_GREEN, "dashboard"));
+        menuPanel.add(createEnhancedMenuButton("Flight Scheduling", "Schedule and manage flight operations", ThemeManager.PRIMARY_BLUE, "flight_scheduling"));
+        menuPanel.add(createEnhancedMenuButton("Passenger Check-In", "Process passenger check-ins", ThemeManager.SUCCESS_GREEN, "check_in"));
+        menuPanel.add(createEnhancedMenuButton("Baggage Handling", "Manage baggage operations", ThemeManager.WARNING_AMBER, "baggage"));
+        menuPanel.add(createEnhancedMenuButton("Gate Management", "Monitor and assign gates", ThemeManager.SECONDARY_BLUE, "gate_management"));
+        menuPanel.add(createEnhancedMenuButton("Flight Status", "Track flight status and updates", ThemeManager.ACCENT_ORANGE, "flight_status"));
+        menuPanel.add(createEnhancedMenuButton("Aviation Stack API", "Real-time flight data integration", ThemeManager.PRIMARY_BLUE, "aviation_stack"));
+        menuPanel.add(createEnhancedMenuButton("Reports & Logs", "Generate reports and view logs", ThemeManager.DARK_GRAY, "reports"));
+        menuPanel.add(createEnhancedMenuButton("Live Dashboard", "Real-time operations monitoring", ThemeManager.SUCCESS_GREEN, "dashboard"));
         
         // Empty panel for the last slot
         JPanel emptyPanel = new JPanel();
@@ -198,7 +189,7 @@ public class MainMenuFrame extends JFrame {
         return menuPanel;
     }
     
-    private JButton createEnhancedMenuButton(String title, String description, String icon, Color color, String actionCommand) {
+    private JButton createEnhancedMenuButton(String title, String description, Color color, String actionCommand) {
         JButton button = new JButton();
         button.setLayout(new BorderLayout(10, 10));
         button.setPreferredSize(new Dimension(200, 120));
@@ -209,28 +200,21 @@ public class MainMenuFrame extends JFrame {
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         button.setActionCommand(actionCommand);
         
-        // Icon
-        JLabel iconLabel = new JLabel(icon);
-        iconLabel.setFont(new Font("Segoe UI", Font.PLAIN, 32));
-        iconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        iconLabel.setForeground(ThemeManager.WHITE);
-        
         // Title
         JLabel titleLabel = new JLabel(title);
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setForeground(ThemeManager.WHITE);
         
         // Description
         JLabel descLabel = new JLabel("<html><center>" + description + "</center></html>");
-        descLabel.setFont(new Font("Segoe UI", Font.PLAIN, 10));
+        descLabel.setFont(new Font("Segoe UI", Font.PLAIN, 11));
         descLabel.setHorizontalAlignment(SwingConstants.CENTER);
         descLabel.setForeground(ThemeManager.WHITE);
         
         // Layout
         JPanel contentPanel = new JPanel(new BorderLayout(5, 5));
         contentPanel.setOpaque(false);
-        contentPanel.add(iconLabel, BorderLayout.NORTH);
         contentPanel.add(titleLabel, BorderLayout.CENTER);
         contentPanel.add(descLabel, BorderLayout.SOUTH);
         

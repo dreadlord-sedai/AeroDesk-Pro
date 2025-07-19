@@ -2,7 +2,6 @@ package aerodesk.ui;
 
 import aerodesk.util.ThemeManager;
 import aerodesk.util.FileLogger;
-import aerodesk.util.IconManager;
 import aerodesk.dao.UserDAO;
 import aerodesk.model.User;
 import aerodesk.exception.DatabaseException;
@@ -38,12 +37,9 @@ public class LoginFrame extends JFrame {
         passwordField = new JPasswordField(20);
         roleComboBox = new JComboBox<>(new String[]{"STAFF", "ADMIN"});
         
-        // Create buttons with ImageIcon instead of text icons
+        // Create buttons without icons
         loginButton = new JButton("Login");
-        loginButton.setIcon(IconManager.createButtonIcon("flight", ThemeManager.WHITE, 16));
-        
         exitButton = new JButton("Exit");
-        exitButton.setIcon(IconManager.createButtonIcon("logout", ThemeManager.WHITE, 16));
         
         // Apply modern styling
         ThemeManager.styleTextField(usernameField);

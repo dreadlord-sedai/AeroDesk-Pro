@@ -20,6 +20,9 @@ import java.awt.event.KeyAdapter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -81,6 +84,13 @@ public class AviationStackFrame extends JFrame {
     private Timer searchTimer;
     private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
     
+    // Real-time data management
+    private ScheduledExecutorService realTimeScheduler;
+    private volatile boolean isRealTimeActive = false;
+    private String currentTrackingFlight = null;
+    private List<FlightInfo> cachedFlights = new ArrayList<>();
+    private Map<String, FlightInfo> liveFlightData = new ConcurrentHashMap<>();
+    
     public AviationStackFrame() {
         aviationService = new AviationStackService();
         initializeComponents();
@@ -88,6 +98,7 @@ public class AviationStackFrame extends JFrame {
         setupEventHandlers();
         setupSearchTimer();
         startStatusUpdates();
+        initializeRealTimeUpdates();
         
         setTitle("Enhanced Aviation Stack API Integration - AeroDesk Pro");
         setSize(1400, 900);
@@ -119,7 +130,7 @@ public class AviationStackFrame extends JFrame {
         ThemeManager.styleTextField(destinationField);
         
         apiKeyField = new JTextField(25);
-        apiKeyField.setText("your_aviationstack_api_key_here");
+        apiKeyField.setText(ConfigManager.getInstance().getProperty("aviationstack.api.key"));
         ThemeManager.styleTextField(apiKeyField);
         
         // Buttons with wider width
@@ -418,22 +429,37 @@ public class AviationStackFrame extends JFrame {
     
     private void setupEventHandlers() {
         // Flight tracking events
-        trackFlightButton.addActionListener(e -> trackFlight());
-        liveTrackingButton.addActionListener(e -> startLiveTracking());
-        refreshButton.addActionListener(e -> refreshFlightData());
+        trackFlightButton.addActionListener(e -> {
+            trackFlight();
+            startRealTimeUpdates(); // Start real-time updates when tracking
+        });
+        liveTrackingButton.addActionListener(e -> {
+            startLiveTracking();
+            startRealTimeUpdates(); // Start real-time updates for live tracking
+        });
+        refreshButton.addActionListener(e -> {
+            refreshFlightData();
+            startRealTimeUpdates(); // Start real-time updates when refreshing
+        });
         
         // Airport information events
         getAirportInfoButton.addActionListener(e -> getAirportInfo());
         airportStatsButton.addActionListener(e -> getAirportStats());
         
         // Route search events
-        searchRouteButton.addActionListener(e -> searchRoute());
+        searchRouteButton.addActionListener(e -> {
+            searchRoute();
+            startRealTimeUpdates(); // Start real-time updates for route search
+        });
         airlineInfoButton.addActionListener(e -> getAirlineInfo());
         
         // API management events
         apiKeyButton.addActionListener(e -> updateApiKey());
         exportButton.addActionListener(e -> exportData());
-        clearButton.addActionListener(e -> clearResults());
+        clearButton.addActionListener(e -> {
+            clearResults();
+            stopRealTimeUpdates(); // Stop real-time updates when clearing
+        });
         
         // Keyboard shortcuts
         flightNumberField.addKeyListener(new KeyAdapter() {
@@ -441,6 +467,7 @@ public class AviationStackFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     trackFlight();
+                    startRealTimeUpdates();
                 }
             }
         });
@@ -459,6 +486,7 @@ public class AviationStackFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     searchRoute();
+                    startRealTimeUpdates();
                 }
             }
         });
@@ -468,6 +496,7 @@ public class AviationStackFrame extends JFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     searchRoute();
+                    startRealTimeUpdates();
                 }
             }
         });
@@ -859,6 +888,9 @@ public class AviationStackFrame extends JFrame {
         
         // Initial API stats update
         updateApiStats();
+        
+        // Start real-time updates automatically
+        startRealTimeUpdates();
     }
     
     private void updateFlightTable() {
@@ -988,8 +1020,137 @@ public class AviationStackFrame extends JFrame {
         updateApiStats();
     }
     
+    // Real-time data update methods
+    private void initializeRealTimeUpdates() {
+        realTimeScheduler = Executors.newScheduledThreadPool(2);
+        
+        // Start real-time flight data updates every 30 seconds
+        realTimeScheduler.scheduleAtFixedRate(() -> {
+            if (isRealTimeActive) {
+                updateRealTimeFlightData();
+            }
+        }, 0, 30, TimeUnit.SECONDS);
+        
+        // Start live tracking updates every 15 seconds if active
+        realTimeScheduler.scheduleAtFixedRate(() -> {
+            if (currentTrackingFlight != null && isRealTimeActive) {
+                updateLiveTrackingData(currentTrackingFlight);
+            }
+        }, 5, 15, TimeUnit.SECONDS);
+        
+        FileLogger.getInstance().logInfo("Real-time Aviation Stack updates initialized");
+    }
+    
+    private void updateRealTimeFlightData() {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                try {
+                    // Get real flight data from API
+                    List<FlightInfo> flights = new ArrayList<>();
+                    
+                    // Track multiple flights for demo
+                    String[] demoFlights = {"AA101", "DL202", "UA303", "SW404", "BA505"};
+                    
+                    for (String flightNumber : demoFlights) {
+                        try {
+                            FlightInfo flight = aviationService.getFlightInfo(flightNumber);
+                            if (flight != null) {
+                                flights.add(flight);
+                                liveFlightData.put(flightNumber, flight);
+                            }
+                        } catch (Exception e) {
+                            FileLogger.getInstance().logError("Error updating flight " + flightNumber + ": " + e.getMessage());
+                        }
+                    }
+                    
+                    cachedFlights = flights;
+                    incrementApiCallCount();
+                    
+                } catch (Exception e) {
+                    FileLogger.getInstance().logError("Real-time update error: " + e.getMessage());
+                }
+                return null;
+            }
+            
+            @Override
+            protected void done() {
+                SwingUtilities.invokeLater(() -> {
+                    updateFlightTableWithRealData();
+                    updateStatus("Real-time data updated", ThemeManager.SUCCESS_GREEN);
+                    lastUpdateLabel.setText("Last Update: " + LocalDateTime.now().format(timeFormatter));
+                });
+            }
+        };
+        worker.execute();
+    }
+    
+    private void updateFlightTableWithRealData() {
+        // Clear existing data
+        flightTableModel.setRowCount(0);
+        
+        String currentTime = LocalDateTime.now().format(timeFormatter);
+        
+        // Add real flight data if available, otherwise use cached data
+        List<FlightInfo> flightsToDisplay = !cachedFlights.isEmpty() ? cachedFlights : getMockFlights();
+        
+        for (FlightInfo flight : flightsToDisplay) {
+            Object[] row = {
+                flight.getFlightNumber(),
+                flight.getAirline() + " (" + flight.getAirlineCode() + ")",
+                flight.getDepartureAirport() + "-" + flight.getArrivalAirport(),
+                flight.getStatus(),
+                flight.getGate() != null ? flight.getGate() : "TBD",
+                flight.isLive() ? "Live" : "Static",
+                currentTime
+            };
+            flightTableModel.addRow(row);
+        }
+    }
+    
+    private List<FlightInfo> getMockFlights() {
+        List<FlightInfo> mockFlights = new ArrayList<>();
+        String[] flightNumbers = {"AA101", "DL202", "UA303", "SW404", "BA505"};
+        String[] airlines = {"American Airlines", "Delta Airlines", "United Airlines", "Southwest", "British Airways"};
+        String[] airlineCodes = {"AA", "DL", "UA", "SW", "BA"};
+        String[] routes = {"JFK-LAX", "ATL-SFO", "ORD-LAX", "DAL-LAS", "LHR-JFK"};
+        String[] statuses = {"In Flight", "Boarding", "Delayed", "On Time", "Scheduled"};
+        String[] gates = {"A12", "B15", "C08", "D22", "E05"};
+        
+        for (int i = 0; i < flightNumbers.length; i++) {
+            FlightInfo flight = new FlightInfo();
+            flight.setFlightNumber(flightNumbers[i]);
+            flight.setAirline(airlines[i]);
+            flight.setAirlineCode(airlineCodes[i]);
+            flight.setDepartureAirport(routes[i].split("-")[0]);
+            flight.setArrivalAirport(routes[i].split("-")[1]);
+            flight.setStatus(statuses[i]);
+            flight.setGate(gates[i]);
+            flight.setLive(true);
+            mockFlights.add(flight);
+        }
+        
+        return mockFlights;
+    }
+    
+    private void startRealTimeUpdates() {
+        isRealTimeActive = true;
+        updateStatus("Real-time updates started", ThemeManager.SUCCESS_GREEN);
+        FileLogger.getInstance().logInfo("Real-time Aviation Stack updates started");
+    }
+    
+    private void stopRealTimeUpdates() {
+        isRealTimeActive = false;
+        updateStatus("Real-time updates stopped", ThemeManager.WARNING_AMBER);
+        FileLogger.getInstance().logInfo("Real-time Aviation Stack updates stopped");
+    }
+    
     @Override
     public void dispose() {
+        stopRealTimeUpdates();
+        if (realTimeScheduler != null && !realTimeScheduler.isShutdown()) {
+            realTimeScheduler.shutdown();
+        }
         if (scheduler != null && !scheduler.isShutdown()) {
             scheduler.shutdown();
         }

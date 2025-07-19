@@ -26,7 +26,7 @@ public class Main {
         // Start logging
         FileLogger.getInstance().logInfo("AeroDesk Pro starting up...");
         
-        // Launch splash screen
+        // Launch splash screen (which will then show login screen)
         SwingUtilities.invokeLater(() -> {
             try {
                 SplashScreen splashScreen = new SplashScreen();
