@@ -8774,3 +8774,53 @@
 [2025-07-19 22:29:57] INFO: Searched flights from JFK to LAX: 4 flights found
 [2025-07-19 22:29:57] INFO: Route search completed: JFK to LAX
 [2025-07-19 22:30:01] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:46:11] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:46:11] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:46:11] INFO: Splash screen launched successfully
+[2025-07-19 22:46:14] INFO: Launching login screen after splash screen
+[2025-07-19 22:47:47] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:47:47] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:47:47] INFO: Splash screen launched successfully
+[2025-07-19 22:47:50] INFO: Launching login screen after splash screen
+[2025-07-19 22:49:12] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:49:12] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:49:12] INFO: Splash screen launched successfully
+[2025-07-19 22:49:15] INFO: Launching login screen after splash screen
+[2025-07-19 22:53:45] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:53:46] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:53:46] INFO: Splash screen launched successfully
+[2025-07-19 22:53:49] INFO: Launching login screen after splash screen
+[2025-07-19 22:53:59] DEBUG: Database connection established successfully
+[2025-07-19 22:53:59] INFO: User authenticated successfully: staff1
+[2025-07-19 22:53:59] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:53:59] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:54:02] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:54:02] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:54:03] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:54:03] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:54:03] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 401
+[2025-07-19 22:54:04] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:54:04] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 401
+[2025-07-19 22:54:04] INFO: Flight tracked: AA101
+[2025-07-19 22:54:04] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:54:04] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 401
+[2025-07-19 22:54:05] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:54:05] ERROR: Aviation Stack API error for flight UA303: HTTP request failed with code: 401
+[2025-07-19 22:54:06] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:54:06] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=SW404
+[2025-07-19 22:54:06] ERROR: Aviation Stack API error for flight SW404: HTTP request failed with code: 401
+[2025-07-19 22:54:07] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=BA505
+[2025-07-19 22:54:07] ERROR: Aviation Stack API error for flight BA505: HTTP request failed with code: 401
+[2025-07-19 22:54:27] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:54:27] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:54:27] INFO: Splash screen launched successfully
+[2025-07-19 22:54:30] INFO: Launching login screen after splash screen
+[2025-07-19 22:54:42] DEBUG: Database connection established successfully
+[2025-07-19 22:54:42] INFO: User authenticated successfully: staff1
+[2025-07-19 22:54:42] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:54:43] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:54:43] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 22:54:43] DEBUG: Database connection established successfully
+[2025-07-19 22:54:43] INFO: Retrieved 15 flights from database
+[2025-07-19 22:54:43] INFO: Loaded 15 flights
+[2025-07-19 22:54:43] INFO: Flight Scheduling: Loaded 15 flights
