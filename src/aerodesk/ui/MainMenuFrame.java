@@ -1,7 +1,8 @@
 package aerodesk.ui;
 
-import aerodesk.util.FileLogger;
 import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -56,13 +57,13 @@ public class MainMenuFrame extends JFrame {
         menuPanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));
         
         // Create modern menu buttons
-        JButton flightSchedulingBtn = createModernMenuButton("Flight Scheduling", "✈️", ThemeManager.PRIMARY_BLUE);
-        JButton checkInBtn = createModernMenuButton("Passenger Check-In", "👤", ThemeManager.SUCCESS_GREEN);
-        JButton baggageBtn = createModernMenuButton("Baggage Handling", "👜", ThemeManager.WARNING_AMBER);
-        JButton gateManagementBtn = createModernMenuButton("Gate Management", "🚪", ThemeManager.SECONDARY_BLUE);
-        JButton flightStatusBtn = createModernMenuButton("Flight Status", "📊", ThemeManager.ACCENT_ORANGE);
-        JButton aviationStackBtn = createModernMenuButton("Aviation Stack API", "🌐", ThemeManager.PRIMARY_BLUE);
-        JButton reportsBtn = createModernMenuButton("Reports & Logs", "📋", ThemeManager.DARK_GRAY);
+        JButton flightSchedulingBtn = createModernMenuButton("Flight Scheduling", "flight", ThemeManager.PRIMARY_BLUE);
+        JButton checkInBtn = createModernMenuButton("Passenger Check-In", "user", ThemeManager.SUCCESS_GREEN);
+        JButton baggageBtn = createModernMenuButton("Baggage Handling", "baggage", ThemeManager.WARNING_AMBER);
+        JButton gateManagementBtn = createModernMenuButton("Gate Management", "gate", ThemeManager.SECONDARY_BLUE);
+        JButton flightStatusBtn = createModernMenuButton("Flight Status", "status", ThemeManager.ACCENT_ORANGE);
+        JButton aviationStackBtn = createModernMenuButton("Aviation Stack API", "api", ThemeManager.PRIMARY_BLUE);
+        JButton reportsBtn = createModernMenuButton("Reports & Logs", "reports", ThemeManager.DARK_GRAY);
         
         menuPanel.add(flightSchedulingBtn);
         menuPanel.add(checkInBtn);
@@ -75,7 +76,7 @@ public class MainMenuFrame extends JFrame {
         // Bottom panel with logout
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         bottomPanel.setBackground(ThemeManager.WHITE);
-        JButton logoutBtn = new JButton("🚪 Logout");
+        JButton logoutBtn = new JButton(IconManager.getTextIcon("logout") + " Logout");
         ThemeManager.styleButton(logoutBtn, ThemeManager.ERROR_RED, ThemeManager.WHITE);
         bottomPanel.add(logoutBtn);
         
@@ -96,8 +97,10 @@ public class MainMenuFrame extends JFrame {
         logoutBtn.setActionCommand("logout");
     }
     
-    private JButton createModernMenuButton(String text, String icon, Color color) {
-        JButton button = new JButton("<html><center>" + icon + "<br>" + text + "</center></html>");
+    private JButton createModernMenuButton(String text, String iconType, Color color) {
+        // Use IconManager to get proper text-based icons
+        String iconText = IconManager.getTextIcon(iconType);
+        JButton button = new JButton("<html><center><font size='+2'>" + iconText + "</font><br>" + text + "</center></html>");
         button.setFont(ThemeManager.SUBHEADER_FONT);
         button.setPreferredSize(new Dimension(200, 100));
         button.setBackground(color);
@@ -123,6 +126,8 @@ public class MainMenuFrame extends JFrame {
         
         return button;
     }
+    
+
     
     private void setupEventHandlers() {
         // Add action listeners to all buttons

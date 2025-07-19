@@ -1307,3 +1307,114 @@
 [2025-07-19 13:33:49] INFO: Retrieved 15 flights from database
 [2025-07-19 13:33:49] INFO: Loaded 15 flights
 [2025-07-19 13:33:53] INFO: User staff1 logged out
+[2025-07-19 13:39:51] INFO: AeroDesk Pro starting up...
+[2025-07-19 13:39:51] INFO: Login screen displayed successfully
+[2025-07-19 13:40:01] DEBUG: Database connection established successfully
+[2025-07-19 13:40:01] INFO: User authenticated successfully: staff1
+[2025-07-19 13:40:01] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 13:40:02] DEBUG: Database connection established successfully
+[2025-07-19 13:40:02] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:02] INFO: Loaded 15 flights
+[2025-07-19 13:40:03] DEBUG: Database connection established successfully
+[2025-07-19 13:40:03] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:04] DEBUG: Database connection established successfully
+[2025-07-19 13:40:04] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:04] DEBUG: Database connection established successfully
+[2025-07-19 13:40:04] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:05] DEBUG: Database connection established successfully
+[2025-07-19 13:40:05] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:08] DEBUG: Database connection established successfully
+[2025-07-19 13:40:08] ERROR: Failed to create flight: Duplicate entry 'SW1409' for key 'flights.flight_number'
+[2025-07-19 13:40:08] ERROR: Error creating flight: Failed to create flight
+[2025-07-19 13:40:10] DEBUG: Database connection established successfully
+[2025-07-19 13:40:10] INFO: Updated flight: SW1409
+[2025-07-19 13:40:10] INFO: Flight updated: SW1409
+[2025-07-19 13:40:11] DEBUG: Database connection established successfully
+[2025-07-19 13:40:11] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:11] INFO: Loaded 15 flights
+[2025-07-19 13:40:12] DEBUG: Database connection established successfully
+[2025-07-19 13:40:12] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:16] DEBUG: Database connection established successfully
+[2025-07-19 13:40:16] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:17] DEBUG: Database connection established successfully
+[2025-07-19 13:40:17] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:17] DEBUG: Database connection established successfully
+[2025-07-19 13:40:17] INFO: Retrieved 15 flights from database
+[2025-07-19 13:40:17] INFO: Loaded 15 flights
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved 12 gates from database
+[2025-07-19 13:40:20] INFO: Loaded 12 gates
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: A1
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: DL101
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: A2
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: AA202
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: B1
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: UA303
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: B2
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: SW404
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: A4
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: DL505
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: C1
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: BA601
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: C2
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: AF702
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: C3
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: LH803
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: C4
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: JL904
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: C1
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: EK1005
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: B3
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: DL1106
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: B4
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: AA1207
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: A1
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: UA1308
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: A2
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: SW1409
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved gate: A3
+[2025-07-19 13:40:20] DEBUG: Database connection established successfully
+[2025-07-19 13:40:20] INFO: Retrieved flight: DL1510
+[2025-07-19 13:40:20] INFO: Loaded 15 gate assignments
+[2025-07-19 13:40:29] DEBUG: Database connection established successfully
+[2025-07-19 13:40:29] INFO: Retrieved 25 bookings from database
+[2025-07-19 13:40:29] INFO: Loaded 25 bookings
+[2025-07-19 13:40:29] DEBUG: Database connection established successfully
+[2025-07-19 13:40:29] INFO: Retrieved booking: BK004
+[2025-07-19 13:40:30] DEBUG: Database connection established successfully
+[2025-07-19 13:40:30] INFO: Retrieved booking: BK008
+[2025-07-19 13:40:30] DEBUG: Database connection established successfully
+[2025-07-19 13:40:30] INFO: Retrieved booking: BK010
+[2025-07-19 13:40:31] DEBUG: Database connection established successfully
+[2025-07-19 13:40:31] INFO: Retrieved booking: BK012
