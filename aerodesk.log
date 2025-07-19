@@ -1021,3 +1021,24 @@
 [2025-07-19 11:12:07] INFO: Retrieved 4 baggage items from database
 [2025-07-19 11:12:08] DEBUG: Database connection established successfully
 [2025-07-19 11:12:08] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 11:28:20] INFO: AeroDesk Pro starting up...
+[2025-07-19 11:28:20] INFO: Login screen displayed successfully
+[2025-07-19 11:28:31] INFO: AeroDesk Pro starting up...
+[2025-07-19 11:28:31] INFO: Login screen displayed successfully
+[2025-07-19 11:28:44] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 4 flights from database
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 11:29:10] INFO: Loaded 4 flights for status display
+[2025-07-19 11:29:10] INFO: Weather data updated
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 4 flights from database
+[2025-07-19 11:29:10] DEBUG: Database connection established successfully
+[2025-07-19 11:29:10] INFO: Retrieved 0 gate assignments from database
