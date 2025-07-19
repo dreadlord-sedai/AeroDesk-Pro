@@ -366,8 +366,8 @@ public class FlightSchedulingFrame extends JFrame {
         flightNoField.setText(flight.getFlightNo());
         originField.setText(flight.getOrigin());
         destinationField.setText(flight.getDestination());
-        departTimeField.setText(flight.getDepartTime().format(dateFormatter));
-        arriveTimeField.setText(flight.getArriveTime().format(dateFormatter));
+        departTimeField.setText(flight.getDepartTime() != null ? flight.getDepartTime().format(dateFormatter) : "");
+        arriveTimeField.setText(flight.getArriveTime() != null ? flight.getArriveTime().format(dateFormatter) : "");
         aircraftTypeField.setText(flight.getAircraftType());
         statusComboBox.setSelectedItem(flight.getStatus());
     }
@@ -380,7 +380,22 @@ public class FlightSchedulingFrame extends JFrame {
         flight.setFlightNo(tableModel.getValueAt(row, 1).toString());
         flight.setOrigin(tableModel.getValueAt(row, 2).toString());
         flight.setDestination(tableModel.getValueAt(row, 3).toString());
-        // Note: We'd need to parse the datetime strings back to LocalDateTime
+        
+        // Parse datetime strings back to LocalDateTime
+        try {
+            String departTimeStr = tableModel.getValueAt(row, 4).toString();
+            if (!departTimeStr.isEmpty()) {
+                flight.setDepartTime(LocalDateTime.parse(departTimeStr, dateFormatter));
+            }
+            
+            String arriveTimeStr = tableModel.getValueAt(row, 5).toString();
+            if (!arriveTimeStr.isEmpty()) {
+                flight.setArriveTime(LocalDateTime.parse(arriveTimeStr, dateFormatter));
+            }
+        } catch (Exception e) {
+            FileLogger.getInstance().logError("Error parsing datetime from table: " + e.getMessage());
+        }
+        
         flight.setAircraftType(tableModel.getValueAt(row, 6).toString());
         flight.setStatus(Flight.FlightStatus.valueOf(tableModel.getValueAt(row, 7).toString()));
         return flight;

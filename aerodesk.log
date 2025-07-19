@@ -56,3 +56,121 @@
 [2025-07-19 09:45:46] INFO: Loaded 4 flights
 [2025-07-19 09:45:52] INFO: User admin accessed: logout
 [2025-07-19 09:45:53] INFO: User admin logged out
+[2025-07-19 09:51:33] INFO: AeroDesk Pro starting up...
+[2025-07-19 09:51:33] INFO: Login screen displayed successfully
+[2025-07-19 09:51:47] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 09:51:48] INFO: User staff1 accessed: flight_scheduling
+[2025-07-19 09:51:48] DEBUG: Database connection established successfully
+[2025-07-19 09:51:48] INFO: Retrieved 4 flights from database
+[2025-07-19 09:51:48] INFO: Loaded 4 flights
+[2025-07-19 09:53:20] INFO: AeroDesk Pro starting up...
+[2025-07-19 09:53:21] INFO: Login screen displayed successfully
+[2025-07-19 09:53:30] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 09:53:31] INFO: User staff1 accessed: flight_scheduling
+[2025-07-19 09:53:31] DEBUG: Database connection established successfully
+[2025-07-19 09:53:31] INFO: Retrieved 4 flights from database
+[2025-07-19 09:53:31] INFO: Loaded 4 flights
+[2025-07-19 09:53:42] INFO: User staff1 accessed: check_in
+[2025-07-19 09:53:42] DEBUG: Database connection established successfully
+[2025-07-19 09:53:42] INFO: Retrieved 4 bookings from database
+[2025-07-19 09:53:42] DEBUG: Database connection established successfully
+[2025-07-19 09:53:42] INFO: Retrieved flight: AA101
+[2025-07-19 09:53:42] DEBUG: Database connection established successfully
+[2025-07-19 09:53:42] INFO: Retrieved flight: AA101
+[2025-07-19 09:53:42] DEBUG: Database connection established successfully
+[2025-07-19 09:53:42] INFO: Retrieved flight: UA202
+[2025-07-19 09:53:42] DEBUG: Database connection established successfully
+[2025-07-19 09:53:42] INFO: Retrieved flight: DL303
+[2025-07-19 09:53:42] INFO: Displayed 4 bookings
+[2025-07-19 09:53:53] INFO: User staff1 accessed: gate_management
+[2025-07-19 09:53:54] INFO: User staff1 accessed: baggage
+[2025-07-19 09:53:54] DEBUG: Database connection established successfully
+[2025-07-19 09:53:54] INFO: Retrieved 4 bookings from database
+[2025-07-19 09:53:54] INFO: Loaded 0 checked-in passengers
+[2025-07-19 09:53:54] DEBUG: Database connection established successfully
+[2025-07-19 09:53:54] INFO: Retrieved 4 baggage items from database
+[2025-07-19 09:53:54] DEBUG: Database connection established successfully
+[2025-07-19 09:53:54] INFO: Retrieved booking: BK001
+[2025-07-19 09:53:54] DEBUG: Database connection established successfully
+[2025-07-19 09:53:54] INFO: Retrieved booking: BK002
+[2025-07-19 09:53:54] DEBUG: Database connection established successfully
+[2025-07-19 09:53:54] INFO: Retrieved booking: BK003
+[2025-07-19 09:53:54] DEBUG: Database connection established successfully
+[2025-07-19 09:53:54] INFO: Retrieved booking: BK004
+[2025-07-19 09:53:54] INFO: Loaded 4 baggage items
+[2025-07-19 09:54:04] INFO: User staff1 accessed: gate_management
+[2025-07-19 09:54:06] INFO: User staff1 accessed: flight_status
+[2025-07-19 09:54:07] INFO: User staff1 accessed: reports
+[2025-07-19 09:54:09] INFO: User staff1 accessed: gate_management
+[2025-07-19 09:59:20] INFO: AeroDesk Pro starting up...
+[2025-07-19 09:59:21] INFO: Login screen displayed successfully
+[2025-07-19 10:01:30] INFO: AeroDesk Pro starting up...
+[2025-07-19 10:01:31] INFO: Login screen displayed successfully
+[2025-07-19 10:01:43] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 10:01:45] INFO: User staff1 accessed: baggage
+[2025-07-19 10:01:45] DEBUG: Database connection established successfully
+[2025-07-19 10:01:45] INFO: Retrieved 4 bookings from database
+[2025-07-19 10:01:45] INFO: Loaded 0 checked-in passengers
+[2025-07-19 10:01:45] DEBUG: Database connection established successfully
+[2025-07-19 10:01:45] INFO: Retrieved 4 baggage items from database
+[2025-07-19 10:01:45] DEBUG: Database connection established successfully
+[2025-07-19 10:01:45] INFO: Retrieved booking: BK001
+[2025-07-19 10:01:45] DEBUG: Database connection established successfully
+[2025-07-19 10:01:45] INFO: Retrieved booking: BK002
+[2025-07-19 10:01:45] DEBUG: Database connection established successfully
+[2025-07-19 10:01:45] INFO: Retrieved booking: BK003
+[2025-07-19 10:01:45] DEBUG: Database connection established successfully
+[2025-07-19 10:01:45] INFO: Retrieved booking: BK004
+[2025-07-19 10:01:45] INFO: Loaded 4 baggage items
+[2025-07-19 10:01:47] INFO: User staff1 accessed: gate_management
+[2025-07-19 10:01:47] DEBUG: Database connection established successfully
+[2025-07-19 10:01:47] INFO: Retrieved 8 gates from database
+[2025-07-19 10:01:47] INFO: Loaded 8 gates
+[2025-07-19 10:01:47] DEBUG: Database connection established successfully
+[2025-07-19 10:01:47] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:01:47] INFO: Loaded 0 gate assignments
+[2025-07-19 10:01:56] INFO: User staff1 accessed: flight_status
+[2025-07-19 10:01:57] INFO: User staff1 accessed: reports
+[2025-07-19 10:02:15] INFO: AeroDesk Pro starting up...
+[2025-07-19 10:02:15] INFO: Login screen displayed successfully
+[2025-07-19 10:02:25] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 10:02:26] INFO: User staff1 accessed: flight_scheduling
+[2025-07-19 10:02:26] DEBUG: Database connection established successfully
+[2025-07-19 10:02:26] INFO: Retrieved 4 flights from database
+[2025-07-19 10:02:26] INFO: Loaded 4 flights
+[2025-07-19 10:02:29] INFO: User staff1 accessed: check_in
+[2025-07-19 10:02:29] DEBUG: Database connection established successfully
+[2025-07-19 10:02:29] INFO: Retrieved 4 bookings from database
+[2025-07-19 10:02:29] DEBUG: Database connection established successfully
+[2025-07-19 10:02:29] INFO: Retrieved flight: AA101
+[2025-07-19 10:02:29] DEBUG: Database connection established successfully
+[2025-07-19 10:02:29] INFO: Retrieved flight: AA101
+[2025-07-19 10:02:29] DEBUG: Database connection established successfully
+[2025-07-19 10:02:29] INFO: Retrieved flight: UA202
+[2025-07-19 10:02:29] DEBUG: Database connection established successfully
+[2025-07-19 10:02:29] INFO: Retrieved flight: DL303
+[2025-07-19 10:02:29] INFO: Displayed 4 bookings
+[2025-07-19 10:02:32] INFO: User staff1 accessed: baggage
+[2025-07-19 10:02:32] DEBUG: Database connection established successfully
+[2025-07-19 10:02:32] INFO: Retrieved 4 bookings from database
+[2025-07-19 10:02:32] INFO: Loaded 0 checked-in passengers
+[2025-07-19 10:02:32] DEBUG: Database connection established successfully
+[2025-07-19 10:02:32] INFO: Retrieved 4 baggage items from database
+[2025-07-19 10:02:32] DEBUG: Database connection established successfully
+[2025-07-19 10:02:32] INFO: Retrieved booking: BK001
+[2025-07-19 10:02:32] DEBUG: Database connection established successfully
+[2025-07-19 10:02:32] INFO: Retrieved booking: BK002
+[2025-07-19 10:02:32] DEBUG: Database connection established successfully
+[2025-07-19 10:02:32] INFO: Retrieved booking: BK003
+[2025-07-19 10:02:32] DEBUG: Database connection established successfully
+[2025-07-19 10:02:32] INFO: Retrieved booking: BK004
+[2025-07-19 10:02:32] INFO: Loaded 4 baggage items
+[2025-07-19 10:02:36] INFO: User staff1 accessed: gate_management
+[2025-07-19 10:02:36] DEBUG: Database connection established successfully
+[2025-07-19 10:02:36] INFO: Retrieved 8 gates from database
+[2025-07-19 10:02:36] INFO: Loaded 8 gates
+[2025-07-19 10:02:36] DEBUG: Database connection established successfully
+[2025-07-19 10:02:36] INFO: Retrieved 0 gate assignments from database
+[2025-07-19 10:02:36] INFO: Loaded 0 gate assignments
+[2025-07-19 10:02:50] INFO: User staff1 accessed: reports
+[2025-07-19 10:02:51] INFO: User staff1 accessed: flight_status

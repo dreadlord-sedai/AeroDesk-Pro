@@ -186,6 +186,36 @@ public class FlightDAO {
     }
     
     /**
+     * Retrieves a flight by its flight number
+     * @param flightNo The flight number
+     * @return Flight object or null if not found
+     * @throws DatabaseException if database operation fails
+     */
+    public Flight getFlightByNumber(String flightNo) throws DatabaseException {
+        String sql = "SELECT * FROM flights WHERE flight_no = ?";
+        
+        try (Connection conn = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            
+            stmt.setString(1, flightNo);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Flight flight = mapResultSetToFlight(rs);
+                    FileLogger.getInstance().logInfo("Retrieved flight by number: " + flightNo);
+                    return flight;
+                }
+            }
+            
+            return null;
+            
+        } catch (SQLException e) {
+            FileLogger.getInstance().logError("Failed to retrieve flight by number: " + e.getMessage());
+            throw new DatabaseException("Failed to retrieve flight by number", e);
+        }
+    }
+    
+    /**
      * Maps a ResultSet row to a Flight object
      * @param rs The ResultSet containing flight data
      * @return Flight object

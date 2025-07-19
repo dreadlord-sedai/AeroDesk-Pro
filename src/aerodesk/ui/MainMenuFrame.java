@@ -178,17 +178,15 @@ public class MainMenuFrame extends JFrame {
     }
     
     private void openGateManagement() {
-        JOptionPane.showMessageDialog(this, 
-            "Gate Management module will be implemented next.", 
-            "Coming Soon", 
-            JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> {
+            new GateManagementFrame().setVisible(true);
+        });
     }
     
     private void openFlightStatus() {
-        JOptionPane.showMessageDialog(this, 
-            "Flight Status module will be implemented next.", 
-            "Coming Soon", 
-            JOptionPane.INFORMATION_MESSAGE);
+        SwingUtilities.invokeLater(() -> {
+            new FlightStatusFrame().setVisible(true);
+        });
     }
     
     private void openReports() {

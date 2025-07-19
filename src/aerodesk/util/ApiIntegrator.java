@@ -128,4 +128,27 @@ public class ApiIntegrator {
                 "last_updated": "%s"
             }""", flightNumber, randomStatus, java.time.LocalDateTime.now());
     }
+    
+    /**
+     * Fetches weather data for the default location
+     * @return Weather data as string
+     * @throws IOException if the API call fails
+     */
+    public String getWeatherData() throws IOException {
+        return getWeatherData("New York"); // Default city
+    }
+    
+    /**
+     * Checks if the API is available
+     * @return true if API is available, false otherwise
+     */
+    public boolean isApiAvailable() {
+        try {
+            // Try to make a simple request to check availability
+            getWeatherData();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 } 
