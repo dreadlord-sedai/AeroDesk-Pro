@@ -8824,3 +8824,570 @@
 [2025-07-19 22:54:43] INFO: Retrieved 15 flights from database
 [2025-07-19 22:54:43] INFO: Loaded 15 flights
 [2025-07-19 22:54:43] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 22:56:19] INFO: AeroDesk Pro starting up...
+[2025-07-19 22:56:20] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 22:56:20] INFO: Splash screen launched successfully
+[2025-07-19 22:56:23] INFO: Launching login screen after splash screen
+[2025-07-19 22:56:34] DEBUG: Database connection established successfully
+[2025-07-19 22:56:35] INFO: User authenticated successfully: staff1
+[2025-07-19 22:56:35] INFO: User staff1 logged in successfully as STAFF
+[2025-07-19 22:56:35] INFO: Enhanced main menu initialized for user: staff1
+[2025-07-19 22:56:35] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 22:56:35] DEBUG: Database connection established successfully
+[2025-07-19 22:56:35] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:35] INFO: Loaded 15 flights
+[2025-07-19 22:56:35] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 22:56:37] DEBUG: Database connection established successfully
+[2025-07-19 22:56:37] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:37] INFO: Flight Scheduling: Selected: SW404 (JFK → DEN)
+[2025-07-19 22:56:37] DEBUG: Database connection established successfully
+[2025-07-19 22:56:37] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:37] INFO: Flight Scheduling: Selected: AF702 (JFK → CDG)
+[2025-07-19 22:56:37] DEBUG: Database connection established successfully
+[2025-07-19 22:56:37] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:37] INFO: Flight Scheduling: Selected: AA202 (JFK → ORD)
+[2025-07-19 22:56:38] DEBUG: Database connection established successfully
+[2025-07-19 22:56:38] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:38] INFO: Flight Scheduling: Selected: BA601 (JFK → LHR)
+[2025-07-19 22:56:38] DEBUG: Database connection established successfully
+[2025-07-19 22:56:38] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:38] INFO: Flight Scheduling: Selected: LH803 (JFK → FRA)
+[2025-07-19 22:56:38] DEBUG: Database connection established successfully
+[2025-07-19 22:56:38] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:38] INFO: Flight Scheduling: Selected: JL904 (JFK → NRT)
+[2025-07-19 22:56:41] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:41] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:41] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:41] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:42] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:42] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:42] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:43] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:43] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:43] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:44] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:44] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:44] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:44] DEBUG: Database connection established successfully
+[2025-07-19 22:56:44] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:56:44] DEBUG: Database connection established successfully
+[2025-07-19 22:56:44] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:56:44] INFO: Loaded 25 bookings
+[2025-07-19 22:56:45] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:45] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:45] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:45] DEBUG: Database connection established successfully
+[2025-07-19 22:56:45] INFO: Retrieved booking: BK008
+[2025-07-19 22:56:45] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:46] DEBUG: Database connection established successfully
+[2025-07-19 22:56:46] INFO: Retrieved booking: BK010
+[2025-07-19 22:56:46] DEBUG: Database connection established successfully
+[2025-07-19 22:56:46] INFO: Retrieved booking: BK012
+[2025-07-19 22:56:46] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:46] DEBUG: Database connection established successfully
+[2025-07-19 22:56:46] INFO: Retrieved booking: BK008
+[2025-07-19 22:56:46] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:46] DEBUG: Database connection established successfully
+[2025-07-19 22:56:46] INFO: Retrieved booking: BK011
+[2025-07-19 22:56:46] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:47] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:47] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:47] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:48] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:48] DEBUG: Database connection established successfully
+[2025-07-19 22:56:48] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:56:48] INFO: Loaded 21 checked-in passengers
+[2025-07-19 22:56:48] DEBUG: Database connection established successfully
+[2025-07-19 22:56:48] INFO: Retrieved 25 baggage items from database
+[2025-07-19 22:56:48] INFO: Loaded 25 baggage items
+[2025-07-19 22:56:48] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:48] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:48] DEBUG: Database connection established successfully
+[2025-07-19 22:56:48] INFO: Retrieved booking: BK003
+[2025-07-19 22:56:49] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:49] DEBUG: Database connection established successfully
+[2025-07-19 22:56:49] INFO: Retrieved booking: BK007
+[2025-07-19 22:56:49] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:49] DEBUG: Database connection established successfully
+[2025-07-19 22:56:49] INFO: Retrieved baggage by tag: BG004
+[2025-07-19 22:56:49] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:49] DEBUG: Database connection established successfully
+[2025-07-19 22:56:49] INFO: Retrieved baggage by tag: BG006
+[2025-07-19 22:56:49] DEBUG: Database connection established successfully
+[2025-07-19 22:56:49] INFO: Retrieved baggage by tag: BG007
+[2025-07-19 22:56:50] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:50] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:50] DEBUG: Database connection established successfully
+[2025-07-19 22:56:50] INFO: Retrieved baggage by tag: BG004
+[2025-07-19 22:56:50] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:50] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:51] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:51] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:51] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:52] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:52] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved 12 gates from database
+[2025-07-19 22:56:52] INFO: Loaded 12 gates
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: A1
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: DL101
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: A2
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: AA202
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: B1
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: UA303
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: B2
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: SW404
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: A4
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: DL505
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: C1
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: BA601
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: C2
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: AF702
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: C3
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: LH803
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: C4
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: JL904
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: C1
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: EK1005
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: B3
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: DL1106
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: B4
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: AA1207
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: A1
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: UA1308
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: A2
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: SW1409
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved gate: A3
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved flight: DL1510
+[2025-07-19 22:56:52] INFO: Loaded 15 gate assignments
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved 12 gates from database
+[2025-07-19 22:56:52] DEBUG: Database connection established successfully
+[2025-07-19 22:56:52] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:52] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:53] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:53] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:53] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:54] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:54] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:54] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:55] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:55] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:55] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:55] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:56] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:56] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] INFO: Loaded 15 flights for status display
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 flights from database
+[2025-07-19 22:56:56] DEBUG: Database connection established successfully
+[2025-07-19 22:56:56] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:56:56] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:57] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:57] DEBUG: Database connection established successfully
+[2025-07-19 22:56:57] INFO: Retrieved flight by number: DL505
+[2025-07-19 22:56:57] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:57] DEBUG: Database connection established successfully
+[2025-07-19 22:56:57] INFO: Retrieved flight by number: LH803
+[2025-07-19 22:56:57] DEBUG: Database connection established successfully
+[2025-07-19 22:56:57] INFO: Retrieved flight by number: EK1005
+[2025-07-19 22:56:57] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:57] DEBUG: Database connection established successfully
+[2025-07-19 22:56:57] INFO: Retrieved flight by number: AA1207
+[2025-07-19 22:56:58] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:58] DEBUG: Database connection established successfully
+[2025-07-19 22:56:58] INFO: Retrieved flight by number: BA601
+[2025-07-19 22:56:58] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:58] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:59] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:59] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:59] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:56:59] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:00] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:00] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:00] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:01] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:01] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:01] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:02] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:02] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:02] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:03] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:03] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:03] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:04] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:04] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:04] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:04] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:05] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:05] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:05] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:06] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:06] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:06] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:07] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:07] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:07] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:08] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:08] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:08] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:09] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:09] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:09] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:09] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:10] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:10] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:10] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:11] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:11] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:11] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:12] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:12] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:12] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:13] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:13] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:13] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:13] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:14] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:14] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:14] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:15] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:15] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:15] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:16] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:16] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:16] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:17] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:17] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:17] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:18] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:18] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:18] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:18] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:19] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:19] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:19] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:20] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:20] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:20] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:21] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:21] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:21] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:21] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:57:21] INFO: Real-time Aviation Stack updates initialized
+[2025-07-19 22:57:22] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:22] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:22] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:23] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:23] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:57:23] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 401
+[2025-07-19 22:57:23] INFO: Real-time Aviation Stack updates started
+[2025-07-19 22:57:23] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:23] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:23] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:24] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=DL202
+[2025-07-19 22:57:24] ERROR: Aviation Stack API error for flight DL202: HTTP request failed with code: 401
+[2025-07-19 22:57:24] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 22:57:24] ERROR: Aviation Stack API error for flight AA101: HTTP request failed with code: 401
+[2025-07-19 22:57:24] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:24] INFO: Flight tracked: AA101
+[2025-07-19 22:57:24] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:24] INFO: Real-time Aviation Stack updates stopped
+[2025-07-19 22:57:24] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:24] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=UA303
+[2025-07-19 22:57:24] ERROR: Aviation Stack API error for flight UA303: HTTP request failed with code: 401
+[2025-07-19 22:57:25] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:25] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 15 flights from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL101
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL101
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL101
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL101
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA202
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA202
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA202
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA202
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA202
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA303
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA303
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA303
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA303
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA303
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: BA601
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: BA601
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: BA601
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: BA601
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: BA601
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AF702
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AF702
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AF702
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AF702
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AF702
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL101
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 25 baggage items from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK001
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK002
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK003
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK004
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK005
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK006
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK007
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK008
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK009
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK010
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK011
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK012
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK013
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK014
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK015
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK016
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK017
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK018
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK019
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK020
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK021
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK022
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK023
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK024
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved booking: BK025
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL101
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA202
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA303
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: SW404
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL505
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: BA601
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AF702
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: LH803
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: JL904
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: EK1005
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL1106
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: AA1207
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: UA1308
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: SW1409
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved flight: DL1510
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 15 flights from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 25 baggage items from database
+[2025-07-19 22:57:25] DEBUG: Database connection established successfully
+[2025-07-19 22:57:25] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:57:25] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:26] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:26] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=SW404
+[2025-07-19 22:57:26] ERROR: Aviation Stack API error for flight SW404: HTTP request failed with code: 401
+[2025-07-19 22:57:26] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:26] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:27] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:27] ERROR: API request failed with code: 401 for URL: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=BA505
+[2025-07-19 22:57:27] ERROR: Aviation Stack API error for flight BA505: HTTP request failed with code: 401
+[2025-07-19 22:57:27] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:27] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:28] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:28] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:28] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:28] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:29] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:29] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:29] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:30] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:30] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:30] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:31] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:31] INFO: Dashboard KPIs initialized
+[2025-07-19 22:57:31] DEBUG: Database connection established successfully
+[2025-07-19 22:57:31] INFO: Retrieved 15 flights from database
+[2025-07-19 22:57:31] DEBUG: Database connection established successfully
+[2025-07-19 22:57:31] INFO: Retrieved 25 bookings from database
+[2025-07-19 22:57:31] INFO: Dashboard panel initialized
+[2025-07-19 22:57:31] DEBUG: Database connection established successfully
+[2025-07-19 22:57:31] INFO: Retrieved 25 baggage items from database
+[2025-07-19 22:57:31] DEBUG: Database connection established successfully
+[2025-07-19 22:57:31] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 22:57:31] DEBUG: Database connection established successfully
+[2025-07-19 22:57:31] INFO: Retrieved 15 flights from database
+[2025-07-19 22:57:31] INFO: Dashboard metrics updated at 22:57:31
+[2025-07-19 22:57:31] INFO: Map panel initialized
+[2025-07-19 22:57:31] INFO: Dashboard frame initialized
+[2025-07-19 22:57:31] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:31] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 22:57:32] ERROR: Weather API error for NRT: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for LAX: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for HKG: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for LHR: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for CDG: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for SIN: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for JFK: 401
+[2025-07-19 22:57:32] ERROR: Weather API error for DXB: 401
+[2025-07-19 22:57:32] INFO: Map data refreshed
+[2025-07-19 22:57:32] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:33] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:33] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:33] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:33] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:34] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:34] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:34] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:35] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:35] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:35] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:36] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:36] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:36] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:37] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:37] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:37] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:38] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:38] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:38] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:38] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:39] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:39] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:39] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:40] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:40] INFO: Dashboard panel cleanup completed
+[2025-07-19 22:57:40] INFO: Map panel cleanup completed
+[2025-07-19 22:57:40] INFO: Dashboard frame cleanup completed
+[2025-07-19 22:57:40] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:40] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-19 22:57:41] INFO: Flight Scheduling: Search results: 1 flights found
+[2025-07-20 00:01:42] INFO: AeroDesk Pro starting up...
+[2025-07-20 00:01:42] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-20 00:01:42] INFO: Splash screen launched successfully
+[2025-07-20 00:01:45] INFO: Launching login screen after splash screen
