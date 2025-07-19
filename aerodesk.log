@@ -7241,3 +7241,1240 @@
 [2025-07-19 19:57:38] DEBUG: Database connection established successfully
 [2025-07-19 19:57:38] INFO: Retrieved 15 flights from database
 [2025-07-19 19:57:38] INFO: Dashboard metrics updated at 19:57:38
+[2025-07-19 20:05:10] INFO: AeroDesk Pro starting up...
+[2025-07-19 20:05:11] INFO: Splash screen displayed - Starting AeroDesk Pro
+[2025-07-19 20:05:11] INFO: Splash screen launched successfully
+[2025-07-19 20:05:22] INFO: Launching main application directly to main menu
+[2025-07-19 20:05:22] INFO: Enhanced main menu initialized for user: admin
+[2025-07-19 20:05:29] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 20:05:30] DEBUG: Database connection established successfully
+[2025-07-19 20:05:30] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:30] INFO: Loaded 15 flights
+[2025-07-19 20:05:30] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 20:05:33] INFO: Flight Scheduling: Search results: 6 flights found
+[2025-07-19 20:05:33] INFO: Flight Scheduling: Search results: 6 flights found
+[2025-07-19 20:05:34] INFO: Flight Scheduling: Search results: 6 flights found
+[2025-07-19 20:05:34] INFO: Flight Scheduling: Search results: 0 flights found
+[2025-07-19 20:05:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:37] INFO: Flight Scheduling: Filtered by status: ON_TIME
+[2025-07-19 20:05:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:39] DEBUG: Database connection established successfully
+[2025-07-19 20:05:39] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:39] INFO: Flight Scheduling: Selected: AF702 (JFK → CDG)
+[2025-07-19 20:05:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:40] DEBUG: Database connection established successfully
+[2025-07-19 20:05:40] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:40] INFO: Flight Scheduling: Selected: AA202 (JFK → ORD)
+[2025-07-19 20:05:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:43] DEBUG: Database connection established successfully
+[2025-07-19 20:05:43] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:43] INFO: Flight Scheduling: Selected: AF702 (JFK → CDG)
+[2025-07-19 20:05:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:43] DEBUG: Database connection established successfully
+[2025-07-19 20:05:43] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:43] INFO: Flight Scheduling: Selected: UA303 (JFK → SFO)
+[2025-07-19 20:05:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:43] DEBUG: Database connection established successfully
+[2025-07-19 20:05:43] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:43] INFO: Flight Scheduling: Selected: BA601 (JFK → LHR)
+[2025-07-19 20:05:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:50] DEBUG: Database connection established successfully
+[2025-07-19 20:05:50] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:50] INFO: Flight Scheduling: Selected: DL505 (JFK → ATL)
+[2025-07-19 20:05:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:55] INFO: Flight Scheduling: Loading flights...
+[2025-07-19 20:05:55] DEBUG: Database connection established successfully
+[2025-07-19 20:05:55] INFO: Retrieved 15 flights from database
+[2025-07-19 20:05:55] INFO: Loaded 15 flights
+[2025-07-19 20:05:55] INFO: Flight Scheduling: Loaded 15 flights
+[2025-07-19 20:05:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:05:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:08] DEBUG: Database connection established successfully
+[2025-07-19 20:06:08] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:08] DEBUG: Database connection established successfully
+[2025-07-19 20:06:08] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:08] INFO: Loaded 25 bookings
+[2025-07-19 20:06:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:09] DEBUG: Database connection established successfully
+[2025-07-19 20:06:09] INFO: Retrieved booking: BK018
+[2025-07-19 20:06:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:10] DEBUG: Database connection established successfully
+[2025-07-19 20:06:10] INFO: Retrieved booking: BK016
+[2025-07-19 20:06:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:10] DEBUG: Database connection established successfully
+[2025-07-19 20:06:10] INFO: Retrieved booking: BK019
+[2025-07-19 20:06:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:10] DEBUG: Database connection established successfully
+[2025-07-19 20:06:10] INFO: Retrieved booking: BK021
+[2025-07-19 20:06:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:13] DEBUG: Database connection established successfully
+[2025-07-19 20:06:13] INFO: Retrieved booking: BK020
+[2025-07-19 20:06:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:17] DEBUG: Database connection established successfully
+[2025-07-19 20:06:17] INFO: Retrieved booking: BK021
+[2025-07-19 20:06:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:18] DEBUG: Database connection established successfully
+[2025-07-19 20:06:18] INFO: Retrieved booking: BK020
+[2025-07-19 20:06:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:18] DEBUG: Database connection established successfully
+[2025-07-19 20:06:18] INFO: Retrieved booking: BK018
+[2025-07-19 20:06:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:18] DEBUG: Database connection established successfully
+[2025-07-19 20:06:18] INFO: Retrieved booking: BK020
+[2025-07-19 20:06:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:19] DEBUG: Database connection established successfully
+[2025-07-19 20:06:19] INFO: Retrieved booking: BK019
+[2025-07-19 20:06:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:20] DEBUG: Database connection established successfully
+[2025-07-19 20:06:20] INFO: Retrieved flight: BA601
+[2025-07-19 20:06:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:24] DEBUG: Database connection established successfully
+[2025-07-19 20:06:24] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:24] INFO: Data exported to passenger_bookings_20250719_200624.csv
+[2025-07-19 20:06:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:28] DEBUG: Database connection established successfully
+[2025-07-19 20:06:28] INFO: Found 0 bookings for search term: fu
+[2025-07-19 20:06:28] DEBUG: Database connection established successfully
+[2025-07-19 20:06:28] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:29] DEBUG: Database connection established successfully
+[2025-07-19 20:06:29] INFO: Found 1 bookings for search term: f
+[2025-07-19 20:06:29] DEBUG: Database connection established successfully
+[2025-07-19 20:06:29] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:29] DEBUG: Database connection established successfully
+[2025-07-19 20:06:29] INFO: Found 1 bookings for search term: f
+[2025-07-19 20:06:29] DEBUG: Database connection established successfully
+[2025-07-19 20:06:29] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:30] DEBUG: Database connection established successfully
+[2025-07-19 20:06:30] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:30] DEBUG: Database connection established successfully
+[2025-07-19 20:06:30] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:32] DEBUG: Database connection established successfully
+[2025-07-19 20:06:32] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:06:32] INFO: Loaded 21 checked-in passengers
+[2025-07-19 20:06:32] DEBUG: Database connection established successfully
+[2025-07-19 20:06:32] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:32] INFO: Loaded 25 baggage items
+[2025-07-19 20:06:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:35] DEBUG: Database connection established successfully
+[2025-07-19 20:06:35] INFO: Retrieved booking: BK001
+[2025-07-19 20:06:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:37] DEBUG: Database connection established successfully
+[2025-07-19 20:06:37] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:38] DEBUG: Database connection established successfully
+[2025-07-19 20:06:38] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:39] DEBUG: Database connection established successfully
+[2025-07-19 20:06:39] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:41] DEBUG: Database connection established successfully
+[2025-07-19 20:06:41] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:42] DEBUG: Database connection established successfully
+[2025-07-19 20:06:42] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:44] DEBUG: Database connection established successfully
+[2025-07-19 20:06:44] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:06:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:44] DEBUG: Database connection established successfully
+[2025-07-19 20:06:44] INFO: Retrieved booking: BK009
+[2025-07-19 20:06:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:45] DEBUG: Database connection established successfully
+[2025-07-19 20:06:45] INFO: Retrieved booking: BK012
+[2025-07-19 20:06:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:45] DEBUG: Database connection established successfully
+[2025-07-19 20:06:45] INFO: Retrieved baggage by tag: BG007
+[2025-07-19 20:06:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:46] DEBUG: Database connection established successfully
+[2025-07-19 20:06:46] INFO: Retrieved baggage by tag: BG011
+[2025-07-19 20:06:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:53] INFO: Baggage simulation started
+[2025-07-19 20:06:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:56] DEBUG: Database connection established successfully
+[2025-07-19 20:06:56] INFO: Retrieved baggage by tag: BG007
+[2025-07-19 20:06:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:56] DEBUG: Database connection established successfully
+[2025-07-19 20:06:56] INFO: Retrieved baggage by tag: BG012
+[2025-07-19 20:06:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:57] INFO: Baggage simulation stopped
+[2025-07-19 20:06:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:06:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:02] DEBUG: Database connection established successfully
+[2025-07-19 20:07:02] INFO: Retrieved baggage by tag: BG004
+[2025-07-19 20:07:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:03] DEBUG: Database connection established successfully
+[2025-07-19 20:07:03] INFO: Retrieved baggage by tag: BG006
+[2025-07-19 20:07:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:03] DEBUG: Database connection established successfully
+[2025-07-19 20:07:03] INFO: Retrieved baggage by tag: BG007
+[2025-07-19 20:07:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:03] DEBUG: Database connection established successfully
+[2025-07-19 20:07:03] INFO: Retrieved baggage by tag: BG008
+[2025-07-19 20:07:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:03] DEBUG: Database connection established successfully
+[2025-07-19 20:07:03] INFO: Retrieved baggage by tag: BG009
+[2025-07-19 20:07:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved 12 gates from database
+[2025-07-19 20:07:09] INFO: Loaded 12 gates
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved gate: A1
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved flight: DL101
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved gate: A2
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved flight: AA202
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved gate: B1
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved flight: UA303
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved gate: B2
+[2025-07-19 20:07:09] DEBUG: Database connection established successfully
+[2025-07-19 20:07:09] INFO: Retrieved flight: SW404
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: A4
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: DL505
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: C1
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: BA601
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: C2
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: AF702
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: C3
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: LH803
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: C4
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: JL904
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: C1
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: EK1005
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: B3
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: DL1106
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: B4
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: AA1207
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: A1
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: UA1308
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: A2
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: SW1409
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved gate: A3
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved flight: DL1510
+[2025-07-19 20:07:10] INFO: Loaded 15 gate assignments
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved 12 gates from database
+[2025-07-19 20:07:10] DEBUG: Database connection established successfully
+[2025-07-19 20:07:10] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 flights from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] INFO: Loaded 15 flights for status display
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 flights from database
+[2025-07-19 20:07:15] DEBUG: Database connection established successfully
+[2025-07-19 20:07:15] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:07:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:17] DEBUG: Database connection established successfully
+[2025-07-19 20:07:17] INFO: Retrieved flight by number: UA303
+[2025-07-19 20:07:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:17] DEBUG: Database connection established successfully
+[2025-07-19 20:07:17] INFO: Retrieved flight by number: AF702
+[2025-07-19 20:07:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:17] DEBUG: Database connection established successfully
+[2025-07-19 20:07:17] INFO: Retrieved flight by number: LH803
+[2025-07-19 20:07:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:18] DEBUG: Database connection established successfully
+[2025-07-19 20:07:18] INFO: Retrieved flight by number: UA303
+[2025-07-19 20:07:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:33] DEBUG: Database connection established successfully
+[2025-07-19 20:07:33] INFO: Retrieved flight by number: LH803
+[2025-07-19 20:07:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:33] DEBUG: Database connection established successfully
+[2025-07-19 20:07:33] INFO: Retrieved flight by number: SW404
+[2025-07-19 20:07:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:42] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 20:07:42] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 20:07:42] INFO: Flight tracked: AA101
+[2025-07-19 20:07:42] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101&live=1
+[2025-07-19 20:07:42] INFO: Aviation Stack API: Retrieved live tracking for AA101
+[2025-07-19 20:07:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:42] INFO: Live tracking started: AA101
+[2025-07-19 20:07:43] INFO: API request successful: https://api.aviationstack.com/v1/flights?access_key=26ca9c80a5bfd430f608d77897c3c845&flight_iata=AA101
+[2025-07-19 20:07:43] INFO: Aviation Stack API: Retrieved flight data for AA101
+[2025-07-19 20:07:43] INFO: Flight tracked: AA101
+[2025-07-19 20:07:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:50] INFO: API request successful: https://api.aviationstack.com/v1/airports?access_key=26ca9c80a5bfd430f608d77897c3c845&iata_code=JFK
+[2025-07-19 20:07:50] INFO: Aviation Stack API: Retrieved airport data for JFK
+[2025-07-19 20:07:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:50] INFO: Airport info retrieved: JFK
+[2025-07-19 20:07:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:07:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved 15 flights from database
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: DL101
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: DL101
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: DL101
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: DL101
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: AA202
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: AA202
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: AA202
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: AA202
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: AA202
+[2025-07-19 20:08:00] DEBUG: Database connection established successfully
+[2025-07-19 20:08:00] INFO: Retrieved flight: UA303
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: UA303
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: UA303
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: UA303
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: UA303
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: BA601
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: BA601
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: BA601
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: BA601
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: BA601
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AF702
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AF702
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AF702
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AF702
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AF702
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: DL101
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK001
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK002
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK003
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK004
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK005
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK006
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK007
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK008
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK009
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK010
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK011
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK012
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK013
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK014
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK015
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK016
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK017
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK018
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK019
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK020
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK021
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK022
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK023
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK024
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved booking: BK025
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: DL101
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AA202
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: UA303
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: SW404
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: DL505
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: BA601
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AF702
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: LH803
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: JL904
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: EK1005
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: DL1106
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: AA1207
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: UA1308
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: SW1409
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved flight: DL1510
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved 15 flights from database
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:08:01] DEBUG: Database connection established successfully
+[2025-07-19 20:08:01] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:08:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:05] ERROR: Aviation Stack API error for airport JFK: Read timed out
+[2025-07-19 20:08:05] INFO: Airport info retrieved: JFK
+[2025-07-19 20:08:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:09] ERROR: Aviation Stack API error for airport JFK: Read timed out
+[2025-07-19 20:08:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:09] INFO: Airport info retrieved: JFK
+[2025-07-19 20:08:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:18] ERROR: Aviation Stack API error for live tracking AA101: Read timed out
+[2025-07-19 20:08:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:19] INFO: Dashboard KPIs initialized
+[2025-07-19 20:08:19] DEBUG: Database connection established successfully
+[2025-07-19 20:08:19] INFO: Retrieved 15 flights from database
+[2025-07-19 20:08:19] INFO: Dashboard panel initialized
+[2025-07-19 20:08:19] DEBUG: Database connection established successfully
+[2025-07-19 20:08:19] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:08:19] DEBUG: Database connection established successfully
+[2025-07-19 20:08:19] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:08:19] DEBUG: Database connection established successfully
+[2025-07-19 20:08:19] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:08:19] DEBUG: Database connection established successfully
+[2025-07-19 20:08:19] INFO: Retrieved 15 flights from database
+[2025-07-19 20:08:19] INFO: Dashboard metrics updated at 20:08:19
+[2025-07-19 20:08:19] INFO: Map panel initialized
+[2025-07-19 20:08:19] INFO: Dashboard frame initialized
+[2025-07-19 20:08:19] INFO: Retrieved departure flights for JFK: 5 flights
+[2025-07-19 20:08:20] ERROR: Weather API error for NRT: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for LAX: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for HKG: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for LHR: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for CDG: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for SIN: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for JFK: 401
+[2025-07-19 20:08:20] ERROR: Weather API error for DXB: 401
+[2025-07-19 20:08:20] INFO: Map data refreshed
+[2025-07-19 20:08:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:38] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:39] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:40] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:41] INFO: Dashboard panel cleanup completed
+[2025-07-19 20:08:41] INFO: Map panel cleanup completed
+[2025-07-19 20:08:41] INFO: Dashboard frame cleanup completed
+[2025-07-19 20:08:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:41] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:42] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:43] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:44] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:45] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:46] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:47] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:48] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:49] DEBUG: Database connection established successfully
+[2025-07-19 20:08:49] INFO: Retrieved 15 flights from database
+[2025-07-19 20:08:49] DEBUG: Database connection established successfully
+[2025-07-19 20:08:49] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:08:49] DEBUG: Database connection established successfully
+[2025-07-19 20:08:49] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:08:49] DEBUG: Database connection established successfully
+[2025-07-19 20:08:49] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:08:49] DEBUG: Database connection established successfully
+[2025-07-19 20:08:49] INFO: Retrieved 15 flights from database
+[2025-07-19 20:08:49] INFO: Dashboard metrics updated at 20:08:49
+[2025-07-19 20:08:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:49] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:50] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:51] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:52] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:53] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:54] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:55] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:56] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:57] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:58] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:08:59] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:00] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:01] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:02] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:03] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:04] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:05] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:06] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:07] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:08] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:09] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:10] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:11] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:12] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:13] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:14] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:15] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:16] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:17] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:18] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:19] DEBUG: Database connection established successfully
+[2025-07-19 20:09:19] INFO: Retrieved 15 flights from database
+[2025-07-19 20:09:19] DEBUG: Database connection established successfully
+[2025-07-19 20:09:19] INFO: Retrieved 25 bookings from database
+[2025-07-19 20:09:19] DEBUG: Database connection established successfully
+[2025-07-19 20:09:19] INFO: Retrieved 25 baggage items from database
+[2025-07-19 20:09:19] DEBUG: Database connection established successfully
+[2025-07-19 20:09:19] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 20:09:19] DEBUG: Database connection established successfully
+[2025-07-19 20:09:19] INFO: Retrieved 15 flights from database
+[2025-07-19 20:09:19] INFO: Dashboard metrics updated at 20:09:19
+[2025-07-19 20:09:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:19] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:20] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:21] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:22] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:23] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:24] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:25] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:26] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:27] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:28] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:29] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:30] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:31] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:32] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:33] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:34] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:35] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:36] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:37] INFO: Flight Scheduling: Search cleared
+[2025-07-19 20:09:37] INFO: Flight Scheduling: Search cleared
