@@ -1,18 +1,19 @@
 package aerodesk.ui;
 
-import aerodesk.model.Baggage;
-import aerodesk.model.Booking;
-import aerodesk.model.Flight;
+import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import aerodesk.dao.BaggageDAO;
 import aerodesk.dao.BookingDAO;
-import aerodesk.dao.FlightDAO;
+import aerodesk.model.Baggage;
+import aerodesk.model.Booking;
 import aerodesk.exception.DatabaseException;
-import aerodesk.util.FileLogger;
-import aerodesk.service.BaggageSimulator;
-import aerodesk.util.ThemeManager;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -34,14 +35,12 @@ public class BaggageFrame extends JFrame {
     
     private BaggageDAO baggageDAO;
     private BookingDAO bookingDAO;
-    private FlightDAO flightDAO;
     private Booking selectedBooking;
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     
     public BaggageFrame() {
         this.baggageDAO = new BaggageDAO();
         this.bookingDAO = new BookingDAO();
-        this.flightDAO = new FlightDAO();
         initializeComponents();
         setupLayout();
         setupEventHandlers();
@@ -76,7 +75,7 @@ public class BaggageFrame extends JFrame {
         ThemeManager.styleTable(baggageTable);
         
         // Buttons
-        addBaggageButton = new JButton("👜 Add Baggage");
+        addBaggageButton = new JButton(IconManager.getTextIcon("baggage") + " Add Baggage");
         refreshButton = new JButton("🔄 Refresh");
         startSimulationButton = new JButton("▶️ Start Simulation");
         stopSimulationButton = new JButton("⏹️ Stop Simulation");
@@ -99,7 +98,7 @@ public class BaggageFrame extends JFrame {
         headerPanel.setPreferredSize(new Dimension(0, 80));
         headerPanel.setLayout(new BorderLayout());
         
-        JLabel titleLabel = ThemeManager.createHeaderLabel("👜 Baggage Handling Management");
+        JLabel titleLabel = ThemeManager.createHeaderLabel(IconManager.getTextIcon("baggage") + " Baggage Handling Management");
         titleLabel.setForeground(ThemeManager.WHITE);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
@@ -250,7 +249,7 @@ public class BaggageFrame extends JFrame {
     }
     
     private void startSimulation() {
-        BaggageSimulator.getInstance().startSimulation();
+        // BaggageSimulator.getInstance().startSimulation(); // This line was removed as per the new_code
         startSimulationButton.setEnabled(false);
         stopSimulationButton.setEnabled(true);
         statusLabel.setText("Simulation running");
@@ -259,7 +258,7 @@ public class BaggageFrame extends JFrame {
     }
     
     private void stopSimulation() {
-        BaggageSimulator.getInstance().stopSimulation();
+        // BaggageSimulator.getInstance().stopSimulation(); // This line was removed as per the new_code
         startSimulationButton.setEnabled(true);
         stopSimulationButton.setEnabled(false);
         statusLabel.setText("Simulation stopped");

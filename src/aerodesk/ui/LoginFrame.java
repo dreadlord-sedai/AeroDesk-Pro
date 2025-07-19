@@ -1,15 +1,18 @@
 package aerodesk.ui;
 
-import aerodesk.util.ConfigManager;
-import aerodesk.util.FileLogger;
 import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import aerodesk.dao.UserDAO;
 import aerodesk.model.User;
 import aerodesk.exception.DatabaseException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Login screen for AeroDesk Pro
@@ -34,8 +37,8 @@ public class LoginFrame extends JFrame {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
         roleComboBox = new JComboBox<>(new String[]{"STAFF", "ADMIN"});
-        loginButton = new JButton("✈️ Login");
-        exitButton = new JButton("❌ Exit");
+        loginButton = new JButton(IconManager.getTextIcon("flight") + " Login");
+        exitButton = new JButton(IconManager.getTextIcon("logout") + " Exit");
         
         // Apply modern styling
         ThemeManager.styleTextField(usernameField);
@@ -54,7 +57,7 @@ public class LoginFrame extends JFrame {
         headerPanel.setLayout(new BorderLayout());
         
         // Title with aviation icon
-        JLabel titleLabel = ThemeManager.createTitleLabel("✈️ AeroDesk Pro");
+        JLabel titleLabel = ThemeManager.createTitleLabel(IconManager.getTextIcon("flight") + " AeroDesk Pro");
         titleLabel.setForeground(ThemeManager.WHITE);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         
@@ -73,7 +76,7 @@ public class LoginFrame extends JFrame {
         
         // Username
         gbc.gridx = 0; gbc.gridy = 0;
-        contentPanel.add(ThemeManager.createBodyLabel("👤 Username:"), gbc);
+        contentPanel.add(ThemeManager.createBodyLabel(IconManager.getTextIcon("user") + " Username:"), gbc);
         gbc.gridx = 1; gbc.gridy = 0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
@@ -83,7 +86,7 @@ public class LoginFrame extends JFrame {
         gbc.gridx = 0; gbc.gridy = 1;
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 0.0;
-        contentPanel.add(ThemeManager.createBodyLabel("🔒 Password:"), gbc);
+        contentPanel.add(ThemeManager.createBodyLabel(IconManager.getTextIcon("user") + " Password:"), gbc);
         gbc.gridx = 1; gbc.gridy = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;
@@ -93,7 +96,7 @@ public class LoginFrame extends JFrame {
         gbc.gridx = 0; gbc.gridy = 2;
         gbc.fill = GridBagConstraints.NONE;
         gbc.weightx = 0.0;
-        contentPanel.add(ThemeManager.createBodyLabel("👨‍💼 Role:"), gbc);
+        contentPanel.add(ThemeManager.createBodyLabel(IconManager.getTextIcon("user") + " Role:"), gbc);
         gbc.gridx = 1; gbc.gridy = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 1.0;

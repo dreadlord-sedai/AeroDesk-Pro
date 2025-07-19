@@ -39,7 +39,7 @@ public class IconManager {
                 return "📋";
             case "logout":
             case "exit":
-                return "🚪";
+                return "❌";
             case "add":
             case "create":
                 return "➕";

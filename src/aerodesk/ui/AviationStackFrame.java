@@ -1,10 +1,11 @@
 package aerodesk.ui;
 
+import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import aerodesk.service.AviationStackService;
 import aerodesk.service.AviationStackService.FlightInfo;
 import aerodesk.service.AviationStackService.AirportInfo;
-import aerodesk.util.FileLogger;
-import aerodesk.util.ThemeManager;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -65,12 +66,12 @@ public class AviationStackFrame extends JFrame {
         ThemeManager.styleTextField(airportCodeField);
         
         // Buttons
-        trackFlightButton = new JButton("✈️ Track Flight");
+        trackFlightButton = new JButton(IconManager.getTextIcon("flight") + " Track Flight");
         getAirportInfoButton = new JButton("🏢 Get Airport Info");
         searchRouteButton = new JButton("🛣️ Search Route");
         liveTrackingButton = new JButton("📍 Live Tracking");
-        airlineInfoButton = new JButton("✈️ Airline Info");
-        airportStatsButton = new JButton("📊 Airport Stats");
+        airlineInfoButton = new JButton(IconManager.getTextIcon("flight") + " Airline Info");
+        airportStatsButton = new JButton(IconManager.getTextIcon("status") + " Airport Stats");
         
         // Apply modern styling to buttons
         ThemeManager.styleButton(trackFlightButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
@@ -115,7 +116,7 @@ public class AviationStackFrame extends JFrame {
         headerPanel.setPreferredSize(new Dimension(0, 100));
         headerPanel.setLayout(new BorderLayout());
         
-        JLabel titleLabel = ThemeManager.createHeaderLabel("🌐 Aviation Stack API Integration");
+        JLabel titleLabel = ThemeManager.createHeaderLabel(IconManager.getTextIcon("api") + " Aviation Stack API Integration");
         titleLabel.setForeground(ThemeManager.WHITE);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
@@ -129,7 +130,7 @@ public class AviationStackFrame extends JFrame {
         JPanel inputPanel = ThemeManager.createCardPanel();
         inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 15, 10));
         
-        inputPanel.add(ThemeManager.createBodyLabel("✈️ Flight Number:"));
+        inputPanel.add(ThemeManager.createBodyLabel(IconManager.getTextIcon("flight") + " Flight Number:"));
         inputPanel.add(flightNumberField);
         inputPanel.add(trackFlightButton);
         inputPanel.add(liveTrackingButton);

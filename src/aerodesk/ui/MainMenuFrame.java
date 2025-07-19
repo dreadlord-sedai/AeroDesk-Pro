@@ -37,7 +37,7 @@ public class MainMenuFrame extends JFrame {
         headerPanel.setPreferredSize(new Dimension(0, 100));
         headerPanel.setLayout(new BorderLayout());
         
-        JLabel titleLabel = ThemeManager.createTitleLabel("✈️ AeroDesk Pro");
+        JLabel titleLabel = ThemeManager.createTitleLabel(IconManager.getTextIcon("flight") + " AeroDesk Pro");
         titleLabel.setForeground(ThemeManager.WHITE);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         

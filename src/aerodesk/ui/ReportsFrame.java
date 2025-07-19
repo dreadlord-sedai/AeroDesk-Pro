@@ -1,19 +1,23 @@
 package aerodesk.ui;
 
-import aerodesk.model.Flight;
-import aerodesk.model.Booking;
-import aerodesk.model.Baggage;
-import aerodesk.model.GateAssignment;
+import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import aerodesk.dao.FlightDAO;
 import aerodesk.dao.BookingDAO;
 import aerodesk.dao.BaggageDAO;
 import aerodesk.dao.GateDAO;
+import aerodesk.model.Flight;
+import aerodesk.model.Booking;
+import aerodesk.model.Baggage;
+import aerodesk.model.GateAssignment;
 import aerodesk.exception.DatabaseException;
-import aerodesk.util.FileLogger;
-import aerodesk.util.ThemeManager;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -128,7 +132,7 @@ public class ReportsFrame extends JFrame {
         ThemeManager.styleTextArea(systemStatsArea);
         
         // Buttons
-        exportButton = new JButton("📊 Export Report");
+        exportButton = new JButton(IconManager.getTextIcon("status") + " Export Report");
         refreshButton = new JButton("🔄 Refresh Data");
         clearLogsButton = new JButton("🗑️ Clear Logs");
         saveLogsButton = new JButton("💾 Save Logs");
@@ -179,7 +183,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("✈️ Flights Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("flight") + " Flights Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(flightsReportTable);
@@ -215,7 +219,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("👜 Baggage Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("baggage") + " Baggage Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(baggageReportTable);
@@ -233,7 +237,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("🚪 Gate Assignments Report");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("gate") + " Gate Assignments Report");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(gatesReportTable);
@@ -251,7 +255,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("📋 System Logs");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("reports") + " System Logs");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(logsArea);
@@ -269,7 +273,7 @@ public class ReportsFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("📊 System Statistics");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("status") + " System Statistics");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(systemStatsArea);
@@ -496,10 +500,10 @@ public class ReportsFrame extends JFrame {
     
     private void loadGatesReport() {
         try {
-            List<GateAssignment> assignments = gateDAO.getAllAssignments();
-            gatesReportModel.setRowCount(0);
-            
-            for (GateAssignment assignment : assignments) {
+                         List<GateAssignment> assignments = gateDAO.getAllAssignments();
+             gatesReportModel.setRowCount(0);
+             
+             for (GateAssignment assignment : assignments) {
                 try {
                     Flight flight = flightDAO.getFlightById(assignment.getFlightId());
                     String flightNo = flight != null ? flight.getFlightNo() : "Unknown";
@@ -599,7 +603,7 @@ public class ReportsFrame extends JFrame {
                 baggageList.size() > 0 ? (double) deliveredBaggage / baggageList.size() * 100 : 0)).append("\n\n");
             
             // Gate statistics
-            List<GateAssignment> assignments = gateDAO.getAllAssignments();
+                         List<GateAssignment> assignments = gateDAO.getAllAssignments();
             stats.append("GATE STATISTICS:\n");
             stats.append("----------------\n");
             stats.append("Total Assignments: ").append(assignments.size()).append("\n");

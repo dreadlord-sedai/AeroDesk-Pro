@@ -1,17 +1,22 @@
 package aerodesk.ui;
 
+import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
+import aerodesk.dao.GateDAO;
+
+import aerodesk.dao.FlightDAO;
 import aerodesk.model.Gate;
 import aerodesk.model.GateAssignment;
 import aerodesk.model.Flight;
-import aerodesk.dao.GateDAO;
-import aerodesk.dao.FlightDAO;
 import aerodesk.exception.DatabaseException;
 import aerodesk.exception.GateConflictException;
-import aerodesk.util.FileLogger;
-import aerodesk.util.ThemeManager;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -75,7 +80,7 @@ public class GateManagementFrame extends JFrame {
         
         // Buttons
         addGateButton = new JButton("➕ Add Gate");
-        assignFlightButton = new JButton("✈️ Assign Flight");
+        assignFlightButton = new JButton(IconManager.getTextIcon("flight") + " Assign Flight");
         removeAssignmentButton = new JButton("❌ Remove Assignment");
         refreshButton = new JButton("🔄 Refresh");
         
@@ -96,7 +101,7 @@ public class GateManagementFrame extends JFrame {
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setPreferredSize(new Dimension(800, 80));
         
-        JLabel titleLabel = ThemeManager.createTitleLabel("🚪 Gate Management System");
+        JLabel titleLabel = ThemeManager.createTitleLabel(IconManager.getTextIcon("gate") + " Gate Management System");
         titleLabel.setForeground(ThemeManager.WHITE);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         
@@ -136,7 +141,7 @@ public class GateManagementFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("🚪 Available Gates");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("gate") + " Available Gates");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(gatesTable);
@@ -154,7 +159,7 @@ public class GateManagementFrame extends JFrame {
         
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         headerPanel.setBackground(ThemeManager.WHITE);
-        JLabel headerLabel = ThemeManager.createSubheaderLabel("✈️ Gate Assignments");
+        JLabel headerLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("flight") + " Gate Assignments");
         headerPanel.add(headerLabel);
         
         JScrollPane scrollPane = new JScrollPane(assignmentsTable);

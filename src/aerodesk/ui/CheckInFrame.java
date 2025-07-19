@@ -1,15 +1,19 @@
 package aerodesk.ui;
 
-import aerodesk.model.Booking;
-import aerodesk.model.Flight;
+import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import aerodesk.dao.BookingDAO;
 import aerodesk.dao.FlightDAO;
+import aerodesk.model.Booking;
+import aerodesk.model.Flight;
 import aerodesk.exception.DatabaseException;
-import aerodesk.util.FileLogger;
-import aerodesk.util.ThemeManager;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -85,7 +89,7 @@ public class CheckInFrame extends JFrame {
         headerPanel.setPreferredSize(new Dimension(0, 80));
         headerPanel.setLayout(new BorderLayout());
         
-        JLabel titleLabel = ThemeManager.createHeaderLabel("👤 Passenger Check-In Management");
+        JLabel titleLabel = ThemeManager.createHeaderLabel(IconManager.getTextIcon("user") + " Passenger Check-In Management");
         titleLabel.setForeground(ThemeManager.WHITE);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerPanel.add(titleLabel, BorderLayout.CENTER);

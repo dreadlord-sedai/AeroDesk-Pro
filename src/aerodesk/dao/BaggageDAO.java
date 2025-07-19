@@ -141,15 +141,16 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public Baggage createBaggage(Baggage baggage) throws DatabaseException {
-        String sql = "INSERT INTO baggage (booking_id, weight, status) " +
-                    "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO baggage (baggage_tag, booking_id, weight, status) " +
+                    "VALUES (?, ?, ?, ?)";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
-            stmt.setInt(1, baggage.getBookingId());
-            stmt.setDouble(2, baggage.getWeightKg());
-            stmt.setString(3, baggage.getStatus().name());
+            stmt.setString(1, baggage.getTagNumber());
+            stmt.setInt(2, baggage.getBookingId());
+            stmt.setDouble(3, baggage.getWeightKg());
+            stmt.setString(4, baggage.getStatus().name());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -180,15 +181,16 @@ public class BaggageDAO {
      * @throws DatabaseException if database operation fails
      */
     public boolean updateBaggage(Baggage baggage) throws DatabaseException {
-        String sql = "UPDATE baggage SET booking_id = ?, weight = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE baggage SET baggage_tag = ?, booking_id = ?, weight = ?, status = ? WHERE id = ?";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             
-            stmt.setInt(1, baggage.getBookingId());
-            stmt.setDouble(2, baggage.getWeightKg());
-            stmt.setString(3, baggage.getStatus().name());
-            stmt.setInt(4, baggage.getBaggageId());
+            stmt.setString(1, baggage.getTagNumber());
+            stmt.setInt(2, baggage.getBookingId());
+            stmt.setDouble(3, baggage.getWeightKg());
+            stmt.setString(4, baggage.getStatus().name());
+            stmt.setInt(5, baggage.getBaggageId());
             
             int affectedRows = stmt.executeUpdate();
             
@@ -306,15 +308,18 @@ public class BaggageDAO {
      */
     public List<Baggage> getBaggageForStatusUpdate() throws DatabaseException {
         List<Baggage> baggageList = new ArrayList<>();
-        String sql = "SELECT * FROM baggage WHERE status != 'DELIVERED' ORDER BY created_at";
+        String sql = "SELECT * FROM baggage WHERE status != ? ORDER BY created_at";
         
         try (Connection conn = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
             
-            while (rs.next()) {
-                Baggage baggage = mapResultSetToBaggage(rs);
-                baggageList.add(baggage);
+            stmt.setString(1, Baggage.BaggageStatus.DELIVERED.name());
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Baggage baggage = mapResultSetToBaggage(rs);
+                    baggageList.add(baggage);
+                }
             }
             
             FileLogger.getInstance().logInfo("Retrieved " + baggageList.size() + " baggage items for status update");
@@ -363,7 +368,8 @@ public class BaggageDAO {
         baggage.setBookingId(rs.getInt("booking_id"));
         baggage.setWeightKg(rs.getDouble("weight"));
         baggage.setTagNumber(rs.getString("baggage_tag"));
-        baggage.setBaggageType(Baggage.BaggageType.valueOf(rs.getString("baggage_type")));
+        // Set default baggage type since it's not in the database schema
+        baggage.setBaggageType(Baggage.BaggageType.CHECKED);
         baggage.setStatus(Baggage.BaggageStatus.valueOf(rs.getString("status")));
         
         Timestamp createdAt = rs.getTimestamp("created_at");

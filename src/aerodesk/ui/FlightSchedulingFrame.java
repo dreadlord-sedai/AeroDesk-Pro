@@ -1,10 +1,12 @@
 package aerodesk.ui;
 
-import aerodesk.model.Flight;
-import aerodesk.dao.FlightDAO;
-import aerodesk.exception.DatabaseException;
-import aerodesk.util.FileLogger;
 import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
+import aerodesk.dao.FlightDAO;
+import aerodesk.model.Flight;
+import aerodesk.exception.DatabaseException;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -56,7 +58,7 @@ public class FlightSchedulingFrame extends JFrame {
         aircraftTypeField = new JTextField(15);
         statusComboBox = new JComboBox<>(Flight.FlightStatus.values());
         
-        createButton = new JButton("✈️ Create Flight");
+        createButton = new JButton(IconManager.getTextIcon("flight") + " Create Flight");
         updateButton = new JButton("🔄 Update Flight");
         deleteButton = new JButton("🗑️ Delete Flight");
         clearButton = new JButton("🧹 Clear Form");
@@ -97,7 +99,7 @@ public class FlightSchedulingFrame extends JFrame {
         headerPanel.setPreferredSize(new Dimension(0, 80));
         headerPanel.setLayout(new BorderLayout());
         
-        JLabel titleLabel = ThemeManager.createHeaderLabel("✈️ Flight Scheduling Management");
+        JLabel titleLabel = ThemeManager.createHeaderLabel(IconManager.getTextIcon("flight") + " Flight Scheduling Management");
         titleLabel.setForeground(ThemeManager.WHITE);
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
@@ -134,13 +136,13 @@ public class FlightSchedulingFrame extends JFrame {
         formPanel.add(Box.createVerticalStrut(20));
         
         // Add form fields
-        formPanel.add(createFormField("✈️ Flight No:", flightNoField));
+        formPanel.add(createFormField(IconManager.getTextIcon("flight") + " Flight No:", flightNoField));
         formPanel.add(createFormField("🛫 Origin:", originField));
         formPanel.add(createFormField("🛬 Destination:", destinationField));
         formPanel.add(createFormField("🕐 Depart Time (yyyy-MM-dd HH:mm):", departTimeField));
         formPanel.add(createFormField("🕐 Arrive Time (yyyy-MM-dd HH:mm):", arriveTimeField));
-        formPanel.add(createFormField("✈️ Aircraft Type:", aircraftTypeField));
-        formPanel.add(createFormField("📊 Status:", statusComboBox));
+        formPanel.add(createFormField(IconManager.getTextIcon("flight") + " Aircraft Type:", aircraftTypeField));
+        formPanel.add(createFormField(IconManager.getTextIcon("status") + " Status:", statusComboBox));
         
         return formPanel;
     }

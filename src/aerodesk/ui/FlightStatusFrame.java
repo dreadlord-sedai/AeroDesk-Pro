@@ -1,19 +1,26 @@
 package aerodesk.ui;
 
-import aerodesk.model.Flight;
-import aerodesk.model.GateAssignment;
+import aerodesk.util.ThemeManager;
+import aerodesk.util.FileLogger;
+import aerodesk.util.IconManager;
 import aerodesk.dao.FlightDAO;
 import aerodesk.dao.GateDAO;
+import aerodesk.model.Flight;
+import aerodesk.model.GateAssignment;
 import aerodesk.exception.DatabaseException;
-import aerodesk.util.FileLogger;
 import aerodesk.util.ApiIntegrator;
-import aerodesk.util.ThemeManager;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -101,7 +108,7 @@ public class FlightStatusFrame extends JFrame {
         headerPanel.setLayout(new BorderLayout());
         headerPanel.setPreferredSize(new Dimension(800, 80));
         
-        JLabel titleLabel = ThemeManager.createTitleLabel("✈️ Flight Status Dashboard");
+        JLabel titleLabel = ThemeManager.createTitleLabel(IconManager.getTextIcon("flight") + " Flight Status Dashboard");
         titleLabel.setForeground(ThemeManager.WHITE);
         headerPanel.add(titleLabel, BorderLayout.CENTER);
         
@@ -116,7 +123,7 @@ public class FlightStatusFrame extends JFrame {
         
         JPanel flightsHeaderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         flightsHeaderPanel.setBackground(ThemeManager.WHITE);
-        JLabel flightsHeaderLabel = ThemeManager.createSubheaderLabel("✈️ Flight Status");
+        JLabel flightsHeaderLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("flight") + " Flight Status");
         flightsHeaderPanel.add(flightsHeaderLabel);
         
         JScrollPane flightsScrollPane = new JScrollPane(flightsTable);
@@ -152,7 +159,7 @@ public class FlightStatusFrame extends JFrame {
         
         JPanel statusHeaderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         statusHeaderPanel.setBackground(ThemeManager.WHITE);
-        JLabel statusHeaderLabel = ThemeManager.createSubheaderLabel("📊 System Status");
+        JLabel statusHeaderLabel = ThemeManager.createSubheaderLabel(IconManager.getTextIcon("status") + " System Status");
         statusHeaderPanel.add(statusHeaderLabel);
         
         JScrollPane statusScrollPane = new JScrollPane(systemStatusArea);
