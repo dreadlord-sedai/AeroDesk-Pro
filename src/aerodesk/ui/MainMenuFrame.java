@@ -1,6 +1,7 @@
 package aerodesk.ui;
 
 import aerodesk.util.FileLogger;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -24,37 +25,44 @@ public class MainMenuFrame extends JFrame {
     }
     
     private void initializeComponents() {
-        welcomeLabel = new JLabel("Welcome, " + currentUser + " (" + userRole + ")");
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        welcomeLabel.setForeground(new Color(41, 128, 185));
+        welcomeLabel = ThemeManager.createSubheaderLabel("Welcome, " + currentUser + " (" + userRole + ")");
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Header panel
-        JPanel headerPanel = new JPanel();
-        JLabel titleLabel = new JLabel("AeroDesk Pro - Airport Management System");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        titleLabel.setForeground(new Color(52, 73, 94));
-        headerPanel.add(titleLabel);
+        // Header panel with gradient
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setPreferredSize(new Dimension(0, 100));
+        headerPanel.setLayout(new BorderLayout());
+        
+        JLabel titleLabel = ThemeManager.createTitleLabel("✈️ AeroDesk Pro");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
+        
+        JLabel subtitleLabel = ThemeManager.createBodyLabel("Advanced Airport Management System");
+        subtitleLabel.setForeground(ThemeManager.WHITE);
+        subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        headerPanel.add(subtitleLabel, BorderLayout.SOUTH);
         
         // Welcome panel
         JPanel welcomePanel = new JPanel();
+        welcomePanel.setBackground(ThemeManager.WHITE);
         welcomePanel.add(welcomeLabel);
         
-        // Main menu panel with buttons
+        // Main menu panel with modern card-style buttons
         JPanel menuPanel = new JPanel(new GridLayout(4, 2, 20, 20));
+        menuPanel.setBackground(ThemeManager.WHITE);
         menuPanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));
         
-        // Create menu buttons
-        JButton flightSchedulingBtn = createMenuButton("Flight Scheduling", "✈️");
-        JButton checkInBtn = createMenuButton("Passenger Check-In", "👤");
-        JButton baggageBtn = createMenuButton("Baggage Handling", "👜");
-        JButton gateManagementBtn = createMenuButton("Gate Management", "🚪");
-        JButton flightStatusBtn = createMenuButton("Flight Status", "📊");
-        JButton aviationStackBtn = createMenuButton("Aviation Stack API", "🌐");
-        JButton reportsBtn = createMenuButton("Reports & Logs", "📋");
+        // Create modern menu buttons
+        JButton flightSchedulingBtn = createModernMenuButton("Flight Scheduling", "✈️", ThemeManager.PRIMARY_BLUE);
+        JButton checkInBtn = createModernMenuButton("Passenger Check-In", "👤", ThemeManager.SUCCESS_GREEN);
+        JButton baggageBtn = createModernMenuButton("Baggage Handling", "👜", ThemeManager.WARNING_AMBER);
+        JButton gateManagementBtn = createModernMenuButton("Gate Management", "🚪", ThemeManager.SECONDARY_BLUE);
+        JButton flightStatusBtn = createModernMenuButton("Flight Status", "📊", ThemeManager.ACCENT_ORANGE);
+        JButton aviationStackBtn = createModernMenuButton("Aviation Stack API", "🌐", ThemeManager.PRIMARY_BLUE);
+        JButton reportsBtn = createModernMenuButton("Reports & Logs", "📋", ThemeManager.DARK_GRAY);
         
         menuPanel.add(flightSchedulingBtn);
         menuPanel.add(checkInBtn);
@@ -65,9 +73,10 @@ public class MainMenuFrame extends JFrame {
         menuPanel.add(reportsBtn);
         
         // Bottom panel with logout
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        JButton logoutBtn = new JButton("Logout");
-        logoutBtn.setPreferredSize(new Dimension(100, 35));
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
+        bottomPanel.setBackground(ThemeManager.WHITE);
+        JButton logoutBtn = new JButton("🚪 Logout");
+        ThemeManager.styleButton(logoutBtn, ThemeManager.ERROR_RED, ThemeManager.WHITE);
         bottomPanel.add(logoutBtn);
         
         // Add panels to frame
@@ -87,22 +96,28 @@ public class MainMenuFrame extends JFrame {
         logoutBtn.setActionCommand("logout");
     }
     
-    private JButton createMenuButton(String text, String icon) {
-        JButton button = new JButton(icon + " " + text);
-        button.setFont(new Font("Arial", Font.BOLD, 14));
-        button.setPreferredSize(new Dimension(200, 80));
-        button.setBackground(new Color(52, 152, 219));
-        button.setForeground(Color.WHITE);
+    private JButton createModernMenuButton(String text, String icon, Color color) {
+        JButton button = new JButton("<html><center>" + icon + "<br>" + text + "</center></html>");
+        button.setFont(ThemeManager.SUBHEADER_FONT);
+        button.setPreferredSize(new Dimension(200, 100));
+        button.setBackground(color);
+        button.setForeground(ThemeManager.WHITE);
         button.setFocusPainted(false);
         button.setBorderPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        // Hover effect
+        // Add modern hover effect with shadow
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(41, 128, 185));
+                button.setBackground(color.brighter());
+                button.setBorder(BorderFactory.createCompoundBorder(
+                    BorderFactory.createEmptyBorder(2, 2, 2, 2),
+                    BorderFactory.createLineBorder(color.darker(), 2)
+                ));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(52, 152, 219));
+                button.setBackground(color);
+                button.setBorder(BorderFactory.createEmptyBorder());
             }
         });
         
@@ -125,7 +140,7 @@ public class MainMenuFrame extends JFrame {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        handleMenuAction(e.getActionCommand());
+                        handleButtonClick(e.getActionCommand());
                     }
                 });
             } else if (comp instanceof JPanel) {
@@ -134,10 +149,8 @@ public class MainMenuFrame extends JFrame {
         }
     }
     
-    private void handleMenuAction(String action) {
-        FileLogger.getInstance().logInfo("User " + currentUser + " accessed: " + action);
-        
-        switch (action) {
+    private void handleButtonClick(String actionCommand) {
+        switch (actionCommand) {
             case "flight_scheduling":
                 openFlightScheduling();
                 break;
@@ -223,8 +236,9 @@ public class MainMenuFrame extends JFrame {
     private void configureWindow() {
         setTitle("AeroDesk Pro - Main Menu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setSize(900, 700);
         setLocationRelativeTo(null);
         setResizable(false);
+        ThemeManager.styleFrame(this);
     }
 } 

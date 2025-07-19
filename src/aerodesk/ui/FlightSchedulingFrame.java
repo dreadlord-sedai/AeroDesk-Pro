@@ -4,6 +4,7 @@ import aerodesk.model.Flight;
 import aerodesk.dao.FlightDAO;
 import aerodesk.exception.DatabaseException;
 import aerodesk.util.FileLogger;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -47,7 +48,6 @@ public class FlightSchedulingFrame extends JFrame {
     }
     
     private void initializeComponents() {
-        // Form fields
         flightNoField = new JTextField(15);
         originField = new JTextField(15);
         destinationField = new JTextField(15);
@@ -56,102 +56,114 @@ public class FlightSchedulingFrame extends JFrame {
         aircraftTypeField = new JTextField(15);
         statusComboBox = new JComboBox<>(Flight.FlightStatus.values());
         
-        // Buttons
-        createButton = new JButton("Create Flight");
-        updateButton = new JButton("Update Flight");
-        deleteButton = new JButton("Delete Flight");
-        clearButton = new JButton("Clear Form");
-        refreshButton = new JButton("Refresh");
+        createButton = new JButton("✈️ Create Flight");
+        updateButton = new JButton("🔄 Update Flight");
+        deleteButton = new JButton("🗑️ Delete Flight");
+        clearButton = new JButton("🧹 Clear Form");
+        refreshButton = new JButton("🔄 Refresh");
         
-        // Table
-        String[] columnNames = {"ID", "Flight No", "Origin", "Destination", "Depart", "Arrive", "Aircraft", "Status"};
+        // Apply modern styling
+        ThemeManager.styleTextField(flightNoField);
+        ThemeManager.styleTextField(originField);
+        ThemeManager.styleTextField(destinationField);
+        ThemeManager.styleTextField(departTimeField);
+        ThemeManager.styleTextField(arriveTimeField);
+        ThemeManager.styleTextField(aircraftTypeField);
+        ThemeManager.styleComboBox(statusComboBox);
+        
+        ThemeManager.styleButton(createButton, ThemeManager.SUCCESS_GREEN, ThemeManager.WHITE);
+        ThemeManager.styleButton(updateButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(deleteButton, ThemeManager.ERROR_RED, ThemeManager.WHITE);
+        ThemeManager.styleButton(clearButton, ThemeManager.WARNING_AMBER, ThemeManager.WHITE);
+        ThemeManager.styleButton(refreshButton, ThemeManager.SECONDARY_BLUE, ThemeManager.WHITE);
+        
+        // Table setup
+        String[] columnNames = {"Flight No", "Origin", "Destination", "Departure", "Arrival", "Aircraft", "Status"};
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Make table read-only
+                return false;
             }
         };
         flightsTable = new JTable(tableModel);
-        flightsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-        // Set preferred sizes
-        Dimension fieldSize = new Dimension(200, 25);
-        flightNoField.setPreferredSize(fieldSize);
-        originField.setPreferredSize(fieldSize);
-        destinationField.setPreferredSize(fieldSize);
-        departTimeField.setPreferredSize(fieldSize);
-        arriveTimeField.setPreferredSize(fieldSize);
-        aircraftTypeField.setPreferredSize(fieldSize);
-        statusComboBox.setPreferredSize(fieldSize);
+        ThemeManager.styleTable(flightsTable);
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Title panel
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Flight Scheduling Management");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        titleLabel.setForeground(new Color(41, 128, 185));
-        titlePanel.add(titleLabel);
+        // Header panel with gradient
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setPreferredSize(new Dimension(0, 80));
+        headerPanel.setLayout(new BorderLayout());
+        
+        JLabel titleLabel = ThemeManager.createHeaderLabel("✈️ Flight Scheduling Management");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
+        
+        // Main content panel
+        JPanel contentPanel = new JPanel(new BorderLayout());
+        contentPanel.setBackground(ThemeManager.WHITE);
         
         // Form panel
         JPanel formPanel = createFormPanel();
         
-        // Button panel
-        JPanel buttonPanel = createButtonPanel();
-        
         // Table panel
         JPanel tablePanel = createTablePanel();
         
+        // Button panel
+        JPanel buttonPanel = createButtonPanel();
+        
         // Add panels to frame
-        add(titlePanel, BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
         add(formPanel, BorderLayout.WEST);
         add(tablePanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
     private JPanel createFormPanel() {
-        JPanel formPanel = new JPanel();
+        JPanel formPanel = ThemeManager.createCardPanel();
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
-        formPanel.setBorder(BorderFactory.createTitledBorder("Flight Details"));
-        formPanel.setPreferredSize(new Dimension(300, 400));
+        formPanel.setPreferredSize(new Dimension(350, 0));
+        
+        // Form title
+        JLabel formTitle = ThemeManager.createSubheaderLabel("Flight Details");
+        formTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        formPanel.add(formTitle);
+        formPanel.add(Box.createVerticalStrut(20));
         
         // Add form fields
-        formPanel.add(createFormField("Flight No:", flightNoField));
-        formPanel.add(createFormField("Origin:", originField));
-        formPanel.add(createFormField("Destination:", destinationField));
-        formPanel.add(createFormField("Depart Time (yyyy-MM-dd HH:mm):", departTimeField));
-        formPanel.add(createFormField("Arrive Time (yyyy-MM-dd HH:mm):", arriveTimeField));
-        formPanel.add(createFormField("Aircraft Type:", aircraftTypeField));
-        formPanel.add(createFormField("Status:", statusComboBox));
+        formPanel.add(createFormField("✈️ Flight No:", flightNoField));
+        formPanel.add(createFormField("🛫 Origin:", originField));
+        formPanel.add(createFormField("🛬 Destination:", destinationField));
+        formPanel.add(createFormField("🕐 Depart Time (yyyy-MM-dd HH:mm):", departTimeField));
+        formPanel.add(createFormField("🕐 Arrive Time (yyyy-MM-dd HH:mm):", arriveTimeField));
+        formPanel.add(createFormField("✈️ Aircraft Type:", aircraftTypeField));
+        formPanel.add(createFormField("📊 Status:", statusComboBox));
         
         return formPanel;
     }
     
-    private JPanel createFormField(String label, JComponent field) {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JLabel jLabel = new JLabel(label);
-        jLabel.setPreferredSize(new Dimension(180, 25));
-        panel.add(jLabel);
-        panel.add(field);
-        panel.setMaximumSize(new Dimension(300, 35));
-        return panel;
-    }
-    
-    private JPanel createButtonPanel() {
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
-        buttonPanel.add(createButton);
-        buttonPanel.add(updateButton);
-        buttonPanel.add(deleteButton);
-        buttonPanel.add(clearButton);
-        buttonPanel.add(refreshButton);
-        return buttonPanel;
+    private JPanel createFormField(String labelText, JComponent component) {
+        JPanel fieldPanel = new JPanel(new BorderLayout());
+        fieldPanel.setBackground(ThemeManager.WHITE);
+        fieldPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        
+        JLabel label = ThemeManager.createBodyLabel(labelText);
+        fieldPanel.add(label, BorderLayout.NORTH);
+        fieldPanel.add(component, BorderLayout.CENTER);
+        
+        return fieldPanel;
     }
     
     private JPanel createTablePanel() {
-        JPanel tablePanel = new JPanel(new BorderLayout());
-        tablePanel.setBorder(BorderFactory.createTitledBorder("Flight List"));
+        JPanel tablePanel = ThemeManager.createCardPanel();
+        tablePanel.setLayout(new BorderLayout());
+        
+        JLabel tableTitle = ThemeManager.createSubheaderLabel("Flight Schedule");
+        tableTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        tablePanel.add(tableTitle, BorderLayout.NORTH);
         
         JScrollPane scrollPane = new JScrollPane(flightsTable);
         tablePanel.add(scrollPane, BorderLayout.CENTER);
@@ -159,102 +171,106 @@ public class FlightSchedulingFrame extends JFrame {
         return tablePanel;
     }
     
-    private void setupEventHandlers() {
-        // Button event handlers
-        createButton.addActionListener(e -> handleCreateFlight());
-        updateButton.addActionListener(e -> handleUpdateFlight());
-        deleteButton.addActionListener(e -> handleDeleteFlight());
-        clearButton.addActionListener(e -> clearForm());
-        refreshButton.addActionListener(e -> loadFlights());
+    private JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        buttonPanel.setBackground(ThemeManager.WHITE);
+        buttonPanel.add(createButton);
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(clearButton);
+        buttonPanel.add(refreshButton);
         
-        // Table selection handler
-        flightsTable.getSelectionModel().addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                handleTableSelection();
+        return buttonPanel;
+    }
+    
+    private void setupEventHandlers() {
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createFlight();
             }
         });
         
-        // Enter key handlers
-        departTimeField.addActionListener(e -> arriveTimeField.requestFocus());
-        arriveTimeField.addActionListener(e -> aircraftTypeField.requestFocus());
-        aircraftTypeField.addActionListener(e -> handleCreateFlight());
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updateFlight();
+            }
+        });
+        
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteFlight();
+            }
+        });
+        
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clearForm();
+            }
+        });
+        
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadFlights();
+            }
+        });
+        
+        // Table selection listener
+        flightsTable.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = flightsTable.getSelectedRow();
+                if (selectedRow >= 0) {
+                    loadFlightToForm(selectedRow);
+                }
+            }
+        });
     }
     
-    private void handleCreateFlight() {
+    private void createFlight() {
         try {
-            if (!validateForm()) {
-                return;
+            Flight flight = getFlightFromForm();
+            if (flight != null) {
+                flightDAO.createFlight(flight);
+                FileLogger.getInstance().logInfo("Flight created: " + flight.getFlightNo());
+                JOptionPane.showMessageDialog(this, "Flight created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadFlights();
+                clearForm();
             }
-            
-            Flight flight = createFlightFromForm();
-            Flight createdFlight = flightDAO.createFlight(flight);
-            
-            FileLogger.getInstance().logInfo("Created flight: " + createdFlight.getFlightNo());
-            JOptionPane.showMessageDialog(this, 
-                "Flight created successfully!", 
-                "Success", 
-                JOptionPane.INFORMATION_MESSAGE);
-            
-            clearForm();
-            loadFlights();
-            
         } catch (DatabaseException ex) {
-            FileLogger.getInstance().logError("Failed to create flight: " + ex.getMessage());
-            JOptionPane.showMessageDialog(this, 
-                "Failed to create flight: " + ex.getMessage(), 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+            FileLogger.getInstance().logError("Error creating flight: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Error creating flight: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    private void handleUpdateFlight() {
+    private void updateFlight() {
         if (selectedFlight == null) {
-            JOptionPane.showMessageDialog(this, 
-                "Please select a flight to update", 
-                "No Selection", 
-                JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a flight to update", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         try {
-            if (!validateForm()) {
-                return;
-            }
-            
-            updateFlightFromForm(selectedFlight);
-            boolean updated = flightDAO.updateFlight(selectedFlight);
-            
-            if (updated) {
-                FileLogger.getInstance().logInfo("Updated flight: " + selectedFlight.getFlightNo());
-                JOptionPane.showMessageDialog(this, 
-                    "Flight updated successfully!", 
-                    "Success", 
-                    JOptionPane.INFORMATION_MESSAGE);
-                
-                clearForm();
+            Flight flight = getFlightFromForm();
+            if (flight != null) {
+                flight.setFlightId(selectedFlight.getFlightId());
+                flightDAO.updateFlight(flight);
+                FileLogger.getInstance().logInfo("Flight updated: " + flight.getFlightNo());
+                JOptionPane.showMessageDialog(this, "Flight updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 loadFlights();
-            } else {
-                JOptionPane.showMessageDialog(this, 
-                    "Failed to update flight", 
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
+                clearForm();
             }
-            
         } catch (DatabaseException ex) {
-            FileLogger.getInstance().logError("Failed to update flight: " + ex.getMessage());
-            JOptionPane.showMessageDialog(this, 
-                "Failed to update flight: " + ex.getMessage(), 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+            FileLogger.getInstance().logError("Error updating flight: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Error updating flight: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    private void handleDeleteFlight() {
+    private void deleteFlight() {
         if (selectedFlight == null) {
-            JOptionPane.showMessageDialog(this, 
-                "Please select a flight to delete", 
-                "No Selection", 
-                JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a flight to delete", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
@@ -265,140 +281,16 @@ public class FlightSchedulingFrame extends JFrame {
         
         if (choice == JOptionPane.YES_OPTION) {
             try {
-                boolean deleted = flightDAO.deleteFlight(selectedFlight.getFlightId());
-                
-                if (deleted) {
-                    FileLogger.getInstance().logInfo("Deleted flight: " + selectedFlight.getFlightNo());
-                    JOptionPane.showMessageDialog(this, 
-                        "Flight deleted successfully!", 
-                        "Success", 
-                        JOptionPane.INFORMATION_MESSAGE);
-                    
-                    clearForm();
-                    loadFlights();
-                } else {
-                    JOptionPane.showMessageDialog(this, 
-                        "Failed to delete flight", 
-                        "Error", 
-                        JOptionPane.ERROR_MESSAGE);
-                }
-                
+                flightDAO.deleteFlight(selectedFlight.getFlightId());
+                FileLogger.getInstance().logInfo("Flight deleted: " + selectedFlight.getFlightNo());
+                JOptionPane.showMessageDialog(this, "Flight deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadFlights();
+                clearForm();
             } catch (DatabaseException ex) {
-                FileLogger.getInstance().logError("Failed to delete flight: " + ex.getMessage());
-                JOptionPane.showMessageDialog(this, 
-                    "Failed to delete flight: " + ex.getMessage(), 
-                    "Error", 
-                    JOptionPane.ERROR_MESSAGE);
+                FileLogger.getInstance().logError("Error deleting flight: " + ex.getMessage());
+                JOptionPane.showMessageDialog(this, "Error deleting flight: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }
-    
-    private void handleTableSelection() {
-        int selectedRow = flightsTable.getSelectedRow();
-        if (selectedRow >= 0) {
-            selectedFlight = getFlightFromTableRow(selectedRow);
-            populateFormFromFlight(selectedFlight);
-            updateButton.setEnabled(true);
-            deleteButton.setEnabled(true);
-        } else {
-            selectedFlight = null;
-            updateButton.setEnabled(false);
-            deleteButton.setEnabled(false);
-        }
-    }
-    
-    private boolean validateForm() {
-        if (flightNoField.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Flight number is required", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        if (originField.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Origin is required", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        if (destinationField.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Destination is required", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        try {
-            LocalDateTime.parse(departTimeField.getText().trim(), dateFormatter);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Invalid departure time format. Use yyyy-MM-dd HH:mm", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        try {
-            LocalDateTime.parse(arriveTimeField.getText().trim(), dateFormatter);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Invalid arrival time format. Use yyyy-MM-dd HH:mm", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        return true;
-    }
-    
-    private Flight createFlightFromForm() {
-        Flight flight = new Flight();
-        flight.setFlightNo(flightNoField.getText().trim());
-        flight.setOrigin(originField.getText().trim());
-        flight.setDestination(destinationField.getText().trim());
-        flight.setDepartTime(LocalDateTime.parse(departTimeField.getText().trim(), dateFormatter));
-        flight.setArriveTime(LocalDateTime.parse(arriveTimeField.getText().trim(), dateFormatter));
-        flight.setAircraftType(aircraftTypeField.getText().trim());
-        flight.setStatus((Flight.FlightStatus) statusComboBox.getSelectedItem());
-        return flight;
-    }
-    
-    private void updateFlightFromForm(Flight flight) {
-        flight.setFlightNo(flightNoField.getText().trim());
-        flight.setOrigin(originField.getText().trim());
-        flight.setDestination(destinationField.getText().trim());
-        flight.setDepartTime(LocalDateTime.parse(departTimeField.getText().trim(), dateFormatter));
-        flight.setArriveTime(LocalDateTime.parse(arriveTimeField.getText().trim(), dateFormatter));
-        flight.setAircraftType(aircraftTypeField.getText().trim());
-        flight.setStatus((Flight.FlightStatus) statusComboBox.getSelectedItem());
-    }
-    
-    private void populateFormFromFlight(Flight flight) {
-        flightNoField.setText(flight.getFlightNo());
-        originField.setText(flight.getOrigin());
-        destinationField.setText(flight.getDestination());
-        departTimeField.setText(flight.getDepartTime() != null ? flight.getDepartTime().format(dateFormatter) : "");
-        arriveTimeField.setText(flight.getArriveTime() != null ? flight.getArriveTime().format(dateFormatter) : "");
-        aircraftTypeField.setText(flight.getAircraftType());
-        statusComboBox.setSelectedItem(flight.getStatus());
-    }
-    
-    private Flight getFlightFromTableRow(int row) {
-        // This is a simplified approach - in a real app, you'd store the actual Flight objects
-        // For now, we'll create a new Flight object from table data
-        Flight flight = new Flight();
-        flight.setFlightId(Integer.parseInt(tableModel.getValueAt(row, 0).toString()));
-        flight.setFlightNo(tableModel.getValueAt(row, 1).toString());
-        flight.setOrigin(tableModel.getValueAt(row, 2).toString());
-        flight.setDestination(tableModel.getValueAt(row, 3).toString());
-        
-        // Parse datetime strings back to LocalDateTime
-        try {
-            String departTimeStr = tableModel.getValueAt(row, 4).toString();
-            if (!departTimeStr.isEmpty()) {
-                flight.setDepartTime(LocalDateTime.parse(departTimeStr, dateFormatter));
-            }
-            
-            String arriveTimeStr = tableModel.getValueAt(row, 5).toString();
-            if (!arriveTimeStr.isEmpty()) {
-                flight.setArriveTime(LocalDateTime.parse(arriveTimeStr, dateFormatter));
-            }
-        } catch (Exception e) {
-            FileLogger.getInstance().logError("Error parsing datetime from table: " + e.getMessage());
-        }
-        
-        flight.setAircraftType(tableModel.getValueAt(row, 6).toString());
-        flight.setStatus(Flight.FlightStatus.valueOf(tableModel.getValueAt(row, 7).toString()));
-        return flight;
     }
     
     private void clearForm() {
@@ -409,13 +301,78 @@ public class FlightSchedulingFrame extends JFrame {
         arriveTimeField.setText("");
         aircraftTypeField.setText("");
         statusComboBox.setSelectedItem(Flight.FlightStatus.SCHEDULED);
-        
         selectedFlight = null;
         flightsTable.clearSelection();
-        updateButton.setEnabled(false);
-        deleteButton.setEnabled(false);
+    }
+    
+    private Flight getFlightFromForm() {
+        String flightNo = flightNoField.getText().trim();
+        String origin = originField.getText().trim();
+        String destination = destinationField.getText().trim();
+        String departTimeStr = departTimeField.getText().trim();
+        String arriveTimeStr = arriveTimeField.getText().trim();
+        String aircraftType = aircraftTypeField.getText().trim();
+        Flight.FlightStatus status = (Flight.FlightStatus) statusComboBox.getSelectedItem();
         
-        flightNoField.requestFocus();
+        if (flightNo.isEmpty() || origin.isEmpty() || destination.isEmpty() || 
+            departTimeStr.isEmpty() || arriveTimeStr.isEmpty() || aircraftType.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+        
+        try {
+            LocalDateTime departTime = LocalDateTime.parse(departTimeStr, dateFormatter);
+            LocalDateTime arriveTime = LocalDateTime.parse(arriveTimeStr, dateFormatter);
+            
+            if (arriveTime.isBefore(departTime)) {
+                JOptionPane.showMessageDialog(this, "Arrival time must be after departure time", "Validation Error", JOptionPane.ERROR_MESSAGE);
+                return null;
+            }
+            
+            Flight flight = new Flight(flightNo, origin, destination, departTime, arriveTime, aircraftType);
+            flight.setStatus(status);
+            return flight;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Invalid date format. Use yyyy-MM-dd HH:mm", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    private void loadFlightToForm(int row) {
+        String flightNo = (String) tableModel.getValueAt(row, 0);
+        String origin = (String) tableModel.getValueAt(row, 1);
+        String destination = (String) tableModel.getValueAt(row, 2);
+        String departTime = (String) tableModel.getValueAt(row, 3);
+        String arriveTime = (String) tableModel.getValueAt(row, 4);
+        String aircraftType = (String) tableModel.getValueAt(row, 5);
+        String statusStr = (String) tableModel.getValueAt(row, 6);
+        
+        flightNoField.setText(flightNo);
+        originField.setText(origin);
+        destinationField.setText(destination);
+        departTimeField.setText(departTime);
+        arriveTimeField.setText(arriveTime);
+        aircraftTypeField.setText(aircraftType);
+        
+        try {
+            Flight.FlightStatus status = Flight.FlightStatus.valueOf(statusStr);
+            statusComboBox.setSelectedItem(status);
+        } catch (IllegalArgumentException ex) {
+            statusComboBox.setSelectedItem(Flight.FlightStatus.SCHEDULED);
+        }
+        
+        // Find and set selected flight
+        try {
+            List<Flight> flights = flightDAO.getAllFlights();
+            for (Flight flight : flights) {
+                if (flight.getFlightNo().equals(flightNo)) {
+                    selectedFlight = flight;
+                    break;
+                }
+            }
+        } catch (DatabaseException ex) {
+            FileLogger.getInstance().logError("Error loading flight details: " + ex.getMessage());
+        }
     }
     
     private void loadFlights() {
@@ -425,38 +382,30 @@ public class FlightSchedulingFrame extends JFrame {
             
             for (Flight flight : flights) {
                 Object[] row = {
-                    flight.getFlightId(),
                     flight.getFlightNo(),
                     flight.getOrigin(),
                     flight.getDestination(),
                     flight.getDepartTime().format(dateFormatter),
                     flight.getArriveTime().format(dateFormatter),
                     flight.getAircraftType(),
-                    flight.getStatus()
+                    flight.getStatus().toString()
                 };
                 tableModel.addRow(row);
             }
             
             FileLogger.getInstance().logInfo("Loaded " + flights.size() + " flights");
-            
         } catch (DatabaseException ex) {
-            FileLogger.getInstance().logError("Failed to load flights: " + ex.getMessage());
-            JOptionPane.showMessageDialog(this, 
-                "Failed to load flights: " + ex.getMessage(), 
-                "Error", 
-                JOptionPane.ERROR_MESSAGE);
+            FileLogger.getInstance().logError("Error loading flights: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Error loading flights: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     private void configureWindow() {
         setTitle("AeroDesk Pro - Flight Scheduling");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(1000, 600);
+        setSize(1200, 700);
         setLocationRelativeTo(null);
         setResizable(true);
-        
-        // Set initial button states
-        updateButton.setEnabled(false);
-        deleteButton.setEnabled(false);
+        ThemeManager.styleFrame(this);
     }
 } 

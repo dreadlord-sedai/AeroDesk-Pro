@@ -2,6 +2,7 @@ package aerodesk.ui;
 
 import aerodesk.util.ConfigManager;
 import aerodesk.util.FileLogger;
+import aerodesk.util.ThemeManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,59 +29,80 @@ public class LoginFrame extends JFrame {
         usernameField = new JTextField(20);
         passwordField = new JPasswordField(20);
         roleComboBox = new JComboBox<>(new String[]{"STAFF", "ADMIN"});
-        loginButton = new JButton("Login");
-        exitButton = new JButton("Exit");
+        loginButton = new JButton("✈️ Login");
+        exitButton = new JButton("❌ Exit");
         
-        // Set preferred sizes
-        usernameField.setPreferredSize(new Dimension(200, 30));
-        passwordField.setPreferredSize(new Dimension(200, 30));
-        roleComboBox.setPreferredSize(new Dimension(200, 30));
-        loginButton.setPreferredSize(new Dimension(100, 35));
-        exitButton.setPreferredSize(new Dimension(100, 35));
+        // Apply modern styling
+        ThemeManager.styleTextField(usernameField);
+        ThemeManager.stylePasswordField(passwordField);
+        ThemeManager.styleComboBox(roleComboBox);
+        ThemeManager.styleButton(loginButton, ThemeManager.PRIMARY_BLUE, ThemeManager.WHITE);
+        ThemeManager.styleButton(exitButton, ThemeManager.ERROR_RED, ThemeManager.WHITE);
     }
     
     private void setupLayout() {
         setLayout(new BorderLayout());
         
-        // Title panel
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("AeroDesk Pro");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setForeground(new Color(41, 128, 185));
-        titlePanel.add(titleLabel);
+        // Create gradient header panel
+        JPanel headerPanel = ThemeManager.createGradientPanel();
+        headerPanel.setPreferredSize(new Dimension(0, 120));
+        headerPanel.setLayout(new BorderLayout());
         
-        // Main form panel
-        JPanel formPanel = new JPanel(new GridBagLayout());
+        // Title with aviation icon
+        JLabel titleLabel = ThemeManager.createTitleLabel("✈️ AeroDesk Pro");
+        titleLabel.setForeground(ThemeManager.WHITE);
+        headerPanel.add(titleLabel, BorderLayout.CENTER);
+        
+        // Subtitle
+        JLabel subtitleLabel = ThemeManager.createBodyLabel("Advanced Airport Management System");
+        subtitleLabel.setForeground(ThemeManager.WHITE);
+        subtitleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        headerPanel.add(subtitleLabel, BorderLayout.SOUTH);
+        
+        // Main content panel
+        JPanel contentPanel = new JPanel(new GridBagLayout());
+        contentPanel.setBackground(ThemeManager.WHITE);
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(10, 20, 10, 20);
         gbc.anchor = GridBagConstraints.WEST;
         
         // Username
         gbc.gridx = 0; gbc.gridy = 0;
-        formPanel.add(new JLabel("Username:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(usernameField, gbc);
+        contentPanel.add(ThemeManager.createBodyLabel("👤 Username:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        contentPanel.add(usernameField, gbc);
         
         // Password
         gbc.gridx = 0; gbc.gridy = 1;
-        formPanel.add(new JLabel("Password:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(passwordField, gbc);
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0.0;
+        contentPanel.add(ThemeManager.createBodyLabel("🔒 Password:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        contentPanel.add(passwordField, gbc);
         
         // Role
         gbc.gridx = 0; gbc.gridy = 2;
-        formPanel.add(new JLabel("Role:"), gbc);
-        gbc.gridx = 1;
-        formPanel.add(roleComboBox, gbc);
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.weightx = 0.0;
+        contentPanel.add(ThemeManager.createBodyLabel("👨‍💼 Role:"), gbc);
+        gbc.gridx = 1; gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.weightx = 1.0;
+        contentPanel.add(roleComboBox, gbc);
         
         // Buttons panel
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        buttonPanel.setBackground(ThemeManager.WHITE);
         buttonPanel.add(loginButton);
         buttonPanel.add(exitButton);
         
         // Add panels to frame
-        add(titlePanel, BorderLayout.NORTH);
-        add(formPanel, BorderLayout.CENTER);
+        add(headerPanel, BorderLayout.NORTH);
+        add(contentPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
@@ -157,8 +179,9 @@ public class LoginFrame extends JFrame {
     private void configureWindow() {
         setTitle("AeroDesk Pro - Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(450, 400);
         setLocationRelativeTo(null);
         setResizable(false);
+        ThemeManager.styleFrame(this);
     }
 } 
