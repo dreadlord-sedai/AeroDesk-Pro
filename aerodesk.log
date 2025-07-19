@@ -2361,3 +2361,10 @@
 [2025-07-19 14:25:16] INFO: Retrieved 25 baggage items from database
 [2025-07-19 14:25:16] DEBUG: Database connection established successfully
 [2025-07-19 14:25:16] INFO: Retrieved 15 gate assignments from database
+[2025-07-19 14:25:52] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:25:53] INFO: Login screen displayed successfully
+[2025-07-19 14:28:32] INFO: AeroDesk Pro starting up...
+[2025-07-19 14:28:33] INFO: Login screen displayed successfully
+[2025-07-19 14:28:44] DEBUG: Database connection established successfully
+[2025-07-19 14:28:44] INFO: User authenticated successfully: staff1
+[2025-07-19 14:28:44] INFO: User staff1 logged in successfully as STAFF

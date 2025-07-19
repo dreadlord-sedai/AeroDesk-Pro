@@ -12,6 +12,7 @@ public class IconManager {
     
     /**
      * Create a text-based icon that works across all systems
+     * Returns a simple text representation that should work everywhere
      */
     public static String getTextIcon(String iconType) {
         switch (iconType.toLowerCase()) {
@@ -82,6 +83,22 @@ public class IconManager {
     }
     
     /**
+     * Create an ImageIcon for buttons and labels that will work across all systems
+     * This method creates a proper ImageIcon instead of relying on text-based icons
+     */
+    public static ImageIcon createButtonIcon(String iconType, Color color, int size) {
+        return new ImageIcon(createColoredIcon(iconType, color, size));
+    }
+    
+    /**
+     * Create a simple text label with icon that works across all systems
+     * Uses HTML formatting to ensure proper display
+     */
+    public static String createIconLabel(String iconType, String text) {
+        return "<html><font size='+1'>" + getTextIcon(iconType) + "</font> " + text + "</html>";
+    }
+    
+    /**
      * Create a simple colored icon as a BufferedImage
      */
     public static BufferedImage createColoredIcon(String iconType, Color color, int size) {
@@ -132,13 +149,6 @@ public class IconManager {
         
         g2d.dispose();
         return icon;
-    }
-    
-    /**
-     * Create an ImageIcon from a BufferedImage
-     */
-    public static ImageIcon createImageIcon(String iconType, Color color, int size) {
-        return new ImageIcon(createColoredIcon(iconType, color, size));
     }
     
     // Icon drawing methods
